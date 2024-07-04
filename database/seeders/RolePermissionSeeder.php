@@ -17,8 +17,13 @@ class RolePermissionSeeder extends Seeder
         Role::create(['name' => 'admin']);
         Role::create(['name' => 'user']);
         Role::create(['name' => 'guest']);
+        Role::create(['name' => 'skil-dev']);
 
         Permission::create(['name' => 'verified']);
         Permission::create(['name' => 'unverified']);
+        Permission::create(['name' => 'create-event']);
+        Permission::create(['name' => 'edit-event']);
+        Permission::create(['name' => 'delete-event']);
+        Permission::create(['name' => 'read-event']);
     }
 }
