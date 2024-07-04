@@ -14,7 +14,7 @@
 ## Aturan Penamaan Branch
 Silahkan anda membuat branch anda sendiri sebelum mengerjakan feature
 - `nama/feature` contoh `irfan/create-presence`
-- `feature/nama` contoh `create-presence/irfan`
+
 
 
 
