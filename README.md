@@ -10,6 +10,22 @@
 - Jika ingin mengcustom style pada css silahkan simpan di dalam `function & directive` tailwind atau `tailwind.config.js`
 - Penulisan code di dalan viewnya cukup contentnya saja tidak perlu menulis header html karena menggunakan sistem layouting
 
+
+## Aturan Penamaan Branch
+Silahkan anda membuat branch anda sendiri sebelum mengerjakan feature
+- `nama/feature` contoh `irfan/create-presence`
+- `feature/nama` contoh `create-presence/irfan`
+
+
+
+
+## Warning
+- Jangan pernah menghapus folder atau file apapun yg sudah ada atau bawaan dari laravel
+- Jika ingin melakukan `git push` dan pull request pada project ini silahkan lakukan `git pull` ke branch `main` terlebih dahulu di lokal komputer
+- Jika terjadi konflik silahkan perbaiki terlebih dahulu sebelum `push` ke project
+- Jika sudah selesai semua silahkan berikan `commit` yang jelas dan `pull request` ke branch anda sendiri
+
+
 ### Font 
 Menggunakan font `poppins`
 ```html
@@ -39,19 +55,6 @@ Silahkan gunakan breakpoint disini untuk membuat respoinsive design
 
 ![image](https://github.com/alirfanyasin/Crypshion-Ecommerce/assets/77270380/6e2e10b2-5b14-482f-a140-47871e513ffe)
 
-
-## Aturan Penamaan Branch
-- `nama/feature` contoh `irfan/create-presence`
-- `feature/nama` contoh `create-presence/irfan`
-
-
-
-
-## Warning
-- Jangan pernah menghapus folder atau file apapun yg sudah ada atau bawaan dari laravel
-- Jika ingin melakukan `git push` dan pull request pada project ini silahkan lakukan `git pull` ke branch `main` terlebih dahulu di lokal komputer
-- Jika terjadi konflik silahkan perbaiki terlebih dahulu sebelum `push` ke project
-- Jika sudah selesai semua silahkan berikan `commit` yang jelas dan `pull request` ke branch anda sendiri
 
 
 ## Instalation
