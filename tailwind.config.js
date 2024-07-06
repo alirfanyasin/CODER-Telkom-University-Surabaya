@@ -7,7 +7,12 @@ export default {
     'node_modules/preline/dist/*.js'
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor: {
+        glass : "#0F0F0F",
+      },
+      
+    },
   },
   plugins: [
     require('preline/plugin'),

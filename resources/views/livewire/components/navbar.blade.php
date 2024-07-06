@@ -1,8 +1,8 @@
 <header class="flex flex-wrap w-full py-4 text-sm bg-transparent sm:justify-start sm:flex-nowrap">
   <nav class="max-w-[85rem] w-full mx-auto px-4 flex flex-wrap basis-full items-center justify-between"
     aria-label="Global">
-    <a class="flex-none text-xl font-semibold sm:order-1" href="#">
-      <img src="assets/images/logo.png" alt="" class="w-28">
+    <a class="flex-none text-xl font-semibold sm:order-1" href="{{ route('home') }}">
+      <img src="assets/images/logo/logo.png" alt="" class="w-28">
     </a>
     <div class="flex items-center sm:order-3 gap-x-2">
       <button type="button"
