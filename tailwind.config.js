@@ -4,10 +4,19 @@ export default {
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
     "./resources/**/*.vue",
+    'node_modules/preline/dist/*.js'
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor: {
+        glass : "#0F0F0F",
+        darkGray : "#0E0E0E"
+      },
+      
+    },
   },
-  plugins: [],
+  plugins: [
+    require('preline/plugin'),
+  ],
 }
 

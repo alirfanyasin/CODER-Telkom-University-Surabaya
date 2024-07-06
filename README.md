@@ -1,65 +1,102 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Rules Contributor
+## File Creation
+- Membuat file view di dalam folder livewire dengan menjalankan perintah ini `php artisan make:livewire nama-folder.nama-file`
+- Gunakan layout `app` untuk tampilan role user/admin/super-admin di dalam class livewire yang terletak di direktori `app/Livewire/NamaFolder/nama_file.php`
+- Tambahkan Title di dalam class livewire yang terletak di direktori  `app/Livewire/nama_folder/nama_file.php`
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Writing Rules
+- Nama route tidak boleh di singkat gunakan tanda `-` ketika ada spasi : `contoh : /home-page`
+- Segala sesuatu yang berhubungan dengan gambar simpan di dalam folder `public/assets/images/`
+- Jika ingin mengcustom style pada css silahkan simpan di dalam `function & directive` tailwind atau `tailwind.config.js`
+- Penulisan code di dalan viewnya cukup contentnya saja tidak perlu menulis header html karena menggunakan sistem layouting
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Aturan Penamaan Branch
+Silahkan anda membuat branch anda sendiri sebelum mengerjakan feature
+- `nama/feature` contoh `irfan/create-presence`
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Warning
+- Jangan pernah menghapus folder atau file apapun yg sudah ada atau bawaan dari laravel
+- Jika ingin melakukan `git push` dan pull request pada project ini silahkan lakukan `git pull` ke branch `main` terlebih dahulu di lokal komputer
+- Jika terjadi konflik silahkan perbaiki terlebih dahulu sebelum `push` ke project
+- Jika sudah selesai semua silahkan berikan `commit` yang jelas dan `pull request` ke branch anda sendiri
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+### Font 
+Menggunakan font `poppins`
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Or
 
-### Premium Partners
+```css
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
 
-## Contributing
+Usage
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```css
+* {
+  font-family : 'Poppins'
+}
 
-## Code of Conduct
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Breakpoint 
+Silahkan gunakan breakpoint disini untuk membuat respoinsive design
 
-## Security Vulnerabilities
+![image](https://github.com/alirfanyasin/Crypshion-Ecommerce/assets/77270380/6e2e10b2-5b14-482f-a140-47871e513ffe)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+
+
+## Instalation
+Clone Repository
+```sh
+git clone https://github.com/CODER-Telkom-University-Surabaya.git
+```
+Tulis perintah dibawah in untuk menginstal depedensi yang di perlukan 
+```sh
+composer install
+
+npm install
+```
+
+Lalu copy file .env 
+```sh
+cp .env.example .env
+```
+
+Setelah itu lakukan generate key
+```sh
+php artisan key:generate
+```
+
+Jalankan migration dan seeder
+```sh
+php artisan migrate
+
+php artisan migrate:fresh --seed
+```
+
+## Running Project
+```sh
+php artisan serve    
+
+npm run dev
+```
+
+
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 ## License
 
