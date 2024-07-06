@@ -7,16 +7,22 @@
 
   <title>{{ $title . ' | CODER' ?? 'CODER' }}</title>
 
+  {{-- Vite --}}
   @vite(['resources/css/app.css', 'resources/js/app.js'])
   @livewireStyles
 </head>
 
-<body>
+<body class="bg-black">
+  @livewire('components.navbar')
   <main>
     {{ $slot }}
   </main>
 
+
+  {{-- Iconify --}}
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2.1.0/dist/iconify-icon.min.js"></script>
   @livewireScripts
+
 </body>
 
 </html>

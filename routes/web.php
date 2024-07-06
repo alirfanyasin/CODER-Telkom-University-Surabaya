@@ -12,6 +12,7 @@ Route::get('/', Home::class)->name('home');
 
 // Auth Route
 Route::get('/login', Login::class)->name('login');
+Route::get('/register', Login::class)->name('register');
 
 // Authenticated - User
 Route::prefix('app')->group(function () {
