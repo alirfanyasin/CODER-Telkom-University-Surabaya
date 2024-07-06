@@ -7,6 +7,9 @@ export default {
     'node_modules/preline/dist/*.js'
   ],
   theme: {
+    container : {
+      center : true,
+    },
     extend: {
       backgroundColor: {
         glass : "#0F0F0F",

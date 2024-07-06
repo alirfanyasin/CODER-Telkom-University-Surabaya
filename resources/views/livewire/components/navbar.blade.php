@@ -1,4 +1,4 @@
-<header class="flex flex-wrap w-full py-4 text-sm bg-transparent sm:justify-start sm:flex-nowrap">
+<header class="fixed top-0 flex flex-wrap w-full py-4 text-sm bg-transparent sm:justify-start sm:flex-nowrap">
   <nav class="max-w-[85rem] w-full mx-auto px-4 flex flex-wrap basis-full items-center justify-between"
     aria-label="Global">
     <a class="flex-none text-xl font-semibold sm:order-1" href="{{ route('home') }}">
