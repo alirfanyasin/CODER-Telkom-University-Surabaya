@@ -186,7 +186,7 @@
           <div class="border border-gray-700 w-36"></div>
         </header>
 
-        <div class="w-full slick-slider">
+        <div class="w-full gallery-slider">
           <div class="mx-2 overflow-hidden rounded-xl h-72">
             <img src="assets/images/img-2.png" alt="Image 1" class="object-cover w-full h-full">
           </div>
@@ -222,8 +222,8 @@
           </a>
         </header>
 
-        <div class="grid grid-cols-3 gap-5">
-          <div class="rounded-xl bg-glass">
+        <div class="w-full article-slider">
+          <div class="mx-2 rounded-xl bg-glass">
             <div class="mb-2">
               <img src="assets/images/article-1.png" alt="Thumbnail Article" class="w-full h-full">
             </div>
@@ -233,7 +233,7 @@
                 asperiores magni fugit accusamus repudiandae amet cupiditate consectetur...</p>
             </div>
           </div>
-          <div class="rounded-xl bg-glass">
+          <div class="mx-2 rounded-xl bg-glass">
             <div class="mb-2">
               <img src="assets/images/article-1.png" alt="Thumbnail Article" class="w-full h-full">
             </div>
@@ -243,7 +243,17 @@
                 asperiores magni fugit accusamus repudiandae amet cupiditate consectetur...</p>
             </div>
           </div>
-          <div class="rounded-xl bg-glass">
+          <div class="mx-2 rounded-xl bg-glass">
+            <div class="mb-2">
+              <img src="assets/images/article-1.png" alt="Thumbnail Article" class="w-full h-full">
+            </div>
+            <div class="p-5 text-white">
+              <h5 class="mb-2 text-xl font-bold">Bootstrap 5 VS Tailwind CSS</h5>
+              <p class="text-sm text-gray-400">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi
+                asperiores magni fugit accusamus repudiandae amet cupiditate consectetur...</p>
+            </div>
+          </div>
+          <div class="mx-2 rounded-xl bg-glass">
             <div class="mb-2">
               <img src="assets/images/article-1.png" alt="Thumbnail Article" class="w-full h-full">
             </div>
@@ -259,12 +269,47 @@
   </section>
   {{-- Article Section End --}}
 
+
+  {{-- Footer  --}}
+  <footer class="pt-32 border-t border-gray-400">
+    <div class="container">
+      <div class="w-10/12 mx-auto">
+        <div class="grid grid-cols-4 gap-5">
+          <div>
+            <img src="assets/images/logo/logo.png" alt="" class="w-36">
+          </div>
+          <div>
+            <h4 class="mb-4 text-2xl font-semibold text-white">Alamat</h4>
+            <p class="font-light text-gray-400">Telkom University Surabaya Jl. Ketintang No.156, Ketintang Kota
+              Surabaya, Jawa
+              Timur 60231</p>
+          </div>
+          <div>
+            <h4 class="mb-4 text-2xl font-semibold text-white">Link Terkait</h4>
+            <a href="" class="inline-block mb-4 font-light text-gray-400">Telkom Indonesia</a>
+            <a href="" class="inline-block mb-4 font-light text-gray-400">Yayasan Pendidikan Telkom</a>
+            <a href="" class="inline-block mb-4 font-light text-gray-400">Telkom University Surabaya</a>
+          </div>
+          <div>
+            <h4 class="mb-4 text-2xl font-semibold text-white">Kontak</h4>
+            <a href="" class="inline-block mb-4 font-light text-gray-400">ukmcoder@ittelkom-sby.ac.id</a>
+            <a href="" class="inline-block mb-4 font-light text-gray-400">+62 8122 2324 3435</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="py-5 text-center bg-darkGray">
+      <p class="font-light text-white">Copyright © 2024 Telkom University Surabaya | Build with ❤️ by CODER team.</p>
+    </div>
+  </footer>
+
 </div>
 
 @push('js-custom')
   <script>
     $(document).ready(function() {
-      $('.slick-slider').slick({
+      $('.gallery-slider').slick({
         centerMode: true,
         centerPadding: '300px',
         slidesToShow: 1,
@@ -290,6 +335,14 @@
             }
           }
         ]
+      });
+
+
+      $('.article-slider').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
       });
     })
   </script>

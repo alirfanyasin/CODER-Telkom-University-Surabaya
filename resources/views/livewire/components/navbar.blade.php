@@ -22,7 +22,7 @@
           <path d="m6 6 12 12" />
         </svg>
       </button>
-      <a href="{{ route('login') }}"
+      <a href="{{ route('login') }}" wire:navigate
         class="items-center hidden px-3 py-2 text-sm font-medium text-white rounded-lg shadow-sm sm:inline-flex gap-x-2 disabled:pointer-events-none">
         Masuk
       </a>

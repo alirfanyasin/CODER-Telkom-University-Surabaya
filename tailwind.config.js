@@ -10,6 +10,7 @@ export default {
     extend: {
       backgroundColor: {
         glass : "#0F0F0F",
+        darkGray : "#0E0E0E"
       },
       
     },
