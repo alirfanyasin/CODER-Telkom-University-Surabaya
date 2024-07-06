@@ -1,6 +1,6 @@
 <div>
   {{-- Hero Section Start --}}
-  <section class="relative flex items-center justify-center h-screen">
+  <section class="relative flex items-center justify-center h-screen pt-32">
     <div>
       <div class="relative z-10">
         <h1 class="mb-10 font-bold leading-tight text-center text-white text-7xl">Creativity On Digital Environment <br>
@@ -24,7 +24,7 @@
       {{-- Object --}}
       <img src="assets/images/shape/ellipse-2.png" alt="" class="absolute top-0 left-0 w-1/2">
       <img src="assets/images/shape/ellipse-1.png" alt="" class="absolute top-0 right-0 w-1/2">
-      <img src="assets/images/shape/object-1.png" alt="" class="absolute top-0 right-20">
+      <img src="assets/images/shape/object-1.png" alt="" class="absolute top-10 right-20">
       <img src="assets/images/shape/object-2.png" alt="" class="absolute bottom-20 left-52">
       <img src="assets/images/shape/object-3.png" alt="" class="absolute bottom-0 right-72">
     </div>
