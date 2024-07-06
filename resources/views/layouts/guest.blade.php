@@ -23,6 +23,7 @@
   <main>
     {{ $slot }}
   </main>
+  @livewire('components.footer')
 
 
   {{-- Iconify --}}
