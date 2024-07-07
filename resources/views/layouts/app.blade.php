@@ -16,7 +16,7 @@
   @livewireStyles
 </head>
 
-<body class="bg-black">
+<body class="h-screen overflow-y-hidden bg-black">
 
   <div class="flex">
     @livewire('components.sidebar')
@@ -27,9 +27,10 @@
           {{ $slot }}
         </div>
       </div>
-      <img src="assets/images/shape/object-5.png" alt="" class="absolute right-0 w-1/3 top-10 -z-20">
     </main>
   </div>
+  <img src="assets/images/shape/object-5.png" alt="" class="absolute right-0 w-1/3 top-10 -z-20">
+
 
   {{-- Iconify --}}
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2.1.0/dist/iconify-icon.min.js"></script>
