@@ -20,9 +20,9 @@ Silahkan anda membuat branch anda sendiri sebelum mengerjakan feature
 ## Warning
 - Jangan pernah menghapus folder atau file apapun yg sudah ada atau bawaan dari laravel
 - Jika ingin melakukan `git push` dan pull request pada project ini silahkan lakukan `git pull` ke branch `main` terlebih dahulu di lokal komputer
-- Silahkan git push ke branch `develop` jangan langsung ke branch `main`
-- Jika terjadi konflik silahkan perbaiki terlebih dahulu sebelum `push` ke project
-- Jika sudah selesai semua silahkan berikan `commit` yang jelas dan `pull request` ke branch anda sendiri
+- Silahkan git push ke branch anda sendiri jangan langsung ke branch `main` atau `develop`
+- Jika terjadi konflik silahkan perbaiki terlebih dahulu sebelum `push` ke branch anda
+- Jika sudah selesai semua silahkan berikan `commit` yang jelas dan `pull request` ke branch `develop`
 
 
 ### Font 
