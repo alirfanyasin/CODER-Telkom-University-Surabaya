@@ -1,4 +1,4 @@
-<aside class="relative h-screen px-5 py-10 overflow-y-auto bg-glass/70 backdrop-blur-sm basis-3/12">
+<aside class="relative hidden h-screen px-5 py-10 overflow-y-auto bg-glass/70 backdrop-blur-sm xl:basis-3/12 xl:block">
   <div class="flex justify-center">
     <img src="assets/images/logo/logo.png" alt="Logo" class="w-36">
   </div>
