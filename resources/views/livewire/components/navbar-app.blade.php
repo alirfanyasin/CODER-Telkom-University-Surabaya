@@ -39,8 +39,10 @@
     </div>
     <div class="mx-4 border-l-2 border-white"></div>
     <a href="" class="flex items-center">
-      <div class="w-12 h-12 rounded-full bg-glass me-0 md:me-3"></div>
-      <div class="hidden md:block">
+      <div class="w-12 h-12 overflow-hidden rounded-full bg-glass">
+        <img src="assets/images/avatar.png" alt="Avatar" class="object-cover w-full h-full">
+      </div>
+      <div class="hidden md:block ms-3">
         <h5 class="font-light text-white">Irfan Yasin</h5>
         <p class="text-xs font-light text-gray-400">Ketua Web Development</p>
       </div>
