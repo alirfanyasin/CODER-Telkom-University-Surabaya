@@ -16,7 +16,7 @@
   @livewireStyles
 </head>
 
-<body>
+<body class="bg-black">
   <main>
     {{ $slot }}
   </main>
