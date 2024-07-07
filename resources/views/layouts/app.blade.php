@@ -17,9 +17,19 @@
 </head>
 
 <body class="bg-black">
-  <main>
-    {{ $slot }}
-  </main>
+
+  <div class="flex">
+    @livewire('components.sidebar')
+    <main class="relative h-screen overflow-y-auto basis-9/12">
+      <div class="container px-8">
+        <div class="w-full mx-auto">
+          @livewire('components.navbar-app')
+          {{ $slot }}
+        </div>
+      </div>
+      <img src="assets/images/shape/object-5.png" alt="" class="absolute right-0 w-1/3 top-10 -z-20">
+    </main>
+  </div>
 
   {{-- Iconify --}}
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2.1.0/dist/iconify-icon.min.js"></script>
