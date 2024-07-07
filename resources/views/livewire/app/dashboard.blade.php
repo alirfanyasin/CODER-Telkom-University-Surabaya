@@ -1,11 +1,15 @@
 <div>
+  {{-- Header Section Start --}}
   <section class="my-10">
     <header>
       <h2 class="text-3xl font-semibold text-white">Halo, Irfan Yasin</h2>
       <p class="text-gray-400">Siap untuk belajar sekarang!</p>
     </header>
   </section>
+  {{-- Header Section End --}}
 
+
+  {{-- Total Section Start --}}
   <section class="mb-3">
     <div class="grid grid-cols-3 gap-3">
       <div class="p-6 rounded-xl bg-glass/70 backdrop-blur-sm">
@@ -22,7 +26,9 @@
       </div>
     </div>
   </section>
+  {{-- Total Section End --}}
 
+  {{-- Statistic and Meeting Schedule Section Start --}}
   <section class="mb-10">
     <div class="grid grid-cols-3 gap-3">
       <div class="col-span-2 p-6 rounded-xl bg-glass/70 backdrop-blur-sm">
@@ -72,4 +78,6 @@
       </div>
     </div>
   </section>
+  {{-- Statistic and Meeting Schedule Section End --}}
+
 </div>
