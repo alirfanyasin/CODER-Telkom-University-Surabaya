@@ -20,8 +20,8 @@
 
   <div class="flex">
     @livewire('components.sidebar')
-    <main class="relative h-screen overflow-y-auto basis-9/12">
-      <div class="container px-8">
+    <main class="relative h-screen overflow-y-auto basis-full xl:basis-9/12">
+      <div class="container px-4 md:px-6 lg:px-8">
         <div class="w-full mx-auto">
           @livewire('components.navbar-app')
           {{ $slot }}

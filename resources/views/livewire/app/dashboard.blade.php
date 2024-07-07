@@ -11,7 +11,7 @@
 
   {{-- Total Section Start --}}
   <section class="mb-3">
-    <div class="grid grid-cols-3 gap-3">
+    <div class="grid grid-cols-1 gap-3 md:grid-cols-3">
       <div class="p-6 rounded-xl bg-glass/70 backdrop-blur-sm">
         <h3 class="font-semibold text-white text-8xl">10</h3>
         <p class="text-gray-400">Total Pertemuan</p>
@@ -30,18 +30,18 @@
 
   {{-- Statistic and Meeting Schedule Section Start --}}
   <section class="mb-10">
-    <div class="grid grid-cols-3 gap-3">
+    <div class="grid grid-cols-1 gap-3 lg:grid-cols-3">
       <div class="col-span-2 p-6 rounded-xl bg-glass/70 backdrop-blur-sm">
         <header class="mb-4">
           <h4 class="text-xl font-semibold text-white">Statistik Aktifitas</h4>
         </header>
       </div>
-      <div class="p-6 rounded-xl bg-glass/70 backdrop-blur-sm">
+      <div class="col-span-1 p-6 rounded-xl bg-glass/70 backdrop-blur-sm lg:-me-0 -me-3">
         <header class="mb-4">
           <h4 class="text-xl font-semibold text-white">Jadwal Pertemuan</h4>
         </header>
         <div>
-          <div class="p-4 mb-4 border border-gray-500 rounded-xl bg-glass/70 backdrop-blur-sm">
+          <div class="p-4 mb-4 border border-gray-500 rounded-xl">
             <header class="flex items-center">
               <h5 class="text-sm text-white">12.00 - 14.00</h5>
               <div class="mx-2 border-l-2 border-white">|</div>
@@ -52,7 +52,7 @@
               <iconify-icon icon="fluent:video-24-regular" class="text-3xl text-white"></iconify-icon>
             </a>
           </div>
-          <div class="p-4 mb-4 border border-gray-500 rounded-xl bg-glass/70 backdrop-blur-sm">
+          <div class="p-4 mb-4 border border-gray-500 rounded-xl">
             <header class="flex items-center">
               <h5 class="text-sm text-white">12.00 - 14.00</h5>
               <div class="mx-2 border-l-2 border-white">|</div>
@@ -63,7 +63,7 @@
               <iconify-icon icon="fluent:video-24-regular" class="text-3xl text-white"></iconify-icon>
             </a>
           </div>
-          <div class="p-4 mb-4 border border-gray-500 rounded-xl bg-glass/70 backdrop-blur-sm">
+          <div class="p-4 mb-4 border border-gray-500 rounded-xl">
             <header class="flex items-center">
               <h5 class="text-sm text-white">12.00 - 14.00</h5>
               <div class="mx-2 border-l-2 border-white">|</div>
