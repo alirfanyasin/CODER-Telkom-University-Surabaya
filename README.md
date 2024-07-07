@@ -17,11 +17,10 @@ Silahkan anda membuat branch anda sendiri sebelum mengerjakan feature
 
 
 
-
-
 ## Warning
 - Jangan pernah menghapus folder atau file apapun yg sudah ada atau bawaan dari laravel
 - Jika ingin melakukan `git push` dan pull request pada project ini silahkan lakukan `git pull` ke branch `main` terlebih dahulu di lokal komputer
+- Silahkan git push ke branch `develop` jangan langsung ke branch `main`
 - Jika terjadi konflik silahkan perbaiki terlebih dahulu sebelum `push` ke project
 - Jika sudah selesai semua silahkan berikan `commit` yang jelas dan `pull request` ke branch anda sendiri
 
@@ -93,10 +92,6 @@ php artisan serve
 npm run dev
 ```
 
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 ## License
 

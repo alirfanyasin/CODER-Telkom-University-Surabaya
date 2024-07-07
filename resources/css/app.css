@@ -9,3 +9,8 @@
 * {
   font-family: "Poppins", sans-serif;
 }
+
+.navbar-solid {
+  @apply bg-glass/40 backdrop-blur-md;
+  transition: .5s;
+}
