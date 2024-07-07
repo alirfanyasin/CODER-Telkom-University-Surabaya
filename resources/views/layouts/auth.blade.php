@@ -10,8 +10,6 @@
 
     {{-- JQuery --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    {{-- Slick --}}
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 
     {{-- Vite --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -19,21 +17,17 @@
 </head>
 
 <body class="bg-black">
-    @livewire('components.navbar')
-    <main>
+    <main class="relative md:overflow-y-hidden overflow-y-visible">
+        <img src="assets/images/shape/ellipse-2.png" alt="" class="absolute bottom-0 left-0 w-1/2">
+        <img src="assets/images/shape/ellipse-1.png" alt="" class="absolute -top-60 right-0 w-1/2">
         {{ $slot }}
     </main>
-    @livewire('components.footer')
-
 
     {{-- Iconify --}}
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2.1.0/dist/iconify-icon.min.js"></script>
-    {{-- Slick --}}
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     @livewireScripts
 
     @stack('js-custom')
-
 </body>
 
 </html>

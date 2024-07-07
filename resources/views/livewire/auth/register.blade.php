@@ -1,6 +1,6 @@
 <div>
     <div class="container relative">
-        <div class="flex h-screen flex-row justify-center items-center">
+        <div class="flex h-screen flex-row justify-center items-center z-10">
             <div class="flex flex-col bg-glass text-center shadow-sm rounded-2xl">
                 <div class="p-4 md:p-10">
                     <div class="flex justify-center mb-4">
@@ -28,7 +28,11 @@
                         <span>&#9135;</span><span>&#9135;</span><span>&#9135;</span><span>&#9135;</span><span>&#9135;</span><span>&#9135;</span><span>&#9135;</span><span>&#9135;</span><span>&#9135;</span><span>&#9135;</span>
                     </p>
                     <div class="block text-left">
-                        <label for="input-label" class="text-xs font-normal text-white">Username / Alamat Email</label>
+                        <label for="input-label" class="text-xs font-normal text-white">Nama Lengkap</label>
+                        <input type="text" id="input-label"
+                            class="mb-4 mt-1 py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                            placeholder="">
+                        <label for="input-label" class="text-xs font-normal text-white">Alamat Email</label>
                         <input type="text" id="input-label"
                             class="mb-4 mt-1 py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                             placeholder="">
@@ -37,28 +41,17 @@
                             class="mb-4 mt-1 py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                             placeholder="">
                     </div>
-                    <div class="flex mb-3 text-sm justify-between text-white">
-                        <div class="flex">
-                            <input type="checkbox"
-                                class="shrink-0 border-gray-200 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none "
-                                id="hs-default-checkbox">
-                            <label for="hs-default-checkbox" class="text-xs ms-3">Ingat
-                                Saya</label>
-                        </div>
-                        <a href="" class="text-xs">Lupa Kata Sandi</a>
-                    </div>
                     <button type="submit"
                         class="w-full py-3 px-4 mb-6 inline-flex justify-center items-center gap-x-2 text-sm rounded-lg border border-transparent bg-white bg-opacity-30 disabled:opacity-50 disabled:pointer-events-none">
                         <span class="text-white font-semibold">
                             Masuk
                         </span>
                     </button>
-                    <p class="text-white text-xs">Apakah Anda belun mempunyai akun? <a href="{{ route('register') }}"
-                            wire:navigate class="font-semibold">Daftar</a>
+                    <p class="text-white text-xs">Apakah Anda sudah mempunyai akun? <a href="{{ route('login') }}"
+                            wire:navigate class="font-semibold">Masuk</a>
                     </p>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
