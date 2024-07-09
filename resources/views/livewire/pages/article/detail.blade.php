@@ -1,0 +1,1 @@
+<h1 class="text-white">Article Detail</h1>
