@@ -2,7 +2,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "dev": "vite",
+        "dev": "concurrently \"php artisan serve\" \"vite\"",
         "build": "vite build"
     },
     "devDependencies": {
@@ -14,6 +14,7 @@
         "vite": "^5.0"
     },
     "dependencies": {
+        "concurrently": "^8.2.2",
         "preline": "^2.3.0"
     }
 }
