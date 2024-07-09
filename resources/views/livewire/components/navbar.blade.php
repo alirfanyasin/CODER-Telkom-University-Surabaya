@@ -42,7 +42,8 @@
                     aria-current="page">Beranda</a>
                 <a class="font-normal text-white hover:text-gray-400" href="#">Tentang Kami</a>
                 <a class="font-normal text-white hover:text-gray-400" href="#">Divisi</a>
-                <a class="font-normal text-white hover:text-gray-400" href="#">Galeri</a>
+                <a class="font-normal text-white hover:text-gray-400" href="{{ route('gallery') }}" wire:navigate
+                    aria-current="page">Galeri</a>
                 <a class="font-normal text-white hover:text-gray-400" href="#">Artikel</a>
                 <a class="block font-medium text-white sm:hidden hover:text-gray-400" href="#">Masuk</a>
                 <a class="block font-medium text-white sm:hidden hover:text-gray-400" href="#">Daftar</a>
