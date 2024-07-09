@@ -1,12 +1,14 @@
 <div>
   <section class="py-24 lg:py-36">
+    
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="border-b-2 border-[#454545] w-32 pb-8">
         <h1 class="text-white text-3xl lg:text-5xl font-bold">Artikel</h1>
       </div>
 
       {{-- Artikel List --}}
-      @for ($i = 0; $i < 3; $i++)
+      <div class="">
+        @for ($i = 0; $i < 3; $i++)
         <div class="flex flex-col lg:flex-row items-center justify-between py-12">
           <div class="w-full lg:w-2/3 lg:pr-8 order-last lg:order-first mt-5 lg:mt-0">
             <a href="#">
@@ -37,6 +39,9 @@
           </div>
         </div>
       @endfor
+        <img src="assets/images/shape/ellipse-2.png" alt="" class="absolute top-[70%] left-[-5%] w-1/2">
+      </div>
+    
 
       {{-- pagination center --}}
       <div class="flex justify-center mt-12">
