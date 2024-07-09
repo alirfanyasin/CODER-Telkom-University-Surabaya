@@ -5,12 +5,19 @@
 @tailwind utilities;
 
 
-
+/* Universal Style */
 * {
   font-family: "Poppins", sans-serif;
 }
 
+
+
+/* Custom Background */
 .navbar-solid {
   @apply bg-glass/40 backdrop-blur-md;
   transition: .5s;
+}
+
+.bg-glass {
+  @apply bg-glass/70 backdrop-blur-sm;
 }
