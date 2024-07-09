@@ -12,15 +12,15 @@
   {{-- Total Section Start --}}
   <section class="mb-3">
     <div class="grid grid-cols-1 gap-3 md:grid-cols-3">
-      <div class="p-6 rounded-xl bg-glass/70 backdrop-blur-sm">
+      <div class="p-6 rounded-xl bg-glass">
         <h3 class="font-semibold text-white text-8xl">10</h3>
         <p class="text-gray-400">Total Pertemuan</p>
       </div>
-      <div class="p-6 rounded-xl bg-glass/70 backdrop-blur-sm">
+      <div class="p-6 rounded-xl bg-glass">
         <h3 class="font-semibold text-white text-8xl">10</h3>
         <p class="text-gray-400">Total Tugas</p>
       </div>
-      <div class="p-6 rounded-xl bg-glass/70 backdrop-blur-sm">
+      <div class="p-6 rounded-xl bg-glass">
         <h3 class="font-semibold text-white text-8xl">10</h3>
         <p class="text-gray-400">Total Projek</p>
       </div>
