@@ -11,15 +11,19 @@ use Livewire\Component;
 
 class Article extends Component
 {
-  // article index
-    public function render()
+    public $slug = null;
+
+    public function mount($slug = null)
     {
-        return view('livewire.pages.article.index');
+        $this->slug = $slug;
     }
 
-    // article detail
-    public function detail($slug)
+    public function render()
     {
-        return view('livewire.pages.article.detail', ['slug' => $slug]);
+        if ($this->slug) {
+            return view('livewire.pages.article.detail', ['slug' => $this->slug]);
+        } else {
+            return view('livewire.pages.article.index');
+        }
     }
 }

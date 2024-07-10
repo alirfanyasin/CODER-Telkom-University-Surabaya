@@ -1,5 +1,5 @@
 <div>
-  <section class="py-24 lg:py-36">
+  <section class="pt-24 lg:pt-36 pb-20 relative">
     
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="border-b-2 border-[#454545] w-32 pb-8">
@@ -11,9 +11,9 @@
         @for ($i = 0; $i < 3; $i++)
         <div class="flex flex-col lg:flex-row items-center justify-between py-12">
           <div class="w-full lg:w-2/3 lg:pr-8 order-last lg:order-first mt-5 lg:mt-0">
-            <a href="#">
-              <h2 class="text-white text-2xl lg:text-3xl font-bold hover:underline cursor-pointer">7 Software Paling
-                Rekomenasi untuk Web Developer</h2>
+            <a href="{{ url('article/detail')}}" class="hover:underline cursor-pointer text-white text-2xl lg:text-3xl font-bold">
+              <h2 class="">7 Software Paling
+                Rekomenasi untuk Web Developers</h2>
             </a>
             <p class="text-[#9E9E9E] text-base mt-4 font-medium mb-7">
               Lorem ipsum dolor sit amet consectetur. A quam senectus sit in felis rutrum urna pellentesque quam. Quis
@@ -39,7 +39,7 @@
           </div>
         </div>
       @endfor
-        <img src="assets/images/shape/ellipse-2.png" alt="" class="absolute top-[70%] left-[-5%] w-1/2">
+        <img src="{{ asset('assets/images/shape/ellipse-2.png') }}" alt="" class="absolute top-0 left-0 w-1/2 -z-50">
       </div>
     
 
