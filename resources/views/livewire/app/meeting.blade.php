@@ -66,8 +66,6 @@
         </div>
       </div>
     </a>
-
-
   </section>
   {{-- View All Meeting Section End --}}
 
