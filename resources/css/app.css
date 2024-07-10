@@ -24,3 +24,12 @@
 .active-menu {
   @apply text-black bg-white;
 }
+
+/* .hs-dropdown-menu.block {
+  position: absolute;
+  inset: 0px 0px auto auto;
+  margin: 0px;
+  transform: translate3d(100px, 0px, 0px);
+} */
+
+
