@@ -14,8 +14,10 @@ export default {
             backgroundColor: {
                 glass: "#1E1E1E",
                 darkGray: "#0E0E0E",
+                lightGray: "#27292C",
             },
+            
         },
-        plugins: [require("preline/plugin")],
     },
+    plugins: [require("preline/plugin")],
 };
