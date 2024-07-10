@@ -21,3 +21,6 @@
 .bg-glass {
   @apply bg-glass/70 backdrop-blur-sm;
 }
+.active-menu {
+  @apply text-black bg-white;
+}

@@ -1,16 +1,19 @@
 <aside class="relative hidden h-screen px-5 py-10 overflow-y-auto bg-glass/70 backdrop-blur-sm xl:basis-3/12 xl:block">
   <div class="flex justify-center">
-    <img src="assets/images/logo/logo.png" alt="Logo" class="w-36">
+    <a href="{{ route('app.dashboard') }}" wire:navigate class="block">
+      <img src="{{ asset('assets/images/logo/logo.png') }}" alt="Logo" class="w-36">
+    </a>
   </div>
   <nav class="flex flex-col flex-wrap w-full p-6 hs-accordion-group" data-hs-accordion-always-open>
     <ul class="mt-10">
       <li class="mb-4">
-        <a href="" class="flex items-center px-8 py-3 font-medium bg-white rounded-lg text-md">
+        <a href="{{ route('app.dashboard') }}" wire:navigate
+          class="flex items-center px-8 py-3 font-medium rounded-lg text-md {{ Request::is('app') ? 'active-menu' : 'text-gray-400' }}">
           <iconify-icon icon="material-symbols:dashboard-outline" class="mr-3 text-2xl"></iconify-icon>
           Dashboard
         </a>
       </li>
-      <li class="mb-4 hs-accordion" id="e-learning-accordion">
+      <li class="mb-4 hs-accordion {{ Request::is('app/e-learning/*') ? 'active' : '' }}" id="e-learning-accordion">
         <button type="button"
           class="hs-accordion-toggle hs-accordion-active:text-black hs-accordion-active:bg-white   hs-accordion-active:hover:bg-white w-full text-start flex items-center gap-x-3.5 py-3 hover:text-black hover:bg-white px-8 text-md font-medium text-gray-400 bg-transparent rounded-lg">
           <iconify-icon icon="game-icons:spell-book" class="text-2xl"></iconify-icon>
@@ -32,7 +35,7 @@
         </button>
 
         <div id="e-learning-accordion"
-          class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden">
+          class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 {{ Request::is('app/e-learning/*') ? 'block' : 'hidden' }}">
           <ul class="pt-2 hs-accordion-group" data-hs-accordion-always-open>
             <li class="hs-accordion" id="e-learning-accordion-sub-1">
               <a href=""
@@ -49,8 +52,8 @@
               </a>
             </li>
             <li class="hs-accordion" id="e-learning-accordion-sub-3">
-              <a href=""
-                class="flex py-3 font-medium text-gray-400 rounded-lg text-md item-center hover:bg-white hover:text-black ps-16">
+              <a href="{{ route('app.e-learning.meetings') }}" wire:navigate
+                class="flex py-3 font-medium rounded-lg text-md item-center hover:bg-white hover:text-black ps-16 {{ Request::is('app/e-learning/meetings') ? 'active-menu' : 'text-gray-400' }}">
                 <iconify-icon icon="fluent:video-24-regular" class="mr-3 text-2xl"></iconify-icon>
                 Pertemuan
               </a>
