@@ -1,12 +1,12 @@
 <div>
   {{-- Header Start --}}
-  <header class="flex items-center justify-between mb-5">
-    <h2 class="text-3xl font-bold text-white">Buat Pertemuan</h2>
+  <header class="flex items-center justify-between my-7">
+    <h2 class="text-2xl font-bold text-white md:text-3xl">Buat Pertemuan</h2>
   </header>
   {{-- Header End --}}
 
   {{-- Create Meeting Section Start --}}
-  <section>
+  <section class="mb-10">
     <form action="">
       <div class="p-5 mb-4 rounded-lg bg-glass">
         <header class="flex items-center justify-between mb-8 text-white">
@@ -20,7 +20,7 @@
         </header>
 
         <div>
-          <div class="grid grid-cols-3 gap-4 mb-3">
+          <div class="grid grid-cols-1 gap-4 mb-3 lg:grid-cols-3">
             <div class="mb-3">
               <label for="title" class="block mb-2 font-light text-white">Judul Pertemuan</label>
               <input type="text" name="title" id="title"
@@ -45,14 +45,14 @@
               </select>
             </div>
             @if ($selectTypeMeeting == 'online')
-              <div class="col-span-2 mb-3">
+              <div class="col-span-1 mb-3 lg:col-span-2">
                 <label for="link" class="block mb-2 font-light text-white">Link</label>
                 <input type="link" name="link" id="link"
                   class="w-full px-3 py-3 text-white rounded-lg bg-lightGray" placeholder="https://">
               </div>
             @endif
             @if ($selectTypeMeeting == 'offline')
-              <div class="col-span-2 mb-3">
+              <div class="col-span-1 mb-3 lg:col-span-2">
                 <label for="Lokasi" class="block mb-2 font-light text-white">Lokasi</label>
                 <input type="text" name="Lokasi" id="Lokasi"
                   class="w-full px-3 py-3 text-white rounded-lg bg-lightGray" placeholder="Lab. Komputer">

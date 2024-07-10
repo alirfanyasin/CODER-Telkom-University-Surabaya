@@ -8,7 +8,7 @@
     <ul class="mt-10">
       <li class="mb-4">
         <a href="{{ route('app.dashboard') }}" wire:navigate
-          class="flex items-center px-8 py-3 font-medium rounded-lg text-md {{ Request::is('app') ? 'active-menu' : 'text-gray-400' }}">
+          class="flex items-center px-8 py-3 font-medium rounded-lg text-md hover:bg-white hover:text-black {{ Request::is('app') ? 'active-menu' : 'text-gray-400' }}">
           <iconify-icon icon="material-symbols:dashboard-outline" class="mr-3 text-2xl"></iconify-icon>
           Dashboard
         </a>
