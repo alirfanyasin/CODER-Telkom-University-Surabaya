@@ -3,7 +3,7 @@
     <div class="w-10/12 pb-20 mx-auto">
       <div class="grid grid-cols-1 gap-5 xl:grid-cols-4 lg:grid-cols-2">
         <div>
-          <img src="assets/images/logo/logo.png" alt="" class="mb-4 w-36">
+          <img src="{{ asset('assets/images/logo/logo.png') }}" alt="" class="mb-4 w-36">
           <p class="font-light text-gray-400">Creativity On
             Digital
             Environment <br>

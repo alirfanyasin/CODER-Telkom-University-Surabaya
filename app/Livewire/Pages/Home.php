@@ -6,7 +6,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-#[Title('Home')]
+#[Title('Beranda')]
 #[Layout('layouts.guest')]
 
 class Home extends Component

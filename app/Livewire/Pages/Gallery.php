@@ -6,7 +6,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-#[Title('Home')]
+#[Title('Galeri')]
 #[Layout('layouts.guest')]
 
 class Gallery extends Component
