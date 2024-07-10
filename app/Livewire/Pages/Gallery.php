@@ -6,13 +6,13 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-#[Title('Beranda')]
+#[Title('Galeri')]
 #[Layout('layouts.guest')]
 
-class Home extends Component
+class Gallery extends Component
 {
     public function render()
     {
-        return view('livewire.pages.home');
+        return view('livewire.pages.gallery');
     }
 }
