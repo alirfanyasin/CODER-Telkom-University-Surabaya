@@ -7,6 +7,7 @@ use App\Livewire\App\MeetingDetail;
 use App\Livewire\App\MeetingEdit;
 use App\Livewire\App\Modul;
 use App\Livewire\App\ModulCreate;
+use App\Livewire\App\ModulEdit;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
 use App\Livewire\Pages\Home;
@@ -48,4 +49,5 @@ Route::prefix('app')->group(function () {
   // Modul
   Route::get('/e-learning/modul', Modul::class)->name('app.e-learning.modul');
   Route::get('/e-learning/modul/create', ModulCreate::class)->name('app.e-learning.modul.create');
+  Route::get('/e-learning/modul/edit', ModulEdit::class)->name('app.e-learning.modul.edit');
 });
