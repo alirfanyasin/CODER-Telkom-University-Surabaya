@@ -6,7 +6,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-#[Title('Buat Modul')]
+#[Title('Tambah Modul')]
 #[Layout('layouts.app')]
 
 class ModulCreate extends Component
