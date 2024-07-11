@@ -35,8 +35,6 @@ Route::prefix('app')->group(function () {
 
   Route::get('/', Dashboard::class)->name('app.dashboard');
 
-  // Modul
-
 
   // Tugas
 
@@ -51,4 +49,3 @@ Route::prefix('app')->group(function () {
   Route::get('/e-learning/modul', Modul::class)->name('app.e-learning.modul');
   Route::get('/e-learning/modul/create', ModulCreate::class)->name('app.e-learning.modul.create');
 });
-

@@ -38,8 +38,8 @@
           class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 {{ Request::is('app/e-learning/*') ? 'block' : 'hidden' }}">
           <ul class="pt-2 hs-accordion-group" data-hs-accordion-always-open>
             <li class="hs-accordion" id="e-learning-accordion-sub-1">
-              <a href=""
-                class="flex py-3 font-medium text-gray-400 rounded-lg text-md item-center hover:bg-white hover:text-black ps-16">
+              <a href="{{ route('app.e-learning.modul') }}" wire:navigate
+                class="flex py-3 font-medium text-gray-400 rounded-lg text-md item-center hover:bg-white hover:text-black ps-16 {{ Request::is('app/e-learning/modul/*') ? 'active-menu' : 'text-gray-400' }} {{ Request::is('app/e-learning/modul') ? 'active-menu' : 'text-gray-400' }}">
                 <iconify-icon icon="fluent-emoji-high-contrast:open-book" class="mr-3 text-2xl"></iconify-icon>
                 Modul
               </a>
