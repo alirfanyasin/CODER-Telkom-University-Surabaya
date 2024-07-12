@@ -10,7 +10,7 @@
     </div>
 
     <div class="block md:hidden">
-      <a href="{{ route('app.e-learning.meeting.create') }}" wire:navigate
+      <a href="{{ route('app.e-learning.modul.create') }}" wire:navigate
         class="flex items-center justify-center w-10 h-10 text-sm font-semibold text-black bg-white rounded-full"><iconify-icon
           icon="majesticons:plus-line" class="text-2xl"></iconify-icon></a>
     </div>
@@ -150,35 +150,39 @@
         <span class="flex-shrink-0">Pertemuan 3</span>
         <hr class="flex-grow border-[#27272A]">
       </div>
-      <div class="flex items-center w-full p-6 mb-4 bg-glass rounded-xl">
-        <div class="me-4">
-          <iconify-icon icon="logos:blogger" class="text-7xl"></iconify-icon>
-        </div>
-
-        <div class="flex-wrap justify-between w-full lg:flex">
-          <div class="">
-            <h1 class="mb-1 font-semibold text-white text-md md:text-xl"><a href="">Fundamental HTML dan CSS
-                Dasar</a>
-            </h1>
-            <span class="text-sm font-light text-gray-400 md:font-medium md:text-base">Mengenal Fundamental HTML dan
-              CSS
-              Dasar untuk
-              Pemula</span>
+      <a href="" class="">
+        <div class="flex items-center w-full p-6 mb-4 bg-glass rounded-xl">
+          <div class="me-4">
+            <iconify-icon icon="logos:blogger" class="text-7xl"></iconify-icon>
           </div>
-          <div class="items-end inline mt-3 md:flex md:justify-between">
-            <div class="flex gap-6 mt-4 text-gray-400">
-              <a href=""
-                class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-red-600 border-[#27272A] px-4 py-1">
-                <iconify-icon icon="mdi:trash"></iconify-icon><span>Hapus</span>
-              </a>
-              <a href=""
-                class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-yellow-600 border-[#27272A] px-4 py-1">
-                <iconify-icon icon="lucide:edit"></iconify-icon><span>Edit</span>
-              </a>
+
+          <div class="flex-wrap justify-between w-full lg:flex">
+            <div class="">
+              <h1 class="mb-1 font-semibold text-white text-md md:text-xl">Fundamental HTML dan
+                CSS
+                Dasar
+              </h1>
+              <span class="text-sm font-light text-gray-400 md:font-medium md:text-base">Mengenal Fundamental HTML
+                dan
+                CSS
+                Dasar untuk
+                Pemula</span>
+            </div>
+            <div class="items-end inline mt-3 md:flex md:justify-between">
+              <div class="flex gap-6 mt-4 text-gray-400">
+                <a href=""
+                  class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-red-600 border-[#27272A] px-4 py-1">
+                  <iconify-icon icon="mdi:trash"></iconify-icon><span>Hapus</span>
+                </a>
+                <a href=""
+                  class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-yellow-600 border-[#27272A] px-4 py-1">
+                  <iconify-icon icon="lucide:edit"></iconify-icon><span>Edit</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </a>
     </div>
   </section>
   {{-- View All Modul End --}}
