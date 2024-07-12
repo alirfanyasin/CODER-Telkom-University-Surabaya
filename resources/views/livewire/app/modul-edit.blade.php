@@ -1,7 +1,7 @@
 <div>
     {{-- Header Start --}}
     <header class="flex my-7">
-        <h2 class="text-2xl font-bold text-white md:text-3xl">Modul Baru</h2>
+        <h2 class="text-2xl font-bold text-white md:text-3xl">Edit Modul</h2>
     </header>
     {{-- Header End --}}
 
@@ -12,15 +12,15 @@
             <div class="w-full mb-6 md:mb-0">
                 <label for="input-label" class="block text-sm font-normal mb-2 text-white">Nama Modul</label>
                 <input type="text" id="input-label"
-                    class="py-3 px-4 block w-full text-white border-gray-200 rounded-lg text-sm bg-[#27272A] focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none "
-                    placeholder="Nama Modul">
+                    class="py-3 px-4 block w-full text-white border-gray-200 rounded-lg text-sm bg-[#27272A] focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                    value="Fundamental HTML dan CSS Dasar" placeholder="Nama Modul">
             </div>
             <div class="w-full">
                 <label for="input-label" class="block text-sm font-normal mb-2 text-white">Pilih Pertemuan</label>
                 <select
                     class="py-3 px-4 pe-9 block w-full text-white border-gray-200 bg-[#27272A] rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
-                    <option selected="" disabled>Pertemuan ke-</option>
-                    <option>Pertemuan ke-1</option>
+                    <option disabled>Pertemuan ke-</option>
+                    <option selected>Pertemuan ke-1</option>
                     <option>Pertemuan ke-2</option>
                     <option>Pertemuan ke-3</option>
                 </select>
@@ -30,7 +30,7 @@
             <label for="textarea-label" class="block text-sm text-white font-normal mb-2">Deskripsi</label>
             <textarea id="textarea-label"
                 class="py-3 px-4 block w-full text-white bg-[#27272A] border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                rows="3" placeholder="Deskripsi"></textarea>
+                rows="3" placeholder="Deskripsi">Mengenal Fundamental HTML dan CSS Dasar untuk Pemula</textarea>
         </div>
     </div>
     {{-- Informasi Modul End --}}
@@ -44,8 +44,8 @@
                     Pendukung</label>
                 <select
                     class="py-3 px-4 pe-9 block w-full text-white border-gray-200 bg-[#27272A] rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
-                    <option selected="" disabled>Jenis File</option>
-                    <option>Power Point</option>
+                    <option disabled>Jenis File</option>
+                    <option selected>Power Point</option>
                     <option>PDF</option>
                     <option>Ms.Word</option>
                     <option>Ms.Excel</option>
@@ -71,8 +71,9 @@
         <a href="{{ route('app.e-learning.modul') }}" wire:navigate
             class="inline-block px-5 py-3 text-sm font-semibold text-gray-400 border border-gray-400 rounded-md">Batal</a>
         <button type="submit"
-            class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md ms-3">Buat Modul
-            <iconify-icon icon="flowbite:arrow-right-outline" class="text-2xl ms-2"></iconify-icon>
+            class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md ms-3">Simpan
+            Perubahan
+            <iconify-icon icon="material-symbols:save-outline" class="text-2xl ms-2"></iconify-icon>
         </button>
     </div>
 
