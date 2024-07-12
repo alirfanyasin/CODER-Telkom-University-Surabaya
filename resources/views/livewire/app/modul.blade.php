@@ -48,7 +48,7 @@
                 'description' => 'Mengenal Fundamental HTML dan CSS Dasar untuk Pemula',
             ],
             [
-                'icon' => 'mdi:github',
+                'icon' => 'bi:github',
                 'title' => 'Fundamental HTML dan CSS Dasar',
                 'description' => 'Mengenal Fundamental HTML dan CSS Dasar untuk Pemula',
             ],
@@ -65,7 +65,8 @@
           <a href="" class="">
             <div class="flex items-center w-full p-6 mb-4 bg-glass rounded-xl">
               <div class="me-4">
-                <iconify-icon icon="{{ $item['icon'] }}" class="text-7xl"></iconify-icon>
+                <iconify-icon icon="{{ $item['icon'] }}"
+                  class="text-7xl {{ $item['icon'] == 'bi:github' ? 'text-white' : '' }}"></iconify-icon>
               </div>
 
               <div class="flex-wrap justify-between w-full lg:flex">
@@ -110,7 +111,8 @@
           <a href="" class="">
             <div class="flex items-center w-full p-6 mb-4 bg-glass rounded-xl">
               <div class="me-4">
-                <iconify-icon icon="{{ $item['icon'] }}" class="text-7xl"></iconify-icon>
+                <iconify-icon icon="{{ $item['icon'] }}"
+                  class="text-7xl {{ $item['icon'] == 'bi:github' ? 'text-white' : '' }}"></iconify-icon>
               </div>
 
               <div class="flex-wrap justify-between w-full lg:flex">
