@@ -33,12 +33,12 @@
                 'description' => 'Mengenal Fundamental HTML dan CSS Dasar untuk Pemula',
             ],
             [
-                'icon' => 'vscode-icons:file-type-powerpoint2',
+                'icon' => 'vscode-icons:file-type-powerpoint',
                 'title' => 'Fundamental HTML dan CSS Dasar',
                 'description' => 'Mengenal Fundamental HTML dan CSS Dasar untuk Pemula',
             ],
             [
-                'icon' => 'vscode-icons:file-type-word2',
+                'icon' => 'vscode-icons:file-type-word',
                 'title' => 'Fundamental HTML dan CSS Dasar',
                 'description' => 'Mengenal Fundamental HTML dan CSS Dasar untuk Pemula',
             ],
@@ -49,6 +49,11 @@
             ],
             [
                 'icon' => 'bi:github',
+                'title' => 'Fundamental HTML dan CSS Dasar',
+                'description' => 'Mengenal Fundamental HTML dan CSS Dasar untuk Pemula',
+            ],
+            [
+                'icon' => 'vscode-icons:file-type-excel',
                 'title' => 'Fundamental HTML dan CSS Dasar',
                 'description' => 'Mengenal Fundamental HTML dan CSS Dasar untuk Pemula',
             ],
@@ -106,7 +111,7 @@
         <hr class="flex-grow border-[#27272A]">
       </div>
       @foreach ($data as $key => $item)
-        @if ($key >= 3 && $key < 5)
+        @if ($key >= 3 && $key < 6)
           <a href="" class="">
             <div class="flex items-center w-full p-6 mb-4 bg-glass rounded-xl">
               <div class="me-4">
