@@ -14,12 +14,12 @@
 
 /* Custom Background */
 .navbar-solid {
-  @apply bg-glass/40 backdrop-blur-md;
+  @apply bg-glasses/40 backdrop-blur-md;
   transition: .5s;
 }
 
 .bg-glass {
-  @apply bg-glass/70 backdrop-blur-sm;
+  @apply bg-glasses/70 backdrop-blur-sm;
 }
 .active-menu {
   @apply text-black bg-white;

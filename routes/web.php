@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\App\Dashboard;
+use App\Livewire\App\Event\ManagementEvent;
 use App\Livewire\App\Meeting;
 use App\Livewire\App\MeetingCreate;
 use App\Livewire\App\MeetingDetail;
@@ -50,4 +51,7 @@ Route::prefix('app')->group(function () {
   Route::get('/e-learning/modul', Modul::class)->name('app.e-learning.modul');
   Route::get('/e-learning/modul/create', ModulCreate::class)->name('app.e-learning.modul.create');
   Route::get('/e-learning/modul/edit', ModulEdit::class)->name('app.e-learning.modul.edit');
+
+  // Event
+  Route::get('/event/management-event', ManagementEvent::class)->name('app.event.management-event');
 });
