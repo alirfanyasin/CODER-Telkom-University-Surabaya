@@ -12,7 +12,7 @@ export default {
         },
         extend: {
             backgroundColor: {
-                glass: "#1E1E1E",
+                glasses: "#1E1E1E",
                 darkGray: "#0E0E0E",
                 lightGray: "#27292C",
             },

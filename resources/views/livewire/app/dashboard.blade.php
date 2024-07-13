@@ -31,12 +31,12 @@
   {{-- Statistic and Meeting Schedule Section Start --}}
   <section class="mb-10">
     <div class="grid grid-cols-1 gap-3 lg:grid-cols-3">
-      <div class="col-span-2 p-6 rounded-xl bg-glass/70 backdrop-blur-sm">
+      <div class="col-span-2 p-6 rounded-xl bg-glass">
         <header class="mb-4">
           <h4 class="text-xl font-semibold text-white">Statistik Aktifitas</h4>
         </header>
       </div>
-      <div class="col-span-1 p-6 rounded-xl bg-glass/70 backdrop-blur-sm lg:-me-0 -me-3">
+      <div class="col-span-1 p-6 rounded-xl bg-glass lg:-me-0 -me-3">
         <header class="mb-4">
           <h4 class="text-xl font-semibold text-white">Jadwal Pertemuan</h4>
         </header>
