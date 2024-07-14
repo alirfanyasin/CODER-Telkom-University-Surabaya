@@ -54,9 +54,9 @@
           </div>
           <div class="p-4 mb-4 border border-gray-500 rounded-xl">
             <header class="flex items-center">
-              <h5 class="text-sm text-white">12.00 - 14.00</h5>
+              <h5 class="text-xs text-white">12.00 - 14.00</h5>
               <div class="mx-2 border-l-2 border-white">|</div>
-              <h5 class="text-sm text-white">29 September 2024</h5>
+              <h5 class="text-xs text-white">29 September 2024</h5>
             </header>
             <p class="mt-5 font-light text-gray-400">Belajar menggunakan Framework Tailwind.</p>
             <a href="" class="flex items-center justify-center w-10 h-10 mt-4 border border-gray-500 rounded-lg">
@@ -65,9 +65,9 @@
           </div>
           <div class="p-4 mb-4 border border-gray-500 rounded-xl">
             <header class="flex items-center">
-              <h5 class="text-sm text-white">12.00 - 14.00</h5>
+              <h5 class="text-xs text-white">12.00 - 14.00</h5>
               <div class="mx-2 border-l-2 border-white">|</div>
-              <h5 class="text-sm text-white">29 September 2024</h5>
+              <h5 class="text-xs text-white">29 September 2024</h5>
             </header>
             <p class="mt-5 font-light text-gray-400">Belajar menggunakan Framework Tailwind.</p>
             <a href="" class="flex items-center justify-center w-10 h-10 mt-4 border border-gray-500 rounded-lg">
