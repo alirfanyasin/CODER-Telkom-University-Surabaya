@@ -2,6 +2,7 @@
 
 use App\Livewire\App\Dashboard;
 use App\Livewire\App\Event\ManagementEvent;
+use App\Livewire\App\Event\ManagementEventDetail;
 use App\Livewire\App\Meeting;
 use App\Livewire\App\MeetingCreate;
 use App\Livewire\App\MeetingDetail;
@@ -54,4 +55,5 @@ Route::prefix('app')->group(function () {
 
   // Event
   Route::get('/event/management-event', ManagementEvent::class)->name('app.event.management-event');
+  Route::get('/event/management-event/show', ManagementEventDetail::class)->name('app.event.management-event.show');
 });

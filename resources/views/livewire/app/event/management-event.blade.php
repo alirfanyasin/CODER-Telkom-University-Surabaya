@@ -10,9 +10,10 @@
     </div>
 
     <div class="block md:hidden">
-      <a href="{{ route('app.e-learning.meeting.create') }}" wire:navigate
-        class="flex items-center justify-center w-10 h-10 text-sm font-semibold text-black bg-white rounded-full"><iconify-icon
-          icon="majesticons:plus-line" class="text-2xl"></iconify-icon></a>
+      <button type="button"
+        class="flex items-center justify-center w-10 h-10 text-sm font-semibold text-black bg-white rounded-full"
+        data-hs-overlay="#create-workspace"><iconify-icon icon="majesticons:plus-line"
+          class="text-2xl"></iconify-icon></button>
     </div>
   </header>
   {{-- Header End --}}
@@ -22,98 +23,64 @@
 
   {{-- Workspace Section Start --}}
   <section>
-    <div class="p-5 mb-4 rounded-lg bg-glasses">
-      <div class="flex items-center justify-between">
-        <h3 class="text-2xl font-semibold text-white">Irfan's Workspace</h3>
-        <div class="relative inline-flex hs-dropdown">
-          <button id="hs-dropdown-custom-icon-trigger" type="button"
-            class="flex items-center justify-center text-sm font-semibold text-gray-800 bg-white border border-gray-200 rounded-lg shadow-sm hs-dropdown-toggle size-9 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800">
-            <svg class="flex-none text-gray-600 size-4 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg"
-              width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="1" />
-              <circle cx="12" cy="5" r="1" />
-              <circle cx="12" cy="19" r="1" />
-            </svg>
-          </button>
-
-          <div
-            class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg p-2 mt-2 dark:bg-neutral-800 dark:border dark:border-neutral-700"
-            aria-labelledby="hs-dropdown-custom-icon-trigger">
-            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
-              href="#">
-              <iconify-icon icon="fluent:apps-list-detail-20-regular" class="text-xl text-gray-400"></iconify-icon>
-              Detail
+    <div class="p-5 mb-4 rounded-lg bg-glass">
+      <a href="{{ route('app.event.management-event.show') }}" class="block" wire:navigate>
+        <div class="flex items-center justify-between">
+          <h3 class="text-2xl font-semibold text-white">Irfan's Workspace</h3>
+        </div>
+        <p class="my-3 text-gray-400">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, dolores!
+        </p>
+      </a>
+      <div class="flex items-center justify-between mt-5">
+        <div class="flex items-center text-gray-400">
+          <iconify-icon icon="material-symbols:event-outline" class="text-xl me-3"></iconify-icon>
+          <p class="font-light">Dojo Event</p>
+        </div>
+        <div class="inline md:flex md:justify-between">
+          <div class="flex gap-2 text-gray-400 md:gap-4">
+            <a href=""
+              class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-red-600 border-[#27272A] px-2 md:px-4 py-1">
+              <iconify-icon icon="tabler:trash"></iconify-icon><span class="hidden md:block">Hapus</span>
             </a>
-            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
-              href="#">
-              <iconify-icon icon="uil:edit" class="text-xl text-gray-400"></iconify-icon>
-              Edit
-            </a>
-            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
-              href="#">
-              <iconify-icon icon="tabler:trash" class="text-xl text-gray-400"></iconify-icon>
-              Hapus
+            <a href=""
+              class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-yellow-600 border-[#27272A] px-2 md:px-4 py-1">
+              <iconify-icon icon="lucide:edit"></iconify-icon><span class="hidden md:block">Edit</span>
             </a>
           </div>
         </div>
-      </div>
-
-      <p class="my-3 text-gray-400">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, dolores!
-      </p>
-
-      <div class="flex items-center text-gray-400">
-        <iconify-icon icon="material-symbols:event-outline" class="text-xl me-3"></iconify-icon>
-        <p class="font-light">Dojo Event</p>
       </div>
     </div>
 
-    <div class="p-5 mb-4 rounded-lg bg-glasses">
-      <div class="flex items-center justify-between">
-        <h3 class="text-2xl font-semibold text-white">PlayBox Session 6 Workspace</h3>
-        <div class="relative inline-flex hs-dropdown">
-          <button id="hs-dropdown-custom-icon-trigger" type="button"
-            class="flex items-center justify-center text-sm font-semibold text-gray-800 bg-white border border-gray-200 rounded-lg shadow-sm hs-dropdown-toggle size-9 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800">
-            <svg class="flex-none text-gray-600 size-4 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg"
-              width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="1" />
-              <circle cx="12" cy="5" r="1" />
-              <circle cx="12" cy="19" r="1" />
-            </svg>
-          </button>
 
-          <div
-            class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg p-2 mt-2 dark:bg-neutral-800 dark:border dark:border-neutral-700"
-            aria-labelledby="hs-dropdown-custom-icon-trigger">
-            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
-              href="#">
-              <iconify-icon icon="fluent:apps-list-detail-20-regular" class="text-xl text-gray-400"></iconify-icon>
-              Detail
+
+
+    <div class="p-5 mb-4 rounded-lg bg-glass">
+      <a href="{{ route('app.event.management-event.show') }}" class="block" wire:navigate>
+        <div class="flex items-center justify-between">
+          <h3 class="text-2xl font-semibold text-white">PlayBox Session 6 Workspace</h3>
+        </div>
+        <p class="my-3 text-gray-400">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, dolores!
+        </p>
+      </a>
+      <div class="flex items-center justify-between mt-5">
+        <div class="flex items-center text-gray-400">
+          <iconify-icon icon="material-symbols:event-outline" class="text-xl me-3"></iconify-icon>
+          <p class="font-light">PlayBox Event</p>
+        </div>
+        <div class="inline md:flex md:justify-between">
+          <div class="flex gap-2 text-gray-400 md:gap-4">
+            <a href=""
+              class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-red-600 border-[#27272A] px-2 md:px-4 py-1">
+              <iconify-icon icon="tabler:trash"></iconify-icon><span class="hidden md:block">Hapus</span>
             </a>
-            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
-              href="#">
-              <iconify-icon icon="uil:edit" class="text-xl text-gray-400"></iconify-icon>
-              Edit
-            </a>
-            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
-              href="#">
-              <iconify-icon icon="tabler:trash" class="text-xl text-gray-400"></iconify-icon>
-              Hapus
+            <a href=""
+              class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-yellow-600 border-[#27272A] px-2 md:px-4 py-1">
+              <iconify-icon icon="lucide:edit"></iconify-icon><span class="hidden md:block">Edit</span>
             </a>
           </div>
         </div>
-      </div>
-
-      <p class="my-3 text-gray-400">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, dolores!
-      </p>
-
-
-      <div class="flex items-center text-gray-400">
-        <iconify-icon icon="material-symbols:event-outline" class="text-xl me-3"></iconify-icon>
-        <p class="font-light">PlayBox Event</p>
       </div>
     </div>
   </section>
