@@ -10,9 +10,10 @@
     </div>
 
     <div class="block md:hidden">
-      <a href="{{ route('app.e-learning.meeting.create') }}" wire:navigate
-        class="flex items-center justify-center w-10 h-10 text-sm font-semibold text-black bg-white rounded-full"><iconify-icon
-          icon="majesticons:plus-line" class="text-2xl"></iconify-icon></a>
+      <button type="button"
+        class="flex items-center justify-center w-10 h-10 text-sm font-semibold text-black bg-white rounded-full"
+        data-hs-overlay="#create-workspace"><iconify-icon icon="majesticons:plus-line"
+          class="text-2xl"></iconify-icon></button>
     </div>
   </header>
   {{-- Header End --}}
@@ -37,14 +38,14 @@
           <p class="font-light">Dojo Event</p>
         </div>
         <div class="inline md:flex md:justify-between">
-          <div class="flex gap-4 text-gray-400">
+          <div class="flex gap-2 text-gray-400 md:gap-4">
             <a href=""
-              class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-red-600 border-[#27272A] px-4 py-1">
-              <iconify-icon icon="tabler:trash"></iconify-icon><span>Hapus</span>
+              class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-red-600 border-[#27272A] px-2 md:px-4 py-1">
+              <iconify-icon icon="tabler:trash"></iconify-icon><span class="hidden md:block">Hapus</span>
             </a>
             <a href=""
-              class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-yellow-600 border-[#27272A] px-4 py-1">
-              <iconify-icon icon="lucide:edit"></iconify-icon><span>Edit</span>
+              class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-yellow-600 border-[#27272A] px-2 md:px-4 py-1">
+              <iconify-icon icon="lucide:edit"></iconify-icon><span class="hidden md:block">Edit</span>
             </a>
           </div>
         </div>
@@ -69,14 +70,14 @@
           <p class="font-light">PlayBox Event</p>
         </div>
         <div class="inline md:flex md:justify-between">
-          <div class="flex gap-4 text-gray-400">
+          <div class="flex gap-2 text-gray-400 md:gap-4">
             <a href=""
-              class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-red-600 border-[#27272A] px-4 py-1">
-              <iconify-icon icon="tabler:trash"></iconify-icon><span>Hapus</span>
+              class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-red-600 border-[#27272A] px-2 md:px-4 py-1">
+              <iconify-icon icon="tabler:trash"></iconify-icon><span class="hidden md:block">Hapus</span>
             </a>
             <a href=""
-              class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-yellow-600 border-[#27272A] px-4 py-1">
-              <iconify-icon icon="lucide:edit"></iconify-icon><span>Edit</span>
+              class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-yellow-600 border-[#27272A] px-2 md:px-4 py-1">
+              <iconify-icon icon="lucide:edit"></iconify-icon><span class="hidden md:block">Edit</span>
             </a>
           </div>
         </div>
