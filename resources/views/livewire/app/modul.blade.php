@@ -86,7 +86,7 @@
                     Pemula</span>
                 </div>
                 <div class="items-end inline mt-3 md:flex md:justify-between">
-                  <div class="flex gap-6 mt-4 text-gray-400">
+                  <div class="flex gap-4 mt-4 text-gray-400">
                     <a href=""
                       class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-red-600 border-[#27272A] px-4 py-1">
                       <iconify-icon icon="mdi:trash"></iconify-icon><span>Hapus</span>
