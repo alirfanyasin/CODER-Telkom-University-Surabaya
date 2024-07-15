@@ -103,7 +103,7 @@
           <iconify-icon icon="ic:baseline-chevron-right" class="mx-3 text-lg text-white"></iconify-icon>
         </li>
         <li class="text-sm font-semibold text-white truncate" aria-current="page">
-          Dashboard
+          {{ $title }}
         </li>
       </ol>
       <!-- End Breadcrumb -->
@@ -145,7 +145,8 @@
             Dashboard
           </a>
         </li>
-        <li class="mb-4 hs-accordion {{ Request::is('app/e-learning/*') ? 'active' : '' }}" id="e-learning-accordion">
+        <li class="mb-4 hs-accordion {{ Request::is('app/e-learning/*') ? 'active' : '' }}"
+          id="e-learning-accordion">
           <button type="button"
             class="hs-accordion-toggle hs-accordion-active:text-gray-400 hs-accordion-active:hover:text-black  w-full text-start flex items-center gap-x-3.5 py-3 hover:text-black hover:bg-white mb-1.5 px-3 text-md font-medium text-gray-400 bg-transparent rounded-lg">
             <iconify-icon icon="game-icons:spell-book" class="text-2xl"></iconify-icon>
