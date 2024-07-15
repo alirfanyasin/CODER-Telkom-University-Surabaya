@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="flex items-center">
-                  <a href="" wire:navigate class="me-2">
+                  <a href="{{ route('app.e-learning.task-edit') }}" wire:navigate class="me-2">
                     <iconify-icon icon="uil:edit" class="text-xl text-gray-400"></iconify-icon>
                   </a>
                   <a href="">
