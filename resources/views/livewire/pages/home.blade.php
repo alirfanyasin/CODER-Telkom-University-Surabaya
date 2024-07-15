@@ -72,14 +72,14 @@
             </div>
           </div>
           <div class="lg:basis-8/12 basis-full">
-            <div class="w-full p-10 mb-5 bg-glass/70 rounded-xl backdrop-blur-sm">
+            <div class="w-full p-10 mb-5 bg-glass rounded-xl">
               <h3 class="mb-5 text-2xl font-bold text-white">Visi</h3>
               <p class="text-gray-400">Mewadahi bakat dan minat mahasiswa di bidang Teknologi, Informasi, dan
                 Komunikasi
                 untuk berkontribusi
                 terhadap Telkom University Surabaya dan lingkungan sekitar.</p>
             </div>
-            <div class="w-full p-10 mb-5 bg-glass/70 rounded-xl backdrop-blur-sm">
+            <div class="w-full p-10 mb-5 bg-glass rounded-xl">
               <h3 class="mb-5 text-2xl font-bold text-white">Misi</h3>
               <ol type="1" class="text-gray-400 list-decimal ms-3">
                 <li>Membantu dan mendukung untuk mewadahi mahasiswa Telkom University Surabaya yang memiliki bakat dan
@@ -113,7 +113,7 @@
         </header>
 
         <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
-          <div class="p-4 md:p-8 bg-glass/70 rounded-xl backdrop-blur-sm">
+          <div class="p-4 md:p-8 bg-glass rounded-xl">
             <div class="flex items-center">
               <div class="text-white md:basis-2/12 basis-3/12">
                 <iconify-icon icon="quill:desktop" class="text-6xl"></iconify-icon>
@@ -125,7 +125,7 @@
               </div>
             </div>
           </div>
-          <div class="p-4 md:p-8 bg-glass/70 rounded-xl backdrop-blur-sm">
+          <div class="p-4 md:p-8 bg-glass rounded-xl">
             <div class="flex items-center">
               <div class="text-white md:basis-2/12 basis-3/12">
                 <iconify-icon icon="mingcute:pen-line" class="text-6xl"></iconify-icon>
@@ -137,7 +137,7 @@
               </div>
             </div>
           </div>
-          <div class="p-4 md:p-8 bg-glass/70 rounded-xl backdrop-blur-sm">
+          <div class="p-4 md:p-8 bg-glass rounded-xl">
             <div class="flex items-center">
               <div class="text-white md:basis-2/12 basis-3/12">
                 <iconify-icon icon="mage:robot" class="text-6xl"></iconify-icon>
@@ -149,7 +149,7 @@
               </div>
             </div>
           </div>
-          <div class="p-4 md:p-8 bg-glass/70 rounded-xl backdrop-blur-sm">
+          <div class="p-4 md:p-8 bg-glass rounded-xl">
             <div class="flex items-center">
               <div class="text-white md:basis-2/12 basis-3/12">
                 <iconify-icon icon="nimbus:mobile" class="text-6xl"></iconify-icon>
@@ -161,7 +161,7 @@
               </div>
             </div>
           </div>
-          <div class="p-4 md:p-8 bg-glass/70 rounded-xl backdrop-blur-sm">
+          <div class="p-4 md:p-8 bg-glass rounded-xl">
             <div class="flex items-center">
               <div class="text-white md:basis-2/12 basis-3/12">
                 <iconify-icon icon="ph:code-bold" class="text-6xl"></iconify-icon>
@@ -173,7 +173,7 @@
               </div>
             </div>
           </div>
-          <div class="p-4 md:p-8 bg-glass/70 rounded-xl backdrop-blur-sm">
+          <div class="p-4 md:p-8 bg-glass rounded-xl">
             <div class="flex items-center">
               <div class="text-white md:basis-2/12 basis-3/12">
                 <iconify-icon icon="ant-design:pie-chart-outlined" class="text-6xl"></iconify-icon>
@@ -240,7 +240,7 @@
         </header>
 
         <div class="w-full article-slider">
-          <div class="mx-2 rounded-xl bg-glass/70">
+          <div class="mx-2 rounded-xl bg-glass">
             <div class="mb-2">
               <img src="assets/images/article-1.png" alt="Thumbnail Article" class="w-full h-full">
             </div>
@@ -250,7 +250,7 @@
                 asperiores magni fugit accusamus repudiandae amet cupiditate consectetur...</p>
             </div>
           </div>
-          <div class="mx-2 rounded-xl bg-glass/70">
+          <div class="mx-2 rounded-xl bg-glass">
             <div class="mb-2">
               <img src="assets/images/article-1.png" alt="Thumbnail Article" class="w-full h-full">
             </div>
@@ -260,7 +260,7 @@
                 asperiores magni fugit accusamus repudiandae amet cupiditate consectetur...</p>
             </div>
           </div>
-          <div class="mx-2 rounded-xl bg-glass/70">
+          <div class="mx-2 rounded-xl bg-glass">
             <div class="mb-2">
               <img src="assets/images/article-1.png" alt="Thumbnail Article" class="w-full h-full">
             </div>
@@ -270,7 +270,7 @@
                 asperiores magni fugit accusamus repudiandae amet cupiditate consectetur...</p>
             </div>
           </div>
-          <div class="mx-2 rounded-xl bg-glass/70">
+          <div class="mx-2 rounded-xl bg-glass">
             <div class="mb-2">
               <img src="assets/images/article-1.png" alt="Thumbnail Article" class="w-full h-full">
             </div>

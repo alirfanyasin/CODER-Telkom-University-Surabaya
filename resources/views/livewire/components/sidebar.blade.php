@@ -72,7 +72,7 @@
         <a href=""
           class="flex items-center px-8 py-3 font-medium text-gray-400 bg-transparent rounded-lg hover:bg-white hover:text-black text-md">
           <iconify-icon icon="ph:users-three" class="mr-3 text-2xl"></iconify-icon>
-          Member
+          Anggota
         </a>
       </li>
       <li class="mb-4">
@@ -115,15 +115,15 @@
               </a>
             </li>
             <li class="hs-accordion" id="event-accordion-sub-2">
-              <a href=""
-                class="flex py-3 font-medium text-gray-400 rounded-lg text-md item-center hover:bg-white hover:text-black ps-16">
+              <a href="{{ route('app.event.reqrutment') }}" wire:navigate
+                class="flex py-3 font-medium text-gray-400 rounded-lg text-md item-center hover:bg-white hover:text-black ps-16 {{ Request::is('app/event/reqrutment/*') ? 'active-menu' : 'text-gray-400' }} {{ Request::is('app/event/reqrutment') ? 'active-menu' : 'text-gray-400' }}">
                 <iconify-icon icon="ph:user-plus" class="mr-3 text-2xl"></iconify-icon>
-                Reqrutment
+                Rekrutmen Panitia
               </a>
             </li>
             <li class="hs-accordion" id="event-accordion-sub-3">
               <a href="{{ route('app.event.management-event') }}" wire:navigate
-                class="flex py-3 font-medium text-gray-400 rounded-lg text-md item-center hover:bg-white hover:text-black ps-16  {{ Request::is('app/event/*') ? 'active-menu' : 'text-gray-400' }} {{ Request::is('app/event/management-event') ? 'active-menu' : 'text-gray-400' }}">
+                class="flex py-3 font-medium text-gray-400 rounded-lg text-md item-center hover:bg-white hover:text-black ps-16  {{ Request::is('app/event/management-event/*') ? 'active-menu' : 'text-gray-400' }} {{ Request::is('app/event/management-event') ? 'active-menu' : 'text-gray-400' }}">
                 <iconify-icon icon="mdi:todo-auto" class="mr-3 text-2xl"></iconify-icon>
                 Management Event
               </a>
