@@ -126,7 +126,7 @@
 
   <div id="application-sidebar"
     class="hs-overlay [--auto-close:lg] hs-overlay-open:translate-x-0 
-    -translate-x-full transition-all duration-300 transform w-[350px] hidden fixed inset-y-0 start-0 z-[60] 
+    -translate-x-full transition-all duration-300 transform w-[380px] hidden fixed inset-y-0 start-0 z-[60] 
     bg-glass overflow-y-auto lg:block lg:translate-x-0 lg:end-auto lg:bottom-0">
     <div class="flex justify-center px-8 pt-5">
       <!-- Logo -->
