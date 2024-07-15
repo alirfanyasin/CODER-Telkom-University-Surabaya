@@ -21,7 +21,7 @@
   {{-- View All Meeting Section Start --}}
   <section class="mb-10">
     <a href="{{ route('app.e-learning.meeting.show') }}" wire:navigate class="block">
-      <div class="p-5 mb-4 rounded-lg bg-glass">
+      <div class="p-5 mb-4 rounded-lg bg-glass hover:border hover:border-gray-500">
         <header class="flex items-center justify-between mb-3 text-white">
           <div class="flex items-center">
             <iconify-icon icon="iconoir:calendar" class="text-2xl me-3"></iconify-icon>
@@ -64,7 +64,7 @@
     </a>
 
     <a href="" class="block">
-      <div class="p-5 mb-4 rounded-lg bg-glass">
+      <div class="p-5 mb-4 rounded-lg bg-glass hover:border hover:border-gray-500">
         <header class="flex items-center justify-between mb-3 text-white">
           <div class="flex items-center">
             <iconify-icon icon="iconoir:calendar" class="text-2xl me-3"></iconify-icon>
@@ -106,7 +106,7 @@
     </a>
 
     <a href="" class="block">
-      <div class="p-5 mb-4 rounded-lg bg-glass">
+      <div class="p-5 mb-4 rounded-lg bg-glass hover:border hover:border-gray-500">
         <header class="flex items-center justify-between mb-3 text-white">
           <div class="flex items-center">
             <iconify-icon icon="iconoir:calendar" class="text-2xl me-3"></iconify-icon>
