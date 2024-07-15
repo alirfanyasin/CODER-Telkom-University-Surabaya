@@ -6,7 +6,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-#[Title('Tugas X')]
+#[Title('Buat Tugas')]
 #[Layout('layouts.app')]
 
 class TaskCreate extends Component

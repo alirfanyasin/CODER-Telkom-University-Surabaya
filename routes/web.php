@@ -8,6 +8,7 @@ use App\Livewire\App\Task;
 use App\Livewire\App\TaskCreate;
 use App\Livewire\App\TaskDetail;
 use App\Livewire\App\TaskEdit;
+use App\Livewire\App\TaskSubmission;
 use App\Livewire\App\Meeting;
 use App\Livewire\App\MeetingCreate;
 use App\Livewire\App\MeetingDetail;
@@ -48,6 +49,7 @@ Route::prefix('app')->group(function () {
   Route::get('/e-learning/task/create', TaskCreate::class)->name('app.e-learning.task.create');
   Route::get('/e-learning/task/tugas-1/detail', TaskDetail::class)->name('app.e-learning.task.detail');
   Route::get('/e-learning/task/tugas-1/edit', TaskEdit::class)->name('app.e-learning.task.edit');
+  Route::get('/e-learning/task/tugas-1/submission', TaskSubmission::class)->name('app.e-learning.task.submission');
 
   // Meeting
   Route::get('/e-learning/meeting', Meeting::class)->name('app.e-learning.meeting');

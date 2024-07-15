@@ -37,7 +37,8 @@
 
               <div class="flex items-center justify-between w-full mt-4">
                 <div class="flex items-center w-full">
-                  <a href="" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg bg-glass text-white hover:bg-white hover:text-black">
+                  <a href="{{ route('app.e-learning.task.submission') }}" wire:navigate 
+                    class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg bg-glass text-white hover:bg-white hover:text-black">
                     Lihat pengumpulan
                   </a>
                 </div>
