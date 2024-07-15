@@ -25,15 +25,15 @@
       <div>
         <div class="flex items-center mb-4 text-white">
           <iconify-icon icon="tabler:calendar-month" class="text-xl"></iconify-icon>
-          <h2 class="ms-2 me-3 text-sm font-light font-bold">Pertemuan {{ $i }}</h2>
+          <h2 class="ms-2 me-3 text-sm font-light">Pertemuan {{ $i }}</h2>
           <div class="flex-grow border border-gray-600"></div>
         </div>
         
         @for($j = 1; $j < 3; $j++)
-          <a href="" wire:navigate class="block">
+          <a href="{{ route('app.e-learning.task-detail') }}" wire:navigate class="block">
             <div class="p-5 mb-4 rounded-lg bg-glass">
-                <h3 class="text-2xl font-semibold text-white">Tugas {{ $j }}</h3>
-                <p class="font-light text-gray-400">Membuat website menggunakan HTML dan CSS</p>
+              <h3 class="text-2xl font-semibold text-white">Tugas {{ $j }}</h3>
+              <p class="font-light text-gray-400">Membuat website menggunakan HTML dan CSS</p>
 
               <div class="flex items-center justify-between w-full mt-4">
                 <div class="flex items-center w-full">
@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="flex items-center">
-                  <a href="{{ route('app.e-learning.meeting.edit') }}" wire:navigate class="me-2">
+                  <a href="" wire:navigate class="me-2">
                     <iconify-icon icon="uil:edit" class="text-xl text-gray-400"></iconify-icon>
                   </a>
                   <a href="">

@@ -5,6 +5,7 @@ use App\Livewire\App\Event\ManagementEvent;
 use App\Livewire\App\Event\ManagementEventDetail;
 use App\Livewire\App\Event\Reqrutment;
 use App\Livewire\App\Task;
+use App\Livewire\App\TaskDetail;
 use App\Livewire\App\Meeting;
 use App\Livewire\App\MeetingCreate;
 use App\Livewire\App\MeetingDetail;
@@ -42,6 +43,7 @@ Route::prefix('app')->group(function () {
 
   // Tugas
   Route::get('/e-learning/task', Task::class)->name('app.e-learning.task');
+  Route::get('/e-learning/task/tugas-1/detail', TaskDetail::class)->name('app.e-learning.task-detail');
 
   // Meeting
   Route::get('/e-learning/meeting', Meeting::class)->name('app.e-learning.meeting');
