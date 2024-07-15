@@ -18,7 +18,7 @@
 
 <body class="h-screen overflow-y-hidden bg-black">
   <header
-    class="sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-[48] w-full bg-glass text-sm py-2.5 sm:py-4 lg:ps-80">
+    class="sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-[48] w-full bg-glass text-sm py-2.5 sm:py-4 lg:ps-96">
     <nav class="flex items-center w-full px-4 mx-auto basis-full sm:px-6" aria-label="Global">
       <div class="me-5 lg:me-0 lg:hidden">
         <!-- Logo -->
@@ -42,7 +42,7 @@
           </button>
         </div>
 
-        <div class="hidden sm:block ms-16">
+        <div class="hidden sm:block">
           <label for="icon" class="sr-only">Search</label>
           <div class="relative min-w-72 md:min-w-80">
             <div class="absolute inset-y-0 z-20 flex items-center pointer-events-none start-0 ps-4">
@@ -193,7 +193,7 @@
           </a>
         </li>
         <li class="mb-4">
-          <a href=""
+          <a href="{{ route('app.member') }}" wire:navigate
             class="flex items-center px-3 py-3 font-medium text-gray-400 bg-transparent rounded-lg hover:bg-white mb-1.5 hover:text-black text-md">
             <iconify-icon icon="ph:users-three" class="mr-3 text-2xl"></iconify-icon>
             Anggota
