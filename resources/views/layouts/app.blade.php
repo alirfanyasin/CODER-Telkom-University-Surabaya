@@ -18,7 +18,7 @@
 
 <body class="h-screen overflow-y-hidden bg-black">
   <header
-    class="sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-[48] w-full bg-glass text-sm py-2.5 sm:py-4 lg:ps-96">
+    class="sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-[48] w-full bg-transparent text-sm py-2.5 sm:py-4 lg:ps-96">
     <nav class="flex items-center w-full px-4 mx-auto basis-full sm:px-6" aria-label="Global">
       <div class="me-5 lg:me-0 lg:hidden">
         <!-- Logo -->
@@ -128,7 +128,7 @@
     class="hs-overlay [--auto-close:lg] hs-overlay-open:translate-x-0 
     -translate-x-full transition-all duration-300 transform w-[380px] hidden fixed inset-y-0 start-0 z-[60] 
     bg-glass overflow-y-auto lg:block lg:translate-x-0 lg:end-auto lg:bottom-0">
-    <div class="flex justify-center px-8 pt-5">
+    <div class="flex justify-center px-8 py-12">
       <!-- Logo -->
       <a href="{{ route('app.dashboard') }}" wire:navigate class="block">
         <img src="{{ asset('assets/images/logo/logo.png') }}" alt="Logo" class="w-36">
@@ -136,7 +136,7 @@
       <!-- End Logo -->
     </div>
 
-    <nav class="flex flex-col flex-wrap w-full p-6 hs-accordion-group" data-hs-accordion-always-open>
+    <nav class="flex flex-col flex-wrap w-full p-8 pt-0 hs-accordion-group" data-hs-accordion-always-open>
       <ul class="space-y-1.5">
         <li class="mb-3">
           <a href="{{ route('app.dashboard') }}" wire:navigate
