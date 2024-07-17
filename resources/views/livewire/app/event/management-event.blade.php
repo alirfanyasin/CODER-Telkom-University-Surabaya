@@ -23,7 +23,7 @@
 
   {{-- Workspace Section Start --}}
   <section>
-    <div class="p-5 mb-4 rounded-lg bg-glass">
+    <div class="p-5 mb-4 rounded-lg bg-glass hover:border hover:border-gray-500">
       <a href="{{ route('app.event.management-event.show') }}" class="block" wire:navigate>
         <div class="flex items-center justify-between">
           <h3 class="text-2xl font-semibold text-white">Irfan's Workspace</h3>
@@ -55,7 +55,7 @@
 
 
 
-    <div class="p-5 mb-4 rounded-lg bg-glass">
+    <div class="p-5 mb-4 rounded-lg bg-glass hover:border hover:border-gray-500">
       <a href="{{ route('app.event.management-event.show') }}" class="block" wire:navigate>
         <div class="flex items-center justify-between">
           <h3 class="text-2xl font-semibold text-white">PlayBox Session 6 Workspace</h3>

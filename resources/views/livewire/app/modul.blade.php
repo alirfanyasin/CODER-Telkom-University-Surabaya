@@ -68,7 +68,7 @@
       @foreach ($data as $key => $item)
         @if ($key < 3)
           <a href="" class="">
-            <div class="flex w-full p-6 mb-4 lg:items-center bg-glass rounded-xl">
+            <div class="flex w-full p-6 mb-4 lg:items-center bg-glass rounded-xl hover:border hover:border-gray-500">
               <div class="items-start me-4">
                 <iconify-icon icon="{{ $item['icon'] }}" class="text-7xl"></iconify-icon>
               </div>
@@ -113,7 +113,7 @@
       @foreach ($data as $key => $item)
         @if ($key >= 3 && $key < 6)
           <a href="" class="">
-            <div class="flex w-full p-6 mb-4 lg:items-center bg-glass rounded-xl">
+            <div class="flex w-full p-6 mb-4 lg:items-center bg-glass rounded-xl hover:border hover:border-gray-500">
               <div class="items-start me-4">
                 <iconify-icon icon="{{ $item['icon'] }}"
                   class="text-7xl {{ $item['icon'] == 'bi:github' ? 'text-white' : '' }}"></iconify-icon>
@@ -157,7 +157,7 @@
         <hr class="flex-grow border-[#27272A]">
       </div>
       <a href="" class="">
-        <div class="flex w-full p-6 mb-4 lg:items-center bg-glass rounded-xl">
+        <div class="flex w-full p-6 mb-4 lg:items-center bg-glass rounded-xl hover:border hover:border-gray-500">
           <div class="items-start me-4">
             <iconify-icon icon="logos:blogger" class="text-7xl"></iconify-icon>
           </div>

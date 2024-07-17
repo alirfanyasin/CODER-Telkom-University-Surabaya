@@ -16,20 +16,20 @@
   @livewireStyles
 </head>
 
-<body class="bg-black">
+<body class="h-screen overflow-y-hidden bg-black">
   <header
-    class="sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-[48] w-full bg-[#18181B] text-sm py-2.5 sm:py-4 lg:ps-80">
-    <nav class="flex basis-full items-center w-full mx-auto px-4 sm:px-6" aria-label="Global">
+    class="sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-[48] w-full bg-transparent text-sm py-2.5 sm:py-4 lg:ps-96">
+    <nav class="flex items-center w-full px-4 mx-auto basis-full sm:px-6" aria-label="Global">
       <div class="me-5 lg:me-0 lg:hidden">
         <!-- Logo -->
-        <a class="flex-none rounded-xl text-xl inline-block font-semibold focus:outline-none focus:opacity-80"
+        <a class="flex-none inline-block text-xl font-semibold rounded-xl focus:outline-none focus:opacity-80"
           href="#" aria-label="Preline">
           <img src="{{ asset('assets/images/logo/logo.png') }}" alt="Logo" class="w-36">
         </a>
         <!-- End Logo -->
       </div>
 
-      <div class="w-full flex items-center justify-end ms-auto sm:justify-between sm:gap-x-3 sm:order-3">
+      <div class="flex items-center justify-end w-full ms-auto sm:justify-between sm:gap-x-3 sm:order-3">
         <div class="sm:hidden">
           <button type="button"
             class="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none">
@@ -45,12 +45,12 @@
         <div class="hidden sm:block">
           <label for="icon" class="sr-only">Search</label>
           <div class="relative min-w-72 md:min-w-80">
-            <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4">
-              <iconify-icon icon="lucide:search" class="flex-shrink-0 size-4 text-gray-400"></iconify-icon>
+            <div class="absolute inset-y-0 z-20 flex items-center pointer-events-none start-0 ps-4">
+              <iconify-icon icon="lucide:search" class="flex-shrink-0 text-gray-400 size-5"></iconify-icon>
 
             </div>
             <input type="text" id="icon" name="icon"
-              class="py-2 px-4 ps-11 block w-full border-gray-200 bg-[#27292C] rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+              class="block w-full px-4 py-2 text-sm border-gray-200 rounded-lg ps-11 bg-lightGray focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
               placeholder="Search">
           </div>
         </div>
@@ -76,7 +76,7 @@
                 <p class="text-sm">Irfan Yasin</p>
                 <p class="text-sm font-medium">Ketua Web Development</p>
               </div>
-              <div class="mt-2 py-2 first:pt-0 last:pb-0">
+              <div class="py-2 mt-2 first:pt-0 last:pb-0">
                 <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:bg-[#27292C]"
                   href="#">
                   <iconify-icon icon="carbon:user" class="text-lg"></iconify-icon>
@@ -85,7 +85,7 @@
               </div>
             </div>
             <div class="ml-2.5 text-white hidden md:block">
-              <h5 class="font-mediom text-white">Irfan Yasin</h5>
+              <h5 class="text-white font-mediom">Irfan Yasin</h5>
               <p class="text-xs font-light text-gray-400">Ketua Web Development</p>
             </div>
           </div>
@@ -94,16 +94,16 @@
     </nav>
   </header>
 
-  <div class="sticky top-0 inset-x-0 z-20 bg-[#18181B] border-t px-4 sm:px-6 md:px-8 lg:hidden">
-    <div class="flex justify-between items-center py-2">
+  <div class="sticky inset-x-0 top-0 z-20 px-4 border-t bg-glass sm:px-6 md:px-8 lg:hidden">
+    <div class="flex items-center justify-between py-2">
       <!-- Breadcrumb -->
-      <ol class="ms-3 flex items-center whitespace-nowrap">
+      <ol class="flex items-center ms-3 whitespace-nowrap">
         <li class="flex items-center text-sm text-white">
-          Application Layout
+          App
           <iconify-icon icon="ic:baseline-chevron-right" class="mx-3 text-lg text-white"></iconify-icon>
         </li>
         <li class="text-sm font-semibold text-white truncate" aria-current="page">
-          Dashboard
+          {{ $title }}
         </li>
       </ol>
       <!-- End Breadcrumb -->
@@ -126,9 +126,9 @@
 
   <div id="application-sidebar"
     class="hs-overlay [--auto-close:lg] hs-overlay-open:translate-x-0 
-    -translate-x-full transition-all duration-300 transform w-[300px] hidden fixed inset-y-0 start-0 z-[60] 
-    bg-[#18181B] lg:block lg:translate-x-0 lg:end-auto lg:bottom-0">
-    <div class="px-8 pt-5">
+    -translate-x-full transition-all duration-300 transform w-[380px] hidden fixed inset-y-0 start-0 z-[60] 
+    bg-glass overflow-y-auto lg:block lg:translate-x-0 lg:end-auto lg:bottom-0">
+    <div class="flex justify-center px-8 py-12">
       <!-- Logo -->
       <a href="{{ route('app.dashboard') }}" wire:navigate class="block">
         <img src="{{ asset('assets/images/logo/logo.png') }}" alt="Logo" class="w-36">
@@ -136,26 +136,29 @@
       <!-- End Logo -->
     </div>
 
-    <nav class="hs-accordion-group p-6 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
+    <nav class="flex flex-col flex-wrap w-full p-8 pt-0 hs-accordion-group" data-hs-accordion-always-open>
       <ul class="space-y-1.5">
-        <li class="mb-4">
+        <li class="mb-3">
           <a href="{{ route('app.dashboard') }}" wire:navigate
-            class="flex items-center px-3.5 py-2 font-medium rounded-lg text-md hover:bg-white mb-1.5 hover:text-black {{ Request::is('app') ? 'active-menu' : 'text-gray-400' }}">
+            class="flex items-center px-3.5 py-3 font-medium rounded-lg text-md hover:bg-white mb-1.5 hover:text-black {{ Request::is('app') ? 'active-menu' : 'text-gray-400' }}">
             <iconify-icon icon="material-symbols:dashboard-outline" class="mr-3 text-2xl"></iconify-icon>
             Dashboard
           </a>
         </li>
-        <li class="mb-4 hs-accordion {{ Request::is('app/e-learning/*') ? 'active' : '' }}" id="e-learning-accordion">
+        <li class="mb-4 hs-accordion {{ Request::is('app/e-learning/*') ? 'active' : '' }}"
+          id="e-learning-accordion">
           <button type="button"
-            class="hs-accordion-toggle hs-accordion-active:text-gray-400 hs-accordion-active:hover:text-black  w-full text-start flex items-center gap-x-3.5 py-2 hover:text-black hover:bg-white mb-1.5 px-3.5 text-md font-medium text-gray-400 bg-transparent rounded-lg">
+            class="hs-accordion-toggle hs-accordion-active:text-gray-400 hs-accordion-active:hover:text-black  w-full text-start flex items-center gap-x-3.5 py-3 hover:text-black hover:bg-white mb-1.5 px-3 text-md font-medium text-gray-400 bg-transparent rounded-lg">
             <iconify-icon icon="game-icons:spell-book" class="text-2xl"></iconify-icon>
             E-Learning
-  
-            <iconify-icon icon="mdi:chevron-up" class="hidden text-gray-600 hs-accordion-active:block ms-auto size-4 group-hover:text-gray-500 text-xl"></iconify-icon>
-            <iconify-icon icon="mdi:chevron-down" class="block text-gray-600 hs-accordion-active:hidden ms-auto size-4 group-hover:text-gray-500 text-xl"></iconify-icon>
-           
+
+            <iconify-icon icon="mdi:chevron-up"
+              class="hidden text-xl text-gray-600 hs-accordion-active:block ms-auto size-4 group-hover:text-gray-500"></iconify-icon>
+            <iconify-icon icon="mdi:chevron-down"
+              class="block text-xl text-gray-600 hs-accordion-active:hidden ms-auto size-4 group-hover:text-gray-500"></iconify-icon>
+
           </button>
-  
+
           <div id="e-learning-accordion"
             class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 {{ Request::is('app/e-learning/*') ? 'block' : 'hidden' }}">
             <ul class="pt-2 hs-accordion-group" data-hs-accordion-always-open>
@@ -185,36 +188,38 @@
         </li>
         <li class="mb-4">
           <a href=""
-            class="flex items-center px-3.5 py-2 font-medium text-gray-400 bg-transparent rounded-lg hover:bg-white mb-1.5 hover:text-black text-md">
+            class="flex items-center px-3 py-3 font-medium text-gray-400 bg-transparent rounded-lg hover:bg-white mb-1.5 hover:text-black text-md">
             <iconify-icon icon="ph:user-check" class="mr-3 text-2xl"></iconify-icon>
             Presensi
           </a>
         </li>
         <li class="mb-4">
-          <a href=""
-            class="flex items-center px-3.5 py-2 font-medium text-gray-400 bg-transparent rounded-lg hover:bg-white mb-1.5 hover:text-black text-md">
+          <a href="{{ route('app.member') }}" wire:navigate
+            class="flex items-center px-3 py-3 font-medium text-gray-400 bg-transparent rounded-lg hover:bg-white mb-1.5 hover:text-black text-md">
             <iconify-icon icon="ph:users-three" class="mr-3 text-2xl"></iconify-icon>
             Anggota
           </a>
         </li>
         <li class="mb-4">
           <a href=""
-            class="flex items-center px-3.5 py-2 font-medium text-gray-400 bg-transparent rounded-lg hover:bg-white mb-1.5 hover:text-black text-md">
+            class="flex items-center px-3 py-3 font-medium text-gray-400 bg-transparent rounded-lg hover:bg-white mb-1.5 hover:text-black text-md">
             <iconify-icon icon="teenyicons:attachment-outline" class="mr-3 text-2xl"></iconify-icon>
             Laporan
           </a>
         </li>
-  
+
         <li class="mb-4 hs-accordion {{ Request::is('app/event/*') ? 'active' : '' }}" id="event-accordion">
           <button type="button"
-            class="hs-accordion-toggle hs-accordion-active:hover:bg-white mb-1.5 w-full text-start flex items-center gap-x-3.5 py-2 hover:text-black hover:bg-white mb-1.5 px-3.5 text-md font-medium text-gray-400 bg-transparent rounded-lg">
+            class="hs-accordion-toggle hs-accordion-active:hover:bg-white mb-1.5 w-full text-start flex items-center gap-x-3.5 py-3 hover:text-black hover:bg-white px-3 text-md font-medium text-gray-400 bg-transparent rounded-lg">
             <iconify-icon icon="carbon:event" class="text-2xl"></iconify-icon>
             Events
-  
-            <iconify-icon icon="mdi:chevron-up" class="hidden text-gray-600 hs-accordion-active:block ms-auto size-4 group-hover:text-gray-500 text-xl"></iconify-icon>
-            <iconify-icon icon="mdi:chevron-down" class="block text-gray-600 hs-accordion-active:hidden ms-auto size-4 group-hover:text-gray-500 text-xl"></iconify-icon>
+
+            <iconify-icon icon="mdi:chevron-up"
+              class="hidden text-xl text-gray-600 hs-accordion-active:block ms-auto size-4 group-hover:text-gray-500"></iconify-icon>
+            <iconify-icon icon="mdi:chevron-down"
+              class="block text-xl text-gray-600 hs-accordion-active:hidden ms-auto size-4 group-hover:text-gray-500"></iconify-icon>
           </button>
-  
+
           <div id="event-accordion"
             class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 {{ Request::is('app/event/*') ? 'block' : 'hidden' }}">
             <ul class="pt-2 hs-accordion-group" data-hs-accordion-always-open>
@@ -244,14 +249,14 @@
         </li>
       </ul>
     </nav>
-
-    
   </div>
   <!-- End Sidebar -->
 
-  <div class="w-full lg:ps-80">
-    <div class="p-10 sm:p-6 space-y-4 sm:space-y-6">
-      {{ $slot }}
+  <div class="w-full lg:ps-96">
+    <div class="h-screen p-5 space-y-4 overflow-y-auto sm:p-6 sm:space-y-6">
+      <div class="mb-28">
+        {{ $slot }}
+      </div>
     </div>
   </div>
 

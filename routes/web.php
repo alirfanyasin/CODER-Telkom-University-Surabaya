@@ -13,6 +13,7 @@ use App\Livewire\App\Meeting;
 use App\Livewire\App\MeetingCreate;
 use App\Livewire\App\MeetingDetail;
 use App\Livewire\App\MeetingEdit;
+use App\Livewire\App\Member;
 use App\Livewire\App\Modul;
 use App\Livewire\App\ModulCreate;
 use App\Livewire\App\ModulEdit;
@@ -66,4 +67,8 @@ Route::prefix('app')->group(function () {
   Route::get('/event/management-event', ManagementEvent::class)->name('app.event.management-event');
   Route::get('/event/management-event/show', ManagementEventDetail::class)->name('app.event.management-event.show');
   Route::get('/event/reqrutment', Reqrutment::class)->name('app.event.reqrutment');
+
+
+  // Member
+  Route::get('member', Member::class)->name('app.member');
 });
