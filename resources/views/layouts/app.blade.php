@@ -170,8 +170,8 @@
                 </a>
               </li>
               <li class="hs-accordion" id="e-learning-accordion-sub-2">
-                <a href=""
-                  class="flex py-3 font-medium text-gray-400 rounded-lg text-md item-center hover:bg-white mb-1.5 hover:text-black ps-10">
+                <a href="{{ route('app.e-learning.task') }}" wire:navigate
+                  class="flex py-3 font-medium text-gray-400 rounded-lg text-md item-center hover:bg-white mb-1.5 hover:text-black ps-10 {{ Request::is('app/e-learning/task/*') ? 'active-menu' : 'text-gray-400' }} {{ Request::is('app/e-learning/task') ? 'active-menu' : 'text-gray-400' }}">
                   <iconify-icon icon="bx:task" class="mr-3 text-2xl"></iconify-icon>
                   Tugas
                 </a>
