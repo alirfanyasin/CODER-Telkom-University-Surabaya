@@ -74,8 +74,9 @@
     <a href="{{ route('app.e-learning.modul') }}" wire:navigate
       class="inline-block px-5 py-3 text-sm font-semibold text-gray-400 border border-gray-400 rounded-md">Batal</a>
     <button type="submit"
-      class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md ms-3">Buat Modul
-      <iconify-icon icon="flowbite:arrow-right-outline" class="text-2xl ms-2"></iconify-icon>
+      class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md ms-3">Simpan
+      Modul
+      <iconify-icon icon="material-symbols:save-outline" class="text-2xl ms-2"></iconify-icon>
     </button>
   </div>
 

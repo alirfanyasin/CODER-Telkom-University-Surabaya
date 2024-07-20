@@ -70,7 +70,7 @@
       </li>
       <li class="mb-4">
         <a href="{{ route('app.member') }}" wire:navigate
-          class="flex items-center px-8 py-3 font-medium text-gray-400 bg-transparent rounded-lg hover:bg-white hover:text-black text-md {{ Request::is('app/member') ? 'active-menu' : 'text-gray-400' }}">
+          class="flex items-center px-3.5 py-3 font-medium rounded-lg hover:bg-white hover:text-black text-md {{ Request::is('app/member') ? 'active-menu' : 'text-gray-400' }}">
           <iconify-icon icon="ph:users-three" class="mr-3 text-2xl"></iconify-icon>
           Anggota
         </a>
