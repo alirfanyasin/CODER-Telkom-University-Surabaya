@@ -124,7 +124,19 @@
           </div>
         </div>
       </div>
+      <div class="flex my-7">
+
+        <div class="ml-auto flex items-center gap-4">
+          <button type="button"
+            class="flex items-center px-5 py-3 text-sm font-semibold border border-[#4F4F55] text-white hover:bg-red-600 hover:border-red-600 rounded-md">Batal</button>
+          <button type="submit"
+            class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md"> Simpan Presensi
+            <iconify-icon icon="material-symbols:save-outline" class="text-xl ms-2"></iconify-icon></button>
+        </div>
+
+      </div>
     </form>
   </section>
   {{-- Detail Meeting Section Start --}}
+
 </div>
