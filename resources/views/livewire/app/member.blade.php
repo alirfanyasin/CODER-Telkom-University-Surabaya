@@ -40,7 +40,7 @@
 
   {{-- Member Section Start --}}
   <section>
-    <div class="grid grid-cols-4 gap-2">
+    <div class="grid grid-cols-1 gap-2 lg:grid-cols-4 md:grid-cols-2">
       @foreach ($datas as $data)
         <div
           class="relative px-5 pt-5 pb-20 text-center text-white rounded-lg bg-neutral-900 group hover:border hover:border-gray-500">
@@ -49,14 +49,11 @@
           </div>
           <h4 class="mt-4 font-semibold text-md">{{ $data['name'] }}</h4>
           <p class="text-xs font-light text-gray-400">{{ $data['email'] }}</p>
-          <div class="absolute mx-auto translate-x-1/2 bottom-5">
+          <div class="absolute transform -translate-x-1/2 left-1/2 bottom-5">
             <a href=""
               class="inline-block py-2 text-xs border rounded-full px-9 group-hover:bg-white group-hover:text-black">
               Profile
             </a>
-            {{-- <a href="" class="flex items-center justify-center bg-white border rounded-full w-9 h-9">
-              <iconify-icon icon="mage:whatsapp" class="text-xl text-black"></iconify-icon>
-            </a> --}}
           </div>
 
           {{-- Action button start --}}
