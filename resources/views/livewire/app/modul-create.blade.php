@@ -72,7 +72,7 @@
 
   <div class="flex justify-end mb-6">
     <a href="{{ route('app.e-learning.modul') }}" wire:navigate
-      class="inline-block px-5 py-3 text-sm font-semibold text-gray-400 border border-gray-400 rounded-md">Batal</a>
+      class="inline-block px-5 py-3 text-sm font-semibold text-gray-400 border border-gray-400 rounded-md hover:text-black hover:bg-white">Batal</a>
     <button type="submit"
       class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md ms-3">Simpan
       Modul

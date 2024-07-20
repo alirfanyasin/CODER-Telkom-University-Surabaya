@@ -50,8 +50,7 @@
       <div class="w-full mb-6 md:mb-0">
         <label for="input-label" class="block mb-2 font-light dark:text-white">Jenis File
           Pendukung</label>
-        <select
-          class="block w-full p-3 text-white border-gray-200 rounded-lg pe-9 bg-lightGray focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
+        <select class="block w-full p-3 text-white border-gray-200 rounded-lg pe-9 bg-lightGray">
           <option disabled>Jenis File</option>
           <option selected>Power Point</option>
           <option>PDF</option>
@@ -77,7 +76,7 @@
 
   <div class="flex justify-end mb-6">
     <a href="{{ route('app.e-learning.modul') }}" wire:navigate
-      class="inline-block px-5 py-3 font-semibold text-gray-400 border border-gray-400 rounded-md">Batal</a>
+      class="inline-block px-5 py-3 font-semibold text-gray-400 border border-gray-400 rounded-md hover:text-black hover:bg-white">Batal</a>
     <button type="submit" class="flex items-center px-5 py-3 font-semibold text-black bg-white rounded-md ms-3">Simpan
       Perubahan
       <iconify-icon icon="material-symbols:save-outline" class="text-2xl ms-2"></iconify-icon>
