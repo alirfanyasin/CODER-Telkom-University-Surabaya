@@ -49,13 +49,17 @@
             {{-- Icon meeting type end --}}
 
             {{-- Icon action start --}}
-            <div class="flex items-center">
-              <a href="{{ route('app.e-learning.meeting.edit') }}" wire:navigate class="me-2">
-                <iconify-icon icon="uil:edit" class="text-xl text-gray-400"></iconify-icon>
-              </a>
-              <a href="">
-                <iconify-icon icon="tabler:trash" class="text-xl text-gray-400"></iconify-icon>
-              </a>
+            <div class="inline md:flex md:justify-between">
+              <div class="flex gap-2 text-gray-400 md:gap-4">
+                <a href=""
+                  class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-red-600 border-[#27272A] px-2 md:px-4 py-1">
+                  <iconify-icon icon="tabler:trash"></iconify-icon><span class="hidden md:block">Hapus</span>
+                </a>
+                <a href=""
+                  class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-yellow-600 border-[#27272A] px-2 md:px-4 py-1">
+                  <iconify-icon icon="lucide:edit"></iconify-icon><span class="hidden md:block">Edit</span>
+                </a>
+              </div>
             </div>
             {{-- Icon action end --}}
           </div>
@@ -91,13 +95,17 @@
             {{-- Icon meeting type end --}}
 
             {{-- Icon action start --}}
-            <div class="flex items-center">
-              <a href="" class="me-2">
-                <iconify-icon icon="uil:edit" class="text-xl text-gray-400"></iconify-icon>
-              </a>
-              <a href="">
-                <iconify-icon icon="tabler:trash" class="text-xl text-gray-400"></iconify-icon>
-              </a>
+            <div class="inline md:flex md:justify-between">
+              <div class="flex gap-2 text-gray-400 md:gap-4">
+                <a href=""
+                  class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-red-600 border-[#27272A] px-2 md:px-4 py-1">
+                  <iconify-icon icon="tabler:trash"></iconify-icon><span class="hidden md:block">Hapus</span>
+                </a>
+                <a href=""
+                  class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-yellow-600 border-[#27272A] px-2 md:px-4 py-1">
+                  <iconify-icon icon="lucide:edit"></iconify-icon><span class="hidden md:block">Edit</span>
+                </a>
+              </div>
             </div>
             {{-- Icon action end --}}
           </div>
@@ -133,13 +141,17 @@
             {{-- Icon meeting type end --}}
 
             {{-- Icon action start --}}
-            <div class="flex items-center">
-              <a href="" class="me-2">
-                <iconify-icon icon="uil:edit" class="text-xl text-gray-400"></iconify-icon>
-              </a>
-              <a href="">
-                <iconify-icon icon="tabler:trash" class="text-xl text-gray-400"></iconify-icon>
-              </a>
+            <div class="inline md:flex md:justify-between">
+              <div class="flex gap-2 text-gray-400 md:gap-4">
+                <a href=""
+                  class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-red-600 border-[#27272A] px-2 md:px-4 py-1">
+                  <iconify-icon icon="tabler:trash"></iconify-icon><span class="hidden md:block">Hapus</span>
+                </a>
+                <a href=""
+                  class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-yellow-600 border-[#27272A] px-2 md:px-4 py-1">
+                  <iconify-icon icon="lucide:edit"></iconify-icon><span class="hidden md:block">Edit</span>
+                </a>
+              </div>
             </div>
             {{-- Icon action end --}}
           </div>
