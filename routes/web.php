@@ -75,8 +75,8 @@ Route::prefix('app')->group(function () {
   // Presence
   Route::get('/presence', Presence::class)->name('app.presence');
   Route::get('/presence/create', PresenceCreate::class)->name('app.presence.create');
-  Route::get('/presence/detail', PresenceDetail::class)->name('app.presence.detail');
-  Route::get('/presence/edit', PresenceEdit::class)->name('app.presence.edit');
+  Route::get('/presence/presensi-1/show', PresenceDetail::class)->name('app.presence.show');
+  Route::get('/presence/presensi-1/edit', PresenceEdit::class)->name('app.presence.edit');
 
   // Member
   Route::get('member', Member::class)->name('app.member');
