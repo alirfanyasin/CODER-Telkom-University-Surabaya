@@ -17,7 +17,6 @@
             </a>
             <h4 class="text-xl font-semibold">Informasi Presensi</h4>
           </div>
-          <div class="px-2 py-2 text-xs bg-blue-600 rounded-full"></div>
         </header>
 
         <div>
