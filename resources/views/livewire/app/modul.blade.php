@@ -23,7 +23,7 @@
       <header class="flex items-center gap-4 mb-2 text-white">
         <iconify-icon class="" icon="lucide:calendar"></iconify-icon>
         <span class="flex-shrink-0">Pertemuan 1</span>
-        <hr class="flex-grow border-[#27272A]">
+        <hr class="flex-grow border-gray-500">
       </header>
       @php
         $data = [
