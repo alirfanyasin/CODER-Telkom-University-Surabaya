@@ -18,7 +18,18 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->string('major')->nullable();
+            $table->string('nim')->nullable();
+            $table->string('batch')->nullable();
+            $table->string('phone_number')->nullable();
+            $table->string('avatar')->nullable();
+            $table->string('github')->nullable();
+            $table->string('identity_code')->nullable();
+            $table->unsignedBigInteger('division_id')->nullable();
+            $table->string('google_id')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+            $table->foreign('division_id')->references('id')->on('divisions')->onDelete('cascade');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
