@@ -140,7 +140,7 @@
       <ul class="space-y-1.5">
         <li class="mb-3">
           <a href="{{ route('app.dashboard') }}" wire:navigate
-            class="flex items-center px-3.5 py-3 font-medium rounded-lg text-md hover:bg-white mb-1.5 hover:text-black {{ Request::is('app') ? 'active-menu' : 'text-gray-400' }}">
+            class="flex items-center px-3 py-3 font-medium rounded-lg text-md hover:bg-white mb-1.5 hover:text-black {{ Request::is('app') ? 'active-menu' : 'text-gray-400' }}">
             <iconify-icon icon="material-symbols:dashboard-outline" class="mr-3 text-2xl"></iconify-icon>
             Dashboard
           </a>
@@ -187,15 +187,15 @@
           </div>
         </li>
         <li class="mb-4">
-          <a href=""
-            class="flex items-center px-3 py-3 font-medium text-gray-400 bg-transparent rounded-lg hover:bg-white mb-1.5 hover:text-black text-md">
+          <a href="{{ route('app.presence') }}" wire:navigate
+            class="flex items-center px-3 py-3 font-medium rounded-lg hover:bg-white mb-1.5 hover:text-black text-md {{ Request::is('app/presence/*') ? 'active-menu' : 'text-gray-400' }} {{ Request::is('app/presence') ? 'active-menu' : 'text-gray-400' }}">
             <iconify-icon icon="ph:user-check" class="mr-3 text-2xl"></iconify-icon>
             Presensi
           </a>
         </li>
         <li class="mb-4">
           <a href="{{ route('app.member') }}" wire:navigate
-            class="flex items-center  px-3.5 py-3 font-medium rounded-lg hover:bg-white hover:text-black text-md {{ Request::is('app/member') ? 'active-menu' : 'text-gray-400' }}">
+            class="flex items-center px-3 py-3 font-medium rounded-lg hover:bg-white mb-1.5 hover:text-black text-md {{ Request::is('app/member') ? 'active-menu' : 'text-gray-400' }}">
             <iconify-icon icon="ph:users-three" class="mr-3 text-2xl"></iconify-icon>
             Anggota
           </a>
