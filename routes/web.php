@@ -22,6 +22,8 @@ use App\Livewire\App\MemberDetail;
 use App\Livewire\App\Modul;
 use App\Livewire\App\ModulCreate;
 use App\Livewire\App\ModulEdit;
+use App\Livewire\App\Profile;
+use App\Livewire\App\ProfileEdit;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
 use App\Livewire\Pages\Home;
@@ -82,4 +84,8 @@ Route::prefix('app')->group(function () {
   // Member
   Route::get('member', Member::class)->name('app.member');
   Route::get('member/detail', MemberDetail::class)->name('app.member.detail');
+
+  // Profile
+  Route::get('profile', Profile::class)->name('app.profile');
+  Route::get('profile/edit', ProfileEdit::class)->name('app.profile.edit');
 });
