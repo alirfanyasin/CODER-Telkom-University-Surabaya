@@ -21,72 +21,28 @@
 
   {{-- View All Modul Start --}}
   <section class="">
-    <div class="mb-6">
-      <header class="flex items-center gap-4 mb-2 text-white">
-        <iconify-icon class="" icon="lucide:calendar"></iconify-icon>
-        <span class="flex-shrink-0">Pertemuan 1</span>
-        <hr class="flex-grow border-gray-500">
-      </header>
-      @php
-        $data = [
-            [
-                'icon' => 'vscode-icons:file-type-pdf2',
-                'title' => 'Fundamental HTML dan CSS Dasar',
-                'description' => 'Mengenal Fundamental HTML dan CSS Dasar untuk Pemula',
-            ],
-            [
-                'icon' => 'vscode-icons:file-type-powerpoint',
-                'title' => 'Fundamental HTML dan CSS Dasar',
-                'description' => 'Mengenal Fundamental HTML dan CSS Dasar untuk Pemula',
-            ],
-            [
-                'icon' => 'vscode-icons:file-type-word',
-                'title' => 'Fundamental HTML dan CSS Dasar',
-                'description' => 'Mengenal Fundamental HTML dan CSS Dasar untuk Pemula',
-            ],
-            [
-                'icon' => 'fxemoji:notepad',
-                'title' => 'Fundamental HTML dan CSS Dasar',
-                'description' => 'Mengenal Fundamental HTML dan CSS Dasar untuk Pemula',
-            ],
-            [
-                'icon' => 'bi:github',
-                'title' => 'Fundamental HTML dan CSS Dasar',
-                'description' => 'Mengenal Fundamental HTML dan CSS Dasar untuk Pemula',
-            ],
-            [
-                'icon' => 'vscode-icons:file-type-excel',
-                'title' => 'Fundamental HTML dan CSS Dasar',
-                'description' => 'Mengenal Fundamental HTML dan CSS Dasar untuk Pemula',
-            ],
-            [
-                'icon' => 'logos:blogger',
-                'title' => 'Fundamental HTML dan CSS Dasar',
-                'description' => 'Mengenal Fundamental HTML dan CSS Dasar untuk Pemula',
-            ],
-        ];
-      @endphp
+    @foreach ($groupedDataBySection as $section => $datas)
+      <div class="mb-6">
+        <header class="flex items-center gap-4 mb-2 text-white">
+          <iconify-icon class="" icon="lucide:calendar"></iconify-icon>
+          <span class="flex-shrink-0">Pertemuan {{ $section }}</span>
+          <hr class="flex-grow border-gray-500">
+        </header>
 
-      @foreach ($data as $key => $item)
-        @if ($key < 3)
-          <a href="" class="">
+        @foreach ($datas as $data)
+          <a href="{{ $data['type'] == 'bi:github' || $data['type'] == 'logos:blogger' ? $data['link'] : asset('storage/file/modul/' . $data['file']) }}"
+            download="{{ 'CODER - ' . $data['name'] }}" target="_blank" class="">
             <div class="flex w-full p-6 mb-4 lg:items-center bg-glass rounded-xl hover:border hover:border-gray-500">
               <div class="items-start me-4">
-                <iconify-icon icon="{{ $item['icon'] }}" class="text-7xl"></iconify-icon>
+                <iconify-icon icon="{{ $data['type'] }}" class="text-7xl"></iconify-icon>
               </div>
 
               <div class="flex-wrap justify-between w-full lg:flex">
                 <div class="">
-                  <h1 class="mb-1 font-semibold text-white text-md md:text-xl">Fundamental HTML dan
-                    CSS
-                    Dasar
+                  <h1 class="mb-1 font-semibold text-white text-md md:text-xl">{{ $data['name'] }}
                   </h1>
-                  <span class="text-sm font-light text-gray-400 md:font-medium md:text-base">Mengenal
-                    Fundamental HTML
-                    dan
-                    CSS
-                    Dasar untuk
-                    Pemula</span>
+                  <span
+                    class="text-sm font-light text-gray-400 md:font-medium md:text-base">{{ Str::limit($data['description'], 75, '...') }}</span>
                 </div>
                 @role(['admin'])
                   <div class="items-end inline mt-3 md:flex md:justify-between">
@@ -105,102 +61,9 @@
               </div>
             </div>
           </a>
-        @endif
-      @endforeach
-    </div>
-
-    <div class="mb-6">
-      <div class="flex items-center gap-4 mb-2 text-white">
-        <iconify-icon class="" icon="lucide:calendar"></iconify-icon>
-        <span class="flex-shrink-0">Pertemuan 2</span>
-        <hr class="flex-grow border-[#27272A]">
+        @endforeach
       </div>
-      @foreach ($data as $key => $item)
-        @if ($key >= 3 && $key < 6)
-          <a href="" class="">
-            <div class="flex w-full p-6 mb-4 lg:items-center bg-glass rounded-xl hover:border hover:border-gray-500">
-              <div class="items-start me-4">
-                <iconify-icon icon="{{ $item['icon'] }}"
-                  class="text-7xl {{ $item['icon'] == 'bi:github' ? 'text-white' : '' }}"></iconify-icon>
-              </div>
-
-              <div class="flex-wrap justify-between w-full lg:flex">
-                <div class="">
-                  <h1 class="mb-1 font-semibold text-white text-md md:text-xl">Fundamental HTML dan
-                    CSS
-                    Dasar
-                  </h1>
-                  <span class="text-sm font-light text-gray-400 md:font-medium md:text-base">Mengenal
-                    Fundamental HTML
-                    dan
-                    CSS
-                    Dasar untuk
-                    Pemula</span>
-                </div>
-                @role(['admin'])
-                  <div class="items-end inline mt-3 md:flex md:justify-between">
-                    <div class="flex gap-6 mt-4 text-gray-400">
-                      <a href=""
-                        class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-red-600 border-[#27272A] px-4 py-1">
-                        <iconify-icon icon="mdi:trash"></iconify-icon><span>Hapus</span>
-                      </a>
-                      <a href=""
-                        class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-yellow-600 border-[#27272A] px-4 py-1">
-                        <iconify-icon icon="lucide:edit"></iconify-icon><span>Edit</span>
-                      </a>
-                    </div>
-                  </div>
-                @endrole
-              </div>
-            </div>
-          </a>
-        @endif
-      @endforeach
-    </div>
-
-    <div class="mb-6">
-      <div class="flex items-center gap-4 mb-2 text-white">
-        <iconify-icon class="" icon="lucide:calendar"></iconify-icon>
-        <span class="flex-shrink-0">Pertemuan 3</span>
-        <hr class="flex-grow border-[#27272A]">
-      </div>
-      <a href="" class="">
-        <div class="flex w-full p-6 mb-4 lg:items-center bg-glass rounded-xl hover:border hover:border-gray-500">
-          <div class="items-start me-4">
-            <iconify-icon icon="logos:blogger" class="text-7xl"></iconify-icon>
-          </div>
-
-          <div class="flex-wrap justify-between w-full lg:flex">
-            <div class="">
-              <h1 class="mb-1 font-semibold text-white text-md md:text-xl">Fundamental HTML dan
-                CSS
-                Dasar
-              </h1>
-              <span class="text-sm font-light text-gray-400 md:font-medium md:text-base">Mengenal
-                Fundamental HTML
-                dan
-                CSS
-                Dasar untuk
-                Pemula</span>
-            </div>
-            @role(['admin'])
-              <div class="items-end inline mt-3 md:flex md:justify-between">
-                <div class="flex gap-6 mt-4 text-gray-400">
-                  <a href=""
-                    class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-red-600 border-[#27272A] px-4 py-1">
-                    <iconify-icon icon="mdi:trash"></iconify-icon><span>Hapus</span>
-                  </a>
-                  <a href=""
-                    class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-yellow-600 border-[#27272A] px-4 py-1">
-                    <iconify-icon icon="lucide:edit"></iconify-icon><span>Edit</span>
-                  </a>
-                </div>
-              </div>
-            @endrole
-          </div>
-        </div>
-      </a>
-    </div>
+    @endforeach
   </section>
   {{-- View All Modul End --}}
 
