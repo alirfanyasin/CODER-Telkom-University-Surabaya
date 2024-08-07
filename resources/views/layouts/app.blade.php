@@ -72,8 +72,8 @@
               class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-[#18181B] border border-[#27292C] shadow-md rounded-lg p-2"
               aria-labelledby="hs-dropdown-with-header">
               <div class="py-3 px-5 -m-2 text-white hover:bg-[#27292C] rounded-t-lg block md:hidden">
-                <p class="text-sm">Irfan Yasin</p>
-                <p class="text-sm font-medium">Ketua Web Development</p>
+                <p class="text-sm">{{ Auth::user()->name }}</p>
+                <p class="text-sm font-medium">{{ Auth::user()->label }}</p>
               </div>
               <div class="py-2 mt-2 first:pt-0 last:pb-0">
                 <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:bg-[#27292C]"
@@ -82,15 +82,15 @@
                   Profil
                 </a>
                 <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:bg-[#27292C]"
-                  href="#">
+                  href="{{ route('logout') }}">
                   <iconify-icon icon="uil:exit" class="text-lg"></iconify-icon>
                   Logout
                 </a>
               </div>
             </div>
             <div class="ml-2.5 text-white hidden md:block">
-              <h5 class="text-white font-mediom">Irfan Yasin</h5>
-              <p class="text-xs font-light text-gray-400">Ketua Web Development</p>
+              <h5 class="text-white font-mediom">{{ Auth::user()->name }}</h5>
+              <p class="text-xs font-light text-gray-400">{{ Auth::user()->label }}</p>
             </div>
           </div>
         </div>
@@ -213,7 +213,7 @@
           </a>
         </li>
 
-        <li class="mb-4 hs-accordion {{ Request::is('app/event/*') ? 'active' : '' }}" id="event-accordion">
+        <li class="mb-4 hs-accordion hidden {{ Request::is('app/event/*') ? 'active' : '' }}" id="event-accordion">
           <button type="button"
             class="hs-accordion-toggle hs-accordion-active:hover:bg-white mb-1.5 w-full text-start flex items-center gap-x-3.5 py-3 hover:text-black hover:bg-white px-3 text-md font-medium text-gray-400 bg-transparent rounded-lg">
             <iconify-icon icon="carbon:event" class="text-2xl"></iconify-icon>

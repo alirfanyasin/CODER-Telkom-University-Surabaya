@@ -21,6 +21,15 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'label',
+        'major',
+        'nim',
+        'batch',
+        'phone_number',
+        'avatar',
+        'github',
+        'identity_code',
+        'google_id'
     ];
 
     /**

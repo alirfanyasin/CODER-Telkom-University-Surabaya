@@ -26,28 +26,46 @@
           Atau
           <span>&#9135;</span><span>&#9135;</span><span>&#9135;</span><span>&#9135;</span><span>&#9135;</span><span>&#9135;</span><span>&#9135;</span><span>&#9135;</span><span>&#9135;</span><span>&#9135;</span>
         </p>
-        <form action="">
+        <form wire:submit='register'>
           <div class="block text-left">
-            <label for="input-label" class="text-xs font-normal text-white">Nama Lengkap</label>
-            <input type="text" id="input-label"
-              class="block w-full px-4 py-3 mt-1 mb-4 text-sm border border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-              placeholder="">
-            <label for="input-label" class="text-xs font-normal text-white">Username / Alamat Email</label>
-            <input type="text" id="input-label"
-              class="block w-full px-4 py-3 mt-1 mb-4 text-sm border border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-              placeholder="">
-            <label for="input-label" class="text-xs font-normal text-white">Kata Sandi</label>
-            <input type="password" id="input-label"
-              class="block w-full px-4 py-3 mt-1 mb-4 text-sm border border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-              placeholder="">
+            <div class="mb-4">
+              <label for="name" class="text-xs font-normal text-white">Nama Lengkap</label>
+              <input type="text" id="name" wire:model='name'
+                class="block w-full px-4 py-3 mt-1 text-sm border border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                placeholder="">
+              @error('name')
+                <small class="text-red-600"> {{ $message }} </small>
+              @enderror
+            </div>
+            <div class="mb-4">
+              <label for="email" class="text-xs font-normal text-white">Alamat Email</label>
+              <input type="text" id="email" wire:model='email'
+                class="block w-full px-4 py-3 mt-1 text-sm border border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                placeholder="">
+              @error('email')
+                <small class="text-red-600"> {{ $message }} </small>
+              @enderror
+            </div>
+            <div class="mb-4">
+              <label for="password" class="text-xs font-normal text-white">Kata Sandi</label>
+              <input type="password" id="password" wire:model='password'
+                class="block w-full px-4 py-3 mt-1 text-sm border border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                placeholder="">
+              @error('password')
+                <small class="text-red-600"> {{ $message }} </small>
+              @enderror
+            </div>
           </div>
+          <button type="submit"
+            class="inline-flex items-center justify-center w-full px-4 py-3 mb-6 text-sm bg-white border border-transparent rounded-lg gap-x-2 bg-opacity-30 disabled:opacity-50 disabled:pointer-events-none">
+            <span class="font-semibold text-white" wire:loading.remove>
+              Daftar
+            </span>
+            <span class="font-semibold text-white" wire:loading>
+              Loading...
+            </span>
+          </button>
         </form>
-        <button type="submit"
-          class="inline-flex items-center justify-center w-full px-4 py-3 mb-6 text-sm bg-white border border-transparent rounded-lg gap-x-2 bg-opacity-30 disabled:opacity-50 disabled:pointer-events-none">
-          <span class="font-semibold text-white">
-            Daftar
-          </span>
-        </button>
         <p class="text-xs text-center text-white">Apakah Anda sudah mempunyai akun? <a href="{{ route('login') }}"
             wire:navigate class="font-semibold">Masuk</a>
         </p>
