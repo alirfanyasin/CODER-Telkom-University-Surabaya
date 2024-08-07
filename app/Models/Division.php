@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\ELeaning\Modul;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Division extends Model
 {
@@ -35,4 +37,15 @@ class Division extends Model
     ];
 
     protected $guarded = ['id'];
+
+
+    /**
+     * Get all of the moduls for the Division
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function modul(): HasMany
+    {
+        return $this->hasMany(Modul::class, 'division_id');
+    }
 }
