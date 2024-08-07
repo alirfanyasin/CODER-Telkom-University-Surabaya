@@ -19,6 +19,7 @@ class Register extends Component
     public $name;
 
     #[Validate('required', message: 'Email wajib di isi', translate: true)]
+    #[Validate('unique:users,email', message: 'Email sudah terdaftar', translate: true)]
     public $email;
 
     #[Validate('required', message: 'Password wajib di isi', translate: true)]
