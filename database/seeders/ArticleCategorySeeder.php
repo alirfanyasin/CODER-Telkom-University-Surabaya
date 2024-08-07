@@ -19,7 +19,7 @@ class ArticleCategorySeeder extends Seeder
             ArticleCategory::create([
                 'name' => $data
             ]);
-            dump('Article Category created ' . $data);
+            // dump('Article Category created ' . $data);
         }
     }
 }
