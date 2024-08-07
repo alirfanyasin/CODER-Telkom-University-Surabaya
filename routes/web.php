@@ -78,6 +78,7 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:admin'])->group(function () {
       Route::get('/e-learning/modul/create', ModulCreate::class)->name('app.e-learning.modul.create');
       Route::get('/e-learning/modul/edit', ModulEdit::class)->name('app.e-learning.modul.edit');
+      // Route::get('/e-learning/modul/{id}/destroy', ModulEdit::class)->name('app.e-learning.modul.destroy');
     });
 
     // Event
