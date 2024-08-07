@@ -36,7 +36,7 @@
               <h3 class="text-2xl font-semibold text-white">Tugas {{ $j }}</h3>
               <p class="font-light text-gray-400">Membuat website menggunakan HTML dan CSS</p>
 
-              <div class="mt-4">
+              <div class="@role(['admin']) flex items-center @endrole mt-4">
                 @role(['admin'])
                   <div class="flex items-center w-full">
                     <a href="{{ route('app.e-learning.task.submission') }}" wire:navigate
