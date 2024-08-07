@@ -26,34 +26,47 @@
           Atau
           <span>&#9135;</span><span>&#9135;</span><span>&#9135;</span><span>&#9135;</span><span>&#9135;</span><span>&#9135;</span><span>&#9135;</span><span>&#9135;</span><span>&#9135;</span><span>&#9135;</span>
         </p>
-        <form action="">
+        <form wire:submit='login'>
           <div class="block text-left">
-            <label for="input-label" class="text-xs font-normal text-white">Username / Alamat Email</label>
-            <input type="text" id="input-label"
-              class="block w-full px-4 py-3 mt-1 mb-4 text-sm border border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-              placeholder="">
-            <label for="input-label" class="text-xs font-normal text-white">Kata Sandi</label>
-            <input type="password" id="input-label"
-              class="block w-full px-4 py-3 mt-1 mb-4 text-sm border border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-              placeholder="">
+            <div class="mb-4">
+              <label for="email" class="text-xs font-normal text-white">Alamat Email</label>
+              <input type="email" id="email" wire:model='email'
+                class="block w-full px-4 py-3 mt-1 text-sm border border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                placeholder="">
+              @error('email')
+                <small class="text-red-600"> {{ $message }} </small>
+              @enderror
+            </div>
+            <div class="mb-4">
+              <label for="password" class="text-xs font-normal text-white">Kata Sandi</label>
+              <input type="password" id="password" wire:model='password'
+                class="block w-full px-4 py-3 mt-1 text-sm border border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                placeholder="">
+              @error('password')
+                <small class="text-red-600"> {{ $message }} </small>
+              @enderror
+            </div>
           </div>
+          <div class="flex justify-between mb-3 text-sm text-white">
+            <div class="flex">
+              <input type="checkbox"
+                class="text-blue-600 border-gray-200 rounded shrink-0 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none "
+                id="hs-default-checkbox">
+              <label for="hs-default-checkbox" class="text-xs ms-3">Ingat
+                Saya</label>
+            </div>
+            <a href="" class="text-xs">Lupa Kata Sandi</a>
+          </div>
+          <button type="submit"
+            class="inline-flex items-center justify-center w-full px-4 py-3 mb-6 text-sm bg-white border border-transparent rounded-lg gap-x-2 bg-opacity-30 disabled:opacity-50 disabled:pointer-events-none">
+            <span class="font-semibold text-white" wire:loading.remove>
+              Masuk
+            </span>
+            <span class="font-semibold text-white" wire:loading>
+              Loading...
+            </span>
+          </button>
         </form>
-        <div class="flex justify-between mb-3 text-sm text-white">
-          <div class="flex">
-            <input type="checkbox"
-              class="text-blue-600 border-gray-200 rounded shrink-0 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none "
-              id="hs-default-checkbox">
-            <label for="hs-default-checkbox" class="text-xs ms-3">Ingat
-              Saya</label>
-          </div>
-          <a href="" class="text-xs">Lupa Kata Sandi</a>
-        </div>
-        <button type="submit"
-          class="inline-flex items-center justify-center w-full px-4 py-3 mb-6 text-sm bg-white border border-transparent rounded-lg gap-x-2 bg-opacity-30 disabled:opacity-50 disabled:pointer-events-none">
-          <span class="font-semibold text-white">
-            Masuk
-          </span>
-        </button>
         <p class="text-xs text-center text-white">Apakah Anda belun mempunyai akun? <a href="{{ route('register') }}"
             wire:navigate class="font-semibold">Daftar</a>
         </p>

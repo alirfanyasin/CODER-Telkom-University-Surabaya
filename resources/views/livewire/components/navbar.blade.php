@@ -23,17 +23,28 @@
           <path d="m6 6 12 12" />
         </svg>
       </button>
-      <a href="{{ route('login') }}" wire:navigate
-        class="items-center hidden px-3 py-2 text-sm font-medium text-white rounded-lg shadow-sm sm:inline-flex gap-x-2 disabled:pointer-events-none">
-        Masuk
-      </a>
-      <a href="{{ route('register') }}"
-        class="items-center hidden px-3 py-2 text-sm font-medium text-gray-800 bg-white border border-gray-200 rounded-full shadow-sm sm:inline-flex gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
-        Daftar
-        <span>
-          <iconify-icon icon="fluent:arrow-up-20-filled" class="rotate-45"></iconify-icon>
-        </span>
-      </a>
+      @guest
+        <a href="{{ route('login') }}" wire:navigate
+          class="items-center hidden px-3 py-2 text-sm font-medium text-white rounded-lg shadow-sm sm:inline-flex gap-x-2 disabled:pointer-events-none">
+          Masuk
+        </a>
+        <a href="{{ route('register') }}"
+          class="items-center hidden px-3 py-2 text-sm font-medium text-gray-800 bg-white border border-gray-200 rounded-full shadow-sm sm:inline-flex gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
+          Daftar
+          <span>
+            <iconify-icon icon="fluent:arrow-up-20-filled" class="rotate-45"></iconify-icon>
+          </span>
+        </a>
+      @endguest
+      @auth
+        <a href="{{ route('app.dashboard') }}"
+          class="items-center hidden px-3 py-2 text-sm font-medium text-gray-800 bg-white border border-gray-200 rounded-full shadow-sm sm:inline-flex gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
+          Dashboard
+          <span>
+            <iconify-icon icon="fluent:arrow-up-20-filled" class="rotate-45"></iconify-icon>
+          </span>
+        </a>
+      @endauth
     </div>
     <div id="navbar-alignment"
       class="hidden overflow-hidden transition-all duration-300 hs-collapse basis-full grow sm:grow-0 sm:basis-auto sm:block sm:order-2">
@@ -43,8 +54,14 @@
         <a class="font-normal text-white hover:text-gray-400" href="#">Divisi</a>
         <a class="font-normal text-white hover:text-gray-400" href="{{ route('gallery') }}" wire:navigate>Galeri</a>
         <a class="font-normal text-white hover:text-gray-400" href="{{ route('article') }}" wire:navigate>Artikel</a>
-        <a class="block font-medium text-white sm:hidden hover:text-gray-400" href="#">Masuk</a>
-        <a class="block font-medium text-white sm:hidden hover:text-gray-400" href="#">Daftar</a>
+        @guest
+          <a class="block font-medium text-white sm:hidden hover:text-gray-400" href="{{ route('login') }}">Masuk</a>
+          <a class="block font-medium text-white sm:hidden hover:text-gray-400" href="{{ route('register') }}">Daftar</a>
+        @endguest
+        @auth
+          <a class="block font-medium text-white sm:hidden hover:text-gray-400"
+            href="{{ route('app.dashboard') }}">Dashboard</a>
+        @endauth
       </div>
     </div>
   </nav>
