@@ -33,41 +33,33 @@ class UserRolePermissionSeeder extends Seeder
                 'email' => strtolower(str_replace(" ", "", Division::DIVISION_NAMES[$i])) . '@gmail.com',
                 'password' => Hash::make('password'),
                 'label' => Label::LABEL_NAME['admin'] . Division::DIVISION_NAMES[$i],
-                'identity_code' => 'ID-' . strtoupper(Str::random(10))
+                'identity_code' => 'ID-' . strtoupper(Str::random(10)),
+                'division_id' => $i + 1
             ]);
             $createdAdmin->assignRole('admin');
             dump('Admin created ' . $createdAdmin['name']);
         }
 
-        $users = [
-            [
-                'name' => 'User1',
-                'email' => 'user@gmail.com',
+        for ($i = 0; $i < count(Division::DIVISION_NAMES); $i++) {
+            $createdUser = User::create([
+                'name' => 'Anggota' . $i + 1,
+                'email' => 'anggota' . $i + 1 . strtolower(str_replace(" ", "", Division::DIVISION_NAMES[$i])) . '@gmail.com',
                 'password' => Hash::make('password'),
-                'label' => Label::LABEL_NAME['user'] . Division::DIVISION_NAMES[0],
-                'identity_code' => 'ID-' . strtoupper(Str::random(10))
-            ],
-            [
-                'name' => 'User2',
-                'email' => 'user2@gmail.com',
-                'password' => Hash::make('password'),
-                'label' => Label::LABEL_NAME['guest'],
-                'identity_code' => 'ID-' . strtoupper(Str::random(10))
-            ],
-        ];
-
-
-        foreach ($users as $user) {
-            $createdUser = User::create($user);
+                'label' => Label::LABEL_NAME['user'] . Division::DIVISION_NAMES[$i],
+                'identity_code' => 'ID-' . strtoupper(Str::random(10)),
+                'division_id' => $i + 1
+            ]);
             $createdUser->assignRole('user');
-
-            if ($createdUser->email == 'user@gmail.com') {
-                $createdUser->givePermissionTo('unverified');
-            } else {
-                $createdUser->givePermissionTo('verified');
-            }
-
-            dump('User created ' . $createdUser->name);
+            dump('User created ' . $createdUser['name']);
         }
+
+
+        $superAdmin = User::create([
+            'name' => 'User',
+            'email' => 'user@gmail.com',
+            'password' => Hash::make('password'),
+            'label' => Label::LABEL_NAME['guest'],
+        ]);
+        $superAdmin->assignRole('guest');
     }
 }

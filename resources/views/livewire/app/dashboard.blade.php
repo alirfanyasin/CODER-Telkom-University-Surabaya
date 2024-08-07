@@ -2,7 +2,7 @@
   {{-- Header Section Start --}}
   <section class="my-10">
     <header>
-      <h2 class="text-3xl font-semibold text-white">Halo, Irfan Yasin</h2>
+      <h2 class="text-3xl font-semibold text-white">Halo, {{ Auth::user()->name }}</h2>
       <p class="text-gray-400">Siap untuk belajar sekarang!</p>
     </header>
   </section>

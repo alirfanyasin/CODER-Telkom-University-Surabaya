@@ -53,27 +53,32 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth'])->group(function () {
   // Authenticated - User
   Route::prefix('app')->group(function () {
-    Route::get('/logout', [Logout::class, 'logout'])->name('logout');
 
     Route::get('/', Dashboard::class)->name('app.dashboard');
 
     // Tugas
     Route::get('/e-learning/task', Task::class)->name('app.e-learning.task');
-    Route::get('/e-learning/task/create', TaskCreate::class)->name('app.e-learning.task.create');
     Route::get('/e-learning/task/tugas-1/detail', TaskDetail::class)->name('app.e-learning.task.detail');
-    Route::get('/e-learning/task/tugas-1/edit', TaskEdit::class)->name('app.e-learning.task.edit');
-    Route::get('/e-learning/task/tugas-1/submission', TaskSubmission::class)->name('app.e-learning.task.submission');
+    Route::middleware(['role:admin'])->group(function () {
+      Route::get('/e-learning/task/create', TaskCreate::class)->name('app.e-learning.task.create');
+      Route::get('/e-learning/task/tugas-1/edit', TaskEdit::class)->name('app.e-learning.task.edit');
+      Route::get('/e-learning/task/tugas-1/submission', TaskSubmission::class)->name('app.e-learning.task.submission');
+    });
 
     // Meeting
     Route::get('/e-learning/meeting', Meeting::class)->name('app.e-learning.meeting');
-    Route::get('/e-learning/meeting/create', MeetingCreate::class)->name('app.e-learning.meeting.create');
     Route::get('/e-learning/meeting/pertemuan-1/show', MeetingDetail::class)->name('app.e-learning.meeting.show');
-    Route::get('/e-learning/meeting/pertemuan-1/edit', MeetingEdit::class)->name('app.e-learning.meeting.edit');
+    Route::middleware(['role:admin'])->group(function () {
+      Route::get('/e-learning/meeting/create', MeetingCreate::class)->name('app.e-learning.meeting.create');
+      Route::get('/e-learning/meeting/pertemuan-1/edit', MeetingEdit::class)->name('app.e-learning.meeting.edit');
+    });
 
     // Modul
     Route::get('/e-learning/modul', Modul::class)->name('app.e-learning.modul');
-    Route::get('/e-learning/modul/create', ModulCreate::class)->name('app.e-learning.modul.create');
-    Route::get('/e-learning/modul/edit', ModulEdit::class)->name('app.e-learning.modul.edit');
+    Route::middleware(['role:admin'])->group(function () {
+      Route::get('/e-learning/modul/create', ModulCreate::class)->name('app.e-learning.modul.create');
+      Route::get('/e-learning/modul/edit', ModulEdit::class)->name('app.e-learning.modul.edit');
+    });
 
     // Event
     Route::get('/event/management-event', ManagementEvent::class)->name('app.event.management-event');
@@ -82,9 +87,11 @@ Route::middleware(['auth'])->group(function () {
 
     // Presence
     Route::get('/presence', Presence::class)->name('app.presence');
-    Route::get('/presence/create', PresenceCreate::class)->name('app.presence.create');
     Route::get('/presence/presensi-1/show', PresenceDetail::class)->name('app.presence.show');
-    Route::get('/presence/presensi-1/edit', PresenceEdit::class)->name('app.presence.edit');
+    Route::middleware(['role:admin'])->group(function () {
+      Route::get('/presence/create', PresenceCreate::class)->name('app.presence.create');
+      Route::get('/presence/presensi-1/edit', PresenceEdit::class)->name('app.presence.edit');
+    });
 
     // Member
     Route::get('member', Member::class)->name('app.member');
@@ -93,5 +100,8 @@ Route::middleware(['auth'])->group(function () {
     // Profile
     Route::get('profile', Profile::class)->name('app.profile');
     Route::get('profile/edit', ProfileEdit::class)->name('app.profile.edit');
+
+    // Logout Route
+    Route::get('/logout', [Logout::class, 'logout'])->name('logout');
   });
 });
