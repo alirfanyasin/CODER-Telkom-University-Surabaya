@@ -33,20 +33,6 @@
           {{-- <select class="block w-full p-3 text-white rounded-lg pe-9 bg-lightGray" wire:model='section'>
             <option selected disabled>Pertemuan ke-</option>
             <option value="1">Pertemuan ke-1</option>
-            <option value="2">Pertemuan ke-2</option>
-            <option value="3">Pertemuan ke-3</option>
-            <option value="4">Pertemuan ke-4</option>
-            <option value="5">Pertemuan ke-5</option>
-            <option value="6">Pertemuan ke-6</option>
-            <option value="7">Pertemuan ke-7</option>
-            <option value="8">Pertemuan ke-8</option>
-            <option value="9">Pertemuan ke-9</option>
-            <option value="10">Pertemuan ke-10</option>
-            <option value="11">Pertemuan ke-11</option>
-            <option value="12">Pertemuan ke-12</option>
-            <option value="13">Pertemuan ke-13</option>
-            <option value="14">Pertemuan ke-14</option>
-            <option value="15">Pertemuan ke-15</option>
           </select> --}}
           @error('section')
             <small class="text-red-600"> {{ $message }} </small>
