@@ -40,6 +40,16 @@ class Division extends Model
 
 
     /**
+     * Get all of the user for the Division
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function user(): HasMany
+    {
+        return $this->hasMany(User::class, 'division_id');
+    }
+
+    /**
      * Get all of the moduls for the Division
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
