@@ -20,7 +20,7 @@
 
   {{-- Profile Start --}}
   <section class="flex flex-col gap-4 mb-6 md:flex-row">
-    <div class="p-6 text-center rounded-lg md:w-4/12 bg-glasses h-fit">
+    <div class="p-6 text-center rounded-lg md:w-4/12 bg-glass h-fit">
       <div class="w-40 h-40 mx-auto mb-3 overflow-hidden rounded-full">
         <img src="{{ asset('assets/images/avatar.png') }}" alt="Avatar" class="object-cover w-full h-full">
       </div>
@@ -43,7 +43,7 @@
     <div class="flex flex-col w-full gap-4">
       <div class="flex w-full h-auto gap-2 md:gap-4">
         <div
-          class="flex flex-col items-center w-4/12 p-6 text-center shadow-sm bg-glasses md:items-start md:text-start rounded-xl">
+          class="flex flex-col items-center w-4/12 p-6 text-center shadow-sm bg-glass md:items-start md:text-start rounded-xl">
           <div class="bg-[#27292C] p-2 flex items-center justify-center rounded-full w-fit mb-6">
             <iconify-icon icon="ph:user-check" class="text-gray-400 hover:text-red-600" height="30"></iconify-icon>
           </div>
@@ -51,7 +51,7 @@
           <h1 class="text-3xl font-bold text-white">100%</h1>
         </div>
         <div
-          class="flex flex-col items-center w-4/12 p-6 text-center shadow-sm bg-glasses md:items-start md:text-start rounded-xl">
+          class="flex flex-col items-center w-4/12 p-6 text-center shadow-sm bg-glass md:items-start md:text-start rounded-xl">
           <div class="bg-[#27292C] p-2 flex items-center justify-center rounded-full w-fit mb-6">
             <iconify-icon icon="ph:coin-light" class="text-gray-400 hover:text-yellow-600"
               height="30"></iconify-icon>
@@ -60,7 +60,7 @@
           <h1 class="text-3xl font-bold text-white">120</h1>
         </div>
         <div
-          class="flex flex-col items-center w-4/12 p-6 text-center shadow-sm bg-glasses md:items-start md:text-start rounded-xl">
+          class="flex flex-col items-center w-4/12 p-6 text-center shadow-sm bg-glass md:items-start md:text-start rounded-xl">
           <div class="bg-[#27292C] p-2 flex items-center justify-center rounded-full w-fit mb-6">
             <iconify-icon icon="mdi:work-outline" class="text-gray-400 hover:text-lime-600"
               height="30"></iconify-icon>
@@ -69,7 +69,7 @@
           <h1 class="text-3xl font-bold text-white">08</h1>
         </div>
       </div>
-      <div class="flex flex-col w-full p-6 bg-glasses rounded-xl">
+      <div class="flex flex-col w-full p-6 bg-glass rounded-xl">
         <div class="flex items-center gap-4 mb-6">
           <h1 class="text-gray-400 ">Informasi Terkait</h1>
           <hr class="flex-grow border-[#4F4F55] mb-3">
