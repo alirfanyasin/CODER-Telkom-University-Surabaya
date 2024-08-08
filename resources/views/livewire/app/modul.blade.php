@@ -34,7 +34,8 @@
             download="{{ 'CODER - ' . $data['name'] }}" target="_blank" class="">
             <div class="flex w-full p-6 mb-4 lg:items-center bg-glass rounded-xl hover:border hover:border-gray-500">
               <div class="items-start me-4">
-                <iconify-icon icon="{{ $data->type }}" class="text-7xl"></iconify-icon>
+                <iconify-icon icon="{{ $data->type }}"
+                  class="{{ $data->type == 'bi:github' ? 'text-white' : '' }} text-7xl"></iconify-icon>
               </div>
 
               <div class="flex-wrap justify-between w-full lg:flex">
@@ -51,7 +52,7 @@
                         class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-red-600 border-[#27272A] px-4 py-1">
                         <iconify-icon icon="mdi:trash"></iconify-icon><span>Hapus</span>
                       </a>
-                      <a href=""
+                      <a href="{{ route('app.e-learning.modul.edit', $data->id) }}" wire:navigate
                         class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-yellow-600 border-[#27272A] px-4 py-1">
                         <iconify-icon icon="lucide:edit"></iconify-icon><span>Edit</span>
                       </a>
