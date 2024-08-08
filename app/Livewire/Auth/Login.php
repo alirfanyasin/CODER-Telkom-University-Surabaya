@@ -3,6 +3,7 @@
 namespace App\Livewire\Auth;
 
 use Illuminate\Support\Facades\Auth;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
@@ -13,6 +14,8 @@ use Livewire\Component;
 
 class Login extends Component
 {
+    use LivewireAlert;
+
     #[Validate('required', message: 'Email wajib di isi', translate: true)]
     public $email;
 
@@ -41,7 +44,12 @@ class Login extends Component
             }
         } else {
             $this->reset('password');
-            dd('Email atau Password Salah');
+            $this->alert('error', 'Email atau Password Salah!', [
+                'position' => 'top-end',
+                'timer' => 3000,
+                'toast' => true,
+                'timerProgressBar' => true,
+            ]);
         }
     }
 
