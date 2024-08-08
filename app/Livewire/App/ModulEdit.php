@@ -33,8 +33,6 @@ class ModulEdit extends Component
     #[Validate('nullable', message: "Link tidak wajib di isi", translate: true)]
     public $link;
     #[Validate('nullable', message: "Jenis File tidak wajib di isi", translate: true)]
-    // #[Validate('file', message: "Wajib file yang di upload", translate: true)]
-    // #[Validate('mimes:pdf,pptx,ppt,xlsx,docx,doc,txt', message: "File yang di upload salah", translate: true)]
     #[Validate('max:5120', message: "Maksimum 5 MB", translate: true)]
     public $file;
 
