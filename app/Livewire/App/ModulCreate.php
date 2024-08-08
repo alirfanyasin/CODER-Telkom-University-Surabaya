@@ -36,7 +36,7 @@ class ModulCreate extends Component
     #[Validate('max:5120', message: "Maksimum 5 MB", translate: true)]
     public $file;
 
-    public function create()
+    public function store()
     {
         $this->validate();
         if ($this->file) {

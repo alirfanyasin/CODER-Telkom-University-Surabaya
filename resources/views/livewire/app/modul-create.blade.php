@@ -5,7 +5,7 @@
   </header>
   {{-- Header End --}}
 
-  <form wire:submit='create' enctype="multipart/form-data">
+  <form wire:submit='store' enctype="multipart/form-data">
     {{-- Informasi Modul Start --}}
     <div class="w-full p-6 mb-6 bg-glasses rounded-xl">
       <header class="flex items-center justify-between mb-8 text-white">
