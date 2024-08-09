@@ -76,7 +76,7 @@ class ProfileEdit extends Component
 
         $user->save();
 
-        $this->alert('success', 'Profile updated successfully', [
+        $this->alert('success', 'Profile Berhasil Diupdate', [
             'position' => 'top-end',
             'timer' => 3000,
             'toast' => true,
