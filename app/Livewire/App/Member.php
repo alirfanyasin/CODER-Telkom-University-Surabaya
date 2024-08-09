@@ -15,11 +15,23 @@ use Livewire\Component;
 
 class Member extends Component
 {
+    public function makeALeader($id)
+    {
+        $user = User::findOrFail($id);
+        $user->removeRole('user');
+        $user->assignRole('admin');
+        $user->division_id = Auth::user()->division_id;
+        $user->identity_code =  'ID-' . strtoupper(Str::random(10));
+        $user->label = Label::LABEL_NAME['admin'] . Auth::user()->division->name;
+        $user->save();
+    }
+
 
     public function removeAsAMember($id)
     {
         $user = User::findOrFail($id);
         $user->removeRole('user');
+        $user->removeRole('admin');
         $user->assignRole('guest');
         $user->division_id = NULL;
         $user->identity_code =  NULL;
