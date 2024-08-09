@@ -149,62 +149,66 @@
             Dashboard
           </a>
         </li>
-        @role(['super-admin|admin|user'])
-          <li class="mb-4 hs-accordion {{ Request::is('app/e-learning/*') ? 'active' : '' }}"
-            id="e-learning-accordion">
-            <button type="button"
-              class="hs-accordion-toggle hs-accordion-active:text-gray-400 hs-accordion-active:hover:text-black  w-full text-start flex items-center gap-x-3.5 py-3 hover:text-black hover:bg-white mb-1.5 px-3 text-md font-medium text-gray-400 bg-transparent rounded-lg">
-              <iconify-icon icon="game-icons:spell-book" class="text-2xl"></iconify-icon>
-              E-Learning
+        @role(['super-admin|admin|user|guest'])
+          @role(['super-admin|admin|user'])
+            <li class="mb-4 hs-accordion {{ Request::is('app/e-learning/*') ? 'active' : '' }}"
+              id="e-learning-accordion">
+              <button type="button"
+                class="hs-accordion-toggle hs-accordion-active:text-gray-400 hs-accordion-active:hover:text-black  w-full text-start flex items-center gap-x-3.5 py-3 hover:text-black hover:bg-white mb-1.5 px-3 text-md font-medium text-gray-400 bg-transparent rounded-lg">
+                <iconify-icon icon="game-icons:spell-book" class="text-2xl"></iconify-icon>
+                E-Learning
 
-              <iconify-icon icon="mdi:chevron-up"
-                class="hidden text-xl text-gray-600 hs-accordion-active:block ms-auto size-4 group-hover:text-gray-500"></iconify-icon>
-              <iconify-icon icon="mdi:chevron-down"
-                class="block text-xl text-gray-600 hs-accordion-active:hidden ms-auto size-4 group-hover:text-gray-500"></iconify-icon>
+                <iconify-icon icon="mdi:chevron-up"
+                  class="hidden text-xl text-gray-600 hs-accordion-active:block ms-auto size-4 group-hover:text-gray-500"></iconify-icon>
+                <iconify-icon icon="mdi:chevron-down"
+                  class="block text-xl text-gray-600 hs-accordion-active:hidden ms-auto size-4 group-hover:text-gray-500"></iconify-icon>
 
-            </button>
+              </button>
 
-            <div id="e-learning-accordion"
-              class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 {{ Request::is('app/e-learning/*') ? 'block' : 'hidden' }}">
-              <ul class="pt-2 hs-accordion-group" data-hs-accordion-always-open>
-                <li class="hs-accordion" id="e-learning-accordion-sub-1">
-                  <a href="{{ route('app.e-learning.modul') }}" wire:navigate
-                    class="flex py-3 font-medium text-gray-400 rounded-lg text-md item-center hover:bg-white mb-1.5 hover:text-black ps-10 {{ Request::is('app/e-learning/modul/*') ? 'active-menu' : 'text-gray-400' }} {{ Request::is('app/e-learning/modul') ? 'active-menu' : 'text-gray-400' }}">
-                    <iconify-icon icon="fluent-emoji-high-contrast:open-book" class="mr-3 text-2xl"></iconify-icon>
-                    Modul
-                  </a>
-                </li>
-                <li class="hs-accordion" id="e-learning-accordion-sub-2">
-                  <a href="{{ route('app.e-learning.task') }}" wire:navigate
-                    class="flex py-3 font-medium text-gray-400 rounded-lg text-md item-center hover:bg-white mb-1.5 hover:text-black ps-10 {{ Request::is('app/e-learning/task/*') ? 'active-menu' : 'text-gray-400' }} {{ Request::is('app/e-learning/task') ? 'active-menu' : 'text-gray-400' }}">
-                    <iconify-icon icon="bx:task" class="mr-3 text-2xl"></iconify-icon>
-                    Tugas
-                  </a>
-                </li>
-                <li class="hs-accordion" id="e-learning-accordion-sub-3">
-                  <a href="{{ route('app.e-learning.meeting') }}" wire:navigate
-                    class="flex py-3 font-medium rounded-lg text-md item-center hover:bg-white mb-1.5 hover:text-black ps-10 {{ Request::is('app/e-learning/meeting/*') ? 'active-menu' : 'text-gray-400' }} {{ Request::is('app/e-learning/meeting') ? 'active-menu' : 'text-gray-400' }}">
-                    <iconify-icon icon="fluent:video-24-regular" class="mr-3 text-2xl"></iconify-icon>
-                    Pertemuan
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="mb-4">
-            <a href="{{ route('app.presence') }}" wire:navigate
-              class="flex items-center px-3 py-3 font-medium rounded-lg hover:bg-white mb-1.5 hover:text-black text-md {{ Request::is('app/presence/*') ? 'active-menu' : 'text-gray-400' }} {{ Request::is('app/presence') ? 'active-menu' : 'text-gray-400' }}">
-              <iconify-icon icon="ph:user-check" class="mr-3 text-2xl"></iconify-icon>
-              Presensi
-            </a>
-          </li>
-          <li class="mb-4">
-            <a href="{{ route('app.member') }}" wire:navigate
-              class="flex items-center px-3 py-3 font-medium rounded-lg hover:bg-white mb-1.5 hover:text-black text-md {{ Request::is('app/member/*') ? 'active-menu' : 'text-gray-400' }} {{ Request::is('app/member') ? 'active-menu' : 'text-gray-400' }}">
-              <iconify-icon icon="ph:users-three" class="mr-3 text-2xl"></iconify-icon>
-              Anggota
-            </a>
-          </li>
+              <div id="e-learning-accordion"
+                class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 {{ Request::is('app/e-learning/*') ? 'block' : 'hidden' }}">
+                <ul class="pt-2 hs-accordion-group" data-hs-accordion-always-open>
+                  <li class="hs-accordion" id="e-learning-accordion-sub-1">
+                    <a href="{{ route('app.e-learning.modul') }}" wire:navigate
+                      class="flex py-3 font-medium text-gray-400 rounded-lg text-md item-center hover:bg-white mb-1.5 hover:text-black ps-10 {{ Request::is('app/e-learning/modul/*') ? 'active-menu' : 'text-gray-400' }} {{ Request::is('app/e-learning/modul') ? 'active-menu' : 'text-gray-400' }}">
+                      <iconify-icon icon="fluent-emoji-high-contrast:open-book" class="mr-3 text-2xl"></iconify-icon>
+                      Modul
+                    </a>
+                  </li>
+                  <li class="hs-accordion" id="e-learning-accordion-sub-2">
+                    <a href="{{ route('app.e-learning.task') }}" wire:navigate
+                      class="flex py-3 font-medium text-gray-400 rounded-lg text-md item-center hover:bg-white mb-1.5 hover:text-black ps-10 {{ Request::is('app/e-learning/task/*') ? 'active-menu' : 'text-gray-400' }} {{ Request::is('app/e-learning/task') ? 'active-menu' : 'text-gray-400' }}">
+                      <iconify-icon icon="bx:task" class="mr-3 text-2xl"></iconify-icon>
+                      Tugas
+                    </a>
+                  </li>
+                  <li class="hs-accordion" id="e-learning-accordion-sub-3">
+                    <a href="{{ route('app.e-learning.meeting') }}" wire:navigate
+                      class="flex py-3 font-medium rounded-lg text-md item-center hover:bg-white mb-1.5 hover:text-black ps-10 {{ Request::is('app/e-learning/meeting/*') ? 'active-menu' : 'text-gray-400' }} {{ Request::is('app/e-learning/meeting') ? 'active-menu' : 'text-gray-400' }}">
+                      <iconify-icon icon="fluent:video-24-regular" class="mr-3 text-2xl"></iconify-icon>
+                      Pertemuan
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="mb-4">
+              <a href="{{ route('app.presence') }}" wire:navigate
+                class="flex items-center px-3 py-3 font-medium rounded-lg hover:bg-white mb-1.5 hover:text-black text-md {{ Request::is('app/presence/*') ? 'active-menu' : 'text-gray-400' }} {{ Request::is('app/presence') ? 'active-menu' : 'text-gray-400' }}">
+                <iconify-icon icon="ph:user-check" class="mr-3 text-2xl"></iconify-icon>
+                Presensi
+              </a>
+            </li>
+          @endrole
+          @role(['super-admin|admin|user|guest'])
+            <li class="mb-4">
+              <a href="{{ route('app.member') }}" wire:navigate
+                class="flex items-center px-3 py-3 font-medium rounded-lg hover:bg-white mb-1.5 hover:text-black text-md {{ Request::is('app/member/*') ? 'active-menu' : 'text-gray-400' }} {{ Request::is('app/member') ? 'active-menu' : 'text-gray-400' }}">
+                <iconify-icon icon="ph:users-three" class="mr-3 text-2xl"></iconify-icon>
+                Anggota
+              </a>
+            </li>
+          @endrole
           @role(['super-admin|admin'])
             <li class="mb-4">
               <a href=""

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\App;
 
+use App\Models\Label;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -22,6 +23,7 @@ class Member extends Component
         $user->assignRole('guest');
         $user->division_id = NULL;
         $user->identity_code =  NULL;
+        $user->label = Label::LABEL_NAME['guest'];
         $user->save();
     }
 

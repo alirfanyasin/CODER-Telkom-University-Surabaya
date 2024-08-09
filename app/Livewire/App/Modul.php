@@ -10,6 +10,7 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
+use ZipArchive;
 
 #[Title('Modul')]
 #[Layout('layouts.app')]
@@ -70,6 +71,61 @@ class Modul extends Component
 
         $this->itemToDelete = null;
         return redirect()->back();
+    }
+
+
+    public function downloadZip()
+    {
+        $zip = new ZipArchive;
+        $zipFileName = 'CODER - Kumpulan Modul.zip';
+        $zipFilePath = public_path($zipFileName);
+
+        $dataFiles = ELeaningModul::where('division_id', Auth::user()->division_id)
+            ->whereNotNull('file')
+            ->get();
+
+        if ($dataFiles->isEmpty()) {
+            $this->alert('error', 'Belum Ada File', [
+                'position' => 'top-end',
+                'timer' => 3000,
+                'toast' => true,
+                'timerProgressBar' => true,
+            ]);
+            return response()->json(['error' => 'Tidak ada modul yang diupload.'], 404);
+        }
+
+        if ($zip->open($zipFilePath, ZipArchive::CREATE) === TRUE) {
+            foreach ($dataFiles as $df) {
+                $filePath = storage_path('app/public/file/modul/' . $df->file);
+                if (file_exists($filePath)) {
+                    $zip->addFile($filePath, $df->file);
+                } else {
+                    $this->alert('error', 'File Tidak Ditemukan', [
+                        'position' => 'top-end',
+                        'timer' => 3000,
+                        'toast' => true,
+                        'timerProgressBar' => true,
+                    ]);
+                    $zip->addFromString($df->file, 'File tidak ditemukan: ' . $df->file);
+                }
+            }
+            $zip->close();
+            $this->alert('success', 'Berhasil Download File', [
+                'position' => 'top-end',
+                'timer' => 3000,
+                'toast' => true,
+                'timerProgressBar' => true,
+            ]);
+            return response()->download($zipFilePath)->deleteFileAfterSend(true);
+        } else {
+            $this->alert('error', 'Terjadi Kesalahan', [
+                'position' => 'top-end',
+                'timer' => 3000,
+                'toast' => true,
+                'timerProgressBar' => true,
+            ]);
+            return response()->json(['error' => 'Gagal membuat file zip.'], 500);
+        }
     }
 
 

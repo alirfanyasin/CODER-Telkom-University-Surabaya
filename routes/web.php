@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\Logout;
+use App\Http\Controllers\ZipDownload;
 use App\Livewire\App\Dashboard;
 use App\Livewire\App\Event\ManagementEvent;
 use App\Livewire\App\Event\ManagementEventDetail;
@@ -81,6 +82,7 @@ Route::middleware(['auth'])->group(function () {
       Route::get('/e-learning/modul/{id}/edit', ModulEdit::class)->name('app.e-learning.modul.edit');
       // Route::get('/e-learning/modul/{id}/destroy', ModulEdit::class)->name('app.e-learning.modul.destroy');
     });
+
 
     // Event
     Route::get('/event/management-event', ManagementEvent::class)->name('app.event.management-event');
