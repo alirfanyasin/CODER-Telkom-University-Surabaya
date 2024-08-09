@@ -1,21 +1,7 @@
 <div>
   {{-- Header Start --}}
   <header class="flex items-center justify-between my-7">
-    <h2 class="text-2xl font-bold text-white md:text-3xl">Daftar Anggota</h2>
-
-    @role(['admin|super-admin'])
-      <div class="hidden md:block">
-        <a href="{{ route('app.member.recruitment') }}" wire:navigate
-          class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md">Rekrut Anggota
-          <iconify-icon icon="mingcute:arrow-right-line" class="text-xl ms-2"></iconify-icon></a>
-      </div>
-
-      <div class="block md:hidden">
-        <a href="{{ route('app.member.recruitment') }}" wire:navigate
-          class="flex items-center justify-center w-10 h-10 text-sm font-semibold text-black bg-white rounded-full"><iconify-icon
-            icon="majesticons:plus-line" class="text-2xl"></iconify-icon></a>
-      </div>
-    @endrole
+    <h2 class="text-2xl font-bold text-white md:text-3xl">Daftar Pengguna</h2>
   </header>
   {{-- Header End --}}
 
@@ -27,14 +13,24 @@
       @foreach ($datas as $data)
         <div
           class="relative px-5 pt-5 pb-16 text-center text-white rounded-lg bg-neutral-900 group hover:border hover:border-gray-500">
+          @if ($data->tag !== null)
+            <span
+              class="absolute left-0 px-3 py-1 text-xs text-center 
+              {{ $data->tag == '#web' ? 'bg-green-800' : '' }} 
+               {{ $data->tag == '#ui/ux' ? 'bg-red-800' : '' }} 
+               {{ $data->tag == '#ai' ? 'bg-yellow-800' : '' }} 
+               {{ $data->tag == '#mobile' ? 'bg-purple-800' : '' }} 
+               {{ $data->tag == '#compe' ? 'bg-blue-800' : '' }} 
+               {{ $data->tag == '#data' ? 'bg-sky-800' : '' }} 
+                top-5">
+              {{ $data->tag }}
+            </span>
+          @endif
           <div class="w-20 h-20 mx-auto overflow-hidden rounded-full">
             <img src="{{ asset('assets/images/avatar.png') }}" alt="Avatar" class="object-cover w-full h-full">
           </div>
-          <h4 class="mt-4 font-semibold text-md">{{ $data->name }}</h4>
-          <p class="my-1 text-xs font-light text-gray-400">{{ $data->email }}</p>
-          @if ($data->hasRole('admin'))
-            <p class="text-xs font-light text-white">{{ $data->label }}</p>
-          @endif
+          <h4 class="mt-4 font-semibold text-md">{{ $data['name'] }}</h4>
+          <p class="text-xs font-light text-gray-400">{{ $data['email'] }}</p>
           <div class="absolute transform -translate-x-1/2 left-1/2 bottom-5">
             <a href="{{ route('app.member.detail') }}"
               class="inline-block py-2 text-xs border rounded-full px-9 group-hover:bg-white group-hover:text-black">
@@ -64,9 +60,9 @@
                   Jadikan Ketua Divisi
                 </a>
                 <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
-                  href="#" wire:click='removeAsAMember({{ $data->id }})'>
-                  <iconify-icon icon="hugeicons:user-star-01"></iconify-icon>
-                  Keluarkan Dari Anggota
+                  href="#" wire:click='makeAMember({{ $data->id }})'>
+                  <iconify-icon icon="hugeicons:user-check-01"></iconify-icon>
+                  Jadikan Anggota
                 </a>
                 <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
                   href="#">
