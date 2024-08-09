@@ -15,7 +15,7 @@
           class="relative px-5 pt-5 pb-16 text-center text-white rounded-lg bg-neutral-900 group hover:border hover:border-gray-500">
           @if ($data->tag !== null)
             <span
-              class="absolute left-0 px-3 py-1 text-xs text-center 
+              class="absolute left-0 px-3 py-1 text-xs text-center rounded-r-full
               {{ $data->tag == '#web' ? 'bg-green-800' : '' }} 
                {{ $data->tag == '#ui/ux' ? 'bg-red-800' : '' }} 
                {{ $data->tag == '#ai' ? 'bg-yellow-800' : '' }} 
