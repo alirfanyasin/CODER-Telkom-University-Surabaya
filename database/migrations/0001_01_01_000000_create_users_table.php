@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('avatar')->nullable();
             $table->string('github')->nullable();
             $table->string('identity_code')->nullable();
+            $table->string('tag')->nullable();
             $table->unsignedBigInteger('division_id')->nullable();
             $table->string('google_id')->nullable();
             $table->timestamps();

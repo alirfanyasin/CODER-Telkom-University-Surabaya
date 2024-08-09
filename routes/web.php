@@ -20,6 +20,7 @@ use App\Livewire\App\PresenceDetail;
 use App\Livewire\App\PresenceEdit;
 use App\Livewire\App\Member;
 use App\Livewire\App\MemberDetail;
+use App\Livewire\App\MemberRecruitment;
 use App\Livewire\App\Modul;
 use App\Livewire\App\ModulCreate;
 use App\Livewire\App\ModulEdit;
@@ -97,6 +98,9 @@ Route::middleware(['auth'])->group(function () {
     // Member
     Route::get('member', Member::class)->name('app.member');
     Route::get('member/detail', MemberDetail::class)->name('app.member.detail');
+    Route::middleware(['role:admin|super-admin'])->group(function () {
+      Route::get('member/recruitment', MemberRecruitment::class)->name('app.member.recruitment');
+    });
 
     // Profile
     Route::get('profile', Profile::class)->name('app.profile');

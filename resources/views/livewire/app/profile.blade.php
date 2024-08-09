@@ -25,7 +25,8 @@
         <img src="{{ asset('assets/images/avatar.png') }}" alt="Avatar" class="object-cover w-full h-full">
       </div>
       <h2 class="mb-3 text-xl font-semibold text-white">{{ Auth::user()->name }}</h2>
-      <p class="mb-3 text-xs font-light text-white">- {{ Auth::user()->division->name }} -</p>
+      <p class="mb-3 text-xs font-light text-white">-
+        {{ Auth::user()->division_id != null ? Auth::user()->division->name : 'Belum Ada Divisi' }} -</p>
       <p class="mb-3 text-xs font-light text-white">{{ Auth::user()->identity_code }}</p>
       <div class="flex items-center justify-center gap-6">
         <a href="">

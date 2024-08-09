@@ -2,6 +2,9 @@
 
 namespace App\Livewire\App;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -11,8 +14,22 @@ use Livewire\Component;
 
 class Member extends Component
 {
+
+    public function removeAsAMember($id)
+    {
+        $user = User::findOrFail($id);
+        $user->removeRole('user');
+        $user->assignRole('guest');
+        $user->division_id = NULL;
+        $user->identity_code =  NULL;
+        $user->save();
+    }
+
     public function render()
     {
-        return view('livewire.app.member');
+        $data = User::where('division_id', Auth::user()->division_id)->get();
+        return view('livewire.app.member', [
+            'datas' => $data
+        ]);
     }
 }
