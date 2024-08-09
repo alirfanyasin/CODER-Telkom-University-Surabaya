@@ -35,3 +35,24 @@
 } */
 
 
+/* Mengubah lebar scrollbar */
+.scroll-custom::-webkit-scrollbar {
+  width: 5px; /* Atau height: 10px; untuk scrollbar horizontal */
+}
+
+/* Mengubah warna track scrollbar */
+.scroll-custom::-webkit-scrollbar-track {
+  background: #434343;
+}
+
+/* Mengubah warna thumb (bagian yang bisa digeser) */
+.scroll-custom::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px; /* Membuat ujungnya melengkung */
+}
+
+/* Mengubah warna thumb ketika dihover */
+.scroll-custom::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
