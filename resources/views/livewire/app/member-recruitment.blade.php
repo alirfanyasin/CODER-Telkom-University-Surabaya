@@ -32,7 +32,7 @@
           <h4 class="mt-4 font-semibold text-md">{{ $data['name'] }}</h4>
           <p class="text-xs font-light text-gray-400">{{ $data['email'] }}</p>
           <div class="absolute transform -translate-x-1/2 left-1/2 bottom-5">
-            <a href="{{ route('app.member.detail') }}"
+            <a href="{{ route('app.member.detail') }}" wire:navigate
               class="inline-block py-2 text-xs border rounded-full px-9 group-hover:bg-white group-hover:text-black">
               Profile
             </a>

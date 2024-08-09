@@ -2,6 +2,7 @@
 
 namespace App\Livewire\App;
 
+use App\Models\Label;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -23,6 +24,7 @@ class MemberRecruitment extends Component
         $user->assignRole('user');
         $user->division_id = Auth::user()->division_id;
         $user->identity_code =  'ID-' . strtoupper(Str::random(10));
+        $user->label = Label::LABEL_NAME['user'] . " " . Auth::user()->division->name;
         $user->save();
     }
 
