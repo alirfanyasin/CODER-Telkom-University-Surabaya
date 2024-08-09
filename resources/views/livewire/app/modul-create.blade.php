@@ -7,7 +7,7 @@
 
   <form wire:submit='store' enctype="multipart/form-data">
     {{-- Informasi Modul Start --}}
-    <div class="w-full p-6 mb-6 bg-glasses rounded-xl">
+    <div class="w-full p-6 mb-6 bg-glass rounded-xl">
       <header class="flex items-center justify-between mb-8 text-white">
         <div class="flex items-center">
           <a href="{{ route('app.e-learning.modul') }}" wire:navigate
@@ -51,7 +51,7 @@
     {{-- Informasi Modul End --}}
 
     {{-- Upload File Start --}}
-    <div class="w-full p-6 mb-6 bg-glasses rounded-xl">
+    <div class="w-full p-6 mb-6 bg-glass rounded-xl">
       <div class="justify-between block mb-6 md:flex gap-9">
         <div class="w-full mb-6 md:mb-0">
           <label for="input-label" class="block mb-2 font-light dark:text-white">Jenis File
