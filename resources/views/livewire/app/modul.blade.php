@@ -8,7 +8,7 @@
       @role(['user|admin'])
         <div class="hidden md:block">
           <a href="#" wire:click='downloadZip'
-            class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md"><iconify-icon
+            class="flex items-center px-5 py-3 text-sm font-semibold @role('user') text-black bg-white @endrole rounded-md @role('admin') border text-white @endrole"><iconify-icon
               icon="ph:download-bold" class="text-xl"></iconify-icon> &nbsp; Download </a>
         </div>
 
