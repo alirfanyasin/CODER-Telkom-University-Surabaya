@@ -111,7 +111,7 @@
           {{-- Input chat start --}}
           <div class="sticky w-full px-2 py-2 top-10 bg-neutral-600">
             <form wire:submit.prevent='sendChat' class="flex">
-              <input type="text" name="" id="" wire:model='chat'
+              <input type="text" name="" id="" wire:model='chat' autofocus autocomplete="false"
                 class="w-full px-2 py-1 text-xs font-light text-neutral-300 bg-neutral-700 rounded-l-md focus:border-0 focus:outline-none">
               @if ($userTo)
                 @php
