@@ -105,35 +105,30 @@
           </a>
         </div>
         <div class="relative col-span-2 overflow-auto first:pt-0 last:pb-0 h-96 scroll-custom">
-          <header class="sticky top-0 hidden w-full p-2 rounded-t-md bg-neutral-800 md:block">
+          <header class="sticky top-0 w-full p-2 rounded-t-md bg-neutral-800">
             <div class="flex items-start justify-between">
-              <div class="flex items-center gap-2 mb-3">
-                <div class="w-8 h-8 overflow-hidden">
-                  <img src="{{ asset('assets/images/avatar.png') }}" alt="Avatar"
-                    class="object-cover w-full h-full rounded-full">
-                </div>
-                <div>
-                  <p class="text-sm text-white">Irfan Yasin</p>
+
+              <div class="hidden md:block">
+                <div class="flex items-center gap-2 mb-3">
+                  <div class="w-8 h-8 overflow-hidden">
+                    <img src="{{ asset('assets/images/avatar.png') }}" alt="Avatar"
+                      class="object-cover w-full h-full rounded-full">
+                  </div>
+                  <div>
+                    <p class="text-sm text-white">Irfan Yasin</p>
+                  </div>
                 </div>
               </div>
-              <button id="btn-close" class="flex items-center justify-center text-white">
-                <iconify-icon icon="uil:times"></iconify-icon>
-              </button>
-            </div>
-            <hr class="border border-neutral-600">
-          </header>
-          <header class="sticky top-0 block w-full p-2 rounded-t-md bg-neutral-800 md:hidden">
-            <div class="flex items-start justify-between">
-              <div class="flex items-center gap-2 mb-3">
-                <select name="" id="" class="text-xs text-white bg-transparent">
-                  <option value="" class="text-xs bg-glass">Irfan Yasin</option>
-                  <option value="" class="text-xs bg-glass">Dandy Ainul Yakin</option>
-                  <option value="" class="text-xs bg-glass">Fakhri Alauddin</option>
-                  <option value="" class="text-xs bg-glass">Raihan Siyun</option>
-                  <option value="" class="text-xs bg-glass">Ananda Bintang</option>
-                  <option value="" class="text-xs bg-glass">Rama</option>
-                </select>
-              </div>
+
+              <select name="" id="" class="block mb-3 text-xs text-white bg-transparent md:hidden">
+                <option value="" class="text-xs bg-glass">Irfan Yasin</option>
+                <option value="" class="text-xs bg-glass">Dandy Ainul Yakin</option>
+                <option value="" class="text-xs bg-glass">Fakhri Alauddin</option>
+                <option value="" class="text-xs bg-glass">Raihan Siyun</option>
+                <option value="" class="text-xs bg-glass">Ananda Bintang</option>
+                <option value="" class="text-xs bg-glass">Rama</option>
+              </select>
+
               <button id="btn-close" class="flex items-center justify-center text-white">
                 <iconify-icon icon="uil:times"></iconify-icon>
               </button>
