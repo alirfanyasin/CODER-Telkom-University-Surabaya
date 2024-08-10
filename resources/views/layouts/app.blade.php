@@ -233,7 +233,7 @@
 
   <div class="w-full lg:ps-96">
     <div class="h-screen p-5 space-y-4 overflow-y-auto sm:p-6 sm:space-y-6">
-      <div class="mb-28">
+      <div class="pb-40">
         {{ $slot }}
       </div>
     </div>
@@ -254,9 +254,11 @@
   <img src="{{ asset('assets/images/shape/object-5.png') }}" alt=""
     class="absolute right-0 w-1/3 top-10 -z-20">
 
-  {{-- Chat start --}}
-  @livewire('components.chat')
-  {{-- Chat end --}}
+  @role(['admin|user'])
+    {{-- Chat start --}}
+    @livewire('components.chat')
+    {{-- Chat end --}}
+  @endrole
 
 
 
