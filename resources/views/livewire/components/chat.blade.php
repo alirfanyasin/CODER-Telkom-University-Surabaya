@@ -7,11 +7,11 @@
     </button>
 
     <div
-      class="chat-div hs-dropdown-menu absolute bottom-16 right-0 transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 md:w-[650px] w-full bg-white shadow-md rounded-lg p-1 space-y-0.5 divide-y divide-gray-200 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700 hidden"
+      class="chat-div hs-dropdown-menu absolute bottom-16 right-0 transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 md:w-[650px] w-[320px] bg-white shadow-md rounded-lg p-1 space-y-0.5 divide-y divide-gray-200 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700 hidden"
       role="menu" aria-orientation="vertical" aria-labelledby="hs-dropdown-with-icons" style=" z-index: 40;"
       data-popper-placement="top-start">
-      <div class="grid grid-cols-3 ">
-        <div class="py-2 pb-5 overflow-auto first:pt-0 last:pb-0 scroll-custom h-96">
+      <div class="grid grid-cols-1 md:grid-cols-3">
+        <div class="hidden py-2 pb-5 overflow-auto first:pt-0 last:pb-0 scroll-custom h-96 md:block">
           {{-- <header class="w-full p-2 mb-4 text-black bg-white rounded-t-md">
               <h4 class="font-bold text-center">Chat</h4>
             </header> --}}
@@ -105,7 +105,7 @@
           </a>
         </div>
         <div class="relative col-span-2 overflow-auto first:pt-0 last:pb-0 h-96 scroll-custom">
-          <header class="sticky top-0 w-full p-2 rounded-t-md bg-neutral-800">
+          <header class="sticky top-0 hidden w-full p-2 rounded-t-md bg-neutral-800 md:block">
             <div class="flex items-start justify-between">
               <div class="flex items-center gap-2 mb-3">
                 <div class="w-8 h-8 overflow-hidden">
@@ -115,6 +115,24 @@
                 <div>
                   <p class="text-sm text-white">Irfan Yasin</p>
                 </div>
+              </div>
+              <button id="btn-close" class="flex items-center justify-center text-white">
+                <iconify-icon icon="uil:times"></iconify-icon>
+              </button>
+            </div>
+            <hr class="border border-neutral-600">
+          </header>
+          <header class="sticky top-0 block w-full p-2 rounded-t-md bg-neutral-800 md:hidden">
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-2 mb-3">
+                <select name="" id="" class="text-xs text-white bg-transparent">
+                  <option value="" class="text-xs bg-glass">Irfan Yasin</option>
+                  <option value="" class="text-xs bg-glass">Dandy Ainul Yakin</option>
+                  <option value="" class="text-xs bg-glass">Fakhri Alauddin</option>
+                  <option value="" class="text-xs bg-glass">Raihan Siyun</option>
+                  <option value="" class="text-xs bg-glass">Ananda Bintang</option>
+                  <option value="" class="text-xs bg-glass">Rama</option>
+                </select>
               </div>
               <button id="btn-close" class="flex items-center justify-center text-white">
                 <iconify-icon icon="uil:times"></iconify-icon>
