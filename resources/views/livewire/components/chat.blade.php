@@ -24,7 +24,7 @@
                   class="object-cover w-full h-full rounded-full">
               </div>
               <div class="">
-                <p class="text-white">{{ $data->name }}</p>
+                <p class="text-white">{{ Str::limit($data->name, 17, '...') }}</p>
                 <p class="text-xs font-light">Masukkan pesan...</p>
               </div>
             </a>
