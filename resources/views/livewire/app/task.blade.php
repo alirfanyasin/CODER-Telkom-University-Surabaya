@@ -47,11 +47,16 @@
                 @endrole
                 @role(['user'])
                   <div class="flex items-center justify-between">
-                    <div class="flex items-center w-full">
-                      <a href="{{ route('app.e-learning.task.submission') }}" wire:navigate
-                        class="inline-flex items-center px-4 py-3 text-sm font-semibold text-white rounded-lg gap-x-2 bg-glass hover:bg-white hover:text-black">
-                        Kumpulkan Tugas
-                      </a>
+                    <div class="flex justify-start w-full gap-2">
+                      <div class="flex items-center w-full">
+                        <a href="{{ route('app.e-learning.task.submission') }}" wire:navigate
+                          class="inline-flex items-center px-4 py-3 text-sm font-semibold text-white rounded-lg gap-x-2 bg-glass hover:bg-white hover:text-black">
+                          Kumpulkan Tugas
+                        </a>
+                        <a href="" class="mt-2 ms-4">
+                          <iconify-icon icon="vscode-icons:file-type-pdf2" class="text-3xl"></iconify-icon>
+                        </a>
+                      </div>
                     </div>
                     <div>
                       <p class="text-slate-400">10:00:30</p>

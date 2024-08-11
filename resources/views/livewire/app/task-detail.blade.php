@@ -48,25 +48,31 @@
     {{-- Informasi Modul End --}}
 
     <section action="" class="p-5 mb-4 text-white rounded-lg bg-glass">
-      <div class="grid gap-4 mb-4 lg:grid-cols-2">
-        <div class="lg:col-span-1">
+      <div class="grid gap-4 mb-4 lg:grid-cols-1">
+        {{-- <div class="lg:col-span-1">
           <label for="task_file_type" class="block mb-2 text-sm font-medium leading-6">Jenis File Pendukung</label>
           <select name="task_file_type" id="task_file_type" class="block w-full p-3 text-white rounded-lg bg-lightGray"
             placeholder="File type" value="docs">
             <option value="docs">Dokumen (PDF, DOCS, dan Lainnya)</option>
             <option value="img">Image (JPG, PNG, dan Lainnya)</option>
           </select>
-        </div>
+        </div> --}}
         <div class="">
           <div class="w-full">
-            <label for="input-label" class="block mb-2 font-light dark:text-white">Upload File <span
-                class="text-[#9E9E9E] text-xs">(Maksimal 5 Mb)</span></label>
-            <input type="file" id="file-input" class="hidden">
-            <label for="file-input"
-              class="flex items-center gap-2 p-3 text-white rounded-md cursor-pointer bg-lightGray">
-              <span class="text-xs bg-[#43474C] py-1 px-1.5">Pilih File</span>
-              <span class="text-xs" id="file-name">Belum ada file yang dipilih.</span>
-            </label>
+            <label for="input-label" class="block mb-2 font-light dark:text-white">Upload File</label>
+            <div class="flex items-center">
+              <a href=""
+                class="flex items-center justify-center w-48 gap-2 p-3.5 text-sm text-white bg-green-800 cursor-pointer rounded-l-md">
+                Lihat File
+              </a>
+              <div class="w-full">
+                <label for="file-input"
+                  class="flex items-center w-full gap-2 p-3 text-white cursor-pointer rounded-r-md bg-lightGray">
+                  <span class="text-xs bg-[#43474C] py-1 px-1.5">Pilih File</span>
+                  <span class="text-xs" id="file-name">Belum ada file yang dipilih.</span>
+                </label>
+              </div>
+            </div>
           </div>
         </div>
       </div>

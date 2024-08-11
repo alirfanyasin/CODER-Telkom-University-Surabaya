@@ -44,13 +44,13 @@
                     <table class="min-w-full bg-lightGray">
                       <thead class="bg-[#43474C]">
                         <tr>
-                          <th scope="col" class="px-6 py-3 text-start text-sm font-medium text-white uppercase">No
+                          <th scope="col" class="px-6 py-3 text-sm font-medium text-white uppercase text-start">No
                           </th>
-                          <th scope="col" class="px-6 py-3 text-start text-sm font-medium text-white uppercase">Nama
+                          <th scope="col" class="px-6 py-3 text-sm font-medium text-white uppercase text-start">Nama
                           </th>
-                          <th scope="col" class="px-6 py-3 text-start text-sm font-medium text-white uppercase">
+                          <th scope="col" class="px-6 py-3 text-sm font-medium text-white uppercase text-start">
                             Program Studi</th>
-                          <th scope="col" class="px-6 py-3 text-start text-sm font-medium text-white uppercase">
+                          <th scope="col" class="px-6 py-3 text-sm font-medium text-white uppercase text-start">
                             Status Kehadiran</th>
                         </tr>
                       </thead>
@@ -59,7 +59,7 @@
                           <td class="px-6 py-4 text-base font-medium text-white">01</td>
                           <td class="px-6 py-4 text-base font-medium text-white">Deo Farady Santoso</td>
                           <td class="px-6 py-4 text-base font-medium text-white">Rekayasa Perangkat Lunak</td>
-                          <td class="px-6 py-4 text-base font-medium text-white flex items-center gap-4">
+                          <td class="flex items-center gap-4 px-6 py-4 text-base font-medium text-white">
                             <button
                               class="flex gap-1 rounded-md items-center text-base font-medium text-white bg-[#34C759] px-2 md:px-4 py-1.5">
                               Hadir
@@ -79,7 +79,7 @@
                           <td class="px-6 py-4 text-base font-medium text-white">02</td>
                           <td class="px-6 py-4 text-base font-medium text-white">Deo Farady Santoso</td>
                           <td class="px-6 py-4 text-base font-medium text-white">Rekayasa Perangkat Lunak</td>
-                          <td class="px-6 py-4 text-base font-medium text-white flex items-center gap-4">
+                          <td class="flex items-center gap-4 px-6 py-4 text-base font-medium text-white">
                             <button
                               class="flex gap-1 rounded-md items-center text-base font-medium border border-[#4F4F55] hover:text-white hover:bg-[#34C759] hover:border-[#34C759] px-2 md:px-4 py-1.5">
                               Hadir
@@ -99,7 +99,7 @@
                           <td class="px-6 py-4 text-base font-medium text-white">03</td>
                           <td class="px-6 py-4 text-base font-medium text-white">Deo Farady Santoso</td>
                           <td class="px-6 py-4 text-base font-medium text-white">Rekayasa Perangkat Lunak</td>
-                          <td class="px-6 py-4 text-base font-medium text-white flex items-center gap-4">
+                          <td class="flex items-center gap-4 px-6 py-4 text-base font-medium text-white">
                             <button
                               class="flex gap-1 rounded-md items-center text-base font-medium border border-[#4F4F55] hover:text-white hover:bg-[#34C759] hover:border-[#34C759] px-2 md:px-4 py-1.5">
                               Hadir
@@ -126,7 +126,7 @@
       </div>
       <div class="flex my-7">
 
-        <div class="ml-auto flex items-center gap-4">
+        <div class="flex items-center gap-4 ml-auto">
           <button type="button"
             class="flex items-center px-5 py-3 text-sm font-semibold border border-[#4F4F55] text-white hover:bg-red-600 hover:border-red-600 rounded-md">Batal</button>
           <button type="submit"
