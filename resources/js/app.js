@@ -1,5 +1,8 @@
 import './bootstrap';
 import 'preline'
+import './shortcut';
+
+
 
 
 document.addEventListener('livewire:navigated', (event) => {
