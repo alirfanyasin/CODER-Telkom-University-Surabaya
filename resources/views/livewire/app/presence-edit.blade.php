@@ -1,4 +1,15 @@
 <div>
+    <style>
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+    </style>
   {{-- Header Start --}}
   <header class="flex items-center justify-between my-7">
     <h2 class="text-2xl font-bold text-white md:text-3xl">Perbarui Presensi</h2>
@@ -7,7 +18,7 @@
 
   {{-- Detail Meeting Section Start --}}
   <section class="mb-10">
-    <form action="">
+    <form wire:submit='save'>
       <div class="p-5 mb-4 rounded-lg bg-glass">
         <header class="flex items-center justify-between mb-8 text-white">
           <div class="flex items-center">
@@ -22,17 +33,13 @@
         <div>
           <div class="grid grid-cols-1 gap-4 mb-3 lg:grid-cols-2">
             <div class="mb-3">
-              <label for="presence" class="block mb-2 font-light text-white">Tipe Pertemuan</label>
-              <select name="presence" id="presence" class="w-full px-3 py-3 text-white rounded-lg bg-lightGray">
-                <option value="">Pertemuan ke-1</option>
-                <option value="">Pertemuan ke-2</option>
-                <option value="">Pertemuan ke-3</option>
-              </select>
-            </div>
+                <label for="presence" class="block mb-2 font-light text-white">Pertemuan ke-</label>
+                <input type="number" wire:model="presence_number" min="1" name="presence" id="presence" class="w-full px-3 py-3 text-white rounded-lg bg-lightGray">
+              </div>
             <div class="mb-3">
               <label for="date-time" class="block mb-2 font-light text-white">Tanggal & Waktu</label>
               <input type="datetime-local" name="date-time" id="date-time"
-                class="w-full px-3 py-3 text-white rounded-lg bg-lightGray">
+                class="w-full px-3 py-3 text-white rounded-lg bg-lightGray" wire:model='presence_date'>
             </div>
           </div>
           <div class="mb-3">
@@ -56,65 +63,13 @@
                       </thead>
                       <tbody class="">
                         <tr>
-                          <td class="px-6 py-4 text-base font-medium text-white">01</td>
-                          <td class="px-6 py-4 text-base font-medium text-white">Deo Farady Santoso</td>
-                          <td class="px-6 py-4 text-base font-medium text-white">Rekayasa Perangkat Lunak</td>
-                          <td class="px-6 py-4 text-base font-medium text-white flex items-center gap-4">
-                            <button
-                              class="flex gap-1 rounded-md items-center text-base font-medium text-white bg-[#34C759] px-2 md:px-4 py-1.5">
-                              Hadir
-                            </button>
-                            <button
-                              class="flex gap-1 rounded-md items-center text-base font-medium border border-[#4F4F55] hover:text-white hover:bg-[#007AFF] hover:border-[#007AFF] px-2 md:px-4 py-1">
-                              Izin
-                            </button>
-                            <button
-                              class="flex gap-1 rounded-md items-center text-base font-medium border border-[#4F4F55] hover:text-white hover:bg-[#FF3B30] hover:border-[#FF3B30] px-2 md:px-4 py-1.5">
-                              Alpha
-                            </button>
-
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="px-6 py-4 text-base font-medium text-white">02</td>
-                          <td class="px-6 py-4 text-base font-medium text-white">Deo Farady Santoso</td>
-                          <td class="px-6 py-4 text-base font-medium text-white">Rekayasa Perangkat Lunak</td>
-                          <td class="px-6 py-4 text-base font-medium text-white flex items-center gap-4">
-                            <button
-                              class="flex gap-1 rounded-md items-center text-base font-medium border border-[#4F4F55] hover:text-white hover:bg-[#34C759] hover:border-[#34C759] px-2 md:px-4 py-1.5">
-                              Hadir
-                            </button>
-                            <button
-                              class="flex gap-1 rounded-md items-center text-base font-medium text-white bg-[#007AFF] px-2 md:px-4 py-1">
-                              Izin
-                            </button>
-                            <button
-                              class="flex gap-1 rounded-md items-center text-base font-medium border border-[#4F4F55] hover:text-white hover:bg-[#FF3B30] hover:border-[#FF3B30] px-2 md:px-4 py-1.5">
-                              Alpha
-                            </button>
-
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="px-6 py-4 text-base font-medium text-white">03</td>
-                          <td class="px-6 py-4 text-base font-medium text-white">Deo Farady Santoso</td>
-                          <td class="px-6 py-4 text-base font-medium text-white">Rekayasa Perangkat Lunak</td>
-                          <td class="px-6 py-4 text-base font-medium text-white flex items-center gap-4">
-                            <button
-                              class="flex gap-1 rounded-md items-center text-base font-medium border border-[#4F4F55] hover:text-white hover:bg-[#34C759] hover:border-[#34C759] px-2 md:px-4 py-1.5">
-                              Hadir
-                            </button>
-                            <button
-                              class="flex gap-1 rounded-md items-center text-base font-medium border border-[#4F4F55] hover:text-white hover:bg-[#007AFF] hover:border-[#007AFF] px-2 md:px-4 py-1">
-                              Izin
-                            </button>
-                            <button
-                              class="flex gap-1 rounded-md items-center text-base font-medium text-white bg-[#FF3B30] px-2 md:px-4 py-1.5">
-                              Alpha
-                            </button>
-
-                          </td>
-                        </tr>
+                            <td class="px-6 py-4 text-base font-medium text-white">01</td>
+                            <td class="px-6 py-4 text-base font-medium text-white">-</td>
+                            <td class="px-6 py-4 text-base font-medium text-white">-</td>
+                            <td class="flex items-center gap-4 px-6 py-4 text-base font-medium text-white">
+                              -
+                            </td>
+                          </tr>
                       </tbody>
                     </table>
                   </div>
@@ -127,8 +82,7 @@
       <div class="flex my-7">
 
         <div class="ml-auto flex items-center gap-4">
-          <button type="button"
-            class="flex items-center px-5 py-3 text-sm font-semibold border border-[#4F4F55] text-white hover:bg-red-600 hover:border-red-600 rounded-md">Batal</button>
+          <a href="/app/presence" wire:navigate class="flex items-center px-5 py-3 text-sm font-semibold border border-[#4F4F55] text-white hover:bg-red-600 hover:border-red-600 rounded-md">Batal</a>
           <button type="submit"
             class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md"> Simpan Presensi
             <iconify-icon icon="material-symbols:save-outline" class="text-xl ms-2"></iconify-icon></button>

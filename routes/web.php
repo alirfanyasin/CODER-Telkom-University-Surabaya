@@ -91,10 +91,10 @@ Route::middleware(['auth'])->group(function () {
 
     // Presence
     Route::get('/presence', Presence::class)->name('app.presence');
-    Route::get('/presence/presensi-1/show', PresenceDetail::class)->name('app.presence.show');
+    Route::get('/presence/{id}/show', PresenceDetail::class)->name('app.presence.show');
     Route::middleware(['role:admin'])->group(function () {
       Route::get('/presence/create', PresenceCreate::class)->name('app.presence.create');
-      Route::get('/presence/presensi-1/edit', PresenceEdit::class)->name('app.presence.edit');
+      Route::get('/presence/{id}/edit', PresenceEdit::class)->name('app.presence.edit');
     });
 
     // Member
