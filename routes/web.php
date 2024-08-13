@@ -27,6 +27,7 @@ use App\Livewire\App\ModulCreate;
 use App\Livewire\App\ModulEdit;
 use App\Livewire\App\Profile;
 use App\Livewire\App\ProfileEdit;
+use App\Livewire\Auth\ForgotPassword;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
 use App\Livewire\Pages\Home;
@@ -50,6 +51,7 @@ Route::middleware(['guest'])->group(function () {
   // Auth Route
   Route::get('/login', Login::class)->name('login');
   Route::get('/register', Register::class)->name('register');
+  Route::get('/forgot-password', ForgotPassword::class)->name('forgot-password');
 });
 
 Route::middleware(['auth'])->group(function () {
