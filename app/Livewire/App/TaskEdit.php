@@ -3,6 +3,7 @@
 namespace App\Livewire\App;
 
 use App\Models\Task as TaskModel;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -13,7 +14,7 @@ use Livewire\WithFileUploads;
 
 class TaskEdit extends Component
 {
-    use WithFileUploads;
+    use WithFileUploads, LivewireAlert;
 
     public $task;
     public $task_name;
@@ -47,6 +48,8 @@ class TaskEdit extends Component
             'task_file' => 'nullable|mimes:pdf|max:5120',
         ]);
 
+        $task = TaskModel::find($this->task->id);
+
         $this->task_meeting = $this->operateTaskMeeting();
 
         if ($this->task_file) {
@@ -59,17 +62,35 @@ class TaskEdit extends Component
             ]);
         }
 
-        $this->task->update([
-            'slug' => $this->changeSlug(),
-            'name' => $this->task_name,
-            'due_date' => $this->task_due_date,
-            'section' => $this->task_meeting,
-            'description' => $this->task_description,
+        if ($this->task->section != $this->task_meeting) {
+            $this->task->update([
+                'slug' => $this->changeSlug(),
+                'name' => $this->task_name,
+                'due_date' => $this->task_due_date,
+                'section' => $this->task_meeting,
+                'description' => $this->task_description,
+            ]);
+
+            $this->updateTasksList($task);
+        } else {
+            $this->task->update([
+                'name' => $this->task_name,
+                'due_date' => $this->task_due_date,
+                'section' => $this->task_meeting,
+                'description' => $this->task_description,
+            ]);
+        }
+
+        $this->alert('success', 'Berhasil Perbarui Data', [
+            'position' => 'top-end',
+            'timer' => 3000,
+            'toast' => true,
+            'text' => '',
+            'showCancelButton' => false,
+            'showConfirmButton' => false,
         ]);
 
-        session()->flash('message', 'Tugas berhasil diperbarui.');
-
-        return redirect()->route('app.e-learning.task');
+        $this->redirect('/app/e-learning/task');
     }
 
     protected function changeSlug()
@@ -79,6 +100,26 @@ class TaskEdit extends Component
         $taskMeeting = preg_replace('/[^0-9]/', '', $this->task_meeting);
 
         return strtolower("pertemuan-{$taskMeeting}-tugas-{$taskCount}");
+    }
+
+    protected function updateTasksList($task)
+    {
+        $slugParts = explode('-', $task->slug);
+        $meeting = $slugParts[1];
+        $taskNumber = $slugParts[3];
+
+        $tasks = TaskModel::where('slug', 'like', "%pertemuan-$meeting-tugas-%")->get();
+
+        foreach ($tasks as $task) {
+            $slugParts = explode('-', $task->slug);
+            $currentTaskNumber = $slugParts[3];
+
+            if ($currentTaskNumber > $taskNumber) {
+                $slugParts[3] = $currentTaskNumber - 1;
+                $task->slug = implode('-', $slugParts);
+                $task->save();
+            }
+        }
     }
 
     protected function operateTaskSection($section)

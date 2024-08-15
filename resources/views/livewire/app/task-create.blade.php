@@ -38,14 +38,14 @@
           @enderror
         </div>
         <div>
-          <label for="task_meeting" class="block mb-2 text-sm font-medium leading-6">Pertemuan</label>
-          <select name="task_meeting" id="task_meeting" class="block w-full p-3 text-white rounded-lg bg-lightGray"
-            placeholder="Pertemuan" wire:model="task_meeting">
-            <option value="pertemuan-1">Pertemuan 1</option>
-            <option value="pertemuan-2">Pertemuan 2</option>
-            <option value="pertemuan-3">Pertemuan 3</option>
-            <option value="pertemuan-4">Pertemuan 4</option>
-          </select>
+          <label for="task_meeting" class="block mb-2 text-sm font-medium leading-6">Masukkan
+            Pertemuan</label>
+          <input type="number" name="task_meeting" id="task_meeting" wire:model="task_meeting"
+            autocomplete="task_meeting" class="block w-full p-3 text-white rounded-lg bg-lightGray"
+            placeholder="Pertemuan ke-1">
+          @error('task_meeting')
+            <span class="text-red-500">{{ $message }}</span>
+          @enderror
         </div>
       </div>
 

@@ -3,6 +3,7 @@
 namespace App\Livewire\App;
 
 use App\Models\Task as TaskModel;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -12,6 +13,14 @@ use Livewire\Component;
 
 class Task extends Component
 {
+    use LivewireAlert;
+
+    public $itemToDelete;
+
+    protected $listeners = [
+        'confirmedDeletion',
+    ];
+
     public function render()
     {
         $tasks = $this->getProcessedTasks();
@@ -21,21 +30,76 @@ class Task extends Component
         return view('livewire.app.task', compact('groupedTasks'));
     }
 
-    public function deleteTask($id)
+    public function destroy($id)
     {
-        $task = TaskModel::find($id);
-        if ($task->file_name) {
-            unlink(storage_path('app/public/' . $task->file_name));
+        $this->itemToDelete = $id;
+
+        $this->alert('warning', 'Yakin ingin menghapus tugas ini?', [
+            'position' => 'top-end',
+            'timer' => null,
+            'toast' => true,
+            'showConfirmButton' => true,
+            'onConfirmed' => 'confirmedDeletion',
+            'showDenyButton' => true,
+            'onDenied' => '',
+            'denyButtonText' => 'Tidak',
+            'width' => '400',
+            'confirmButtonText' => 'Iya',
+        ]);
+    }
+
+    public function confirmedDeletion()
+    {
+        $task = TaskModel::find($this->itemToDelete);
+
+        if ($task) {
+            if ($task->file_name) {
+                unlink(storage_path('app/public/' . $task->file_name));
+            }
+            $task->delete();
+            $this->updateTasksList($task);
+            $this->alert('success', 'Tugas berhasil dihapus', [
+                'position' => 'top-end',
+                'timer' => 3000,
+                'toast' => true,
+                'text' => '',
+                'showCancelButton' => false,
+            ]);
+        } else {
+            $this->alert('error', 'Gagal menghapus tugas', [
+                'position' => 'top-end',
+                'timer' => 3000,
+                'toast' => true,
+                'text' => '',
+                'showCancelButton' => false,
+            ]);
         }
+    }
 
-        $task->delete();
+    protected function updateTasksList($task)
+    {
+        $slugParts = explode('-', $task->slug);
+        $meeting = $slugParts[1];
+        $taskNumber = $slugParts[3];
 
-        session()->flash('message', 'Tugas berhasil dihapus.');
+        $tasks = TaskModel::where('slug', 'like', "%pertemuan-$meeting-tugas-%")->get();
+
+        foreach ($tasks as $task) {
+            $slugParts = explode('-', $task->slug);
+            $currentTaskNumber = $slugParts[3];
+
+            if ($currentTaskNumber > $taskNumber) {
+                $slugParts[3] = $currentTaskNumber - 1;
+                $task->slug = implode('-', $slugParts);
+                $task->save();
+            }
+        }
     }
 
     protected function getProcessedTasks()
     {
-        return TaskModel::all()->map(function ($task) {
+        // sort by section
+        return TaskModel::orderBy('section', 'ASC')->orderBy('slug', 'ASC')->get()->map(function ($task) {
             $slugParts = explode('-', $task->slug);
             $task->title = [
                 'meeting' => $slugParts[1],
