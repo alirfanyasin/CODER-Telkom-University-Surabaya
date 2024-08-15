@@ -31,10 +31,10 @@
                 </div>
 
                 @foreach ($tasks as $task)
-                    <a href="{{ route('app.e-learning.task.detail') }}" wire:navigate class="block">
+                    <a href="{{ route('app.e-learning.task.detail', $task->slug) }}" wire:navigate class="block">
                         <div class="p-5 mb-4 rounded-lg bg-glass hover:border hover:border-gray-500">
                             <h3 class="text-2xl font-semibold text-white">Tugas {{ $task->title['task'] }}</h3>
-                            <p class="font-light text-gray-400">Membuat website menggunakan HTML dan CSS</p>
+                            <p class="font-light text-gray-400">{{ $task->name }}</p>
 
                             <div class="@role(['admin']) flex items-center @endrole mt-4">
                                 @role(['admin'])
@@ -60,7 +60,7 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <p class="text-slate-400">10:00:30</p>
+                                            <p class="text-slate-400">{{ $task->due_date }}</p>
                                         </div>
                                     </div>
                                 @endrole
@@ -68,12 +68,12 @@
                                 @role(['admin'])
                                     <div class="inline md:flex md:justify-between">
                                         <div class="flex gap-2 text-gray-400 md:gap-4">
-                                            <a href=""
+                                            <a href="#" wire:click.prevent="destroy({{ $task->id }})"
                                                 class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-red-600 border-[#27272A] px-2 md:px-4 py-1">
-                                                <iconify-icon icon="tabler:trash"></iconify-icon><span
-                                                    class="hidden md:block">Hapus</span>
+                                                <iconify-icon icon="tabler:trash"></iconify-icon>
+                                                <span class="hidden md:block">Hapus</span>
                                             </a>
-                                            <a href=""
+                                            <a href="{{ route('app.e-learning.task.edit', $task->slug) }}"
                                                 class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-yellow-600 border-[#27272A] px-2 md:px-4 py-1">
                                                 <iconify-icon icon="lucide:edit"></iconify-icon><span
                                                     class="hidden md:block">Edit</span>
