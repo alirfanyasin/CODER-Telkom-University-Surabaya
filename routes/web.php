@@ -69,10 +69,10 @@ Route::middleware(['auth'])->group(function () {
 
     // Meeting
     Route::get('/e-learning/meeting', Meeting::class)->name('app.e-learning.meeting');
-    Route::get('/e-learning/meeting/pertemuan-1/show', MeetingDetail::class)->name('app.e-learning.meeting.show');
+    Route::get('/e-learning/meeting/{id}/show', MeetingDetail::class)->name('app.e-learning.meeting.show');
     Route::middleware(['role:admin'])->group(function () {
       Route::get('/e-learning/meeting/create', MeetingCreate::class)->name('app.e-learning.meeting.create');
-      Route::get('/e-learning/meeting/pertemuan-1/edit', MeetingEdit::class)->name('app.e-learning.meeting.edit');
+      Route::get('/e-learning/meeting/{id}/edit', MeetingEdit::class)->name('app.e-learning.meeting.edit');
     });
 
     // Modul
@@ -91,6 +91,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Presence
     Route::get('/presence', Presence::class)->name('app.presence');
+    // Route::get('/presence/{}/show', PresenceDetail::class)->name('app.presence.show');
     Route::get('/presence/{id}/show', PresenceDetail::class)->name('app.presence.show');
     Route::middleware(['role:admin'])->group(function () {
       Route::get('/presence/create', PresenceCreate::class)->name('app.presence.create');
