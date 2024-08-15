@@ -68,7 +68,7 @@
                                 @role(['admin'])
                                     <div class="inline md:flex md:justify-between">
                                         <div class="flex gap-2 text-gray-400 md:gap-4">
-                                            <a href="#" wire:click.prevent="deleteTask({{ $task->id }})"
+                                            <a href="#" wire:click.prevent="destroy({{ $task->id }})"
                                                 class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-red-600 border-[#27272A] px-2 md:px-4 py-1">
                                                 <iconify-icon icon="tabler:trash"></iconify-icon>
                                                 <span class="hidden md:block">Hapus</span>

@@ -20,17 +20,17 @@ class TaskDetail extends Component
 
     public function render()
     {
-        return view('livewire.app.task-detail', compact('task'));
+        return view('livewire.app.task-detail', ['task' => $this->task]);
     }
 
     public function mount()
     {
-        $task = TaskModel::where('slug', request()->slug)->first();
+        $this->task = TaskModel::where('slug', request()->slug)->first();
 
-        $this->task_name = $task->name;
-        $this->task_due_date = $task->due_date;
-        $this->task_meeting = $this->operateTaskSection($task->section);
-        $this->task_description = $task->description;
+        $this->task_name = $this->task->name;
+        $this->task_due_date = $this->task->due_date;
+        $this->task_meeting = $this->operateTaskSection($this->task->section);
+        $this->task_description = $this->task->description;
     }
 
     protected function operateTaskSection($section)

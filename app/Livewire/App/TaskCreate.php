@@ -8,13 +8,14 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Task as TaskModel;
 use Illuminate\Support\Facades\Auth;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 #[Title('Buat Tugas')]
 #[Layout('layouts.app')]
 
 class TaskCreate extends Component
 {
-    use WithFileUploads;
+    use WithFileUploads, LivewireAlert;
 
     public $task_name;
     public $task_due_date;
@@ -37,15 +38,13 @@ class TaskCreate extends Component
             'task_file' => 'nullable|mimes:pdf|max:5120',
         ]);
 
-        $this->task_meeting = $this->operateTaskMeeting();
-
         $filePath = $this->task_file ? $this->task_file->store('uploads/tasks', 'public') : null;
 
         TaskModel::create([
             'slug' => $this->generateSlug(),
             'name' => $this->task_name,
             'due_date' => $this->task_due_date,
-            'section' => "Pertemuan " . $this->task_meeting,
+            'section' => $this->task_meeting,
             'description' => $this->task_description,
             'file_name' => $filePath,
             'division_id' => $this->getDivisionProperty(),
@@ -53,9 +52,16 @@ class TaskCreate extends Component
 
         $this->reset();
 
-        session()->flash('message', 'Tugas berhasil dibuat.');
+        $this->alert('success', 'Berhasil Tambah Data', [
+            'position' => 'top-end',
+            'timer' => 3000,
+            'toast' => true,
+            'text' => '',
+            'showCancelButton' => false,
+            'showConfirmButton' => false,
+        ]);
 
-        return redirect()->route('app.e-learning.task');
+        $this->redirect('/app/e-learning/task');
     }
 
     protected function getDivisionProperty()
@@ -70,10 +76,5 @@ class TaskCreate extends Component
         $this->task_meeting = preg_replace('/[^0-9]/', '', $this->task_meeting);
 
         return strtolower("pertemuan-{$this->task_meeting}-tugas-{$taskCount}");
-    }
-
-    protected function operateTaskMeeting()
-    {
-        return ucwords(str_replace('-', ' ', $this->task_meeting));
     }
 }
