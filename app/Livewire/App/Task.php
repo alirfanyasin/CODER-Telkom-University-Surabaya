@@ -21,6 +21,18 @@ class Task extends Component
         return view('livewire.app.task', compact('groupedTasks'));
     }
 
+    public function deleteTask($id)
+    {
+        $task = TaskModel::find($id);
+        if ($task->file_name) {
+            unlink(storage_path('app/public/' . $task->file_name));
+        }
+
+        $task->delete();
+
+        session()->flash('message', 'Tugas berhasil dihapus.');
+    }
+
     protected function getProcessedTasks()
     {
         return TaskModel::all()->map(function ($task) {
