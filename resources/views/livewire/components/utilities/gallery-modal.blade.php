@@ -1,27 +1,27 @@
 <div class="flex flex-wrap gap-4">
   <div class="rounded-xl grow h-72 overflow-hidden transition-transform hover:scale-105"
-    onclick="openModal('assets/images/img-1.png', 'Image 1')">
-    <img src="assets/images/img-1.png" alt="Image 1" class="object-cover w-full h-full">
+    onclick="openModal('/assets/images/img-1.png', 'Image 1')">
+    <img src="/assets/images/img-1.png" alt="Image 1" class="object-cover w-full h-full">
   </div>
   <div class="rounded-xl grow h-72 overflow-hidden transition-transform hover:scale-105"
-    onclick="openModal('assets/images/img-2.png', 'Image 2')">
-    <img src="assets/images/img-2.png" alt="Image 2" class="object-cover w-full h-full">
+    onclick="openModal('/assets/images/img-2.png', 'Image 2')">
+    <img src="/assets/images/img-2.png" alt="Image 2" class="object-cover w-full h-full">
   </div>
   <div class="rounded-xl grow h-72 overflow-hidden transition-transform hover:scale-105"
-    onclick="openModal('assets/images/img-3.png', 'Image 3')">
-    <img src="assets/images/img-3.png" alt="Image 3" class="object-cover w-full h-full">
+    onclick="openModal('/assets/images/img-3.png', 'Image 3')">
+    <img src="/assets/images/img-3.png" alt="Image 3" class="object-cover w-full h-full">
   </div>
   <div class="rounded-xl grow h-72 overflow-hidden transition-transform hover:scale-105"
-    onclick="openModal('assets/images/img-2.png', 'Image 4')">
-    <img src="assets/images/img-2.png" alt="Image 4" class="object-cover w-full h-full">
+    onclick="openModal('/assets/images/img-2.png', 'Image 4')">
+    <img src="/assets/images/img-2.png" alt="Image 4" class="object-cover w-full h-full">
   </div>
   <div class="rounded-xl grow h-72 overflow-hidden transition-transform hover:scale-105"
-    onclick="openModal('assets/images/img-1.png', 'Image 5')">
-    <img src="assets/images/img-1.png" alt="Image 5" class="object-cover w-full h-full">
+    onclick="openModal('/assets/images/img-1.png', 'Image 5')">
+    <img src="/assets/images/img-1.png" alt="Image 5" class="object-cover w-full h-full">
   </div>
   <div class="rounded-xl grow h-72 overflow-hidden transition-transform hover:scale-105"
-    onclick="openModal('assets/images/img-3.png', 'Image 6')">
-    <img src="assets/images/img-3.png" alt="Image 6" class="object-cover w-full h-full">
+    onclick="openModal('/assets/images/img-3.png', 'Image 6')">
+    <img src="/assets/images/img-3.png" alt="Image 6" class="object-cover w-full h-full">
   </div>
 </div>
 

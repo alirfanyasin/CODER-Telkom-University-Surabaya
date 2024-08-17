@@ -6,6 +6,7 @@ use App\Livewire\App\Dashboard;
 use App\Livewire\App\Event\ManagementEvent;
 use App\Livewire\App\Event\ManagementEventDetail;
 use App\Livewire\App\Event\Reqrutment;
+use App\Livewire\App\Gallery as AppGallery;
 use App\Livewire\App\Task;
 use App\Livewire\App\TaskCreate;
 use App\Livewire\App\TaskDetail;
@@ -57,6 +58,9 @@ Route::middleware(['auth'])->group(function () {
   Route::prefix('app')->group(function () {
 
     Route::get('/', Dashboard::class)->name('app.dashboard');
+
+    // App Gallery
+    Route::get('/gallery', AppGallery::class)->name('app.gallery');
 
     // Tugas
     Route::get('/e-learning/task', Task::class)->name('app.e-learning.task');
