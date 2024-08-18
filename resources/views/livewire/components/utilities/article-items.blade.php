@@ -1,4 +1,4 @@
-<div class="flex flex-col items-center justify-between py-12 lg:flex-row">
+<div class="{{ $wrapperClass ?? 'py-12' }} flex flex-col items-center justify-between lg:flex-row">
   <div class="order-last w-full mt-5 lg:w-2/3 lg:pr-8 lg:order-first lg:mt-0">
     <a href="{{ url('article/detail') }}"
       class="text-2xl font-bold text-white cursor-pointer hover:underline lg:text-3xl">

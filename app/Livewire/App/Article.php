@@ -21,7 +21,7 @@ class Article extends Component
     public function render()
     {
         if ($this->slug) {
-            return view('livewire.app.article.detail', ['slug' => $this->slug]);
+            return view('livewire.app.article-detail', ['slug' => $this->slug]);
         } else {
             return view('livewire.app.article');
         }
