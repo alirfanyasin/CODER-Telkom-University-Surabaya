@@ -23,7 +23,7 @@
     <div class="space-y-10">
       @for ($i = 0; $i < 3; $i++)
         @include('livewire.components.utilities.article-items', [
-          'wrapperClass' => 'p-4 bg-[#27272A] raounded-lg space-x-1'
+          'wrapperClass' => 'p-5 bg-[#18181B] raounded-lg space-x-1'
         ])
       @endfor
     </div>
