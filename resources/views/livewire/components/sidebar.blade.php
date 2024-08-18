@@ -13,6 +13,13 @@
           Dashboard
         </a>
       </li>
+      <li class="mb-4">
+        <a href="{{ route('app.division') }}" wire:navigate
+          class="flex items-center px-8 py-3 font-medium rounded-lg text-md hover:bg-white hover:text-black {{ Request::is('app/division/*') ? 'active-menu' : 'text-gray-400' }}">
+          <iconify-icon icon="material-symbols:dashboard-outline" class="mr-3 text-2xl"></iconify-icon>
+          Divisi
+        </a>
+      </li>
       <li class="mb-4 hs-accordion {{ Request::is('app/e-learning/*') ? 'active' : '' }}" id="e-learning-accordion">
         <button type="button"
           class="hs-accordion-toggle hs-accordion-active:text-gray-400 hs-accordion-active:hover:text-black  w-full text-start flex items-center gap-x-3.5 py-3 hover:text-black hover:bg-white px-8 text-md font-medium text-gray-400 bg-transparent rounded-lg">
