@@ -25,6 +25,7 @@ use App\Livewire\App\MemberRecruitment;
 use App\Livewire\App\Modul;
 use App\Livewire\App\ModulCreate;
 use App\Livewire\App\ModulEdit;
+use App\Livewire\App\Article as AppArticle;
 use App\Livewire\App\Profile;
 use App\Livewire\App\ProfileEdit;
 use App\Livewire\Auth\ForgotPassword;
@@ -85,6 +86,9 @@ Route::middleware(['auth'])->group(function () {
             // Route::get('/e-learning/modul/{id}/destroy', ModulEdit::class)->name('app.e-learning.modul.destroy');
         });
 
+        // App Article
+        Route::get('/article', AppArticle::class)->name('article');
+        Route::get('/article/{slug}', AppArticle::class)->name('article.detail');
 
         // Event
         Route::get('/event/management-event', ManagementEvent::class)->name('app.event.management-event');
