@@ -14,6 +14,7 @@
   {{-- Vite --}}
   @vite(['resources/css/app.css', 'resources/js/app.js'])
   @livewireStyles
+  @stack('css-custom')
 </head>
 
 <body class="relative h-screen overflow-y-hidden bg-black">
