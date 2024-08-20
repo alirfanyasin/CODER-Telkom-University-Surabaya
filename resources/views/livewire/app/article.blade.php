@@ -4,14 +4,14 @@
 
     @role(['admin|super-admin'])
       <div class="hidden md:block">
-        <a href="#" wire:navigate 
+        <a href="{{ route('app.content.article.create') }}" wire:navigate 
           class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md">Buat Artikel
           <iconify-icon icon="mingcute:arrow-right-line" class="text-xl ms-2"></iconify-icon>
         </a>
       </div>
 
       <div class="block md:hidden">
-        <a href="#" wire:navigate
+        <a href="{{ route('app.content.article.create') }}" wire:navigate
           class="flex items-center justify-center w-10 h-10 text-sm font-semibold text-black bg-white rounded-full">
             <iconify-icon icon="majesticons:plus-line" class="text-2xl"></iconify-icon>
         </a>

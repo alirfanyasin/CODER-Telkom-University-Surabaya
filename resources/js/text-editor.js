@@ -1,15 +1,15 @@
 // Tiptap
-import { Editor } from 'https://esm.sh/@tiptap/core';
-import StarterKit from 'https://esm.sh/@tiptap/starter-kit';
-import Placeholder from 'https://esm.sh/@tiptap/extension-placeholder';
-import Paragraph from 'https://esm.sh/@tiptap/extension-paragraph';
-import Bold from 'https://esm.sh/@tiptap/extension-bold';
-import Underline from 'https://esm.sh/@tiptap/extension-underline';
-import Link from 'https://esm.sh/@tiptap/extension-link';
-import BulletList from 'https://esm.sh/@tiptap/extension-bullet-list';
-import OrderedList from 'https://esm.sh/@tiptap/extension-ordered-list';
-import ListItem from 'https://esm.sh/@tiptap/extension-list-item';
-import Blockquote from 'https://esm.sh/@tiptap/extension-blockquote';
+import { Editor } from '@tiptap/core';
+import StarterKit from '@tiptap/starter-kit';
+import Placeholder from '@tiptap/extension-placeholder';
+import Paragraph from '@tiptap/extension-paragraph';
+import Bold from '@tiptap/extension-bold';
+import Underline from '@tiptap/extension-underline';
+import Link from '@tiptap/extension-link';
+import BulletList from '@tiptap/extension-bullet-list';
+import OrderedList from '@tiptap/extension-ordered-list';
+import ListItem from '@tiptap/extension-list-item';
+import Blockquote from '@tiptap/extension-blockquote';
 
 const editor = new Editor({
   element: document.querySelector('#hs-editor-tiptap [data-hs-editor-field]'),

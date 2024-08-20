@@ -115,10 +115,11 @@ Route::middleware(['auth'])->group(function () {
 
         // App Gallery
         Route::get('/content/gallery', AppGallery::class)->name('app.content.gallery');
+
         // App Article
-        Route::get('/article', AppArticle::class)->name('app.article');
-        Route::get('/article/create', ArticleCreate::class)->name('app.article.create');
-        Route::get('/article/{slug}', AppArticle::class)->name('app.article.detail');
+        Route::get('/content/article', AppArticle::class)->name('app.content.article');
+        Route::get('/content/article/create', ArticleCreate::class)->name('app.content.article.create');
+        Route::get('/content/article/{slug}', AppArticle::class)->name('app.content.article.detail');
 
         // Event
         Route::get('/event/management-event', ManagementEvent::class)->name('app.event.management-event');

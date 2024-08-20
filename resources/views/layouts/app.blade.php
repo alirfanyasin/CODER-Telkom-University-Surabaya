@@ -202,7 +202,7 @@
                     </a>
                   </li>
                   <li class="hs-accordion" id="content-accordion-sub-1">
-                    <a href="{#{ route('app.content.article') }}" wire:navigate
+                    <a href="{{ route('app.content.article') }}" wire:navigate
                       class="flex py-3 font-medium text-gray-400 rounded-lg text-md item-center hover:bg-white mb-1.5 hover:text-black ps-10 {{ Request::is('app/content/article/*') ? 'active-menu' : 'text-gray-400' }} {{ Request::is('app/content/article') ? 'active-menu' : 'text-gray-400' }}">
                       <iconify-icon icon="solar:document-text-broken" class="mr-3 text-2xl"></iconify-icon>
                       Artikel
