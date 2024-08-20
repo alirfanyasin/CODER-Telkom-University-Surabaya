@@ -3,6 +3,7 @@
 namespace App\Livewire\App\Quiz;
 
 use App\Models\Quiz\Quiz as QuizModel;
+use App\Models\Quiz\UserAnswerQuiz;
 use Illuminate\Support\Facades\Auth;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
@@ -69,8 +70,12 @@ class Quiz extends Component
     public function render()
     {
         $quizzes = QuizModel::where('division_id', Auth::user()->division_id)->get();
+
+        $finishedQuizIds = UserAnswerQuiz::where('user_id', Auth::id())->pluck('quiz_id')->toArray();
+
         return view('livewire.app.quiz.quiz', [
-            'datas' => $quizzes
+            'datas' => $quizzes,
+            'finishedQuizIds' => $finishedQuizIds
         ]);
     }
 }

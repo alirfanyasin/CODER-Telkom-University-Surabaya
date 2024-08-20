@@ -22,4 +22,14 @@ class Quiz extends Model
     {
         return $this->hasMany(Question::class, 'quiz_id');
     }
+
+    /**
+     * Get all of the userAnswerQuiz for the Quiz
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function userAnswerQuiz(): HasMany
+    {
+        return $this->hasMany(UserAnswerQuiz::class, 'quiz_id');
+    }
 }

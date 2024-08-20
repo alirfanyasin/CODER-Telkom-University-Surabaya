@@ -2,6 +2,10 @@
 
 use App\Http\Controllers\Auth\Logout;
 use App\Livewire\App\Dashboard;
+use App\Livewire\App\Division;
+use App\Livewire\App\DivisionCreate;
+use App\Livewire\App\DivisionEdit;
+use App\Livewire\App\DivisionDetail;
 use App\Livewire\App\Event\ManagementEvent;
 use App\Livewire\App\Event\ManagementEventDetail;
 use App\Livewire\App\Event\Reqrutment;
@@ -115,7 +119,9 @@ Route::middleware(['auth'])->group(function () {
         });
 
         // App Gallery
-        Route::get('/content/gallery', AppGallery::class)->name('app.content.gallery');
+        Route::middleware(['role:super-admin'])->group(function () {
+            Route::get('/content/gallery', AppGallery::class)->name('app.content.gallery');
+        });
 
         // App Article
         Route::get('/content/article', AppArticle::class)->name('app.content.article');
@@ -143,6 +149,16 @@ Route::middleware(['auth'])->group(function () {
             Route::get('member/recruitment', MemberRecruitment::class)->name('app.member.recruitment');
         });
 
+        // Division
+        Route::middleware(['role:super-admin'])->group(function () {
+            Route::get('division', Division::class)->name('app.division');
+            Route::middleware(['role:super-admin'])->group(function () {
+                Route::get('division/create', DivisionCreate::class)->name('app.division.create');
+                Route::get('division/{slug}/edit', DivisionEdit::class)->name('app.division.edit');
+                Route::get('division/{slug}/detail', DivisionDetail::class)->name('app.division.detail');
+            });
+        });
+
         // Profile
         Route::get('profile', Profile::class)->name('app.profile');
         Route::get('profile/edit', ProfileEdit::class)->name('app.profile.edit');
@@ -155,8 +171,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/e-learning/task', Task::class)->name('app.e-learning.task');
     Route::get('/e-learning/task/tugas-1/detail', TaskDetail::class)->name('app.e-learning.task.detail');
     Route::middleware(['role:admin'])->group(function () {
-      Route::get('/e-learning/task/create', TaskCreate::class)->name('app.e-learning.task.create');
-      Route::get('/e-learning/task/tugas-1/edit', TaskEdit::class)->name('app.e-learning.task.edit');
-      Route::get('/e-learning/task/tugas-1/submission', TaskSubmission::class)->name('app.e-learning.task.submission');
+        Route::get('/e-learning/task/create', TaskCreate::class)->name('app.e-learning.task.create');
+        Route::get('/e-learning/task/tugas-1/edit', TaskEdit::class)->name('app.e-learning.task.edit');
+        Route::get('/e-learning/task/tugas-1/submission', TaskSubmission::class)->name('app.e-learning.task.submission');
     });
 });
