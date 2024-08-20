@@ -75,11 +75,26 @@
       </button>
     </div>
 
-    <div class="h-[10rem] overflow-auto text-white" data-hs-editor-field=""></div>
+    <div class="min-h-[13rem] text-white" data-hs-editor-field="">
+      @if (isset($edit))
+        <div contenteditable="true" translate="no" class="tiptap ProseMirror" tabindex="0"></div>
+      @endif
+    </div>
   </div>
 </div>
 <!-- End Tiptap -->
 
 @push('js-custom')
   @vite(['resources/js/text-editor.js'])
+  @if (isset($edit))
+    <script>
+      const content = `Lorem ipsum dolor sit amet consectetur. Fermentum morbi risus diam lectus ante arcu. Amet faucibus odio fames venenatis tellus ac quis quam eu. Blandit tellus convallis varius etiam dui non tristique ut sed.\n\n`;
+
+      for (let i = 0; i < 3; i++) {
+        const p = document.createElement('p');
+        p.innerText = content;
+        document.querySelector('[data-hs-editor-field] div').append(p);
+      }
+    </script>
+  @endif
 @endpush

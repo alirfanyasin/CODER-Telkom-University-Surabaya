@@ -27,6 +27,7 @@ use App\Livewire\App\ModulCreate;
 use App\Livewire\App\ModulEdit;
 use App\Livewire\App\Article as AppArticle;
 use App\Livewire\App\ArticleCreate;
+use App\Livewire\App\ArticleEdit;
 use App\Livewire\App\Profile;
 use App\Livewire\App\ProfileEdit;
 use App\Livewire\App\Quiz\Quiz;
@@ -119,6 +120,7 @@ Route::middleware(['auth'])->group(function () {
         // App Article
         Route::get('/content/article', AppArticle::class)->name('app.content.article');
         Route::get('/content/article/create', ArticleCreate::class)->name('app.content.article.create');
+        Route::get('/content/article/edit', ArticleEdit::class)->name('app.content.article.edit');
         Route::get('/content/article/{slug}', AppArticle::class)->name('app.content.article.detail');
 
         // Event
