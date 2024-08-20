@@ -21,15 +21,16 @@
 
   {{-- View Division List --}}
   <section class="mb-10">
-    <div class="grid md:grid-cols-2 items-center gap-4">
+    <div class="grid items-center gap-4 md:grid-cols-2">
       @foreach ($divisions as $item)
-        <a href="{{ route('app.division.detail', ['slug' => $item->slug]) }}" class="flex flex-col bg-glasses text-white border-transparent shadow-sm rounded-xl p-7">
+        <a href="{{ route('app.division.detail', ['slug' => $item->slug]) }}"
+          class="flex flex-col text-white border-transparent shadow-sm bg-glass rounded-xl p-7">
 
-          <div class="flex items-center justify-center bg-lightGray w-14 h-14 rounded-lg mb-10">
+          <div class="flex items-center justify-center mb-10 rounded-lg bg-lightGray w-14 h-14">
             <iconify-icon icon="{{ $item->logo }}" class="text-4xl text-white"></iconify-icon>
           </div>
 
-          <h2 class="font-bold text-2xl md:text-4xl mb-2">{{ $item->name }}</h2>
+          <h2 class="mb-2 text-2xl font-bold md:text-4xl">{{ $item->name }}</h2>
           <p class="font-medium text-[#9E9E9E]">{{ $item->description }}</p>
         </a>
       @endforeach

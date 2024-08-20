@@ -21,22 +21,22 @@
 
   {{-- section content --}}
   <section class="mb-10">
-    <div class="block md:flex items-center gap-4">
-      <div class="w-full lg:w-1/3 mb-5 md:mb-0">
-        <div class="bg-glasses text-white border-transparent rounded-xl p-7">
-          <div class="flex items-center justify-center bg-lightGray w-40 h-40 rounded-lg mx-auto">
+    <div class="items-center block gap-4 md:flex">
+      <div class="w-full mb-5 lg:w-1/3 md:mb-0">
+        <div class="text-white border-transparent bg-glass rounded-xl p-7">
+          <div class="flex items-center justify-center w-40 h-40 mx-auto rounded-lg bg-lightGray">
             <iconify-icon icon="tdesign:camera" class="text-4xl text-white"></iconify-icon>
           </div>
         </div>
       </div>
-      <div class="w-full lg:w-2/3 mb-5 md:mb-0">
-        <div class="bg-glasses text-white border-transparent rounded-xl p-7">
+      <div class="w-full mb-5 lg:w-2/3 md:mb-0">
+        <div class="text-white border-transparent bg-glass rounded-xl p-7">
           <div class="division-title mb-7">
-            <h2 class="text-white font-semibold text-xl mb-3">Nama Divisi</h2>
+            <h2 class="mb-3 text-xl font-semibold text-white">Nama Divisi</h2>
             <p class="text-[#9E9E9E]">{{ $division->name }}</p>
           </div>
           <div class="division-desc">
-            <h2 class="text-white font-semibold text-xl mb-3">Deskripsi</h2>
+            <h2 class="mb-3 text-xl font-semibold text-white">Deskripsi</h2>
             <p class="text-[#9E9E9E]">{{ $division->description }}</p>
           </div>
         </div>
@@ -44,23 +44,23 @@
     </div>
   </section>
   <section class="mb-10">
-    <div class="flex flex-col bg-glasses rounded-xl p-7">
+    <div class="flex flex-col bg-glass rounded-xl p-7">
       <div class="flex items-center gap-4 mb-5">
-        <h2 class="text-white font-bold text-3xl">Daftar Anggota</h2>
-        <div class="px-4 py-2 border border-neutral-700 rounded-lg">
+        <h2 class="text-3xl font-bold text-white">Daftar Anggota</h2>
+        <div class="px-4 py-2 border rounded-lg border-neutral-700">
           <p class="text-[#9E9E9E] font-semibold">11 Anggota</p>
         </div>
       </div>
-      <div class="grid md:grid-cols-3 items-center gap-4">
+      <div class="grid items-center gap-4 md:grid-cols-3">
         @for ($i = 0; $i < 9; $i++)
-          <div class="flex flex-col bg-lightGray text-white border-transparent rounded-lg p-4">
+          <div class="flex flex-col p-4 text-white border-transparent rounded-lg bg-lightGray">
             <div class="flex items-center">
               <img class="inline-block size-[46px] rounded-full"
                 src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
                 alt="Avatar">
-								<div class="ml-5">
-									<h2 class="font-bold text-xl text-white">Deo Farady Santoso</h2>
-								</div>
+              <div class="ml-5">
+                <h2 class="text-xl font-bold text-white">Deo Farady Santoso</h2>
+              </div>
             </div>
           </div>
         @endfor
