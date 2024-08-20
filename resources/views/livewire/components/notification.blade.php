@@ -163,15 +163,15 @@
       aria-labelledby="hs-dropdown-with-header">
       <div class="py-3 px-5 -m-2 text-white hover:bg-[#27292C] rounded-t-lg block md:hidden">
         <p class="text-sm">{{ Auth::user()->name }}</p>
-        <p class="text-sm font-medium">{{ Auth::user()->label }}</p>
+        <p class="text-xs font-light text-neutral-400">{{ Auth::user()->label }}</p>
       </div>
       <div class="py-2 mt-2 first:pt-0 last:pb-0">
         <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:bg-[#27292C]"
           href="{{ route('app.profile') }}">
-          <iconify-icon icon="carbon:user" class="text-lg"></iconify-icon>
+          <iconify-icon icon="ph:user" class="text-lg"></iconify-icon>
           Profil
         </a>
-        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:bg-[#27292C]"
+        <a class="flex items-center gap-x-3.5 py-2 px-3  hover:text-red-600 rounded-lg text-sm text-white hover:bg-[#27292C]"
           href="{{ route('logout') }}">
           <iconify-icon icon="uil:exit" class="text-lg"></iconify-icon>
           Logout
