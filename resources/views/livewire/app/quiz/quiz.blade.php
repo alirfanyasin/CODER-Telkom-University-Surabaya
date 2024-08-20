@@ -22,7 +22,7 @@
 
   {{-- View All Modul Start --}}
   <section class="">
-    <div class="grid grid-cols-3 gap-2">
+    <div class="grid grid-cols-1 gap-2 lg:grid-cols-3 md:grid-cols-2">
       @foreach ($datas as $data)
         {{-- Card start --}}
         <div class="p-4 text-white rounded-xl bg-glass hover:border hover:border-gray-500">
@@ -61,7 +61,7 @@
           @endrole
           @role('user')
             <div class="flex items-center justify-between mt-5">
-              <a href="{{ route('app.e-learning.quiz-live', ['slug' => $data->slug, 'code' => $data->code]) }}"
+              <a href="{{ route('app.e-learning.quiz-confirmation', ['slug' => $data->slug, 'code' => $data->code]) }}"
                 wire:navigate
                 class="inline-flex items-center px-4 py-2 text-sm font-semibold text-white rounded-lg gap-x-2 bg-neutral-800 hover:bg-white hover:text-black">
                 Mulai Kuis
