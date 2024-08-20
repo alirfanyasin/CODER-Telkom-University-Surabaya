@@ -28,6 +28,7 @@ use App\Livewire\App\Profile;
 use App\Livewire\App\ProfileEdit;
 use App\Livewire\App\Quiz\Quiz;
 use App\Livewire\App\Quiz\QuizAnswerKey;
+use App\Livewire\App\Quiz\QuizConfirmation;
 use App\Livewire\App\Quiz\QuizCreate;
 use App\Livewire\App\Quiz\QuizEdit;
 use App\Livewire\App\Quiz\QuizLive;
@@ -102,7 +103,8 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('/e-learning/quiz/{slug}/edit', QuizEdit::class)->name('app.e-learning.quiz.edit');
             });
             Route::middleware(['role:user'])->group(function () {
-                Route::get('/e-learning/quiz/{slug}/{code}/live', QuizLive::class)->name('app.e-learning.quiz-live');
+                Route::get('/e-learning/quiz/{code}/{slug}/confirmation', QuizConfirmation::class)->name('app.e-learning.quiz-confirmation');
+                Route::get('/e-learning/quiz/{slug}/{id}/live', QuizLive::class)->name('app.e-learning.quiz-live');
             });
         });
 

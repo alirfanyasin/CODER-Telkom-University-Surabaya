@@ -2,6 +2,7 @@
 
 namespace App\Livewire\App\Quiz;
 
+use App\Models\Quiz\Question;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -11,8 +12,20 @@ use Livewire\Component;
 
 class QuizLive extends Component
 {
+    // public $slug;
+    public $quizId;
+
+    public function mount($id)
+    {
+        // $this->slug = $slug;
+        $this->quizId = $id;
+    }
+
     public function render()
     {
-        return view('livewire.app.quiz.quiz-live');
+        $dataQuestion = Question::where('quiz_id', $this->quizId)->get();
+        return view('livewire.app.quiz.quiz-live', [
+            'dataQuestions' => $dataQuestion
+        ]);
     }
 }
