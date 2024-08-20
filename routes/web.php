@@ -116,7 +116,9 @@ Route::middleware(['auth'])->group(function () {
         });
 
         // App Gallery
-        Route::get('/content/gallery', AppGallery::class)->name('app.content.gallery');
+        Route::middleware(['role:super-admin'])->group(function () {
+            Route::get('/content/gallery', AppGallery::class)->name('app.content.gallery');
+        });
 
         // Event
         Route::get('/event/management-event', ManagementEvent::class)->name('app.event.management-event');
@@ -139,11 +141,13 @@ Route::middleware(['auth'])->group(function () {
         });
 
         // Division
-        Route::get('division', Division::class)->name('app.division');
         Route::middleware(['role:super-admin'])->group(function () {
-            Route::get('division/create', DivisionCreate::class)->name('app.division.create');
-            Route::get('division/{slug}/edit', DivisionEdit::class)->name('app.division.edit');
-            Route::get('division/{slug}/detail', DivisionDetail::class)->name('app.division.detail');
+            Route::get('division', Division::class)->name('app.division');
+            Route::middleware(['role:super-admin'])->group(function () {
+                Route::get('division/create', DivisionCreate::class)->name('app.division.create');
+                Route::get('division/{slug}/edit', DivisionEdit::class)->name('app.division.edit');
+                Route::get('division/{slug}/detail', DivisionDetail::class)->name('app.division.detail');
+            });
         });
 
         // Profile
@@ -158,8 +162,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/e-learning/task', Task::class)->name('app.e-learning.task');
     Route::get('/e-learning/task/tugas-1/detail', TaskDetail::class)->name('app.e-learning.task.detail');
     Route::middleware(['role:admin'])->group(function () {
-      Route::get('/e-learning/task/create', TaskCreate::class)->name('app.e-learning.task.create');
-      Route::get('/e-learning/task/tugas-1/edit', TaskEdit::class)->name('app.e-learning.task.edit');
-      Route::get('/e-learning/task/tugas-1/submission', TaskSubmission::class)->name('app.e-learning.task.submission');
+        Route::get('/e-learning/task/create', TaskCreate::class)->name('app.e-learning.task.create');
+        Route::get('/e-learning/task/tugas-1/edit', TaskEdit::class)->name('app.e-learning.task.edit');
+        Route::get('/e-learning/task/tugas-1/submission', TaskSubmission::class)->name('app.e-learning.task.submission');
     });
 });

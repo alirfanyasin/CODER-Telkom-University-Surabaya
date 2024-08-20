@@ -119,13 +119,15 @@
         </li>
         @role(['super-admin|admin|user|guest'])
           @role(['super-admin|admin|user'])
-          <li class="mb-2">
-            <a href="{{ route('app.division') }}" wire:navigate
-              class="flex items-center px-3 py-3 font-medium rounded-lg text-md hover:bg-white mb-1.5 hover:text-black {{ Request::is('app/division/*') ? 'active-menu' : 'text-gray-400' }} {{ Request::is('app/division') ? 'active-menu' : 'text-gray-400' }}">
-              <iconify-icon icon="teenyicons:box-outline" class="mr-3 text-2xl"></iconify-icon>
-              Divisi
-            </a>
-          </li>
+            @role(['super-admin'])
+              <li class="mb-2">
+                <a href="{{ route('app.division') }}" wire:navigate
+                  class="flex items-center px-3 py-3 font-medium rounded-lg text-md hover:bg-white mb-1.5 hover:text-black {{ Request::is('app/division/*') ? 'active-menu' : 'text-gray-400' }} {{ Request::is('app/division') ? 'active-menu' : 'text-gray-400' }}">
+                  <iconify-icon icon="teenyicons:box-outline" class="mr-3 text-2xl"></iconify-icon>
+                  Divisi
+                </a>
+              </li>
+            @endrole
             <li class="mb-4 hs-accordion {{ Request::is('app/e-learning/*') ? 'active' : '' }}" id="e-learning-accordion">
               <button type="button"
                 class="hs-accordion-toggle hs-accordion-active:text-gray-400 hs-accordion-active:hover:text-black  w-full text-start flex items-center gap-x-3.5 py-3 hover:text-black hover:bg-white mb-1.5 px-3 text-md font-medium text-gray-400 bg-transparent rounded-lg">
@@ -184,7 +186,7 @@
             </li>
           @endrole
 
-          @role(['super-admin|admin|user|guest'])
+          @role(['super-admin'])
             <li class="mb-4 hs-accordion {{ Request::is('app/content/*') ? 'active' : '' }}" id="content-accordion">
               <button type="button"
                 class="hs-accordion-toggle hs-accordion-active:text-gray-400 hs-accordion-active:hover:text-black  w-full text-start flex items-center gap-x-3.5 py-3 hover:text-black hover:bg-white mb-1.5 px-3 text-md font-medium text-gray-400 bg-transparent rounded-lg">
