@@ -1,11 +1,11 @@
 <?php
 
 use App\Http\Controllers\Auth\Logout;
-use App\Http\Controllers\ZipDownload;
 use App\Livewire\App\Dashboard;
 use App\Livewire\App\Event\ManagementEvent;
 use App\Livewire\App\Event\ManagementEventDetail;
 use App\Livewire\App\Event\Reqrutment;
+use App\Livewire\App\Gallery as AppGallery;
 use App\Livewire\App\Task;
 use App\Livewire\App\TaskCreate;
 use App\Livewire\App\TaskDetail;
@@ -29,6 +29,15 @@ use App\Livewire\App\Article as AppArticle;
 use App\Livewire\App\ArticleCreate;
 use App\Livewire\App\Profile;
 use App\Livewire\App\ProfileEdit;
+use App\Livewire\App\Quiz\Quiz;
+use App\Livewire\App\Quiz\QuizAnswerKey;
+use App\Livewire\App\Quiz\QuizConfirmation;
+use App\Livewire\App\Quiz\QuizCreate;
+use App\Livewire\App\Quiz\QuizEdit;
+use App\Livewire\App\Quiz\QuizLive;
+use App\Livewire\App\Quiz\QuizQuestionCreate;
+use App\Livewire\App\Quiz\QuizResult;
+use App\Livewire\App\Quiz\QuizShow;
 use App\Livewire\Auth\ForgotPassword;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
@@ -87,6 +96,25 @@ Route::middleware(['auth'])->group(function () {
             // Route::get('/e-learning/modul/{id}/destroy', ModulEdit::class)->name('app.e-learning.modul.destroy');
         });
 
+        // Kuis
+        Route::middleware(['role:admin|user'])->group(function () {
+            Route::get('/e-learning/quiz', Quiz::class)->name('app.e-learning.quiz');
+            Route::middleware(['role:admin'])->group(function () {
+                Route::get('/e-learning/quiz/{code}/{id}/show', QuizShow::class)->name('app.e-learning.quiz.show');
+                Route::get('/e-learning/quiz/create', QuizCreate::class)->name('app.e-learning.quiz.create');
+                Route::get('/e-learning/quiz/question/create', QuizQuestionCreate::class)->name('app.e-learning.quiz.question-create');
+                Route::get('/e-learning/quiz/answer-key/create', QuizAnswerKey::class)->name('app.e-learning.quiz.answere-key-create');
+                Route::get('/e-learning/quiz/{slug}/edit', QuizEdit::class)->name('app.e-learning.quiz.edit');
+            });
+            Route::middleware(['role:user'])->group(function () {
+                Route::get('/e-learning/quiz/{code}/{slug}/confirmation', QuizConfirmation::class)->name('app.e-learning.quiz-confirmation');
+                Route::get('/e-learning/quiz/{slug}/{id}/live', QuizLive::class)->name('app.e-learning.quiz-live');
+                Route::get('/e-learning/quiz/{id}/result', QuizResult::class)->name('app.e-learning.quiz-result');
+            });
+        });
+
+        // App Gallery
+        Route::get('/content/gallery', AppGallery::class)->name('app.content.gallery');
         // App Article
         Route::get('/article', AppArticle::class)->name('app.article');
         Route::get('/article/create', ArticleCreate::class)->name('app.article.create');
@@ -118,5 +146,14 @@ Route::middleware(['auth'])->group(function () {
 
         // Logout Route
         Route::get('/logout', [Logout::class, 'logout'])->name('logout');
+    });
+
+    // Tugas
+    Route::get('/e-learning/task', Task::class)->name('app.e-learning.task');
+    Route::get('/e-learning/task/tugas-1/detail', TaskDetail::class)->name('app.e-learning.task.detail');
+    Route::middleware(['role:admin'])->group(function () {
+      Route::get('/e-learning/task/create', TaskCreate::class)->name('app.e-learning.task.create');
+      Route::get('/e-learning/task/tugas-1/edit', TaskEdit::class)->name('app.e-learning.task.edit');
+      Route::get('/e-learning/task/tugas-1/submission', TaskSubmission::class)->name('app.e-learning.task.submission');
     });
 });

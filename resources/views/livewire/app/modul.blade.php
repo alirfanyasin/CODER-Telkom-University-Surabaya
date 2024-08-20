@@ -69,7 +69,7 @@
                     <div class="flex gap-4 mt-4 text-gray-400">
                       <a href="#" wire:click='destroy({{ $data->id }})'
                         class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-red-600 border-[#27272A] px-4 py-1">
-                        <iconify-icon icon="mdi:trash"></iconify-icon><span>Hapus</span>
+                        <iconify-icon icon="tabler:trash"></iconify-icon><span>Hapus</span>
                       </a>
                       <a href="{{ route('app.e-learning.modul.edit', $data->id) }}" wire:navigate
                         class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-yellow-600 border-[#27272A] px-4 py-1">
