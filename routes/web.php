@@ -107,6 +107,8 @@ Route::middleware(['auth'])->group(function () {
             });
         });
 
+        // App Gallery
+        Route::get('/gallery', AppGallery::class)->name('app.gallery');
 
         // Event
         Route::get('/event/management-event', ManagementEvent::class)->name('app.event.management-event');
@@ -135,9 +137,6 @@ Route::middleware(['auth'])->group(function () {
         // Logout Route
         Route::get('/logout', [Logout::class, 'logout'])->name('logout');
     });
-
-    // App Gallery
-    Route::get('/gallery', AppGallery::class)->name('app.gallery');
 
     // Tugas
     Route::get('/e-learning/task', Task::class)->name('app.e-learning.task');
