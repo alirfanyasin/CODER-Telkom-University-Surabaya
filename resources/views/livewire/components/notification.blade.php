@@ -167,7 +167,7 @@
       </div>
       <div class="py-2 mt-2 first:pt-0 last:pb-0">
         <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:bg-[#27292C]"
-          href="{{ route('app.profile') }}">
+          href="{{ route('app.profile') }}" wire:navigate>
           <iconify-icon icon="ph:user" class="text-lg"></iconify-icon>
           Profil
         </a>

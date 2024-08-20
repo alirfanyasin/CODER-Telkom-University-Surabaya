@@ -34,7 +34,7 @@ class Task extends Component
     {
         $this->itemToDelete = $id;
 
-        $this->alert('warning', 'Yakin ingin menghapus tugas ini?', [
+        $this->alert('warning', 'Yakin ingin menghapus data?', [
             'position' => 'top-end',
             'timer' => null,
             'toast' => true,
