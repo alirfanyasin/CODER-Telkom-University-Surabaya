@@ -108,7 +108,7 @@ Route::middleware(['auth'])->group(function () {
         });
 
         // App Gallery
-        Route::get('/gallery', AppGallery::class)->name('app.gallery');
+        Route::get('/content/gallery', AppGallery::class)->name('app.content.gallery');
 
         // Event
         Route::get('/event/management-event', ManagementEvent::class)->name('app.event.management-event');
