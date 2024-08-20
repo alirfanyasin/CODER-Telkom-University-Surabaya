@@ -2,9 +2,14 @@
 
 use App\Http\Controllers\Auth\Logout;
 use App\Livewire\App\Dashboard;
+use App\Livewire\App\Division;
+use App\Livewire\App\DivisionCreate;
+use App\Livewire\App\DivisionEdit;
+use App\Livewire\App\DivisionDetail;
 use App\Livewire\App\Event\ManagementEvent;
 use App\Livewire\App\Event\ManagementEventDetail;
 use App\Livewire\App\Event\Reqrutment;
+use App\Livewire\App\Gallery as AppGallery;
 use App\Livewire\App\Task;
 use App\Livewire\App\TaskCreate;
 use App\Livewire\App\TaskDetail;
@@ -110,6 +115,10 @@ Route::middleware(['auth'])->group(function () {
             });
         });
 
+        // App Gallery
+        Route::middleware(['role:super-admin'])->group(function () {
+            Route::get('/content/gallery', AppGallery::class)->name('app.content.gallery');
+        });
 
         // Event
         Route::get('/event/management-event', ManagementEvent::class)->name('app.event.management-event');
@@ -131,11 +140,30 @@ Route::middleware(['auth'])->group(function () {
             Route::get('member/recruitment', MemberRecruitment::class)->name('app.member.recruitment');
         });
 
+        // Division
+        Route::middleware(['role:super-admin'])->group(function () {
+            Route::get('division', Division::class)->name('app.division');
+            Route::middleware(['role:super-admin'])->group(function () {
+                Route::get('division/create', DivisionCreate::class)->name('app.division.create');
+                Route::get('division/{slug}/edit', DivisionEdit::class)->name('app.division.edit');
+                Route::get('division/{slug}/detail', DivisionDetail::class)->name('app.division.detail');
+            });
+        });
+
         // Profile
         Route::get('profile', Profile::class)->name('app.profile');
         Route::get('profile/edit', ProfileEdit::class)->name('app.profile.edit');
 
         // Logout Route
         Route::get('/logout', [Logout::class, 'logout'])->name('logout');
+    });
+
+    // Tugas
+    Route::get('/e-learning/task', Task::class)->name('app.e-learning.task');
+    Route::get('/e-learning/task/tugas-1/detail', TaskDetail::class)->name('app.e-learning.task.detail');
+    Route::middleware(['role:admin'])->group(function () {
+        Route::get('/e-learning/task/create', TaskCreate::class)->name('app.e-learning.task.create');
+        Route::get('/e-learning/task/tugas-1/edit', TaskEdit::class)->name('app.e-learning.task.edit');
+        Route::get('/e-learning/task/tugas-1/submission', TaskSubmission::class)->name('app.e-learning.task.submission');
     });
 });

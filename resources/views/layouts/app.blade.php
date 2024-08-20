@@ -119,6 +119,15 @@
         </li>
         @role(['super-admin|admin|user|guest'])
           @role(['super-admin|admin|user'])
+            @role(['super-admin'])
+              <li class="mb-2">
+                <a href="{{ route('app.division') }}" wire:navigate
+                  class="flex items-center px-3 py-3 font-medium rounded-lg text-md hover:bg-white mb-1.5 hover:text-black {{ Request::is('app/division/*') ? 'active-menu' : 'text-gray-400' }} {{ Request::is('app/division') ? 'active-menu' : 'text-gray-400' }}">
+                  <iconify-icon icon="teenyicons:box-outline" class="mr-3 text-2xl"></iconify-icon>
+                  Divisi
+                </a>
+              </li>
+            @endrole
             <li class="mb-4 hs-accordion {{ Request::is('app/e-learning/*') ? 'active' : '' }}" id="e-learning-accordion">
               <button type="button"
                 class="hs-accordion-toggle hs-accordion-active:text-gray-400 hs-accordion-active:hover:text-black  w-full text-start flex items-center gap-x-3.5 py-3 hover:text-black hover:bg-white mb-1.5 px-3 text-md font-medium text-gray-400 bg-transparent rounded-lg">
@@ -176,6 +185,42 @@
               </a>
             </li>
           @endrole
+
+          @role(['super-admin'])
+            <li class="mb-4 hs-accordion {{ Request::is('app/content/*') ? 'active' : '' }}" id="content-accordion">
+              <button type="button"
+                class="hs-accordion-toggle hs-accordion-active:text-gray-400 hs-accordion-active:hover:text-black  w-full text-start flex items-center gap-x-3.5 py-3 hover:text-black hover:bg-white mb-1.5 px-3 text-md font-medium text-gray-400 bg-transparent rounded-lg">
+                <iconify-icon icon="solar:folder-broken" class="text-2xl"></iconify-icon>
+                Konten
+
+                <iconify-icon icon="mdi:chevron-up"
+                  class="hidden text-xl text-gray-600 hs-accordion-active:block ms-auto size-4 group-hover:text-gray-500"></iconify-icon>
+                <iconify-icon icon="mdi:chevron-down"
+                  class="block text-xl text-gray-600 hs-accordion-active:hidden ms-auto size-4 group-hover:text-gray-500"></iconify-icon>
+              </button>
+
+              <div id="content-accordion"
+                class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 {{ Request::is('app/content/*') ? 'block' : 'hidden' }}">
+                <ul class="pt-2 hs-accordion-group" data-hs-accordion-always-open>
+                  <li class="hs-accordion" id="content-accordion-sub-2">
+                    <a href="{{ route('app.content.gallery') }}" wire:navigate
+                      class="flex py-3 font-medium text-gray-400 rounded-lg text-md item-center hover:bg-white mb-1.5 hover:text-black ps-10 {{ Request::is('app/content/gallery/*') ? 'active-menu' : 'text-gray-400' }} {{ Request::is('app/content/gallery') ? 'active-menu' : 'text-gray-400' }}">
+                      <iconify-icon icon="solar:gallery-circle-outline" class="mr-3 text-2xl"></iconify-icon>
+                      Galeri
+                    </a>
+                  </li>
+                  <li class="hs-accordion" id="content-accordion-sub-1">
+                    <a href="{#{ route('app.content.article') }}" wire:navigate
+                      class="flex py-3 font-medium text-gray-400 rounded-lg text-md item-center hover:bg-white mb-1.5 hover:text-black ps-10 {{ Request::is('app/content/article/*') ? 'active-menu' : 'text-gray-400' }} {{ Request::is('app/content/article') ? 'active-menu' : 'text-gray-400' }}">
+                      <iconify-icon icon="solar:document-text-broken" class="mr-3 text-2xl"></iconify-icon>
+                      Artikel
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          @endrole
+
           @role(['super-admin|admin|user|guest'])
             <li class="mb-4">
               <a href="{{ route('app.member') }}" wire:navigate
