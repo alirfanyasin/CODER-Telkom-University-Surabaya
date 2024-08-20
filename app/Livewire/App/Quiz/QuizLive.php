@@ -19,7 +19,9 @@ class QuizLive extends Component
     public $selectedAnswer = null;
     public $answers = [];
     public $totalScore = 0;
-    public $currentPoint = 0; // Menyimpan poin dari pertanyaan saat ini
+    public $currentPoint = 0;
+    public $correctAnswers = 0;
+    public $wrongAnswers = 0;
 
     public function mount($id)
     {
@@ -35,9 +37,12 @@ class QuizLive extends Component
         // Simpan jawaban yang dipilih
         $this->answers[$this->currentQuestionIndex] = $selectedAnswer;
 
-        // Tambahkan poin jika jawaban benar
+        // Tambahkan poin dan hitung jawaban benar/salah
         if ($selectedAnswer === $currentQuestion->is_correct) {
             $this->totalScore += $this->currentPoint;
+            $this->correctAnswers++;
+        } else {
+            $this->wrongAnswers++;
         }
 
         // Pindah ke pertanyaan berikutnya jika masih ada
@@ -60,6 +65,8 @@ class QuizLive extends Component
         UserAnswerQuiz::create([
             'score' => $this->totalScore,
             'grade' => $grade,
+            'correct_answer' => $this->correctAnswers,
+            'wrong_answer' => $this->wrongAnswers,
             'quiz_id' => $this->quizId,
             'user_id' => Auth::id(),
         ]);
@@ -93,7 +100,7 @@ class QuizLive extends Component
             ->first();
 
         if ($dataQuestion) {
-            $this->currentPoint = $dataQuestion->point; // Set poin untuk pertanyaan saat ini
+            $this->currentPoint = $dataQuestion->point;
         }
 
         return view('livewire.app.quiz.quiz-live', [
