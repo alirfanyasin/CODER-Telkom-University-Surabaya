@@ -2,6 +2,10 @@
 
 use App\Http\Controllers\Auth\Logout;
 use App\Livewire\App\Dashboard;
+use App\Livewire\App\Division;
+use App\Livewire\App\DivisionCreate;
+use App\Livewire\App\DivisionEdit;
+use App\Livewire\App\DivisionDetail;
 use App\Livewire\App\Event\ManagementEvent;
 use App\Livewire\App\Event\ManagementEventDetail;
 use App\Livewire\App\Event\Reqrutment;
@@ -132,6 +136,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('member/detail', MemberDetail::class)->name('app.member.detail');
         Route::middleware(['role:admin|super-admin'])->group(function () {
             Route::get('member/recruitment', MemberRecruitment::class)->name('app.member.recruitment');
+        });
+
+        // Division
+        Route::get('division', Division::class)->name('app.division');
+        Route::middleware(['role:super-admin'])->group(function () {
+            Route::get('division/create', DivisionCreate::class)->name('app.division.create');
+            Route::get('division/{slug}/edit', DivisionEdit::class)->name('app.division.edit');
+            Route::get('division/{slug}/detail', DivisionDetail::class)->name('app.division.detail');
         });
 
         // Profile
