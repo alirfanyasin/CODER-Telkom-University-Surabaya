@@ -60,17 +60,25 @@
             </div>
           @endrole
           @role('user')
-            <div class="flex items-center justify-between mt-5">
-              <a href="{{ route('app.e-learning.quiz-confirmation', ['slug' => $data->slug, 'code' => $data->code]) }}"
-                wire:navigate
-                class="inline-flex items-center px-4 py-2 text-sm font-semibold text-white rounded-lg gap-x-2 bg-neutral-800 hover:bg-white hover:text-black">
-                Mulai Kuis
-              </a>
-            </div>
+            @if (in_array($data->id, $finishedQuizIds))
+              <div class="flex items-center justify-between mt-5">
+                <a href="{{ route('app.e-learning.quiz-result', ['id' => $data->id]) }}" wire:navigate
+                  class="inline-flex items-center px-4 py-2 text-sm font-semibold text-white rounded-lg gap-x-2 bg-neutral-800 hover:bg-white hover:text-black">
+                  Lihat Hasil
+                </a>
+              </div>
+            @else
+              <div class="flex items-center justify-between mt-5">
+                <a href="{{ route('app.e-learning.quiz-confirmation', ['slug' => $data->slug, 'code' => $data->code]) }}"
+                  wire:navigate
+                  class="inline-flex items-center px-4 py-2 text-sm font-semibold text-white rounded-lg gap-x-2 bg-neutral-800 hover:bg-white hover:text-black">
+                  Mulai Kuis
+                </a>
+              </div>
+            @endif
           @endrole
         </div>
       @endforeach
-
       {{-- Card end --}}
     </div>
 

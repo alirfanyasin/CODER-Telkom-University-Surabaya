@@ -1,10 +1,7 @@
 <div>
-  <section>
-
-  </section>
   <section class="text-center text-white">
     <h1 class="text-2xl font-bold">Halo, {{ Auth::user()->name }}</h1>
-    <p class="mb-5">Apakah kamu sudah siap mengejakan Kuis?</p>
+    <p class="mb-5">Apakah kamu sudah siap mengerjakan Kuis?</p>
 
     <div class="flex justify-center w-full">
       {{-- Card start --}}
