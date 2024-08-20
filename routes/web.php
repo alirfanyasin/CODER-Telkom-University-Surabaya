@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Auth\Logout;
-use App\Http\Controllers\ZipDownload;
 use App\Livewire\App\Dashboard;
 use App\Livewire\App\Event\ManagementEvent;
 use App\Livewire\App\Event\ManagementEventDetail;
@@ -27,6 +26,13 @@ use App\Livewire\App\ModulCreate;
 use App\Livewire\App\ModulEdit;
 use App\Livewire\App\Profile;
 use App\Livewire\App\ProfileEdit;
+use App\Livewire\App\Quiz\Quiz;
+use App\Livewire\App\Quiz\QuizAnswerKey;
+use App\Livewire\App\Quiz\QuizCreate;
+use App\Livewire\App\Quiz\QuizEdit;
+use App\Livewire\App\Quiz\QuizLive;
+use App\Livewire\App\Quiz\QuizQuestionCreate;
+use App\Livewire\App\Quiz\QuizShow;
 use App\Livewire\Auth\ForgotPassword;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
@@ -83,6 +89,21 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/e-learning/modul/create', ModulCreate::class)->name('app.e-learning.modul.create');
             Route::get('/e-learning/modul/{id}/edit', ModulEdit::class)->name('app.e-learning.modul.edit');
             // Route::get('/e-learning/modul/{id}/destroy', ModulEdit::class)->name('app.e-learning.modul.destroy');
+        });
+
+        // Kuis
+        Route::middleware(['role:admin|user'])->group(function () {
+            Route::get('/e-learning/quiz', Quiz::class)->name('app.e-learning.quiz');
+            Route::middleware(['role:admin'])->group(function () {
+                Route::get('/e-learning/quiz/{code}/{id}/show', QuizShow::class)->name('app.e-learning.quiz.show');
+                Route::get('/e-learning/quiz/create', QuizCreate::class)->name('app.e-learning.quiz.create');
+                Route::get('/e-learning/quiz/question/create', QuizQuestionCreate::class)->name('app.e-learning.quiz.question-create');
+                Route::get('/e-learning/quiz/answer-key/create', QuizAnswerKey::class)->name('app.e-learning.quiz.answere-key-create');
+                Route::get('/e-learning/quiz/{slug}/edit', QuizEdit::class)->name('app.e-learning.quiz.edit');
+            });
+            Route::middleware(['role:user'])->group(function () {
+                Route::get('/e-learning/quiz/{slug}/{code}/live', QuizLive::class)->name('app.e-learning.quiz-live');
+            });
         });
 
 
