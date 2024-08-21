@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Models\Quiz\UserAnswerQuiz;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -76,5 +78,15 @@ class User extends Authenticatable
     public function chatting(): HasMany
     {
         return $this->hasMany(Chatting::class, 'from_user_id');
+    }
+
+    /**
+     * Get all of the userAnswerQuiz for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function userAnswerQuiz(): HasMany
+    {
+        return $this->hasMany(UserAnswerQuiz::class, 'user_id');
     }
 }

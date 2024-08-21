@@ -40,18 +40,17 @@
                     <table class="min-w-full bg-lightGray">
                       <thead class="bg-[#43474C]">
                         <tr>
-                          <th scope="col" class="px-6 py-3 text-start text-sm font-medium text-white uppercase">No
+                          <th scope="col" class="px-6 py-3 text-sm font-medium text-white uppercase text-start">No
                           </th>
-                          <th scope="col" class="px-6 py-3 text-start text-sm font-medium text-white uppercase">Nama
+                          <th scope="col" class="px-6 py-3 text-sm font-medium text-white uppercase text-start">Nama
                           </th>
-                          <th scope="col" class="px-6 py-3 text-start text-sm font-medium text-white uppercase">
+                          <th scope="col" class="px-6 py-3 text-sm font-medium text-white uppercase text-start">
                             Program Studi</th>
-                          <th scope="col" class="px-6 py-3 text-start text-sm font-medium text-white uppercase">
+                          <th scope="col" class="px-6 py-3 text-sm font-medium text-white uppercase text-start">
                             Status Kehadiran</th>
                         </tr>
                       </thead>
                       <tbody class="">
-
                         @foreach ($members as $member)
                         @php
                             $iteration = str_pad($loop->iteration, 2, '0', STR_PAD_LEFT);

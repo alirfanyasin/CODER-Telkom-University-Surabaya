@@ -12,7 +12,7 @@
     </style>
   {{-- Header Start --}}
   <header class="flex items-center justify-between my-7">
-    <h2 class="text-2xl font-bold text-white md:text-3xl">Perbarui Presensi</h2>
+    <h2 class="text-2xl font-bold text-white md:text-3xl">Edit Presensi</h2>
   </header>
   {{-- Header End --}}
 
@@ -51,13 +51,13 @@
                     <table class="min-w-full bg-lightGray">
                       <thead class="bg-[#43474C]">
                         <tr>
-                          <th scope="col" class="px-6 py-3 text-start text-sm font-medium text-white uppercase">No
+                          <th scope="col" class="px-6 py-3 text-sm font-medium text-white uppercase text-start">No
                           </th>
-                          <th scope="col" class="px-6 py-3 text-start text-sm font-medium text-white uppercase">Nama
+                          <th scope="col" class="px-6 py-3 text-sm font-medium text-white uppercase text-start">Nama
                           </th>
-                          <th scope="col" class="px-6 py-3 text-start text-sm font-medium text-white uppercase">
+                          <th scope="col" class="px-6 py-3 text-sm font-medium text-white uppercase text-start">
                             Program Studi</th>
-                          <th scope="col" class="px-6 py-3 text-start text-sm font-medium text-white uppercase">
+                          <th scope="col" class="px-6 py-3 text-sm font-medium text-white uppercase text-start">
                             Status Kehadiran</th>
                         </tr>
                       </thead>
@@ -80,17 +80,12 @@
         </div>
       </div>
       <div class="flex my-7">
-
         <div class="ml-auto flex items-center gap-4">
           <a href="/app/presence" wire:navigate class="flex items-center px-5 py-3 text-sm font-semibold border border-[#4F4F55] text-white hover:bg-red-600 hover:border-red-600 rounded-md">Batal</a>
-          <button type="submit"
-            class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md"> Simpan Presensi
-            <iconify-icon icon="material-symbols:save-outline" class="text-xl ms-2"></iconify-icon></button>
+          <button type="submit" class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md"> Simpan Presensi <iconify-icon icon="mingcute:arrow-right-line" class="text-xl ms-2"></iconify-icon></button>
         </div>
-
       </div>
     </form>
   </section>
   {{-- Detail Meeting Section Start --}}
-
 </div>

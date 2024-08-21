@@ -30,30 +30,41 @@
           <div class="block text-left">
             <div class="mb-4">
               <label for="name" class="text-xs font-normal text-white">Nama Lengkap</label>
-              <input type="text" id="name" wire:model='name'
-                class="block w-full px-4 py-3 mt-1 text-sm border border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                placeholder="">
-              @error('name')
-                <small class="text-red-600"> {{ $message }} </small>
-              @enderror
+              <div class="relative">
+                <input type="text" id="name" wire:model='name'
+                  class="block w-full px-4 py-3 pl-12 mt-1 text-sm border border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                  placeholder="">
+                @error('name')
+                  <small class="text-red-600"> {{ $message }} </small>
+                @enderror
+                <iconify-icon icon="ph:user-bold"
+                  class="absolute text-2xl text-neutral-600 top-3 left-3"></iconify-icon>
+              </div>
             </div>
             <div class="mb-4">
               <label for="email" class="text-xs font-normal text-white">Alamat Email</label>
-              <input type="text" id="email" wire:model='email'
-                class="block w-full px-4 py-3 mt-1 text-sm border border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                placeholder="">
-              @error('email')
-                <small class="text-red-600"> {{ $message }} </small>
-              @enderror
+              <div class="relative">
+                <input type="text" id="email" wire:model='email'
+                  class="block w-full px-4 py-3 pl-12 mt-1 text-sm border border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                  placeholder="">
+                @error('email')
+                  <small class="text-red-600"> {{ $message }} </small>
+                @enderror
+                <iconify-icon icon="ic:outline-email"
+                  class="absolute text-2xl text-neutral-600 top-3 left-3"></iconify-icon>
+              </div>
             </div>
             <div class="mb-4">
               <label for="password" class="text-xs font-normal text-white">Kata Sandi</label>
-              <input type="password" id="password" wire:model='password'
-                class="block w-full px-4 py-3 mt-1 text-sm border border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                placeholder="">
-              @error('password')
-                <small class="text-red-600"> {{ $message }} </small>
-              @enderror
+              <div class="relative">
+                <input type="password" id="password" wire:model='password'
+                  class="block w-full px-4 py-3 pl-12 mt-1 text-sm border border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                  placeholder="">
+                @error('password')
+                  <small class="text-red-600"> {{ $message }} </small>
+                @enderror
+                <iconify-icon icon="bx:lock" class="absolute text-2xl text-neutral-600 top-3 left-3"></iconify-icon>
+              </div>
             </div>
           </div>
           <button type="submit"
@@ -70,7 +81,7 @@
             wire:navigate class="font-semibold">Masuk</a>
         </p>
       </div>
-      <p class="mt-8 text-xs text-center text-gray-700">&copy; CODER Version 2.0</p>
+      <p class="mt-8 text-sm text-center text-gray-700">&copy; CODER Version 2.0</p>
     </div>
   </div>
 
