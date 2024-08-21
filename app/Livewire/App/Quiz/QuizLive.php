@@ -6,6 +6,7 @@ use App\Models\Quiz\Question;
 use App\Models\Quiz\UserAnswerQuiz;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
@@ -22,11 +23,19 @@ class QuizLive extends Component
     public $currentPoint = 0;
     public $correctAnswers = 0;
     public $wrongAnswers = 0;
+    // public $countdown = 10;
 
     public function mount($id)
     {
         $this->quizId = $id;
     }
+
+
+    // #[On('timeUp')]
+    // public function timeUp()
+    // {
+    //     $this->nextQuestion(null);
+    // }
 
     public function nextQuestion($selectedAnswer)
     {
