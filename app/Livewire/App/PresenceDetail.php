@@ -2,6 +2,9 @@
 
 namespace App\Livewire\App;
 
+use App\Livewire\Forms\FormPresenceUpdate;
+use App\Models\Presence;
+use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -11,8 +14,46 @@ use Livewire\Component;
 
 class PresenceDetail extends Component
 {
+    public FormPresenceUpdate $form;
+    public $user_presence;
+    public function mount($id){
+        $presence = Presence::where('id', $id)->with("userPresences", "userPresences.user")->first();
+        $this->form->setData($presence);
+        $this->user_presence = $this->form->user_presence;
+    }
     public function render()
     {
-        return view('livewire.app.presence-detail');
+        return view('livewire.app.presence-detail', [
+            "members" => $this->user_presence
+        ]);
+    }
+    public function status($id, $status){
+        foreach ($this->user_presence as $index => $value) {
+            if ($value["id"] == $id) {
+                $this->user_presence[$index]["status"] = $status;
+                break;
+            }
+        }
+    }
+
+    public function save(){
+        $this->form->user_presence = $this->user_presence;
+        $this->validate();
+        DB::beginTransaction();
+        try {
+            $this->form->presence->update([
+                "status" => "inActive"
+            ]);
+            foreach ($this->form->presence->userPresences as $index => $value) {
+                $value->update([
+                    "status" => $this->form->user_presence[$index]["status"]
+                ]);
+            }
+            DB::commit();
+            return $this->redirect("/app/presence");
+        } catch (\Throwable $th) {
+            dd($th);
+            DB::rollBack();
+        }
     }
 }

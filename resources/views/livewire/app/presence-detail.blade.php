@@ -7,7 +7,7 @@
 
   {{-- Detail Meeting Section Start --}}
   <section class="mb-10">
-    <form action="">
+    <form wire:submit='save'>
       <div class="p-5 mb-4 rounded-lg bg-glass">
         <header class="flex items-center justify-between mb-8 text-white">
           <div class="flex items-center">
@@ -22,17 +22,13 @@
         <div>
           <div class="grid grid-cols-1 gap-4 mb-3 lg:grid-cols-2">
             <div class="mb-3">
-              <label for="presence" class="block mb-2 font-light text-white">Tipe Pertemuan</label>
-              <select name="presence" id="presence" class="w-full px-3 py-3 text-white rounded-lg bg-lightGray">
-                <option value="">Pertemuan ke-1</option>
-                <option value="">Pertemuan ke-2</option>
-                <option value="">Pertemuan ke-3</option>
-              </select>
+                <label for="presence" class="block mb-2 font-light text-white">Pertemuan ke-</label>
+                <input type="number" wire:model="form.presence_number" disabled name="presence" id="presence" class="w-full px-3 py-3 text-white rounded-lg bg-lightGray">
             </div>
             <div class="mb-3">
               <label for="date-time" class="block mb-2 font-light text-white">Tanggal & Waktu</label>
               <input type="datetime-local" name="date-time" id="date-time"
-                class="w-full px-3 py-3 text-white rounded-lg bg-lightGray">
+                class="w-full px-3 py-3 text-white rounded-lg bg-lightGray" disabled wire:model="form.presence_date">
             </div>
           </div>
           <div class="mb-3">
@@ -55,66 +51,27 @@
                         </tr>
                       </thead>
                       <tbody class="">
-                        <tr>
-                          <td class="px-6 py-4 text-base font-medium text-white">01</td>
-                          <td class="px-6 py-4 text-base font-medium text-white">Deo Farady Santoso</td>
-                          <td class="px-6 py-4 text-base font-medium text-white">Rekayasa Perangkat Lunak</td>
-                          <td class="flex items-center gap-4 px-6 py-4 text-base font-medium text-white">
-                            <button
-                              class="flex gap-1 rounded-md items-center text-base font-medium text-white bg-[#34C759] px-2 md:px-4 py-1.5">
-                              Hadir
-                            </button>
-                            <button
-                              class="flex gap-1 rounded-md items-center text-base font-medium border border-[#4F4F55] hover:text-white hover:bg-[#007AFF] hover:border-[#007AFF] px-2 md:px-4 py-1">
-                              Izin
-                            </button>
-                            <button
-                              class="flex gap-1 rounded-md items-center text-base font-medium border border-[#4F4F55] hover:text-white hover:bg-[#FF3B30] hover:border-[#FF3B30] px-2 md:px-4 py-1.5">
-                              Alpha
-                            </button>
-
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="px-6 py-4 text-base font-medium text-white">02</td>
-                          <td class="px-6 py-4 text-base font-medium text-white">Deo Farady Santoso</td>
-                          <td class="px-6 py-4 text-base font-medium text-white">Rekayasa Perangkat Lunak</td>
-                          <td class="flex items-center gap-4 px-6 py-4 text-base font-medium text-white">
-                            <button
-                              class="flex gap-1 rounded-md items-center text-base font-medium border border-[#4F4F55] hover:text-white hover:bg-[#34C759] hover:border-[#34C759] px-2 md:px-4 py-1.5">
-                              Hadir
-                            </button>
-                            <button
-                              class="flex gap-1 rounded-md items-center text-base font-medium text-white bg-[#007AFF] px-2 md:px-4 py-1">
-                              Izin
-                            </button>
-                            <button
-                              class="flex gap-1 rounded-md items-center text-base font-medium border border-[#4F4F55] hover:text-white hover:bg-[#FF3B30] hover:border-[#FF3B30] px-2 md:px-4 py-1.5">
-                              Alpha
-                            </button>
-
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="px-6 py-4 text-base font-medium text-white">03</td>
-                          <td class="px-6 py-4 text-base font-medium text-white">Deo Farady Santoso</td>
-                          <td class="px-6 py-4 text-base font-medium text-white">Rekayasa Perangkat Lunak</td>
-                          <td class="flex items-center gap-4 px-6 py-4 text-base font-medium text-white">
-                            <button
-                              class="flex gap-1 rounded-md items-center text-base font-medium border border-[#4F4F55] hover:text-white hover:bg-[#34C759] hover:border-[#34C759] px-2 md:px-4 py-1.5">
-                              Hadir
-                            </button>
-                            <button
-                              class="flex gap-1 rounded-md items-center text-base font-medium border border-[#4F4F55] hover:text-white hover:bg-[#007AFF] hover:border-[#007AFF] px-2 md:px-4 py-1">
-                              Izin
-                            </button>
-                            <button
-                              class="flex gap-1 rounded-md items-center text-base font-medium text-white bg-[#FF3B30] px-2 md:px-4 py-1.5">
-                              Alpha
-                            </button>
-
-                          </td>
-                        </tr>
+                        @foreach ($members as $member)
+                        @php
+                            $iteration = str_pad($loop->iteration, 2, '0', STR_PAD_LEFT);
+                        @endphp
+                            <tr>
+                            <td class="px-6 py-4 text-base font-medium text-white">{{$iteration}}</td>
+                            <td class="px-6 py-4 text-base font-medium text-white">{{$member["name"]}}</td>
+                            <td class="px-6 py-4 text-base font-medium text-white">{{$member["major"]}}</td>
+                            <td class="px-6 py-4 text-base font-medium text-white flex items-center gap-4">
+                                <button type="button" @role(['admin']) wire:click="status({{$member['id']}},'hadir')" @endrole class="flex gap-1 rounded-md items-center text-base font-medium border {{$member['status'] == 'hadir' ? 'text-white bg-[#34C759] border-[#34C759]' : 'border-[#4F4F55] hover:text-white hover:bg-[#34C759] hover:border-[#34C759]'}} px-2 md:px-4 py-1.5">
+                                    Hadir
+                                </button>
+                                <button type="button" @role(['admin']) wire:click="status({{$member['id']}},'izin')" @endrole  class="flex gap-1 rounded-md items-center text-base font-medium border {{$member['status'] == 'izin' ? 'text-white bg-[#007AFF] border-[#007AFF]' : 'border-[#4F4F55] hover:text-white hover:bg-[#007AFF] hover:border-[#007AFF]'}} px-2 md:px-4 py-1">
+                                     Izin
+                                </button>
+                                <button type="button" @role(['admin']) wire:click="status({{$member['id']}},'alpha')" @endrole class="flex gap-1 rounded-md items-center text-base font-medium border {{$member['status'] == 'alpha' ? 'text-white bg-[#FF3B30] border-[#FF3B30]' : 'border-[#4F4F55] hover:text-white hover:bg-[#FF3B30] hover:border-[#FF3B30]'}}  px-2 md:px-4 py-1.5">
+                                    Alpha
+                                </button>
+                            </td>
+                            </tr>
+                        @endforeach
                       </tbody>
                     </table>
                   </div>
@@ -125,15 +82,14 @@
         </div>
       </div>
       <div class="flex my-7">
-
-        <div class="flex items-center gap-4 ml-auto">
-          <button type="button"
-            class="flex items-center px-5 py-3 text-sm font-semibold border border-[#4F4F55] text-white hover:bg-red-600 hover:border-red-600 rounded-md">Batal</button>
+        @role(['admin'])
+        <div class="ml-auto flex items-center gap-4">
+          <a href="/app/presence" wire:navigate class="flex items-center px-5 py-3 text-sm font-semibold border border-[#4F4F55] text-white hover:bg-red-600 hover:border-red-600 rounded-md">Batal</a>
           <button type="submit"
             class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md"> Simpan Presensi
             <iconify-icon icon="material-symbols:save-outline" class="text-xl ms-2"></iconify-icon></button>
         </div>
-
+        @endrole
       </div>
     </form>
   </section>
