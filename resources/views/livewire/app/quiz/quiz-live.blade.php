@@ -1,17 +1,14 @@
 <div>
-  {{-- Stop trying to control. --}}
-
-
-
   <section>
     <div class="mb-10">
       @if ($question)
         {{-- Header start --}}
         <header class="flex items-center justify-between mb-5">
           <h2 class="text-lg font-semibold text-white">Pertanyaan ke {{ $currentQuestionIndex + 1 }}</h2>
-          <p class="text-lg text-white">05:00</p>
+          {{-- <p class="text-lg text-white" id="countdown">{{ $countdown }}</p> --}}
         </header>
         {{-- Header end --}}
+
         <div>
           <div class="p-8 overflow-auto font-light text-white h-60 bg-glass rounded-xl">
             <p>{{ $question->question }}</p>
@@ -37,6 +34,31 @@
         <p class="text-white">Semua pertanyaan telah dijawab.</p>
       @endif
     </div>
-
   </section>
 </div>
+
+
+{{-- @push('js-custom')
+  <script>
+    function startCountdown() {
+      let timer = {{ $countdown }},
+        seconds;
+      const countdownElement = document.getElementById('countdown');
+
+      let interval = setInterval(() => {
+        seconds = parseInt(timer, 10);
+        countdownElement.textContent = seconds;
+
+        if (--timer < 1) {
+          clearInterval(interval);
+          console.log('pindah pertanyaan')
+          Livewire.dispatch('timeUp');
+        }
+      }, 1000); // Update setiap detik
+    }
+
+    document.addEventListener('livewire:navigated', (event) => {
+    startCountdown();
+    });
+  </script>
+@endpush --}}
