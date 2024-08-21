@@ -27,7 +27,16 @@
           class="flex flex-col text-white border-transparent shadow-sm bg-glass rounded-xl p-7">
 
           <div class="flex items-center justify-center mb-10 rounded-lg bg-lightGray w-14 h-14">
-            <iconify-icon icon="{{ $item->logo }}" class="text-4xl text-white"></iconify-icon>
+            @php
+                $validImageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg', 'webp'];
+                $fileExtension = strtolower(pathinfo($item->logo, PATHINFO_EXTENSION));
+            @endphp
+            @if(in_array($fileExtension, $validImageExtensions))
+                <img src="{{ asset('/storage/file/division/' . $item->logo) }}" alt="Image">
+            @else
+                <iconify-icon icon="{{ $item->logo }}" class="text-4xl text-white"></iconify-icon>
+            @endif
+
           </div>
 
           <h2 class="mb-2 text-2xl font-bold md:text-4xl">{{ $item->name }}</h2>

@@ -25,7 +25,15 @@
       <div class="w-full mb-5 lg:w-1/3 md:mb-0">
         <div class="text-white border-transparent bg-glass rounded-xl p-7">
           <div class="flex items-center justify-center w-40 h-40 mx-auto rounded-lg bg-lightGray">
-            <iconify-icon icon="tdesign:camera" class="text-4xl text-white"></iconify-icon>
+            @php
+                $validImageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg', 'webp'];
+                $fileExtension = strtolower(pathinfo($division->logo, PATHINFO_EXTENSION));
+            @endphp
+            @if(in_array($fileExtension, $validImageExtensions))
+                <img class="h-full object-cover" src="{{ asset('/storage/file/division/' . $division->logo) }}" alt="Image">
+            @else
+                <iconify-icon icon="{{ $division->logo }}" class="text-4xl text-white"></iconify-icon>
+            @endif
           </div>
         </div>
       </div>
@@ -48,22 +56,20 @@
       <div class="flex items-center gap-4 mb-5">
         <h2 class="text-3xl font-bold text-white">Daftar Anggota</h2>
         <div class="px-4 py-2 border rounded-lg border-neutral-700">
-          <p class="text-[#9E9E9E] font-semibold">11 Anggota</p>
+          <p class="text-[#9E9E9E] font-semibold">{{$division->user->count()}} Anggota</p>
         </div>
       </div>
       <div class="grid items-center gap-4 md:grid-cols-3">
-        @for ($i = 0; $i < 9; $i++)
+        @foreach ($division->user as $user)
           <div class="flex flex-col p-4 text-white border-transparent rounded-lg bg-lightGray">
             <div class="flex items-center">
-              <img class="inline-block size-[46px] rounded-full"
-                src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
-                alt="Avatar">
+              <img class="inline-block size-[46px] rounded-full" src="{{ asset('assets/images/avatar.png') }}" alt="Avatar">
               <div class="ml-5">
-                <h2 class="text-xl font-bold text-white">Deo Farady Santoso</h2>
+                <h2 class="text-xl font-bold text-white">{{$user->name}}</h2>
               </div>
             </div>
           </div>
-        @endfor
+        @endforeach
       </div>
     </div>
   </section>
