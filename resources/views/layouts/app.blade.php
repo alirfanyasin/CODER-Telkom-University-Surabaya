@@ -159,7 +159,7 @@
                     </a>
                   </li>
                   @role(['admin|user'])
-                    <li class="hs-accordion" id="e-learning-accordion-sub-2">
+                    <li class="hs-accordion" id="e-learning-accordion-sub-3">
                       <a href="{{ route('app.e-learning.quiz') }}" wire:navigate
                         class="flex py-3 font-medium text-gray-400 rounded-lg text-md item-center hover:bg-white mb-1.5 hover:text-black ps-10 {{ Request::is('app/e-learning/quiz/*') ? 'active-menu' : 'text-gray-400' }} {{ Request::is('app/e-learning/quiz') ? 'active-menu' : 'text-gray-400' }}">
                         <iconify-icon icon="icons8:idea" class="mr-3 text-2xl"></iconify-icon>
@@ -167,7 +167,7 @@
                       </a>
                     </li>
                   @endrole
-                  <li class="hs-accordion" id="e-learning-accordion-sub-3">
+                  <li class="hs-accordion" id="e-learning-accordion-sub-4">
                     <a href="{{ route('app.e-learning.meeting') }}" wire:navigate
                       class="flex py-3 font-medium rounded-lg text-md item-center hover:bg-white mb-1.5 hover:text-black ps-10 {{ Request::is('app/e-learning/meeting/*') ? 'active-menu' : 'text-gray-400' }} {{ Request::is('app/e-learning/meeting') ? 'active-menu' : 'text-gray-400' }}">
                       <iconify-icon icon="fluent:video-24-regular" class="mr-3 text-2xl"></iconify-icon>
