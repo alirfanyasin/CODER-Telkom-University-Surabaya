@@ -89,9 +89,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/e-learning/meeting', Meeting::class)->name('app.e-learning.meeting');
         Route::get('/e-learning/meeting/{id}/show', MeetingDetail::class)->name('app.e-learning.meeting.show');
         Route::middleware(['role:admin'])->group(function () {
-          Route::get('/e-learning/meeting/create', MeetingCreate::class)->name('app.e-learning.meeting.create');
-          Route::get('/e-learning/meeting/{id}/edit', MeetingEdit::class)->name('app.e-learning.meeting.edit');
-      });
+            Route::get('/e-learning/meeting/create', MeetingCreate::class)->name('app.e-learning.meeting.create');
+            Route::get('/e-learning/meeting/{id}/edit', MeetingEdit::class)->name('app.e-learning.meeting.edit');
+        });
 
         // Modul
         Route::get('/e-learning/modul', Modul::class)->name('app.e-learning.modul');
@@ -138,8 +138,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/presence', Presence::class)->name('app.presence');
         Route::get('/presence/{id}/show', PresenceDetail::class)->name('app.presence.show');
         Route::middleware(['role:admin'])->group(function () {
-          Route::get('/presence/create', PresenceCreate::class)->name('app.presence.create');
-          Route::get('/presence/{id}/edit', PresenceEdit::class)->name('app.presence.edit');
+            Route::get('/presence/create', PresenceCreate::class)->name('app.presence.create');
+            Route::get('/presence/{id}/edit', PresenceEdit::class)->name('app.presence.edit');
         });
 
         // Member
@@ -166,6 +166,4 @@ Route::middleware(['auth'])->group(function () {
         // Logout Route
         Route::get('/logout', [Logout::class, 'logout'])->name('logout');
     });
-
-  });
 });
