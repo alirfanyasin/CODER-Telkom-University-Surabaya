@@ -29,6 +29,9 @@ use App\Livewire\App\MemberRecruitment;
 use App\Livewire\App\Modul;
 use App\Livewire\App\ModulCreate;
 use App\Livewire\App\ModulEdit;
+use App\Livewire\App\Article as AppArticle;
+use App\Livewire\App\ArticleCreate;
+use App\Livewire\App\ArticleEdit;
 use App\Livewire\App\Profile;
 use App\Livewire\App\ProfileEdit;
 use App\Livewire\App\Quiz\Quiz;
@@ -120,6 +123,12 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/content/gallery', AppGallery::class)->name('app.content.gallery');
         });
 
+        // App Article
+        Route::get('/content/article', AppArticle::class)->name('app.content.article');
+        Route::get('/content/article/create', ArticleCreate::class)->name('app.content.article.create');
+        Route::get('/content/article/edit', ArticleEdit::class)->name('app.content.article.edit');
+        Route::get('/content/article/{slug}', AppArticle::class)->name('app.content.article.detail');
+
         // Event
         Route::get('/event/management-event', ManagementEvent::class)->name('app.event.management-event');
         Route::get('/event/management-event/show', ManagementEventDetail::class)->name('app.event.management-event.show');
@@ -158,12 +167,12 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/logout', [Logout::class, 'logout'])->name('logout');
     });
 
-    // Tugas
-    Route::get('/e-learning/task', Task::class)->name('app.e-learning.task');
-    Route::get('/e-learning/task/tugas-1/detail', TaskDetail::class)->name('app.e-learning.task.detail');
-    Route::middleware(['role:admin'])->group(function () {
-        Route::get('/e-learning/task/create', TaskCreate::class)->name('app.e-learning.task.create');
-        Route::get('/e-learning/task/tugas-1/edit', TaskEdit::class)->name('app.e-learning.task.edit');
-        Route::get('/e-learning/task/tugas-1/submission', TaskSubmission::class)->name('app.e-learning.task.submission');
-    });
+    // // Tugas
+    // Route::get('/e-learning/task', Task::class)->name('app.e-learning.task');
+    // Route::get('/e-learning/task/tugas-1/detail', TaskDetail::class)->name('app.e-learning.task.detail');
+    // Route::middleware(['role:admin'])->group(function () {
+    //     Route::get('/e-learning/task/create', TaskCreate::class)->name('app.e-learning.task.create');
+    //     Route::get('/e-learning/task/tugas-1/edit', TaskEdit::class)->name('app.e-learning.task.edit');
+    //     Route::get('/e-learning/task/tugas-1/submission', TaskSubmission::class)->name('app.e-learning.task.submission');
+    // });
 });
