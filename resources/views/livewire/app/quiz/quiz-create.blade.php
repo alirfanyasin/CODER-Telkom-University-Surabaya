@@ -21,6 +21,15 @@
             @enderror
           </div>
           <div class="mb-4 text-white">
+            <label for="status" class="block mb-2 font-light text-white">Status</label>
+            <select name="status" id="status" class="w-full px-3 py-3 text-white rounded-lg bg-lightGray"
+              wire:model='status'>
+              <option>-- Pilih --</option>
+              <option value="private">Private</option>
+              <option value="public">Public</option>
+            </select>
+          </div>
+          <div class="col-span-2 mb-4 text-white">
             <label for="thumbnail" class="block mb-2 font-light text-white">Link Thumbnail</label>
             <input type="link" name="thumbnail" id="thumbnail" wire:model='thumbnail'
               class="w-full px-3 py-3 text-white rounded-lg bg-lightGray" placeholder="https://">
@@ -28,6 +37,7 @@
               <small class="text-red-600"> {{ $message }} </small>
             @enderror
           </div>
+
         </div>
       </div>
 
