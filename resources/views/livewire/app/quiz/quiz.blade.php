@@ -38,7 +38,8 @@
           </div>
           @role('admin')
             <div class="flex items-center justify-between mt-5">
-              <a href="" wire:navigate
+              <a href="{{ route('app.e-learning.quiz.submission', ['code' => $data->code, 'id' => $data->id]) }}"
+                wire:navigate
                 class="inline-flex items-center px-4 py-2 text-sm font-semibold text-white rounded-lg gap-x-2 bg-neutral-800 hover:bg-white hover:text-black">
                 Lihat Jawaban
               </a>

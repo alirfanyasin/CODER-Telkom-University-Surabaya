@@ -43,6 +43,7 @@ use App\Livewire\App\Quiz\QuizLive;
 use App\Livewire\App\Quiz\QuizQuestionCreate;
 use App\Livewire\App\Quiz\QuizResult;
 use App\Livewire\App\Quiz\QuizShow;
+use App\Livewire\App\Quiz\QuizSubmission;
 use App\Livewire\Auth\ForgotPassword;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
@@ -106,6 +107,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/e-learning/quiz', Quiz::class)->name('app.e-learning.quiz');
             Route::middleware(['role:admin'])->group(function () {
                 Route::get('/e-learning/quiz/{code}/{id}/show', QuizShow::class)->name('app.e-learning.quiz.show');
+                Route::get('/e-learning/quiz/{code}/{id}/submission', QuizSubmission::class)->name('app.e-learning.quiz.submission');
                 Route::get('/e-learning/quiz/create', QuizCreate::class)->name('app.e-learning.quiz.create');
                 Route::get('/e-learning/quiz/question/create', QuizQuestionCreate::class)->name('app.e-learning.quiz.question-create');
                 Route::get('/e-learning/quiz/answer-key/create', QuizAnswerKey::class)->name('app.e-learning.quiz.answere-key-create');
