@@ -25,7 +25,7 @@
     <div class="grid grid-cols-1 gap-2 lg:grid-cols-3 md:grid-cols-2">
       @foreach ($datas as $data)
         {{-- Card start --}}
-        <div class="p-4 text-white rounded-xl bg-glass hover:border hover:border-gray-500">
+        <div class="relative p-4 text-white rounded-xl bg-glass hover:border hover:border-gray-500">
           <div class="h-48 mb-4 overflow-hidden rounded-lg">
             <img src="{{ $data->thumbnail }}" class="object-cover w-full h-full" alt="{{ $data->title }} img">
           </div>
@@ -34,11 +34,24 @@
 
           <div class="flex items-center justify-between my-3 text-sm text-neutral-500">
             <p>{{ $data->question->count() }} pertanyaan</p>
-            <div class="w-3 h-3 text-xs bg-blue-600 rounded-full"></div>
+            <div class="flex items-center">
+              <iconify-icon icon="ph:user-bold" class="text-md me-2"></iconify-icon>
+              {{ $data->userAnswerQuiz->count() }}
+            </div>
           </div>
+
+          @role('admin')
+            <div
+              class="absolute left-0 px-3 py-1 text-xs font-light text-white {{ $data->status == 'public' ? ' bg-green-700' : ' bg-red-700' }} rounded-r-full top-8">
+              {{ ucfirst($data->status) }}
+            </div>
+          @endrole
+
+
           @role('admin')
             <div class="flex items-center justify-between mt-5">
-              <a href="" wire:navigate
+              <a href="{{ route('app.e-learning.quiz.submission', ['code' => $data->code, 'id' => $data->id]) }}"
+                wire:navigate
                 class="inline-flex items-center px-4 py-2 text-sm font-semibold text-white rounded-lg gap-x-2 bg-neutral-800 hover:bg-white hover:text-black">
                 Lihat Jawaban
               </a>

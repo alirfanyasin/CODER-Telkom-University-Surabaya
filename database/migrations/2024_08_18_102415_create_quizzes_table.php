@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('slug')->unique();
             $table->string('title');
-            $table->string('status');
             $table->string('thumbnail');
             $table->dateTime('due_date')->nullable();
+            $table->enum('status', ['public', 'private']);
             $table->string('code')->nullable();
             $table->foreignId('division_id')->constrained();
             $table->timestamps();

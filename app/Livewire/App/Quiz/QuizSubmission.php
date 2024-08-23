@@ -4,36 +4,31 @@ namespace App\Livewire\App\Quiz;
 
 use App\Models\Quiz\Question;
 use App\Models\Quiz\UserAnswerQuiz;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-#[Title('Hasil Kuis')]
+#[Title('Jawaban Kuis')]
 #[Layout('layouts.app')]
 
-class QuizResult extends Component
+class QuizSubmission extends Component
 {
-
     public $quizId;
+    public $quizCode;
 
-    public function mount($id)
+    public function mount($code, $id)
     {
         $this->quizId = $id;
+        $this->quizCode = $code;
     }
-
-
 
     public function render()
     {
-        $dataResults = UserAnswerQuiz::where('quiz_id', $this->quizId)->where('user_id', Auth::user()->id)->first();
+        $dataSubmissions = UserAnswerQuiz::where('quiz_id', $this->quizId)->get();
         $questionCount =  Question::where('quiz_id', $this->quizId)->count();
-        $dataQuestions = Question::where('quiz_id', $this->quizId)->get();
-
-        return view('livewire.app.quiz.quiz-result', [
-            'dataResults' => $dataResults,
+        return view('livewire.app.quiz.quiz-submission', [
+            'dataSubmissions' => $dataSubmissions,
             'questionCount' => $questionCount,
-            'dataQuestions' => $dataQuestions
         ]);
     }
 }

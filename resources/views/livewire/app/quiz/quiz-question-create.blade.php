@@ -70,7 +70,7 @@
         <div class="flex justify-end mt-4">
           <button type="submit" class="inline-block px-5 py-3 text-sm font-semibold text-black bg-white rounded-md">
             <div class="flex items-center">
-              Selanjutnya
+              Simpan
               <iconify-icon icon="mingcute:arrow-right-line" class="text-xl ms-2"></iconify-icon>
             </div>
           </button>
