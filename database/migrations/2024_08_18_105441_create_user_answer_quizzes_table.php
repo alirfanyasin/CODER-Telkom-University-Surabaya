@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('grade');
             $table->unsignedInteger('correct_answer')->nullable();
             $table->unsignedInteger('wrong_answer')->nullable();
-            $table->foreignId('quiz_id')->constrained();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('quiz_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
