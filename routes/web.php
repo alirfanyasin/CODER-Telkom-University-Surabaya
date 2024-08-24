@@ -111,7 +111,7 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('/e-learning/quiz/create', QuizCreate::class)->name('app.e-learning.quiz.create');
                 Route::get('/e-learning/quiz/question/create', QuizQuestionCreate::class)->name('app.e-learning.quiz.question-create');
                 Route::get('/e-learning/quiz/answer-key/create', QuizAnswerKey::class)->name('app.e-learning.quiz.answere-key-create');
-                Route::get('/e-learning/quiz/{slug}/edit', QuizEdit::class)->name('app.e-learning.quiz.edit');
+                Route::get('/e-learning/quiz/{code}/{id}/edit', QuizEdit::class)->name('app.e-learning.quiz.edit');
             });
             Route::middleware(['role:user'])->group(function () {
                 Route::get('/e-learning/quiz/{code}/{slug}/confirmation', QuizConfirmation::class)->name('app.e-learning.quiz-confirmation');
