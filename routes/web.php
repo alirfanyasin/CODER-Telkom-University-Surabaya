@@ -32,6 +32,7 @@ use App\Livewire\App\ModulEdit;
 use App\Livewire\App\Article as AppArticle;
 use App\Livewire\App\ArticleCreate;
 use App\Livewire\App\ArticleEdit;
+use App\Livewire\App\PresenceShare;
 use App\Livewire\App\Profile;
 use App\Livewire\App\ProfileEdit;
 use App\Livewire\App\Quiz\Quiz;
@@ -51,7 +52,6 @@ use App\Livewire\Pages\Home;
 use App\Livewire\Pages\Gallery;
 
 use App\Livewire\Pages\Article;
-
 use Illuminate\Support\Facades\Route;
 
 
@@ -62,6 +62,8 @@ Route::get('/gallery', Gallery::class)->name('gallery');
 // article
 Route::get('/article', Article::class)->name('article');
 Route::get('/article/{slug}', Article::class)->name('article.detail');
+
+Route::get("/presence/verify/{slug}/{presence}/user-presence", PresenceShare::class)->name("app.presence.share");
 
 Route::middleware(['guest'])->group(function () {
     // Auth Route
