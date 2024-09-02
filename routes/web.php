@@ -44,6 +44,9 @@ use App\Livewire\App\Quiz\QuizQuestionCreate;
 use App\Livewire\App\Quiz\QuizResult;
 use App\Livewire\App\Quiz\QuizShow;
 use App\Livewire\App\Quiz\QuizSubmission;
+use App\Livewire\App\Report;
+use App\Livewire\App\ReportCreate;
+use App\Livewire\App\ReportEdit;
 use App\Livewire\Auth\ForgotPassword;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
@@ -159,6 +162,13 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('division/{slug}/edit', DivisionEdit::class)->name('app.division.edit');
                 Route::get('division/{slug}/detail', DivisionDetail::class)->name('app.division.detail');
             });
+        });
+
+        // Report
+        Route::middleware(['role:admin'])->group(function () {
+            Route::get('report', Report::class)->name('app.report');
+            Route::get('report/create', ReportCreate::class)->name('app.report.create');
+            Route::get('report/{slug}/edit', ReportEdit::class)->name('app.report.edit');
         });
 
         // Profile
