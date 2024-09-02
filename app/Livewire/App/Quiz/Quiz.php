@@ -2,6 +2,8 @@
 
 namespace App\Livewire\App\Quiz;
 
+use App\Models\Division;
+use App\Models\Label;
 use App\Models\Quiz\Quiz as QuizModel;
 use App\Models\Quiz\UserAnswerQuiz;
 use Illuminate\Support\Facades\Auth;
@@ -69,7 +71,12 @@ class Quiz extends Component
 
     public function render()
     {
-        $quizzes = QuizModel::where('division_id', Auth::user()->division_id)->get();
+
+        if (Auth::user()->label === Label::LABEL_NAME['user'] . Division::DIVISION_NAMES[Auth::user()->division_id - 1]) {
+            $quizzes = QuizModel::orderBy('id', 'DESC')->where('division_id', Auth::user()->division_id)->where('status', 'public')->get();
+        } else {
+            $quizzes = QuizModel::orderBy('id', 'DESC')->where('division_id', Auth::user()->division_id)->get();
+        }
 
         $finishedQuizIds = UserAnswerQuiz::where('user_id', Auth::id())->pluck('quiz_id')->toArray();
 

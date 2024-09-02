@@ -68,8 +68,9 @@
               <div class="md:w-1/2">
                 <label for="program-studi-input" class="block mb-2 font-medium text-white">Program
                   Studi</label>
-                <select id="program-studi-input" class="block w-full p-3 text-white rounded-lg pe-9 bg-lightGray">
-                  <option selected="" disabled>Pilih Prodi</option>
+                <select id="program-studi-input" class="block w-full p-3 text-white rounded-lg pe-9 bg-lightGray"
+                  wire:model='major'>
+                  <option>Pilih Prodi</option>
                   <option>Rekayasa Perangkat Lunak</option>
                   <option>Sains Data</option>
                   <option>Informatika</option>

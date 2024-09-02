@@ -22,6 +22,7 @@ class QuizCreate extends Component
     public $title;
     #[Validate('required', message: "Thumbnail wajib diisi")]
     public $thumbnail;
+    public $status;
 
     public function store()
     {
@@ -35,7 +36,7 @@ class QuizCreate extends Component
             'title' => $this->title,
             'slug' => Str::slug($this->title),
             'thumbnail' => $this->thumbnail,
-            'status' => 'active',
+            'status' => $this->status,
             'code' => $quizCode,
             'division_id' => Auth::user()->division_id
         ];

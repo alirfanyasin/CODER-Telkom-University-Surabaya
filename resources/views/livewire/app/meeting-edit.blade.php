@@ -7,7 +7,7 @@
 
   {{-- Edit Meeting Section Start --}}
   <section class="mb-10">
-    <form action="">
+    <form wire:submit='save'>
       <div class="p-5 mb-4 rounded-lg bg-glass">
         <header class="flex items-center justify-between mb-8 text-white">
           <div class="flex items-center">
@@ -17,7 +17,13 @@
             </a>
             <h4 class="text-xl font-semibold">Informasi Pertemuan</h4>
           </div>
-          <div class="px-2 py-2 text-xs bg-blue-600 rounded-full"></div>
+            @if ($meeting->status == "aktif")
+                <div class="px-2 py-2 text-xs bg-blue-600 rounded-full"></div>
+            @elseif ($meeting->status == "selesai")
+                <div class="px-2 py-2 text-xs bg-green-600 rounded-full"></div>
+            @else
+                <div class="px-2 py-2 text-xs bg-yellow-600 rounded-full"></div>
+            @endif
 
         </header>
 
@@ -26,17 +32,16 @@
             <div class="mb-3">
               <label for="title" class="block mb-2 font-light text-white">Judul Pertemuan</label>
               <input type="text" name="title" id="title"
-                class="w-full px-3 py-3 text-white rounded-lg bg-lightGray">
+                class="w-full px-3 py-3 text-white rounded-lg bg-lightGray" wire:model="form.name">
             </div>
             <div class="mb-3">
               <label for="date-time" class="block mb-2 font-light text-white">Tanggal & Waktu</label>
-              <input type="datetime-local" name="date-time" id="date-time"
-                class="w-full px-3 py-3 text-white rounded-lg bg-lightGray">
+              <input type="datetime-local" name="date-time" id="date-time" wire:model="form.date_time" class="w-full px-3 py-3 text-white rounded-lg bg-lightGray">
             </div>
             <div class="mb-3">
               <label for="end-date" class="block mb-2 font-light text-white">Waktu Berakhir <i>(Opsional)</i></label>
-              <input type="time" name="end-date" id="end-date"
-                class="w-full px-3 py-3 text-white rounded-lg bg-lightGray">
+              <input type="time" name="end-date" id="end-date" wire:model="end_date" class="w-full px-3 py-3 text-white rounded-lg bg-lightGray">
+              @error('form.end_time') <span class="error">{{ $message }}</span> @enderror
             </div>
             <div class="mb-3">
               <label for="type" class="block mb-2 font-light text-white">Tipe Pertemuan</label>
@@ -49,22 +54,20 @@
             @if ($selectTypeMeeting == 'online')
               <div class="col-span-1 mb-3 lg:col-span-2">
                 <label for="link" class="block mb-2 font-light text-white">Link</label>
-                <input type="link" name="link" id="link"
-                  class="w-full px-3 py-3 text-white rounded-lg bg-lightGray" placeholder="https://">
+                <input type="link" name="link" id="link" wire:model="form.link" class="w-full px-3 py-3 text-white rounded-lg bg-lightGray" placeholder="https://">
               </div>
             @endif
             @if ($selectTypeMeeting == 'offline')
               <div class="col-span-1 mb-3 lg:col-span-2">
                 <label for="Lokasi" class="block mb-2 font-light text-white">Lokasi</label>
-                <input type="text" name="Lokasi" id="Lokasi"
-                  class="w-full px-3 py-3 text-white rounded-lg bg-lightGray" placeholder="Lab. Komputer">
+                <input type="text" name="Lokasi" id="Lokasi" wire:model="form.location" class="w-full px-3 py-3 text-white rounded-lg bg-lightGray" placeholder="Lab. Komputer">
               </div>
             @endif
           </div>
           <div class="mb-3">
             <label for="description" class="block mb-2 font-light text-white">Deskripsi</label>
             <textarea name="description" id="description" cols="30" rows="5"
-              class="w-full px-3 py-3 text-white rounded-lg bg-lightGray"></textarea>
+              class="w-full px-3 py-3 text-white rounded-lg bg-lightGray" wire:model="form.description"></textarea>
           </div>
         </div>
       </div>
