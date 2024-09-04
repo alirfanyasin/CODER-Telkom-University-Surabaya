@@ -62,7 +62,7 @@
 
 
   {{-- About Us Section Start --}}
-  <section class="relative my-36">
+  <section class="relative my-36" id="about-us">
     <div class="container">
       <div class="w-10/12 mx-auto lg:border-l-4 lg:border-white">
         <div class="flex flex-wrap items-center">
@@ -104,7 +104,7 @@
 
 
   {{-- Division Section Start --}}
-  <section class="mt-20 mb-32 md:mb-56 lg:mt-80">
+  <section class="mt-20 mb-32 md:mb-56 lg:mt-80" id="division">
     <div class="container">
       <div class="w-10/12 mx-auto">
         <header class="flex items-center justify-center mb-20 text-center">
@@ -145,7 +145,8 @@
               </div>
               <div class="md:basis-10/12 basis-9/12">
                 <h4 class="text-xl font-bold text-white lg:text-2xl">AI Software</h4>
-                <p class="text-sm text-gray-400 lg:text-md">Mengembangkan perangkat lunak berbasis kecerdasan artifisial
+                <p class="text-sm text-gray-400 lg:text-md">Mengembangkan perangkat lunak berbasis kecerdasan
+                  artifisial
                 </p>
               </div>
             </div>
