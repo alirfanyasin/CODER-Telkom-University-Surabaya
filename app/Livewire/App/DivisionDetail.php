@@ -16,7 +16,7 @@ class DivisionDetail extends Component
     {
         // https://coder-tus.test/app/division/web-development/detail
         $slug = request()->segment(3);
-        $division = DivisionModel::where('slug', $slug)->first();
+        $division = DivisionModel::where('slug', $slug)->with(['user'])->first();
         return view('livewire.app.division-detail', compact('division', 'slug'));
     }
 }
