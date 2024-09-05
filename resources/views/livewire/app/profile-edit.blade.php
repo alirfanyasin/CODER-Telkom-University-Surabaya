@@ -12,10 +12,12 @@
       <div class="flex flex-col gap-6 md:w-5/12">
         <div class="w-full p-6 text-center rounded-lg bg-glass h-fit">
           <div class="w-40 h-40 mx-auto mb-6 overflow-hidden rounded-full">
-            <img src="{{ asset('assets/images/avatar.png') }}" alt="Avatar" class="object-cover w-full h-full">
+            <img
+              src="{{ Auth::user()->avatar === null ? asset('assets/images/avatar.png') : asset('storage/avatar/' . Auth::user()->avatar) }}"
+              alt="Avatar" class="object-cover w-full h-full">
           </div>
           <div class="w-full">
-            <input type="file" id="file-input" class="hidden">
+            <input type="file" id="file-input" class="hidden" wire:model='avatar'>
             <label for="file-input"
               class="flex items-center gap-2 p-3 text-white rounded-md cursor-pointer bg-lightGray">
               <span class="text-xs bg-[#43474C] py-1 px-1.5">Pilih File</span>
@@ -56,12 +58,18 @@
                 <label for="name-input" class="block mb-2 font-medium text-white">Nama</label>
                 <input type="text" id="name-input" class="block w-full p-3 text-white rounded-lg bg-lightGray"
                   wire:model='name' value="{{ $this->name }}" placeholder="">
+                @error('name')
+                  <small class="text-red-600"> {{ $message }} </small>
+                @enderror
               </div>
               <div class="md:w-1/2">
                 <label for="nim" class="block mb-2 font-medium text-white">Nim</label>
                 <input type="number" inputmode="numeric" id="nim"
                   class="block w-full p-3 text-white rounded-lg bg-lightGray" placeholder="" wire:model='nim'
                   value="{{ $this->nim }}">
+                @error('nim')
+                  <small class="text-red-600"> {{ $message }} </small>
+                @enderror
               </div>
             </div>
             <div class="flex flex-col w-full gap-6 md:flex-row">
@@ -87,28 +95,34 @@
               <div class="md:w-1/2">
                 <label for="angkatan" class="block mb-2 font-medium text-white">Tahun Angkatan</label>
                 <input type="text" inputmode="numeric" id="angkatan" maxlength="4"
-                  class="block w-full p-3 text-white rounded-lg bg-lightGray" placeholder="" wire:model='batch'
+                  class="block w-full p-3 text-white rounded-lg bg-lightGray" placeholder="20xx" wire:model='batch'
                   value="{{ $this->batch }}">
+                @error('batch')
+                  <small class="text-red-600"> {{ $message }} </small>
+                @enderror
               </div>
             </div>
             <div class="flex flex-col w-full gap-6 md:flex-row">
               <div class="md:w-1/2">
-                <label for="phone-input" class="block mb-2 font-medium text-white">Nomer Telepon</label>
-                <input type="tel" id="phone-input" pattern="^0\d{9,12}$"
-                  class="block w-full p-3 text-white rounded-lg bg-lightGray" placeholder="" wire:model='phone_number'
-                  value="{{ $this->phone_number }}">
+                <label for="phone-input" class="block mb-2 font-medium text-white">Nomer Telepon / WA</label>
+                <input type="number" id="phone-input" pattern="^0\d{9,12}$"
+                  class="block w-full p-3 text-white rounded-lg bg-lightGray" placeholder="08xx"
+                  wire:model='phone_number' value="{{ $this->phone_number }}">
+                @error('phone_number')
+                  <small class="text-red-600"> {{ $message }} </small>
+                @enderror
               </div>
               <div class="md:w-1/2">
                 <label for="divisi-input" class="block mb-2 font-medium text-white">Divisi</label>
-                <select id="divisi-input" @role('guest') disabled @endrole
+                <select id="divisi-input" @role(['guest|admin']) disabled @endrole
                   class="block w-full p-3 text-white rounded-lg pe-9 bg-lightGray">
                   <option selected="" disabled>Pilih Divisi</option>
-                  <option>Web Development</option>
-                  <option>Mobile Development</option>
-                  <option>UI/UX</option>
-                  <option>Data Engineering</option>
-                  <option>Artificial Intelligence</option>
-                  <option>Competitive Programming</option>
+                  <option {{ Auth::user()->division_id === 1 ? 'selected' : '' }}>Web Development</option>
+                  <option {{ Auth::user()->division_id === 2 ? 'selected' : '' }}>Mobile Development</option>
+                  <option {{ Auth::user()->division_id === 3 ? 'selected' : '' }}>UI/UX</option>
+                  <option {{ Auth::user()->division_id === 4 ? 'selected' : '' }}>Data Engineering</option>
+                  <option {{ Auth::user()->division_id === 5 ? 'selected' : '' }}>Artificial Intelligence</option>
+                  <option {{ Auth::user()->division_id === 6 ? 'selected' : '' }}>Competitive Programming</option>
                 </select>
               </div>
             </div>
@@ -128,7 +142,8 @@
                 <label class="block mb-2 font-medium text-white">Kata Sandi</label>
                 <div class="relative">
                   <input id="hs-toggle-password" type="password"
-                    class="block w-full p-3 text-white rounded-lg bg-lightGray" placeholder="">
+                    class="block w-full p-3 text-white rounded-lg bg-lightGray" placeholder=""
+                    value="Ciee Kepooo..wkwkw" disabled>
                   <button type="button" data-hs-toggle-password='{"target": "#hs-toggle-password"}'
                     class="absolute inset-y-0 z-20 flex items-center px-3 text-gray-400 cursor-pointer end-0 rounded-e-md focus:outline-none focus:text-blue-600">
                     <svg class="shrink-0 size-3.5" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -159,9 +174,12 @@
 
     <div class="flex justify-end mb-6">
       <a href="{{ route('app.profile') }}" wire:navigate
-        class="inline-block px-5 py-3 text-sm font-semibold text-gray-400 border border-gray-400 rounded-md hover:text-black hover:bg-white">Batal</a>
+        class="inline-block px-5 py-3 text-sm font-semibold text-gray-400 border border-gray-400 rounded-md hover:bg-red-600 hover:border-red-600 hover:text-white">Batal</a>
+      <a href="{{ route('app.profile') }}" wire:navigate
+        class="inline-block px-5 py-3 mx-3 text-sm font-semibold text-gray-400 border border-gray-400 rounded-md hover:text-black hover:bg-white">Ubah
+        Password</a>
       <button type="submit"
-        class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md ms-3">Simpan
+        class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md">Simpan
         Profil
         <iconify-icon icon="material-symbols:save-outline" class="text-2xl ms-2"></iconify-icon>
       </button>

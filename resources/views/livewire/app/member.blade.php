@@ -29,7 +29,9 @@
           <div
             class="relative px-5 pt-5 pb-16 text-center text-white rounded-lg bg-neutral-900 group hover:border hover:border-gray-500">
             <div class="w-20 h-20 mx-auto overflow-hidden rounded-full">
-              <img src="{{ asset('assets/images/avatar.png') }}" alt="Avatar" class="object-cover w-full h-full">
+              <img
+                src="{{ $data->avatar === null ? asset('assets/images/avatar.png') : asset('storage/avatar/' . $data->avatar) }}"
+                alt="Avatar" class="object-cover w-full h-full">
             </div>
             <h4 class="mt-4 font-semibold text-md">{{ $data->name }}</h4>
             <p class="my-1 text-xs font-light text-gray-400">{{ $data->email }}</p>
