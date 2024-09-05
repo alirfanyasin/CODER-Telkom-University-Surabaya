@@ -2,6 +2,7 @@
 
 namespace App\Livewire\App;
 
+use App\Models\Division;
 use App\Models\Label;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -41,9 +42,14 @@ class Member extends Component
 
     public function render()
     {
-        $data = User::where('division_id', Auth::user()->division_id)->get();
+        if (Auth::user()->label !== 'Super Admin') {
+            $data = User::where('division_id', Auth::user()->division_id)->get();
+        } else {
+            $data = User::all();
+        }
         return view('livewire.app.member', [
-            'datas' => $data
+            'datas' => $data,
+            'allDivision' => Division::withCount('user')->get()
         ]);
     }
 }
