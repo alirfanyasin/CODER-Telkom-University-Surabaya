@@ -1,8 +1,9 @@
 <div>
+  {{-- Header Start --}}
   <header class="flex items-center justify-between my-7">
     <h2 class="text-2xl font-bold text-white md:text-3xl">Laporan</h2>
 
-    @role(['admin|super-admin'])
+    @role(['admin'])
       <div class="hidden md:block">
         <a href="{{ route('app.report.create') }}" wire:navigate
           class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md">Buat Laporan
@@ -18,6 +19,20 @@
       </div>
     @endrole
   </header>
+  {{-- Header End --}}
+
+
+  {{-- Division Start --}}
+  @role('super-admin')
+    <div class="flex w-full gap-3 p-3 mb-10 overflow-auto flex-nowrap scroll-div">
+      @foreach ($allDivision as $division)
+        <a href="#" wire:click.prevent='selectDivision({{ $division->id }})'
+          class="inline-block px-5 py-2  border border-white rounded-lg text-nowrap hover:bg-white hover:text-black {{ session('active-report') === $division->id ? 'bg-white text-black' : 'text-white' }}">{{ $division->name }}</a>
+      @endforeach
+    </div>
+  @endrole
+  {{-- Division End --}}
+
 
   <section class="mb-10">
     <div class="p-5 mb-4 rounded-lg bg-glass">
@@ -65,18 +80,20 @@
                           </td>
                           <td class="px-6 py-4 text-base font-medium text-white">{{ $report->type }}</td>
                           <td class="flex items-center gap-4 px-6 py-4 text-base font-medium text-white">
-                            <button type="button"
-                              class="flex gap-1 rounded-md items-center text-base font-medium border px-2 md:px-4 py-1.5">
-                              <iconify-icon icon="majesticons:edit-pen-2-line" class="text-2xl"></iconify-icon>
-                            </button>
-                            <button type="button" wire:click.prevent='destroy({{ $report->id }})'
-                              class="flex items-center gap-1 px-2 py-1 text-base font-medium border rounded-md md:px-4">
-                              <iconify-icon icon="majesticons:delete-bin-line" class="text-2xl"></iconify-icon>
-                            </button>
-                            <button type="button"
+                            @role('admin')
+                              <a href="{{ route('app.report.edit', ['id' => $report->id, 'date' => $report->date]) }}"
+                                class="flex gap-1 rounded-md items-center text-base font-medium border px-2 md:px-4 py-1.5">
+                                <iconify-icon icon="majesticons:edit-pen-2-line" class="text-2xl"></iconify-icon>
+                              </a>
+                              <button type="button" wire:click.prevent='destroy({{ $report->id }})'
+                                class="flex items-center gap-1 px-2 py-1 text-base font-medium border rounded-md md:px-4">
+                                <iconify-icon icon="majesticons:delete-bin-line" class="text-2xl"></iconify-icon>
+                              </button>
+                            @endrole
+                            <a href="{{ asset('storage/report/' . $report->file) }}" download
                               class="flex gap-1 rounded-md items-center text-base font-medium border px-2 md:px-4 py-1.5">
                               Lihat Detail
-                            </button>
+                            </a>
                           </td>
                         </tr>
                       @endforeach

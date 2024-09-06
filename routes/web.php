@@ -170,7 +170,7 @@ Route::middleware(['auth'])->group(function () {
         });
         Route::middleware(['role:admin'])->group(function () {
             Route::get('report/create', ReportCreate::class)->name('app.report.create');
-            Route::get('report/{slug}/edit', ReportEdit::class)->name('app.report.edit');
+            Route::get('report/{date}/{id}/edit', ReportEdit::class)->name('app.report.edit');
         });
 
 
