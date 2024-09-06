@@ -149,7 +149,7 @@ Route::middleware(['auth'])->group(function () {
 
         // Member
         Route::get('member', Member::class)->name('app.member');
-        Route::get('member/detail', MemberDetail::class)->name('app.member.detail');
+        Route::get('member/{name}/{id}/show', MemberDetail::class)->name('app.member.show');
         Route::middleware(['role:admin|super-admin'])->group(function () {
             Route::get('member/recruitment', MemberRecruitment::class)->name('app.member.recruitment');
         });

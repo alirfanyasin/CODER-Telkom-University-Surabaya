@@ -60,7 +60,7 @@
               @endif
             @endrole
             <div class="absolute transform -translate-x-1/2 left-1/2 bottom-5">
-              <a href="{{ route('app.member.detail') }}" wire:navigate
+              <a href="{{ route('app.member.show', ['id' => $data->id, 'name' => $data->name]) }}" wire:navigate
                 class="inline-block py-2 text-xs border rounded-full px-9 group-hover:bg-white group-hover:text-black">
                 Profile
               </a>
@@ -95,7 +95,7 @@
                       Keluarkan Menjadi User
                     </a>
                     <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
-                      href="#">
+                      href="#" wire:click='destroy({{ $data->id }})'>
                       <iconify-icon icon="mingcute:user-x-line"></iconify-icon>
                       Hapus
                     </a>

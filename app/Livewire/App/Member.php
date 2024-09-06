@@ -4,6 +4,7 @@ namespace App\Livewire\App;
 
 use App\Models\Division;
 use App\Models\Label;
+use App\Models\Quiz\UserAnswerQuiz;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -38,6 +39,12 @@ class Member extends Component
         $user->identity_code =  NULL;
         $user->label = Label::LABEL_NAME['guest'];
         $user->save();
+    }
+
+    public function destroy($id)
+    {
+        UserAnswerQuiz::where('user_id', $id)->delete();
+        User::find($id)->delete();
     }
 
     public function render()
