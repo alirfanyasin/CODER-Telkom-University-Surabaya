@@ -11,7 +11,7 @@ class Label extends Model
 
     const LABEL_NAME = [
         'super-admin' => 'Super Admin',
-        'admin' => 'Ketua ',
+        'admin' => 'Admin ',
         'user' => 'Anggota ',
         'guest' => 'User Coder'
     ];
