@@ -165,11 +165,14 @@ Route::middleware(['auth'])->group(function () {
         });
 
         // Report
-        Route::middleware(['role:admin'])->group(function () {
+        Route::middleware(['role:admin|super-admin'])->group(function () {
             Route::get('report', Report::class)->name('app.report');
+        });
+        Route::middleware(['role:admin'])->group(function () {
             Route::get('report/create', ReportCreate::class)->name('app.report.create');
             Route::get('report/{slug}/edit', ReportEdit::class)->name('app.report.edit');
         });
+
 
         // Profile
         Route::get('profile', Profile::class)->name('app.profile');
