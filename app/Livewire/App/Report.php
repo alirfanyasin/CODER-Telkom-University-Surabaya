@@ -2,6 +2,7 @@
 
 namespace App\Livewire\App;
 
+use App\Models\Division;
 use App\Models\Report as ModelsReport;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -18,6 +19,8 @@ class Report extends Component
     use LivewireAlert;
 
     public $itemToDelete;
+    public $divisionId = 1;
+
     protected $listeners = [
         'confirmedDeletion',
     ];
@@ -68,13 +71,24 @@ class Report extends Component
         return redirect()->back();
     }
 
+    public function selectDivision($id)
+    {
+        $this->divisionId = $id;
+        session()->put('active-report', $this->divisionId);
+    }
 
 
     public function render()
     {
-        $dataReport = ModelsReport::where('division_id', Auth::user()->division_id)->get();
+        if (Auth::user()->label !== 'Super Admin') {
+            $dataReport = ModelsReport::where('division_id', Auth::user()->division_id)->orderBy('id', 'DESC')->get();
+        } else {
+            $dataReport = ModelsReport::where('division_id', session('active-report') ?? $this->divisionId)->orderBy('id', 'DESC')->get();
+        }
+
         return view('livewire.app.report', [
-            'reports' => $dataReport
+            'reports' => $dataReport,
+            'allDivision' => Division::all()
         ]);
     }
 }

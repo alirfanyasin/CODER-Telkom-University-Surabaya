@@ -4,6 +4,7 @@ namespace App\Livewire\App;
 
 use App\Models\Report;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -31,7 +32,7 @@ class ReportCreate extends Component
         $this->validate();
 
         if ($this->file) {
-            $nameFile = 'Report - ' . Auth::user()->division->name . ' - ' . $this->date . '.' . $this->file->getClientOriginalExtension();
+            $nameFile = 'Report - ' . Auth::user()->division->name . ' - ' . $this->date . ' - ' . Str::random(5) . '.' . $this->file->getClientOriginalExtension();
             $this->file->storeAs('report', $nameFile, 'public');
         }
 
