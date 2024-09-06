@@ -58,4 +58,14 @@ class Division extends Model
     {
         return $this->hasMany(Modul::class, 'division_id');
     }
+
+    /**
+     * Get all of the report for the Division
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function report(): HasMany
+    {
+        return $this->hasMany(Report::class, 'division_id');
+    }
 }
