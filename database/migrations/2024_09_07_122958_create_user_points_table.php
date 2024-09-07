@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('user_points', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('user_presence_id')->constrained()->onDelete('cascade');
-            $table->foreignId('submission_id')->constrained()->onDelete('cascade');
-            $table->foreignId('user_answere_quizz_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_presence_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('user_answer_quizzes_id')->nullable()->constrained()->onDelete('cascade');
             $table->unsignedInteger('final_project')->nullable();
             $table->unsignedInteger('commitee')->nullable();
+            $table->unsignedInteger('points')->nullable();
             $table->timestamps();
         });
     }

@@ -41,4 +41,14 @@ class UserPoints extends Model
     {
         return $this->belongsTo(UserAnswerQuiz::class, 'user_answere_quiz_id');
     }
+
+    /**
+     * Get the points that owns the UserPoints
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function points(): BelongsTo
+    {
+        return $this->belongsTo(Points::class, 'points_id');
+    }
 }
