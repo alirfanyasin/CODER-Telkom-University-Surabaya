@@ -27,17 +27,19 @@
             </span>
           @endif
           <div class="w-20 h-20 mx-auto overflow-hidden rounded-full">
-            <img src="{{ asset('assets/images/avatar.png') }}" alt="Avatar" class="object-cover w-full h-full">
+            <img
+              src="{{ $data->avatar === null ? asset('assets/images/avatar.png') : asset('storage/avatar/' . $data->avatar) }}"
+              alt="Avatar" class="object-cover w-full h-full">
           </div>
           <h4 class="mt-4 font-semibold text-md">{{ $data['name'] }}</h4>
           <p class="text-xs font-light text-gray-400">{{ $data['email'] }}</p>
           <div class="absolute transform -translate-x-1/2 left-1/2 bottom-5">
-            <a href="{{ route('app.member.detail') }}" wire:navigate
+            <a href="{{ route('app.member.show', ['id' => $data->id, 'name' => $data->name]) }}" wire:navigate
               class="inline-block py-2 text-xs border rounded-full px-9 group-hover:bg-white group-hover:text-black">
               Profile
             </a>
           </div>
-          @role(['admin'])
+          @role(['admin|super-admin'])
             {{-- Action button start --}}
             <div class="absolute z-10 inline-flex top-5 right-5 hs-dropdown">
               <button id="hs-dropdown-custom-icon-trigger" type="button"
@@ -54,16 +56,20 @@
               <div
                 class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg p-2 mt-2 dark:bg-neutral-800 dark:border dark:border-neutral-700"
                 aria-labelledby="hs-dropdown-custom-icon-trigger">
-                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
-                  href="#" wire:click='makeALeader({{ $data->id }})'>
-                  <iconify-icon icon="hugeicons:user-star-01"></iconify-icon>
-                  Jadikan Ketua Divisi
-                </a>
-                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
-                  href="#" wire:click='makeAMember({{ $data->id }})'>
-                  <iconify-icon icon="hugeicons:user-check-01"></iconify-icon>
-                  Jadikan Anggota
-                </a>
+                @role('super-admin')
+                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                    href="#" wire:click='makeALeader({{ $data->id }})'>
+                    <iconify-icon icon="hugeicons:user-star-01"></iconify-icon>
+                    Jadikan Ketua Divisi
+                  </a>
+                @endrole
+                @role('admin')
+                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                    href="#" wire:click='makeAMember({{ $data->id }})'>
+                    <iconify-icon icon="hugeicons:user-check-01"></iconify-icon>
+                    Jadikan Anggota
+                  </a>
+                @endrole
                 <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
                   href="#">
                   <iconify-icon icon="mingcute:user-x-line"></iconify-icon>

@@ -4,32 +4,44 @@ namespace App\Livewire\App;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 #[Title('Edit Profil')]
 #[Layout('layouts.app')]
 
 class ProfileEdit extends Component
 {
-    use LivewireAlert;
+    use LivewireAlert, WithFileUploads;
 
     public $userId;
+    #[Validate('required', message: "Nama lengkap wajib diisi", translate: true)]
+    #[Validate('min:3', message: "Minimal 3 karakter", translate: true)]
     public $name;
     public $email;
     public $password;
     public $major;
+    #[Validate('nullable')]
+    #[Validate('digits:10', message: "Masukkan 10 digit angka", translate: true)]
     public $nim;
+    #[Validate('nullable')]
+    #[Validate('digits:4', message: "Masukkan 4 digit angka", translate: true)]
     public $batch;
+    #[Validate('nullable')]
+    #[Validate('digits:12', message: "Masukkan 12 digit angka", translate: true)]
     public $phone_number;
     public $avatar;
     public $github;
     public $identity_code;
     public $division_id;
     public $tag;
+    public $currentAvatar;
 
     public function mount()
     {
@@ -43,7 +55,7 @@ class ProfileEdit extends Component
         $this->nim = $user->nim;
         $this->batch = $user->batch;
         $this->phone_number = $user->phone_number;
-        $this->avatar = $user->avatar;
+        $this->currentAvatar = $user->avatar;
         $this->github = $user->github;
         $this->identity_code = $user->identity_code;
         $this->division_id = $user->division_id;
@@ -52,22 +64,35 @@ class ProfileEdit extends Component
 
     public function updateProfile()
     {
+        $this->validate();
+
         $user = User::findOrFail($this->userId);
+
+        // File upload avatar
+        if ($this->avatar && $this->avatar instanceof \Illuminate\Http\UploadedFile) {
+            if ($user->avatar) {
+                Storage::disk('public')->delete('avatar/' . $user->avatar);
+            }
+            $avatarName = Auth::user()->name . '_' . Str::random(5) . '.' . $this->avatar->getClientOriginalExtension();
+            $this->avatar->storeAs('avatar', $avatarName, 'public');
+        } else {
+            $avatarName = $this->currentAvatar;
+        }
+
+
+        // Update data
         $user->name = $this->name;
         $user->email = $this->email;
-
-        // if ($this->password) {
-        //     $user->password = Hash::make($this->password);
-        // }
-
         $user->major = $this->major;
         $user->nim = $this->nim;
         $user->batch = $this->batch;
         $user->phone_number = $this->phone_number;
-        $user->avatar = $this->avatar;
+        $user->avatar = $avatarName;
         $user->github = $this->github;
         $user->identity_code = $this->identity_code;
         $user->division_id = $this->division_id;
+
+        // Tag
         if ($this->tag == 'Empty') {
             $user->tag = NULL;
         } else {
@@ -76,6 +101,7 @@ class ProfileEdit extends Component
 
         $user->save();
 
+        // Alert success
         $this->alert('success', 'Profile Berhasil Diupdate', [
             'position' => 'top-end',
             'timer' => 3000,

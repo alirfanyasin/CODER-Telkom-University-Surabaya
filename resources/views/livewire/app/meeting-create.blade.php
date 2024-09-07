@@ -7,7 +7,7 @@
 
   {{-- Create Meeting Section Start --}}
   <section class="mb-10">
-    {{-- @if($errors)
+    {{-- @if ($errors)
         @dd($errors)
     @endif --}}
     <form wire:submit="save">
@@ -35,7 +35,7 @@
                 class="w-full px-3 py-3 text-white rounded-lg bg-lightGray" wire:model="form.date_time">
             </div>
             <div class="mb-3">
-              <label for="end-date" class="block mb-2 font-light text-white">Waktu Berakhir <i>(Opsional)</i></label>
+              <label for="end-date" class="block mb-2 font-light text-white">Waktu Berakhir</label>
               <input type="time" name="end-date" id="end-date"
                 class="w-full px-3 py-3 text-white rounded-lg bg-lightGray" wire:model="form.end_time">
             </div>
@@ -46,21 +46,29 @@
                 <option value="online">Online</option>
                 <option value="offline">Offline</option>
               </select>
-              @error('form.type') <span class="error">{{ $message }}</span> @enderror
+              @error('form.type')
+                <span class="error">{{ $message }}</span>
+              @enderror
             </div>
             @if ($selectTypeMeeting == 'online')
               <div class="col-span-1 mb-3 lg:col-span-2">
                 <label for="link" class="block mb-2 font-light text-white">Link</label>
-                <input type="link" name="link" id="link" wire:model='form.link' class="w-full px-3 py-3 text-white rounded-lg bg-lightGray" placeholder="https://">
-                @error('form.link') <span class="error">{{ $message }}</span> @enderror
-            </div>
+                <input type="link" name="link" id="link" wire:model='form.link'
+                  class="w-full px-3 py-3 text-white rounded-lg bg-lightGray" placeholder="https://">
+                @error('form.link')
+                  <span class="error">{{ $message }}</span>
+                @enderror
+              </div>
             @endif
             @if ($selectTypeMeeting == 'offline')
-            <div class="col-span-1 mb-3 lg:col-span-2">
+              <div class="col-span-1 mb-3 lg:col-span-2">
                 <label for="Lokasi" class="block mb-2 font-light text-white">Lokasi</label>
                 <input type="text" name="Lokasi" id="Lokasi"
-                class="w-full px-3 py-3 text-white rounded-lg bg-lightGray" wire:model='form.location' placeholder="Lab. Komputer">
-                @error('form.location') <span class="error">{{ $message }}</span> @enderror
+                  class="w-full px-3 py-3 text-white rounded-lg bg-lightGray" wire:model='form.location'
+                  placeholder="Lab. Komputer">
+                @error('form.location')
+                  <span class="error">{{ $message }}</span>
+                @enderror
               </div>
             @endif
           </div>

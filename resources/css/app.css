@@ -56,3 +56,23 @@
   background: #555;
 }
 
+
+.scroll-div::-webkit-scrollbar {
+  height: 4px; /* Atau height: 10px; untuk scrollbar horizontal */
+}
+/* Mengubah warna track scrollbar */
+.scroll-div::-webkit-scrollbar-track {
+  background: #434343;
+}
+
+/* Mengubah warna thumb (bagian yang bisa digeser) */
+.scroll-div::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px; /* Membuat ujungnya melengkung */
+}
+
+/* Mengubah warna thumb ketika dihover */
+.scroll-div::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+

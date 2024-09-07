@@ -233,13 +233,23 @@
           @endrole
           @role(['super-admin|admin'])
             <li class="mb-4">
-              <a href=""
-                class="flex items-center px-3 py-3 font-medium text-gray-400 bg-transparent rounded-lg hover:bg-white mb-1.5 hover:text-black text-md">
+              <a href="{{ route('app.report') }}" wire:navigate
+                class="flex items-center px-3 py-3 font-medium text-gray-400 bg-transparent rounded-lg hover:bg-white mb-1.5 hover:text-black text-md {{ Request::is('app/report/*') ? 'active-menu' : 'text-gray-400' }} {{ Request::is('app/report') ? 'active-menu' : 'text-gray-400' }}">
                 <iconify-icon icon="teenyicons:attachment-outline" class="mr-3 text-2xl"></iconify-icon>
                 Laporan
               </a>
             </li>
           @endrole
+        @endrole
+
+        @role(['super-admin'])
+          <li class="mb-4">
+            <a href="{{ route('app.system-points') }}" wire:navigate
+              class="flex items-center px-3 py-3 font-medium text-gray-400 bg-transparent rounded-lg hover:bg-white mb-1.5 hover:text-black text-md {{ Request::is('app/system-points/*') ? 'active-menu' : 'text-gray-400' }} {{ Request::is('app/system-points') ? 'active-menu' : 'text-gray-400' }}">
+              <iconify-icon icon="icon-park-outline:six-points" class="mr-3 text-2xl"></iconify-icon>
+              Sistem Poin
+            </a>
+          </li>
         @endrole
 
         <li class="mb-4 hs-accordion hidden {{ Request::is('app/event/*') ? 'active' : '' }}" id="event-accordion">

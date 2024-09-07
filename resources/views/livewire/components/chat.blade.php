@@ -16,6 +16,7 @@
               <h4 class="font-bold text-center">Chat</h4>
             </header> --}}
 
+          {{-- User Account Start --}}
           @foreach ($datas as $data)
             <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm focus:outline-none text-neutral-400 hover:bg-neutral-700 hover:text-neutral-300 focus:bg-neutral-700"
               href="#" wire:click='getUser({{ $data->id }})'>
@@ -29,6 +30,8 @@
               </div>
             </a>
           @endforeach
+          {{-- User Account End --}}
+
 
         </div>
         <div class="relative col-span-2 first:pt-0 last:pb-0 h-96">
@@ -111,17 +114,19 @@
           {{-- Input chat start --}}
           <div class="sticky w-full px-2 py-2 top-10 bg-neutral-600">
             <form wire:submit.prevent='sendChat' class="flex">
-              <input type="text" name="" id="" wire:model='chat' autofocus autocomplete="false"
-                class="w-full px-2 py-1 text-xs font-light text-neutral-300 bg-neutral-700 rounded-l-md focus:border-0 focus:outline-none">
               @if ($userTo)
                 @php
                   $selectedUser = $datas->where('id', $userTo)->first();
                 @endphp
                 @if ($selectedUser)
+                  <input type="text" name="" id="" wire:model='chat' autofocus autocomplete="false"
+                    class="w-full px-2 py-1 text-xs font-light text-neutral-300 bg-neutral-700 rounded-l-md focus:border-0 focus:outline-none">
                   <button type="submit" class="px-2 py-1 text-sm text-white bg-green-800 rounded-r-md"><iconify-icon
                       icon="fa:send"></iconify-icon></button>
                 @endif
               @else
+                <input type="text" name="" id="" disabled autofocus autocomplete="false"
+                  class="w-full px-2 py-1 text-xs font-light text-neutral-300 bg-neutral-700 rounded-l-md focus:border-0 focus:outline-none">
                 <button type="button" disabled
                   class="px-2 py-1 text-sm text-white bg-neutral-500 rounded-r-md"><iconify-icon
                     icon="fa:send"></iconify-icon></button>

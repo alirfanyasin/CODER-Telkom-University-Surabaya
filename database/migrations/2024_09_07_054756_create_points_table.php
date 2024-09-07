@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('answer_keys', function (Blueprint $table) {
+        Schema::create('points', function (Blueprint $table) {
             $table->id();
-            $table->string('key');
-            $table->string('code')->nullable();
-            // $table->foreignId('question_id')->constrained();
+            $table->string('name');
+            $table->unsignedInteger('points')->default(0);
+            $table->unsignedInteger('times')->default(0);
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('answer_keys');
+        Schema::dropIfExists('points');
     }
 };

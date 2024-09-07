@@ -3,9 +3,11 @@
 namespace App\Models\Quiz;
 
 use App\Models\User;
+use App\Models\UserPoints;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class UserAnswerQuiz extends Model
 {
@@ -31,5 +33,15 @@ class UserAnswerQuiz extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    /**
+     * Get all of the userPoints for the UserAnswerQuiz
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function userPoints(): HasMany
+    {
+        return $this->hasMany(UserPoints::class, 'user_answere_quiz_id');
     }
 }

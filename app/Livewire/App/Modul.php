@@ -21,6 +21,7 @@ class Modul extends Component
     use LivewireAlert;
 
     public $itemToDelete;
+    public $divisionId = 1;
 
     protected $listeners = [
         'confirmedDeletion',
@@ -129,17 +130,32 @@ class Modul extends Component
     }
 
 
+    public function selectDivision($id)
+    {
+        $this->divisionId = $id;
+        session()->put('active-modul', $this->divisionId);
+    }
+
+
     public function render()
     {
-        $allDataByDivision = ELeaningModul::with('division')
-            ->where('division_id', Auth::user()->division_id)
-            ->orderBy('section', 'ASC')
-            ->get();
+        if (Auth::user()->label !== 'Super Admin') {
+            $allDataByDivision = ELeaningModul::with('division')
+                ->where('division_id', Auth::user()->division_id)
+                ->orderBy('section', 'ASC')
+                ->get();
+        } else {
+            $allDataByDivision = ELeaningModul::with('division')
+                ->where('division_id', session('active-modul') ?? $this->divisionId)
+                ->orderBy('section', 'ASC')
+                ->get();
+        }
 
         $groupedDataBySection = $allDataByDivision->groupBy('section');
 
         return view('livewire.app.modul', [
             'groupedDataBySection' => $groupedDataBySection,
+            'allDivision' => Division::all()
         ]);
     }
 }

@@ -33,6 +33,8 @@ use App\Livewire\App\Article as AppArticle;
 use App\Livewire\App\ArticleCreate;
 use App\Livewire\App\ArticleEdit;
 use App\Livewire\App\PresenceShare;
+use App\Livewire\App\Points\LetterOfActive;
+use App\Livewire\App\Points\Points;1
 use App\Livewire\App\Profile;
 use App\Livewire\App\ProfileEdit;
 use App\Livewire\App\Quiz\Quiz;
@@ -44,6 +46,10 @@ use App\Livewire\App\Quiz\QuizLive;
 use App\Livewire\App\Quiz\QuizQuestionCreate;
 use App\Livewire\App\Quiz\QuizResult;
 use App\Livewire\App\Quiz\QuizShow;
+use App\Livewire\App\Quiz\QuizSubmission;
+use App\Livewire\App\Report;
+use App\Livewire\App\ReportCreate;
+use App\Livewire\App\ReportEdit;
 use App\Livewire\Auth\ForgotPassword;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
@@ -108,10 +114,11 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/e-learning/quiz', Quiz::class)->name('app.e-learning.quiz');
             Route::middleware(['role:admin'])->group(function () {
                 Route::get('/e-learning/quiz/{code}/{id}/show', QuizShow::class)->name('app.e-learning.quiz.show');
+                Route::get('/e-learning/quiz/{code}/{id}/submission', QuizSubmission::class)->name('app.e-learning.quiz.submission');
                 Route::get('/e-learning/quiz/create', QuizCreate::class)->name('app.e-learning.quiz.create');
                 Route::get('/e-learning/quiz/question/create', QuizQuestionCreate::class)->name('app.e-learning.quiz.question-create');
                 Route::get('/e-learning/quiz/answer-key/create', QuizAnswerKey::class)->name('app.e-learning.quiz.answere-key-create');
-                Route::get('/e-learning/quiz/{slug}/edit', QuizEdit::class)->name('app.e-learning.quiz.edit');
+                Route::get('/e-learning/quiz/{code}/{id}/edit', QuizEdit::class)->name('app.e-learning.quiz.edit');
             });
             Route::middleware(['role:user'])->group(function () {
                 Route::get('/e-learning/quiz/{code}/{slug}/confirmation', QuizConfirmation::class)->name('app.e-learning.quiz-confirmation');
@@ -145,25 +152,41 @@ Route::middleware(['auth'])->group(function () {
         });
 
         // Member
-        Route::get('member', Member::class)->name('app.member');
-        Route::get('member/detail', MemberDetail::class)->name('app.member.detail');
+        Route::get('/member', Member::class)->name('app.member');
+        Route::get('/member/{name}/{id}/show', MemberDetail::class)->name('app.member.show');
         Route::middleware(['role:admin|super-admin'])->group(function () {
-            Route::get('member/recruitment', MemberRecruitment::class)->name('app.member.recruitment');
+            Route::get('/member/recruitment', MemberRecruitment::class)->name('app.member.recruitment');
         });
 
         // Division
         Route::middleware(['role:super-admin'])->group(function () {
-            Route::get('division', Division::class)->name('app.division');
+            Route::get('/division', Division::class)->name('app.division');
             Route::middleware(['role:super-admin'])->group(function () {
-                Route::get('division/create', DivisionCreate::class)->name('app.division.create');
-                Route::get('division/{slug}/edit', DivisionEdit::class)->name('app.division.edit');
-                Route::get('division/{slug}/detail', DivisionDetail::class)->name('app.division.detail');
+                Route::get('/division/create', DivisionCreate::class)->name('app.division.create');
+                Route::get('/division/{slug}/edit', DivisionEdit::class)->name('app.division.edit');
+                Route::get('/division/{slug}/detail', DivisionDetail::class)->name('app.division.detail');
             });
         });
 
+        // Report
+        Route::middleware(['role:admin|super-admin'])->group(function () {
+            Route::get('/report', Report::class)->name('app.report');
+        });
+        Route::middleware(['role:admin'])->group(function () {
+            Route::get('/report/create', ReportCreate::class)->name('app.report.create');
+            Route::get('/report/{date}/{id}/edit', ReportEdit::class)->name('app.report.edit');
+        });
+
+
         // Profile
-        Route::get('profile', Profile::class)->name('app.profile');
-        Route::get('profile/edit', ProfileEdit::class)->name('app.profile.edit');
+        Route::get('/profile', Profile::class)->name('app.profile');
+        Route::get('/profile/edit', ProfileEdit::class)->name('app.profile.edit');
+
+
+        Route::middleware(['role:super-admin'])->group(function () {
+            Route::get('/system-points', Points::class)->name('app.system-points');
+            Route::get('/system-points/letter-of-active', LetterOfActive::class)->name('app.system-points.letter-of.active');
+        });
 
         // Logout Route
         Route::get('/logout', [Logout::class, 'logout'])->name('logout');

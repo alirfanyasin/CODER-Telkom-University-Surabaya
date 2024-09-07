@@ -2,6 +2,7 @@
 
 namespace App\Livewire\App;
 
+use App\Models\User;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -11,8 +12,19 @@ use Livewire\Component;
 
 class MemberDetail extends Component
 {
+    public $userId;
+
+    public function mount($id, $name)
+    {
+        $this->userId = $id;
+    }
+
     public function render()
     {
-        return view('livewire.app.member-detail');
+        $dataUser = User::findOrFail($this->userId);
+
+        return view('livewire.app.member-detail', [
+            'data' => $dataUser
+        ]);
     }
 }

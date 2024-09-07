@@ -4,6 +4,7 @@ namespace App\Livewire\App\Quiz;
 
 use App\Models\Quiz\Question;
 use App\Models\Quiz\UserAnswerQuiz;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -25,7 +26,7 @@ class QuizResult extends Component
 
     public function render()
     {
-        $dataResults = UserAnswerQuiz::where('quiz_id', $this->quizId)->first();
+        $dataResults = UserAnswerQuiz::where('quiz_id', $this->quizId)->where('user_id', Auth::user()->id)->first();
         $questionCount =  Question::where('quiz_id', $this->quizId)->count();
         $dataQuestions = Question::where('quiz_id', $this->quizId)->get();
 
