@@ -19,9 +19,8 @@ class Presence extends Model
         return $this->belongsTo(Division::class, 'division_id');
     }
 
-    public function userPresences():HasMany
+    public function userPresences(): HasMany
     {
         return $this->hasMany(UserPresence::class, 'presences_id');
     }
-
 }
