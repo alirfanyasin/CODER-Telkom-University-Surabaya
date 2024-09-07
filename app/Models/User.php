@@ -89,4 +89,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserAnswerQuiz::class, 'user_id');
     }
+
+    /**
+     * Get all of the userPoints for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function userPoints(): HasMany
+    {
+        return $this->hasMany(UserPoints::class, 'user_id');
+    }
 }

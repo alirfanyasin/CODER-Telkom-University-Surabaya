@@ -2,8 +2,10 @@
 
 namespace App\Livewire\App\Quiz;
 
+use App\Models\Points;
 use App\Models\Quiz\Question;
 use App\Models\Quiz\UserAnswerQuiz;
+use App\Models\UserPoints;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
@@ -61,6 +63,18 @@ class QuizLive extends Component
         } else {
             // Simpan jawaban dan skor, lalu arahkan ke halaman hasil
             $this->saveAnswers();
+
+            // Simpan Poin
+            $point = Points::where('name', 'Kuis')->first();
+            $userAnswereQuiz = UserAnswerQuiz::where('user_id', Auth::user()->id)
+                ->where('quiz_id', $this->quizId)
+                ->latest()
+                ->first();
+            UserPoints::create([
+                'user_id' => Auth::user()->id,
+                'user_answer_quizzes_id' => $userAnswereQuiz->id,
+                'points' => $point->points
+            ]);
             return redirect()->route('app.e-learning.quiz-result', ['id' => $this->quizId]);
         }
     }
