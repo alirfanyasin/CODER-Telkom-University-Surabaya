@@ -242,6 +242,16 @@
           @endrole
         @endrole
 
+        @role(['super-admin'])
+          <li class="mb-4">
+            <a href="{{ route('app.system-points') }}" wire:navigate
+              class="flex items-center px-3 py-3 font-medium text-gray-400 bg-transparent rounded-lg hover:bg-white mb-1.5 hover:text-black text-md {{ Request::is('app/system-points/*') ? 'active-menu' : 'text-gray-400' }} {{ Request::is('app/system-points') ? 'active-menu' : 'text-gray-400' }}">
+              <iconify-icon icon="icon-park-outline:six-points" class="mr-3 text-2xl"></iconify-icon>
+              Sistem Poin
+            </a>
+          </li>
+        @endrole
+
         <li class="mb-4 hs-accordion hidden {{ Request::is('app/event/*') ? 'active' : '' }}" id="event-accordion">
           <button type="button"
             class="hs-accordion-toggle hs-accordion-active:hover:bg-white mb-1.5 w-full text-start flex items-center gap-x-3.5 py-3 hover:text-black hover:bg-white px-3 text-md font-medium text-gray-400 bg-transparent rounded-lg">
