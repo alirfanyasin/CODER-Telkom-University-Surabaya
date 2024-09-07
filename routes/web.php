@@ -32,6 +32,7 @@ use App\Livewire\App\ModulEdit;
 use App\Livewire\App\Article as AppArticle;
 use App\Livewire\App\ArticleCreate;
 use App\Livewire\App\ArticleEdit;
+use App\Livewire\App\Points\LetterOfActive;
 use App\Livewire\App\Points\Points;
 use App\Livewire\App\Profile;
 use App\Livewire\App\ProfileEdit;
@@ -182,6 +183,7 @@ Route::middleware(['auth'])->group(function () {
 
         Route::middleware(['role:super-admin'])->group(function () {
             Route::get('/system-points', Points::class)->name('app.system-points');
+            Route::get('/system-points/letter-of-active', LetterOfActive::class)->name('app.system-points.letter-of.active');
         });
 
         // Logout Route
