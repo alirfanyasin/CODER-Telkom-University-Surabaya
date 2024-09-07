@@ -30,10 +30,7 @@
           <label for="section" class="block mb-2 font-light text-white">Masukkan Pertemuan</label>
           <input type="number" id="section" class="block w-full p-3 text-white rounded-lg bg-lightGray"
             placeholder="Pertemuan ke-1" wire:model='section'>
-          {{-- <select class="block w-full p-3 text-white rounded-lg pe-9 bg-lightGray" wire:model='section'>
-            <option selected disabled>Pertemuan ke-</option>
-            <option value="1">Pertemuan ke-1</option>
-          </select> --}}
+
           @error('section')
             <small class="text-red-600"> {{ $message }} </small>
           @enderror
