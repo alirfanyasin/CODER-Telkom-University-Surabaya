@@ -34,7 +34,7 @@ use App\Livewire\App\ArticleCreate;
 use App\Livewire\App\ArticleEdit;
 use App\Livewire\App\PresenceShare;
 use App\Livewire\App\Points\LetterOfActive;
-use App\Livewire\App\Points\Points;1
+use App\Livewire\App\Points\Points;
 use App\Livewire\App\Profile;
 use App\Livewire\App\ProfileEdit;
 use App\Livewire\App\Quiz\Quiz;
