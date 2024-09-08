@@ -7,6 +7,7 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
 
 #[Title('Tugas')]
 #[Layout('layouts.app')]
@@ -99,7 +100,9 @@ class Task extends Component
     protected function getProcessedTasks()
     {
         // sort by section
-        return TaskModel::orderBy('section', 'ASC')->orderBy('slug', 'ASC')->get()->map(function ($task) {
+        $userDivision = Auth::user()->division_id;
+
+        return TaskModel::where('division_id', $userDivision)->orderBy('section', 'ASC')->orderBy('slug', 'ASC')->get()->map(function ($task) {
             $slugParts = explode('-', $task->slug);
             $task->title = [
                 'meeting' => $slugParts[1],
