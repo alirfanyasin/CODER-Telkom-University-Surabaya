@@ -16,6 +16,9 @@ use Livewire\Component;
 class Register extends Component
 {
     #[Validate('required', message: 'Nama Lengkap wajib di isi', translate: true)]
+    #[Validate('min:3', message: 'Nama Lengkap minimal 3 karakter', translate: true)]
+    #[Validate('max:50', message: 'Nama Lengkap maksimal 50 karakter', translate: true)]
+    #[Validate('regex:/^[a-zA-Z\s]+$/', message: 'Tidak boleh mengandung spesial karakter', translate: true)]
     public $name;
 
     #[Validate('required', message: 'Email wajib di isi', translate: true)]
