@@ -10,6 +10,8 @@ use App\Livewire\App\Event\ManagementEvent;
 use App\Livewire\App\Event\ManagementEventDetail;
 use App\Livewire\App\Event\Reqrutment;
 use App\Livewire\App\Gallery as AppGallery;
+use App\Livewire\App\GalleryCreate as AppGalleryCreate;
+use App\Livewire\App\GalleryEdit as AppGalleryEdit;
 use App\Livewire\App\Task;
 use App\Livewire\App\TaskCreate;
 use App\Livewire\App\TaskDetail;
@@ -130,6 +132,8 @@ Route::middleware(['auth'])->group(function () {
         // App Gallery
         Route::middleware(['role:super-admin'])->group(function () {
             Route::get('/content/gallery', AppGallery::class)->name('app.content.gallery');
+            Route::get("/content/gallery/{id}/edit", AppGalleryEdit::class)->name('app.content.gallery.edit');
+            Route::get("/content/gallery/create", AppGalleryCreate::class)->name('app.content.gallery.create');
         });
 
         // App Article
