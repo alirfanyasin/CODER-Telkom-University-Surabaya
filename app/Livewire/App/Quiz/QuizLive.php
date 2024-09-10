@@ -64,7 +64,7 @@ class QuizLive extends Component
             // Simpan jawaban dan skor, lalu arahkan ke halaman hasil
             $this->saveAnswers();
 
-            // Simpan Poin
+            // Simpan Poin User
             $point = Points::where('name', 'Kuis')->first();
             $userAnswereQuiz = UserAnswerQuiz::where('user_id', Auth::user()->id)
                 ->where('quiz_id', $this->quizId)
