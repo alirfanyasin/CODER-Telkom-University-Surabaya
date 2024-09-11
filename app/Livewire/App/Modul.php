@@ -2,6 +2,7 @@
 
 namespace App\Livewire\App;
 
+use App\Exports\ModulExport;
 use App\Models\Division;
 use App\Models\ELeaning\Modul as ELeaningModul;
 use Illuminate\Support\Facades\Auth;
@@ -10,6 +11,7 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
+use Maatwebsite\Excel\Facades\Excel;
 use ZipArchive;
 
 #[Title('Modul')]
@@ -127,6 +129,12 @@ class Modul extends Component
             ]);
             return response()->json(['error' => 'Gagal membuat file zip.'], 500);
         }
+    }
+
+
+    public function exportModul()
+    {
+        return Excel::download(new ModulExport, 'Modul - ' . Auth::user()->division->name . '.xlsx',  \Maatwebsite\Excel\Excel::XLSX);
     }
 
 
