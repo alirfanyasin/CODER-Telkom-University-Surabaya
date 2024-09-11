@@ -8,9 +8,7 @@
         <div class="hidden md:block">
           <button wire:click.prevent='exportModul'
             class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md">Export
-            <iconify-icon icon="mingcute:arrow-right-line" class="text-xl ms-2"></iconify-icon></button>
         </div>
-
         <div class="block md:hidden">
           <a href="{{ route('app.e-learning.modul.create') }}" wire:navigate
             class="flex items-center justify-center w-10 h-10 text-sm font-semibold text-black bg-white rounded-md"><iconify-icon
