@@ -3,7 +3,9 @@
 namespace App\Livewire\App;
 
 use App\Livewire\Forms\FormPresenceUpdate;
+use App\Models\Points;
 use App\Models\Presence;
+use App\Models\UserPoints;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -39,6 +41,7 @@ class PresenceDetail extends Component
     public function save(){
         $this->form->user_presence = $this->user_presence;
         $this->validate();
+        $point = Points::where('name', 'Pertemuan')->first();
         DB::beginTransaction();
         try {
             $this->form->presence->update([
@@ -48,6 +51,13 @@ class PresenceDetail extends Component
                 $value->update([
                     "status" => $this->form->user_presence[$index]["status"]
                 ]);
+                if ($this->form->user_presence[$index]["status"] == "hadir") {
+                    UserPoints::create([
+                        'user_id' => $value->user_id,
+                        'user_presence_id' => $value->id,
+                        'points' => $point->points
+                    ]);
+                }
             }
             DB::commit();
             return $this->redirect("/app/presence");
