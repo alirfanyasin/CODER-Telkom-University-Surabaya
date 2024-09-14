@@ -237,7 +237,7 @@
       <div class="w-10/12 mx-auto">
         <header class="flex items-center justify-between mb-10 md:mb-20">
           <h2 class="mx-5 text-3xl font-bold text-white md:text-5xl">Artikel</h2>
-          <a href="" class="text-gray-400">Lihat Semua <iconify-icon icon="ph:arrow-right"></iconify-icon>
+          <a href="/article" wire:navigate class="text-gray-400">Lihat Semua <iconify-icon icon="ph:arrow-right"></iconify-icon>
           </a>
         </header>
 

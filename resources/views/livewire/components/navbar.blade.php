@@ -50,8 +50,8 @@
       class="hidden overflow-hidden transition-all duration-300 hs-collapse basis-full grow sm:grow-0 sm:basis-auto sm:block sm:order-2">
       <div class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:mt-0 sm:ps-5">
         <a class="font-normal text-white" href="{{ route('home') }}" wire:navigate aria-current="page">Beranda</a>
-        <a class="font-normal text-white hover:text-gray-400" href="#about-us">Tentang Kami</a>
-        <a class="font-normal text-white hover:text-gray-400" href="#division">Divisi</a>
+        <a class="font-normal text-white hover:text-gray-400" href="{{ Request::is('gallery') || Request::is('article') ? route('home') . '/#about-us' : '#about-us' }}">Tentang Kami</a>
+        <a class="font-normal text-white hover:text-gray-400" href="{{ Request::is('gallery') || Request::is('article') ? route('home') .'/#division' : '#division' }}">Divisi</a>
         <a class="font-normal text-white hover:text-gray-400" href="{{ route('gallery') }}" wire:navigate>Galeri</a>
         <a class="font-normal text-white hover:text-gray-400" href="{{ route('article') }}" wire:navigate>Artikel</a>
         @guest
