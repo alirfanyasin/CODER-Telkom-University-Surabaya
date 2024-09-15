@@ -44,7 +44,11 @@ class ModulEdit extends Component
         $this->name = $data->name;
         $this->section = $data->section;
         $this->description = $data->description;
-        $this->type = $data->type;
+        if ($data->type === "vscode-icons:file-type-powerpoint") {
+            $this->type === "vscode-icons:file-type-powerpoint";
+        } else {
+            $this->type = $data->type;
+        }
         $this->file = $data->file;
         $this->link = $data->link;
     }

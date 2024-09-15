@@ -23,6 +23,8 @@ class ProfileEdit extends Component
     public $userId;
     #[Validate('required', message: "Nama lengkap wajib diisi", translate: true)]
     #[Validate('min:3', message: "Minimal 3 karakter", translate: true)]
+    #[Validate('max:50', message: 'Nama Lengkap maksimal 50 karakter', translate: true)]
+    #[Validate('regex:/^[a-zA-Z\s]+$/', message: 'Tidak boleh mengandung spesial karakter', translate: true)]
     public $name;
     public $email;
     public $password;

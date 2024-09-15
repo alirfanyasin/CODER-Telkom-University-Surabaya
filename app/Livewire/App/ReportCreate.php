@@ -19,13 +19,14 @@ class ReportCreate extends Component
 {
     use WithFileUploads, LivewireAlert;
 
-    public $type;
+    public $type = "Modul";
     #[Validate('required', message: 'Tanggal wajib diisi')]
     public $date;
     #[Validate('required', message: 'File wajib diisi')]
     #[Validate('mimes:xlsx', message: 'File wajib bertipe .xlsx')]
     #[Validate('max:5120', message: 'Maksimal 5 MB')]
     public $file;
+
 
     public function store()
     {

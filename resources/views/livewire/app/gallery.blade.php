@@ -4,7 +4,7 @@
 
     @role(['admin|super-admin'])
       <div class="hidden md:block">
-        <a href="#" wire:navigate 
+        <a href="{{route('app.content.gallery.create')}}" wire:navigate
           class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md">Tambah Gambar
           <iconify-icon icon="mingcute:arrow-right-line" class="text-xl ms-2"></iconify-icon>
         </a>
@@ -20,7 +20,14 @@
   </header>
 
   <section>
+    <div class="flex flex-wrap gap-4">
+        @foreach ($galleries as $item)
+            <div class="rounded-xl grow h-72 overflow-hidden transition-transform hover:scale-105" onclick="openModal('{{asset('/storage/gallery/'. $item->img)}}', '{{$item->caption}}', '{{$item->caption}}', '{{$item->id}}', true)">
+                <img src="{{ asset('/storage/gallery/'. $item->img) }}" alt="{{$item->caption}}" class="object-cover w-full h-full">
+            </div>
+        @endforeach
+      </div>
+
     @include('livewire.components.utilities.gallery-modal')
   </section>
 </div>
-  
