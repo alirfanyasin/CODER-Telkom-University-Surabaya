@@ -338,6 +338,7 @@
   <x-livewire-alert::scripts />
 
   @stack('js-custom')
+
 </body>
 
 </html>
