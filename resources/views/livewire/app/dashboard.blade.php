@@ -35,49 +35,65 @@
         <header class="mb-4">
           <h4 class="text-xl font-semibold text-white">Statistik Aktifitas</h4>
         </header>
+
+        <div>
+          {!! $activityCart->container() !!}
+        </div>
       </div>
       <div class="col-span-1 p-6 rounded-xl bg-glass lg:-me-0 -me-3">
         <header class="mb-4">
-          <h4 class="text-xl font-semibold text-white">Jadwal Pertemuan</h4>
+          <h4 class="text-xl font-semibold text-white">Poin Tertinggi Member</h4>
         </header>
         <div>
-          <div class="p-4 mb-4 border border-gray-500 rounded-xl">
-            <header class="flex items-center">
-              <h5 class="text-xs text-white">12.00 - 14.00</h5>
-              <div class="mx-2 border-l-2 border-white">|</div>
-              <h5 class="text-xs text-white">29 September 2024</h5>
-            </header>
-            <p class="mt-5 font-light text-gray-400">Belajar menggunakan Framework Tailwind.</p>
-            <a href="" class="flex items-center justify-center w-10 h-10 mt-4 border border-gray-500 rounded-lg">
-              <iconify-icon icon="fluent:video-24-regular" class="text-3xl text-white"></iconify-icon>
-            </a>
-          </div>
-          <div class="p-4 mb-4 border border-gray-500 rounded-xl">
-            <header class="flex items-center">
-              <h5 class="text-xs text-white">12.00 - 14.00</h5>
-              <div class="mx-2 border-l-2 border-white">|</div>
-              <h5 class="text-xs text-white">29 September 2024</h5>
-            </header>
-            <p class="mt-5 font-light text-gray-400">Belajar menggunakan Framework Tailwind.</p>
-            <a href="" class="flex items-center justify-center w-10 h-10 mt-4 border border-gray-500 rounded-lg">
-              <iconify-icon icon="fluent:video-24-regular" class="text-3xl text-white"></iconify-icon>
-            </a>
-          </div>
-          <div class="p-4 mb-4 border border-gray-500 rounded-xl">
-            <header class="flex items-center">
-              <h5 class="text-xs text-white">12.00 - 14.00</h5>
-              <div class="mx-2 border-l-2 border-white">|</div>
-              <h5 class="text-xs text-white">29 September 2024</h5>
-            </header>
-            <p class="mt-5 font-light text-gray-400">Belajar menggunakan Framework Tailwind.</p>
-            <a href="" class="flex items-center justify-center w-10 h-10 mt-4 border border-gray-500 rounded-lg">
-              <iconify-icon icon="fluent:video-24-regular" class="text-3xl text-white"></iconify-icon>
-            </a>
-          </div>
+          {!! $presenceChart->container() !!}
         </div>
       </div>
     </div>
   </section>
   {{-- Statistic and Meeting Schedule Section End --}}
-
 </div>
+
+@push('js-custom')
+<script src="{{ $activityCart->cdn() }}"></script>
+<script src="{{ $presenceChart->cdn() }}"></script>
+{{ $activityCart->script() }}
+{{ $presenceChart->script() }}
+@endpush
+
+{{-- 
+
+<div>
+  <div class="p-4 mb-4 border border-gray-500 rounded-xl">
+    <header class="flex items-center">
+      <h5 class="text-xs text-white">12.00 - 14.00</h5>
+      <div class="mx-2 border-l-2 border-white">|</div>
+      <h5 class="text-xs text-white">29 September 2024</h5>
+    </header>
+    <p class="mt-5 font-light text-gray-400">Belajar menggunakan Framework Tailwind.</p>
+    <a href="" class="flex items-center justify-center w-10 h-10 mt-4 border border-gray-500 rounded-lg">
+      <iconify-icon icon="fluent:video-24-regular" class="text-3xl text-white"></iconify-icon>
+    </a>
+  </div>
+  <div class="p-4 mb-4 border border-gray-500 rounded-xl">
+    <header class="flex items-center">
+      <h5 class="text-xs text-white">12.00 - 14.00</h5>
+      <div class="mx-2 border-l-2 border-white">|</div>
+      <h5 class="text-xs text-white">29 September 2024</h5>
+    </header>
+    <p class="mt-5 font-light text-gray-400">Belajar menggunakan Framework Tailwind.</p>
+    <a href="" class="flex items-center justify-center w-10 h-10 mt-4 border border-gray-500 rounded-lg">
+      <iconify-icon icon="fluent:video-24-regular" class="text-3xl text-white"></iconify-icon>
+    </a>
+  </div>
+  <div class="p-4 mb-4 border border-gray-500 rounded-xl">
+    <header class="flex items-center">
+      <h5 class="text-xs text-white">12.00 - 14.00</h5>
+      <div class="mx-2 border-l-2 border-white">|</div>
+      <h5 class="text-xs text-white">29 September 2024</h5>
+    </header>
+    <p class="mt-5 font-light text-gray-400">Belajar menggunakan Framework Tailwind.</p>
+    <a href="" class="flex items-center justify-center w-10 h-10 mt-4 border border-gray-500 rounded-lg">
+      <iconify-icon icon="fluent:video-24-regular" class="text-3xl text-white"></iconify-icon>
+    </a>
+  </div>
+</div> --}}

@@ -6,12 +6,12 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "arielmejiadev/larapex-charts": "^2.1",
         "jantinnerezo/livewire-alert": "^3.0",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.5",
         "maatwebsite/excel": "^3.1",
+        "marineusde/larapex-charts": "^1.4",
         "spatie/laravel-permission": "^6.9"
     },
     "require-dev": {
