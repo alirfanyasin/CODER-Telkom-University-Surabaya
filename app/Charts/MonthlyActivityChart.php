@@ -16,7 +16,7 @@ class MonthlyActivityChart
             ->addData('Presensi', [70, 29, 77, 28, 45, 55, 45, 43, 65, 45, 34, 23, 23])
             ->setColors(['#002FED', '#680000', '#FFFFFF', '#565656'])
             ->setFontColor('#FFFFFF')
-            ->setHeight(400)
+            ->setHeight(300)
             ->setXAxisOption(new XAxisOption(['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Juni', 'Juli', 'Agust', 'Sept', 'Okt', 'Nov', 'Des']));
     }
 }

@@ -12,6 +12,7 @@ class PresenceChart
     {
         return (new OriginalRadarChart)
             ->addData('Stats', [70, 93, 78, 97, 50, 90])
+            ->setHeight(300)
             ->setXAxisOption(new XAxisOption(['Pass', 'Dribble', 'Shot', 'Stamina', 'Long shots', 'Tactical']))
             // ->setXAxis(['Pass', 'Dribble', 'Shot', 'Stamina', 'Long shots', 'Tactical'])
             ->setMarkers(['#303F9F'], 7, 10);
