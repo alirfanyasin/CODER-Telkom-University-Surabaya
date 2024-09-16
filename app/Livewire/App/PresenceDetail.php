@@ -18,7 +18,8 @@ class PresenceDetail extends Component
 {
     public FormPresenceUpdate $form;
     public $user_presence;
-    public function mount($id){
+    public function mount($id)
+    {
         $presence = Presence::where('id', $id)->with("userPresences", "userPresences.user")->first();
         $this->form->setData($presence);
         $this->user_presence = $this->form->user_presence;
@@ -29,7 +30,8 @@ class PresenceDetail extends Component
             "members" => $this->user_presence
         ]);
     }
-    public function status($id, $status){
+    public function status($id, $status)
+    {
         foreach ($this->user_presence as $index => $value) {
             if ($value["id"] == $id) {
                 $this->user_presence[$index]["status"] = $status;
@@ -38,9 +40,10 @@ class PresenceDetail extends Component
         }
     }
 
-    public function save(){
+    public function save()
+    {
         $this->form->user_presence = $this->user_presence;
-        $this->validate();
+        // $this->validate();
         $point = Points::where('name', 'Pertemuan')->first();
         DB::beginTransaction();
         try {
