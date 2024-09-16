@@ -4,6 +4,7 @@ namespace App\Livewire\App;
 
 use App\Models\Presence;
 use App\Models\User;
+use App\Models\UserPresence;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
@@ -22,7 +23,6 @@ class PresenceShare extends Component
 
     public function mount($slug, $presence){
         $this->presence = Presence::where("id", $presence)->with("userPresences")->first();
-
         if (!$this->presence) {
             return redirect()->to("/");
         }
@@ -49,6 +49,16 @@ class PresenceShare extends Component
         $userPresence = $this->searchUserPresence($user->id);
         if (!$userPresence) {
             $this->alert('error', "Anda Berbeda divisi", [
+                'position' => 'top-end',
+                'timer' => 3000,
+                'toast' => true,
+                'text' => '',
+                'timerProgressBar' => false,
+            ]);
+            return;
+        }
+        if($this->presence->status != "active"){
+            $this->alert('error', "Presensi sudah ditutup", [
                 'position' => 'top-end',
                 'timer' => 3000,
                 'toast' => true,
