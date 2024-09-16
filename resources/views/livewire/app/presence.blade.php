@@ -72,8 +72,8 @@
                         class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-yellow-600 border-[#27272A] px-2 md:px-4 py-1">
                         <iconify-icon icon="lucide:edit"></iconify-icon><span class="hidden md:block">Edit</span>
                     </a>
-                    <span id="copyText" class="hidden">{{url("/presence/verify/". Str::random(10) ."/". $presence->id ."/user-presence")}}</span>
-                    <button type="button" onclick="copyToClipboard()" class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-cyan-600 border-[#27272A] px-2 md:px-4 py-1">
+                    <span id="copyText{{ $loop->index }}" class="hidden">{{url("/presence/verify/". Str::random(10) ."/". $presence->id ."/user-presence")}}</span>
+                    <button type="button" onclick="copyToClipboard('{{ $loop->index }}')" class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-cyan-600 border-[#27272A] px-2 md:px-4 py-1">
                         <iconify-icon icon="mage:share-fill"></iconify-icon><span class="hidden md:block">Bagikan</span>
                     </button>
                     </div>
@@ -89,8 +89,8 @@
   {{-- View All Meeting Section End --}}
 </div>
 <script>
-     function copyToClipboard() {
-        const copyText = document.getElementById("copyText").innerText;
+     function copyToClipboard(index) {
+        const copyText = document.getElementById(`copyText${index}`).innerText;
 
         const tempInput = document.createElement("textarea");
         tempInput.value = copyText;
