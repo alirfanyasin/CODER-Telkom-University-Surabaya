@@ -49,14 +49,18 @@
                 src="{{ $data->avatar === null ? asset('assets/images/avatar.png') : asset('storage/avatar/' . $data->avatar) }}"
                 alt="Avatar" class="object-cover w-full h-full">
             </div>
-            <h4 class="mt-4 font-semibold text-md">{{ $data->name }}</h4>
-            <p class="my-1 text-xs font-light text-gray-400">{{ $data->email }}</p>
+            <h4 class="mt-4 font-semibold break-words text-md">{{ $data->name }}</h4>
+            <div class="my-1 text-center">
+              <p class="text-xs font-light text-gray-400 break-words">
+                {{ $data->email }}
+              </p>
+            </div>
             @if ($data->hasRole(['admin']))
-              <p class="text-xs font-light text-white">{{ $data->label }}</p>
+              <p class="text-xs font-light text-white break-words">{{ $data->label }}</p>
             @endif
             @role('super-admin')
               @if (!$data->hasRole(['admin']))
-                <p class="text-xs font-light text-white">{{ $data->label }}</p>
+                <p class="text-xs font-light text-white break-words">{{ $data->label }}</p>
               @endif
             @endrole
             <div class="absolute transform -translate-x-1/2 left-1/2 bottom-5">

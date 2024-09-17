@@ -26,7 +26,7 @@
           src="{{ Auth::user()->avatar === null ? asset('assets/images/avatar.png') : asset('storage/avatar/' . Auth::user()->avatar) }}"
           alt="Avatar" class="object-cover w-full h-full">
       </div>
-      <h2 class="mb-3 text-xl font-semibold text-white">{{ Auth::user()->name }}</h2>
+      <h2 class="mb-3 text-xl font-semibold text-white break-words">{{ Auth::user()->name }}</h2>
       <p class="mb-3 text-xs font-light text-white">-
         {{ Auth::user()->division_id != null ? Auth::user()->division->name : 'Belum Ada Divisi' }} -</p>
       <p class="mb-3 text-xs font-light text-white">{{ Auth::user()->identity_code }}</p>
@@ -90,10 +90,12 @@
             </thead>
             <tbody class="">
               <tr>
-                <td class="py-2 text-sm font-light text-white whitespace-nowrap">1201201201</td>
-                <td class="py-2 text-sm font-light text-white whitespace-nowrap">Rekayasa Perangkat
-                  Lunak</td>
-                <td class="py-2 text-sm font-light text-white whitespace-nowrap">2022</td>
+                <td class="py-2 text-sm font-light text-white break-words whitespace-nowrap">
+                  {{ $data->nim ?? 'Belum ada' }}</td>
+                <td class="py-2 text-sm font-light text-white break-words whitespace-nowrap">
+                  {{ $data->major ?? 'Belum ada' }}</td>
+                <td class="py-2 text-sm font-light text-white break-words whitespace-nowrap">
+                  {{ $data->batch ?? 'Belum ada' }}</td>
               </tr>
             </tbody>
           </table>

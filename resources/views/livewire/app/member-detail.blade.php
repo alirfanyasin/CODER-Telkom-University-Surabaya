@@ -48,7 +48,7 @@
               height="30"></iconify-icon>
           </div>
           <h2 class="mb-6 text-xl font-semibold text-white">Poin</h2>
-          <h1 class="text-3xl font-bold text-white">120</h1>
+          <h1 class="text-3xl font-bold text-white">{{ $point }}</h1>
         </div>
         <div
           class="flex flex-col items-center w-4/12 p-6 text-center shadow-sm bg-glass md:items-start md:text-start rounded-xl">
@@ -78,10 +78,9 @@
             </thead>
             <tbody class="">
               <tr>
-                <td class="py-2 text-sm font-light text-white whitespace-nowrap">1201201201</td>
-                <td class="py-2 text-sm font-light text-white whitespace-nowrap">Rekayasa Perangkat
-                  Lunak</td>
-                <td class="py-2 text-sm font-light text-white whitespace-nowrap">2022</td>
+                <td class="py-2 text-sm font-light text-white whitespace-nowrap">{{ $data->nim ?? 'Belum ada' }}</td>
+                <td class="py-2 text-sm font-light text-white whitespace-nowrap">{{ $data->major ?? 'Belum ada' }}</td>
+                <td class="py-2 text-sm font-light text-white whitespace-nowrap">{{ $data->batch ?? 'Belum ada' }}</td>
               </tr>
             </tbody>
           </table>
