@@ -34,8 +34,9 @@ class QuizResultExport implements FromCollection, WithHeadings
         return [
             'NAMA',
             'JUDUL KUIS',
-            'NILAI',
             'GRADE',
+            'NILAI',
+
         ];
     }
 }
