@@ -11,6 +11,9 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Str;
+use App\Exports\QuizResultExport;
 
 #[Title('Kuis')]
 #[Layout('layouts.app')]
@@ -68,6 +71,29 @@ class Quiz extends Component
         $this->quizId = null;
         return redirect()->back();
     }
+
+    public function exportQuizResult()
+    {
+        $quizByDivision = QuizModel::where('division_id', Auth::user()->division_id)->first();
+        if ($quizByDivision) {
+            $this->alert('success', 'Berhasil Export Data', [
+                'position' => 'top-end',
+                'timer' => 3000,
+                'toast' => true,
+                'text' => '',
+                'timerProgressBar' => true,
+            ]);
+            return Excel::download(new QuizResultExport, 'Nilai Kuis - ' . Auth::user()->division->name . ' - ' . Str::random(5) . '.xlsx',  \Maatwebsite\Excel\Excel::XLSX);
+        } else {
+            $this->alert('error', 'Tidak Ada Kuis', [
+                'position' => 'top-end',
+                'timer' => 3000,
+                'toast' => true,
+                'timerProgressBar' => true,
+            ]);
+        }
+    }
+
 
     public function render()
     {

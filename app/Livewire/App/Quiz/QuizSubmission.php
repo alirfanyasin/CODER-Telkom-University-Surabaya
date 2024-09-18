@@ -2,11 +2,13 @@
 
 namespace App\Livewire\App\Quiz;
 
+
 use App\Models\Quiz\Question;
 use App\Models\Quiz\UserAnswerQuiz;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
+
 
 #[Title('Jawaban Kuis')]
 #[Layout('layouts.app')]
@@ -21,6 +23,8 @@ class QuizSubmission extends Component
         $this->quizId = $id;
         $this->quizCode = $code;
     }
+
+
 
     public function render()
     {
