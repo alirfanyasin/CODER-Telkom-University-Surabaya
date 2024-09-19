@@ -175,7 +175,7 @@
     <div class="flex justify-end mb-6">
       <a href="{{ route('app.profile') }}" wire:navigate
         class="inline-block px-5 py-3 text-sm font-semibold text-gray-400 border border-gray-400 rounded-md hover:bg-red-600 hover:border-red-600 hover:text-white">Batal</a>
-      <a href="{{ route('app.profile') }}" wire:navigate
+      <a href="{{ route('app.change-password') }}" wire:navigate
         class="inline-block px-5 py-3 mx-3 text-sm font-semibold text-gray-400 border border-gray-400 rounded-md hover:text-black hover:bg-white">Ubah
         Password</a>
       <button type="submit"
