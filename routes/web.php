@@ -52,6 +52,7 @@ use App\Livewire\App\Quiz\QuizSubmission;
 use App\Livewire\App\Report;
 use App\Livewire\App\ReportCreate;
 use App\Livewire\App\ReportEdit;
+use App\Livewire\Auth\ChangePassword;
 use App\Livewire\Auth\ForgotPassword;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
@@ -194,5 +195,8 @@ Route::middleware(['auth'])->group(function () {
 
         // Logout Route
         Route::get('/logout', [Logout::class, 'logout'])->name('logout');
+
+        // Change Password Route
+        Route::get('/change-password', ChangePassword::class)->name('app.change-password');
     });
 });
