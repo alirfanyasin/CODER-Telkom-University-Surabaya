@@ -17,11 +17,14 @@ use Livewire\Component;
 class ChangePassword extends Component
 {
     use LivewireAlert;
+
     #[Validate('required', message: 'Password wajib diisi')]
     public $password;
+
     #[Validate('required', message: 'Password baru wajib diisi')]
     #[Validate('min:6', message: 'Minimal 6 karakter')]
     public $new_password;
+
     #[Validate('required', message: 'Konfirmasi Password wajib diisi')]
     #[Validate('min:6', message: 'Minimal 6 karakter')]
     public $confirm_password;
