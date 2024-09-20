@@ -4,16 +4,32 @@
   <header class="flex items-center justify-between my-7">
     <h2 class="text-2xl font-bold text-white md:text-3xl">Profil Saya</h2>
 
-    <div class="hidden md:block">
-      <a href="{{ route('app.profile.edit') }}" wire:navigate
-        class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md">Perbarui Profil
-        <iconify-icon icon="mingcute:arrow-right-line" class="text-xl ms-2"></iconify-icon></a>
-    </div>
+    <div class="flex gap-2">
+      @role(['user|admin'])
+        <div class="hidden md:block">
+          <a href="#" wire:click.prevent='downloadActivityLetter'
+            class="flex items-center px-5 py-3 text-sm font-semibold text-white border rounded-md"><iconify-icon
+              icon="ph:download-bold" class="text-xl"></iconify-icon> &nbsp; Seritifikat </a>
+        </div>
 
-    <div class="block md:hidden">
-      <a href="{{ route('app.e-learning.meeting.create') }}" wire:navigate
-        class="flex items-center justify-center w-10 h-10 text-sm font-semibold text-black bg-white rounded-full"><iconify-icon
-          icon="majesticons:plus-line" class="text-2xl"></iconify-icon></a>
+        <div class="block md:hidden">
+          <a href="#" wire:click.prevent='downloadActivityLetter'
+            class="flex items-center justify-center w-10 h-10 text-sm font-semibold text-black bg-white rounded-md"><iconify-icon
+              icon="ph:download-bold" class="text-xl"></iconify-icon></a>
+        </div>
+      @endrole
+
+      <div class="hidden md:block">
+        <a href="{{ route('app.profile.edit') }}" wire:navigate
+          class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md">Perbarui Profil
+          <iconify-icon icon="mingcute:arrow-right-line" class="text-xl ms-2"></iconify-icon></a>
+      </div>
+
+      <div class="block md:hidden">
+        <a href="{{ route('app.profile.edit') }}" wire:navigate
+          class="flex items-center justify-center w-10 h-10 text-sm font-semibold text-black bg-white rounded-md"><iconify-icon
+            icon="lucide:edit" class="text-2xl"></iconify-icon></a>
+      </div>
     </div>
   </header>
   {{-- Header End --}}

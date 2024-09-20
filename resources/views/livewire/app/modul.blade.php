@@ -10,10 +10,12 @@
             class="flex items-center px-5 py-3 text-sm font-semibold text-white border rounded-md">
             <iconify-icon icon="lets-icons:export" class="text-xl me-2"></iconify-icon>
             Export</button>
-            
-            <div wire:loading wire:target="exportModul"
+
+          <div wire:loading wire:target="exportModul"
             class="flex items-center justify-center px-12 py-3 text-sm font-semibold border rounded-md">
-            <div  class="animate-spin inline-block size-4 border-[3px] border-current border-t-transparent text-white rounded-full" role="status" aria-label="loading">
+            <div
+              class="animate-spin inline-block size-4 border-[3px] border-current border-t-transparent text-white rounded-full"
+              role="status" aria-label="loading">
               <span class="sr-only">Loading...</span>
             </div>
           </div>
@@ -33,7 +35,7 @@
         </div>
 
         <div class="block md:hidden">
-          <a href="{{ route('app.e-learning.modul.create') }}" wire:navigate
+          <a href="#" wire:click='downloadZip'
             class="flex items-center justify-center w-10 h-10 text-sm font-semibold text-black bg-white rounded-md"><iconify-icon
               icon="ph:download-bold" class="text-xl"></iconify-icon></a>
         </div>
