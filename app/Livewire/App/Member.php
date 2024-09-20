@@ -4,10 +4,13 @@ namespace App\Livewire\App;
 
 use App\Models\Division;
 use App\Models\Label;
+use App\Models\Points;
 use App\Models\Quiz\UserAnswerQuiz;
 use App\Models\User;
+use App\Models\UserPoints;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -17,6 +20,8 @@ use Livewire\Component;
 
 class Member extends Component
 {
+    use LivewireAlert;
+
     public function makeALeader($id)
     {
         $user = User::findOrFail($id);
@@ -39,6 +44,23 @@ class Member extends Component
         $user->identity_code =  NULL;
         $user->label = Label::LABEL_NAME['guest'];
         $user->save();
+    }
+
+    public function givePointCommitee($id)
+    {
+        $point = Points::where('name', 'Kepanitiaan')->first();
+        UserPoints::create([
+            'user_id' => $id,
+            'commitee' => 1,
+            'points' => $point->points
+        ]);
+        $this->alert('success', 'Poin berhasil diberikan', [
+            'position' => 'top-end',
+            'timer' => 3000,
+            'toast' => true,
+            'text' => '',
+            'timerProgressBar' => true,
+        ]);
     }
 
     public function destroy($id)

@@ -35,7 +35,7 @@ class PointsSeeder extends Seeder
                 'times' => 1
             ],
             [
-                'name' => 'Kepanitian',
+                'name' => 'Kepanitiaan',
                 'points' => 15,
                 'times' => 0
             ],
