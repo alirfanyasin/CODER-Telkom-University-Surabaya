@@ -27,5 +27,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ArticleCategorySeeder::class);
         $this->call(PointsSeeder::class);
         // $this->call(TaskSeeder::class);
+        $this->call(ActivityLetterSeeder::class);
     }
 }
