@@ -7,7 +7,7 @@
 
   {{-- Form Start --}}
   <section>
-    <form wire:submit='store'>
+    <form wire:submit.prevent='update({{ $data->id }})'>
       <div class="w-full p-6 mb-6 bg-glass rounded-xl">
         <header class="flex items-center justify-between mb-8 text-white">
           <div class="flex items-center">
@@ -22,28 +22,28 @@
           <div class="w-full mb-6 md:mb-0">
             <label for="letter_number" class="block mb-2 font-light text-white">Nomor Surat</label>
             <input type="text" id="letter_number" class="block w-full p-3 text-white rounded-lg bg-lightGray"
-              placeholder="U/02/CDRITTS/XI/2023" wire:model='letter_number'>
-            @error('letter_number')
+              placeholder="U/02/CDRITTS/XI/2023" wire:model='reference_number'>
+            @error('reference_number')
               <small class="text-red-600"> {{ $message }} </small>
             @enderror
           </div>
           <div class="w-full mb-6 md:mb-0">
             <label for="date" class="block mb-2 font-light text-white">Tanggal Dipublish Surat</label>
             <input type="date" id="date" class="block w-full p-3 text-white rounded-lg bg-lightGray"
-              placeholder="Pertemuan ke-1" wire:model='date'>
-            @error('date')
+              placeholder="Pertemuan ke-1" wire:model='date_published'>
+            @error('date_published')
               <small class="text-red-600"> {{ $message }} </small>
             @enderror
           </div>
           <div class="w-full mb-6 md:mb-0">
             <label for="batch" class="block mb-2 font-light text-white">Masa Jabatan</label>
             <select class="block w-full p-3 text-white border-gray-200 rounded-lg pe-9 bg-lightGray"
-              wire:model.live='batch' id="batch">
+              wire:model.live='length_of_service' id="length_of_service">
               <option>{{ date('Y') - 1 . '/' . date('Y') }}</option>
               <option>{{ date('Y') . '/' . date('Y') + 1 }}</option>
               <option>{{ date('Y') + 1 . '/' . date('Y') + 2 }}</option>
             </select>
-            @error('date')
+            @error('length_of_service')
               <small class="text-red-600"> {{ $message }} </small>
             @enderror
           </div>
@@ -52,8 +52,8 @@
           <div class="w-full mb-6 md:mb-0">
             <label for="name" class="block mb-2 font-light text-white">Nama Ketua CODER</label>
             <input type="text" id="name" class="block w-full p-3 text-white rounded-lg bg-lightGray"
-              placeholder="" wire:model='name'>
-            @error('name')
+              placeholder="" wire:model='leaders_name'>
+            @error('leaders_name')
               <small class="text-red-600"> {{ $message }} </small>
             @enderror
           </div>

@@ -16,7 +16,7 @@ class ActivityLetterSeeder extends Seeder
         $data = [
             'reference_number' => null,
             'date_published' => null,
-            'lenght_of_service' => null,
+            'length_of_service' => null,
             'leaders_name' => null,
             'nim' => null
         ];

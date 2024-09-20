@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('reference_number')->unique()->nullable();
             $table->date('date_published')->nullable();
-            $table->string('lenght_of_service')->nullable();
+            $table->string('length_of_service')->nullable();
             $table->string('leaders_name')->nullable();
             $table->string('nim')->nullable();
             $table->timestamps();
