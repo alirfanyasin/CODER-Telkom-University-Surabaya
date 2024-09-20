@@ -95,12 +95,19 @@
                     @endrole
                     <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
                       href="#" wire:click='removeAsAMember({{ $data->id }})'>
-                      <iconify-icon icon="hugeicons:user-star-01"></iconify-icon>
+                      <iconify-icon icon="mingcute:user-x-line"></iconify-icon>
                       Keluarkan Menjadi User
                     </a>
+                    @role(['super-admin'])
+                      <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                        href="#" wire:click.prevent='givePointCommitee({{ $data->id }})'>
+                        <iconify-icon icon="mingcute:star-line"></iconify-icon>
+                        Berikan Point Kepanitian
+                      </a>
+                    @endrole
                     <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
                       href="#" wire:click='destroy({{ $data->id }})'>
-                      <iconify-icon icon="mingcute:user-x-line"></iconify-icon>
+                      <iconify-icon icon="tabler:trash"></iconify-icon>
                       Hapus
                     </a>
                   </div>
