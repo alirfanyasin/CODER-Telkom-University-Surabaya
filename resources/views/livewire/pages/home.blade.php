@@ -193,10 +193,176 @@
   </section>
   {{-- Division Section End --}}
 
+  {{-- Developer Team Start --}}
+  <section>
+    <div class="container">
+      <div class="w-10/12 mx-auto">
+        <header class="flex items-center justify-center mb-10 text-center md:mb-20">
+          <div class="border border-gray-700 w-36"></div>
+          <h2 class="mx-5 text-3xl font-bold text-white md:text-5xl">Tim Developer</h2>
+          <div class="border border-gray-700 w-36"></div>
+        </header>
+
+        <div class="w-full developer-slider">
+          <div class="mx-2 rounded-xl bg-[#0F0F0F] p-5">
+            <div class="w-64 h-64 mx-auto overflow-hidden">
+              <img src="{{ asset('assets/images/team/deo.png') }}" alt="Deo Farady Santoso"
+                class="object-cover w-full h-full">
+            </div>
+            <div class="mt-5 text-center text-white">
+              <h2 class="text-lg font-semibold">Deo Farady Santoso</h2>
+              <p class="font-light text-md">UI / UX Designer</p>
+            </div>
+            <div class="flex items-center justify-center gap-2 mt-5">
+              <a href="">
+                <iconify-icon icon="ic:round-whatsapp" class="text-[#585858] hover:text-green-600"
+                  height="23"></iconify-icon>
+              </a>
+              <a href="">
+                <iconify-icon icon="mdi:github" class="text-[#585858] hover:text-white"
+                  height="23"></iconify-icon>
+              </a>
+              <a href="">
+                <iconify-icon icon="mdi:linkedin" class="text-[#585858] hover:text-blue-400"
+                  height="23"></iconify-icon>
+              </a>
+            </div>
+          </div>
+
+          <div class="mx-2 rounded-xl bg-[#0F0F0F] p-5">
+            <div class="w-64 h-64 mx-auto overflow-hidden">
+              <img src="{{ asset('assets/images/team/dandy.png') }}" alt="Deo Farady Santoso"
+                class="object-cover w-full h-full">
+            </div>
+            <div class="mt-5 text-center text-white">
+              <h2 class="text-lg font-semibold">Dandy Maulana A. Y</h2>
+              <p class="font-light text-md">Full-stack Developer</p>
+            </div>
+            <div class="flex items-center justify-center gap-2 mt-5">
+              <a href="">
+                <iconify-icon icon="ic:round-whatsapp" class="text-[#585858] hover:text-green-600"
+                  height="23"></iconify-icon>
+              </a>
+              <a href="">
+                <iconify-icon icon="mdi:github" class="text-[#585858] hover:text-white"
+                  height="23"></iconify-icon>
+              </a>
+              <a href="">
+                <iconify-icon icon="mdi:linkedin" class="text-[#585858] hover:text-blue-400"
+                  height="23"></iconify-icon>
+              </a>
+            </div>
+          </div>
+
+          <div class="mx-2 rounded-xl bg-[#0F0F0F] p-5">
+            <div class="w-64 h-64 mx-auto overflow-hidden">
+              <img src="{{ asset('assets/images/team/irfan.png') }}" alt="Deo Farady Santoso"
+                class="object-cover w-full h-full">
+            </div>
+            <div class="mt-5 text-center text-white">
+              <h2 class="text-lg font-semibold">Irfan Yasin</h2>
+              <p class="font-light text-md">Full-stack Developer</p>
+            </div>
+            <div class="flex items-center justify-center gap-2 mt-5">
+              <a href="">
+                <iconify-icon icon="ic:round-whatsapp" class="text-[#585858] hover:text-green-600"
+                  height="23"></iconify-icon>
+              </a>
+              <a href="">
+                <iconify-icon icon="mdi:github" class="text-[#585858] hover:text-white"
+                  height="23"></iconify-icon>
+              </a>
+              <a href="">
+                <iconify-icon icon="mdi:linkedin" class="text-[#585858] hover:text-blue-400"
+                  height="23"></iconify-icon>
+              </a>
+            </div>
+          </div>
+
+          <div class="mx-2 rounded-xl bg-[#0F0F0F] p-5">
+            <div class="w-64 h-64 mx-auto overflow-hidden">
+              <img src="{{ asset('assets/images/team/fakhri.png') }}" alt="Deo Farady Santoso"
+                class="object-cover w-full h-full">
+            </div>
+            <div class="mt-5 text-center text-white">
+              <h2 class="text-lg font-semibold">Fakhri Alauddin</h2>
+              <p class="font-light text-md">Front-end Developer</p>
+            </div>
+            <div class="flex items-center justify-center gap-2 mt-5">
+              <a href="">
+                <iconify-icon icon="ic:round-whatsapp" class="text-[#585858] hover:text-green-600"
+                  height="23"></iconify-icon>
+              </a>
+              <a href="">
+                <iconify-icon icon="mdi:github" class="text-[#585858] hover:text-white"
+                  height="23"></iconify-icon>
+              </a>
+              <a href="">
+                <iconify-icon icon="mdi:linkedin" class="text-[#585858] hover:text-blue-400"
+                  height="23"></iconify-icon>
+              </a>
+            </div>
+          </div>
+
+          <div class="mx-2 rounded-xl bg-[#0F0F0F] p-5">
+            <div class="w-64 h-64 mx-auto overflow-hidden">
+              <img src="{{ asset('assets/images/team/rama.png') }}" alt="Deo Farady Santoso"
+                class="object-cover w-full h-full">
+            </div>
+            <div class="mt-5 text-center text-white">
+              <h2 class="text-lg font-semibold">Moch. Rama Maulana</h2>
+              <p class="font-light text-md">Front-end Developer</p>
+            </div>
+            <div class="flex items-center justify-center gap-2 mt-5">
+              <a href="">
+                <iconify-icon icon="ic:round-whatsapp" class="text-[#585858] hover:text-green-600"
+                  height="23"></iconify-icon>
+              </a>
+              <a href="">
+                <iconify-icon icon="mdi:github" class="text-[#585858] hover:text-white"
+                  height="23"></iconify-icon>
+              </a>
+              <a href="">
+                <iconify-icon icon="mdi:linkedin" class="text-[#585858] hover:text-blue-400"
+                  height="23"></iconify-icon>
+              </a>
+            </div>
+          </div>
+
+          <div class="mx-2 rounded-xl bg-[#0F0F0F] p-5">
+            <div class="w-64 h-64 mx-auto overflow-hidden">
+              <img src="{{ asset('assets/images/team/bintang.png') }}" alt="Deo Farady Santoso"
+                class="object-cover w-full h-full">
+            </div>
+            <div class="mt-5 text-center text-white">
+              <h2 class="text-lg font-semibold">Ananda Bintang</h2>
+              <p class="font-light text-md">Back-end Developer</p>
+            </div>
+            <div class="flex items-center justify-center gap-2 mt-5">
+              <a href="">
+                <iconify-icon icon="ic:round-whatsapp" class="text-[#585858] hover:text-green-600"
+                  height="23"></iconify-icon>
+              </a>
+              <a href="">
+                <iconify-icon icon="mdi:github" class="text-[#585858] hover:text-white"
+                  height="23"></iconify-icon>
+              </a>
+              <a href="">
+                <iconify-icon icon="mdi:linkedin" class="text-[#585858] hover:text-blue-400"
+                  height="23"></iconify-icon>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{-- Developer Team End --}}
+
 
 
   {{-- Gallery Section Start --}}
-  <section>
+  {{-- <section>
     <div class="container">
       <div class="w-10/12 mx-auto">
         <header class="flex items-center justify-center mb-10 text-center md:mb-20">
@@ -227,7 +393,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> --}}
   {{-- Gallery Section End --}}
 
 
@@ -237,50 +403,18 @@
       <div class="w-10/12 mx-auto">
         <header class="flex items-center justify-between mb-10 md:mb-20">
           <h2 class="mx-5 text-3xl font-bold text-white md:text-5xl">Artikel</h2>
-          <a href="/article" wire:navigate class="text-gray-400">Lihat Semua <iconify-icon icon="ph:arrow-right"></iconify-icon>
+          <a href="/article" wire:navigate class="text-gray-400">Lihat Semua <iconify-icon
+              icon="ph:arrow-right"></iconify-icon>
           </a>
         </header>
 
-        <div class="w-full article-slider">
-          <div class="mx-2 rounded-xl bg-glass">
-            <div class="mb-2">
-              <img src="assets/images/article-1.png" alt="Thumbnail Article" class="w-full h-full">
-            </div>
-            <div class="p-5 text-white">
-              <h5 class="mb-2 font-bold text-md md:text-xl">Bootstrap 5 VS Tailwind CSS</h5>
-              <p class="text-sm text-gray-400">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi
-                asperiores magni fugit accusamus repudiandae amet cupiditate consectetur...</p>
-            </div>
-          </div>
-          <div class="mx-2 rounded-xl bg-glass">
-            <div class="mb-2">
-              <img src="assets/images/article-1.png" alt="Thumbnail Article" class="w-full h-full">
-            </div>
-            <div class="p-5 text-white">
-              <h5 class="mb-2 font-bold text-md md:text-xl">Bootstrap 5 VS Tailwind CSS</h5>
-              <p class="text-sm text-gray-400">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi
-                asperiores magni fugit accusamus repudiandae amet cupiditate consectetur...</p>
-            </div>
-          </div>
-          <div class="mx-2 rounded-xl bg-glass">
-            <div class="mb-2">
-              <img src="assets/images/article-1.png" alt="Thumbnail Article" class="w-full h-full">
-            </div>
-            <div class="p-5 text-white">
-              <h5 class="mb-2 font-bold text-md md:text-xl">Bootstrap 5 VS Tailwind CSS</h5>
-              <p class="text-sm text-gray-400">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi
-                asperiores magni fugit accusamus repudiandae amet cupiditate consectetur...</p>
-            </div>
-          </div>
-          <div class="mx-2 rounded-xl bg-glass">
-            <div class="mb-2">
-              <img src="assets/images/article-1.png" alt="Thumbnail Article" class="w-full h-full">
-            </div>
-            <div class="p-5 text-white">
-              <h5 class="mb-2 font-bold text-md md:text-xl">Bootstrap 5 VS Tailwind CSS</h5>
-              <p class="text-sm text-gray-400">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi
-                asperiores magni fugit accusamus repudiandae amet cupiditate consectetur...</p>
-            </div>
+        <div class="w-full">
+          <div class="">
+            @for ($i = 0; $i < 3; $i++)
+              @include('livewire.components.utilities.article-items')
+            @endfor
+            <img src="{{ asset('assets/images/shape/ellipse-2.png') }}" alt=""
+              class="absolute top-0 left-0 w-1/2 -z-50">
           </div>
         </div>
       </div>
@@ -322,8 +456,8 @@
       //     }
       //   ]
       // });
-      $('.gallery-slider').slick({
-        slidesToShow: 3,
+      $('.developer-slider').slick({
+        slidesToShow: 4,
         slidesToScroll: 1,
         autoplay: true,
         infinite: true,
@@ -339,12 +473,12 @@
           {
             breakpoint: 600,
             settings: {
-              slidesToShow: 2,
+              slidesToShow: 1,
               slidesToScroll: 1
             }
           },
           {
-            breakpoint: 480,
+            breakpoint: 500,
             settings: {
               slidesToShow: 1,
               slidesToScroll: 1
