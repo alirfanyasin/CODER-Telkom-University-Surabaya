@@ -41,7 +41,7 @@
 <body>
 
   <header>
-    <table style="width: 100%; text-align: center; margin-bottom: 20px;">
+    <table style="width: 100%; text-align: center; margin-bottom: 10px;">
       <tr>
         <td class="left">
           <img src="{{ public_path('assets/images/logo/logo-telkomsby.png') }}" alt="Logo telkom surabaya">
@@ -146,8 +146,7 @@
       <td class="left"></td>
       <td class="center"></td>
       <td style="width: 200px;">
-        <img src="{{ public_path('assets/images/logo/main-logo.png') }}" alt="Logo telkom surabaya"
-          style="width: 100%;">
+        <img src="{{ public_path('storage/signature/' . $signature) }}" alt="Logo telkom surabaya" style="width: 60%;">
       </td>
     </tr>
     <tr>
