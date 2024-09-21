@@ -37,42 +37,51 @@ class Profile extends Component
             'signature' => $letter->signature
         ];
 
+        // Check user
+        if (Auth::user()->hasRole('user')) {
+            // Check published
+            if (is_null($letter) || is_null($letter->reference_number)) {
+                $this->alert('error', 'Sertifikat belum dipublish', [
+                    'position' => 'top-end',
+                    'timer' => 3000,
+                    'toast' => true,
+                    'text' => '',
+                    'timerProgressBar' => true,
+                ]);
+                return;
+            }
 
-        // Check published
-        if (is_null($letter) || is_null($letter->reference_number)) {
-            $this->alert('error', 'Sertifikat belum dipublish', [
-                'position' => 'top-end',
-                'timer' => 3000,
-                'toast' => true,
-                'text' => '',
-                'timerProgressBar' => true,
-            ]);
-            return;
+            // Check data compeleted
+            if (is_null(Auth::user()->nim) || is_null(Auth::user()->major) || is_null(Auth::user()->batch)) {
+                $this->alert('error', 'Profile wajib dilengkapi', [
+                    'position' => 'top-end',
+                    'timer' => 3000,
+                    'toast' => true,
+                    'text' => '',
+                    'timerProgressBar' => true,
+                ]);
+                return;
+            }
+
+            // Check user points
+            if (intval($totalUserPoints) < $points->points) {
+                $this->alert('error', 'Poin tidak cukup', [
+                    'position' => 'top-end',
+                    'timer' => 3000,
+                    'toast' => true,
+                    'text' => '',
+                    'timerProgressBar' => true,
+                ]);
+                return;
+            }
         }
 
-        // Check data compeleted
-        if (is_null(Auth::user()->nim) || is_null(Auth::user()->major) || is_null(Auth::user()->batch)) {
-            $this->alert('error', 'Profile wajib dilengkapi', [
-                'position' => 'top-end',
-                'timer' => 3000,
-                'toast' => true,
-                'text' => '',
-                'timerProgressBar' => true,
-            ]);
-            return;
-        }
 
-        // Check user points
-        if (intval($totalUserPoints) < $points->points) {
-            $this->alert('error', 'Poin tidak cukup', [
-                'position' => 'top-end',
-                'timer' => 3000,
-                'toast' => true,
-                'text' => '',
-                'timerProgressBar' => true,
-            ]);
-            return;
-        }
+        // Check Admin
+        // if(Auth::user()->hasRole('admin')) {
+
+        // }
+
 
         // Download sertificate
         $pdf = Pdf::loadView('pdf.activityLetter', $data);

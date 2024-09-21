@@ -114,7 +114,7 @@
               </div>
               <div class="md:w-1/2">
                 <label for="divisi-input" class="block mb-2 font-medium text-white">Divisi</label>
-                <select id="divisi-input" @role(['guest|admin']) disabled @endrole
+                <select id="divisi-input" @role(['guest|admin|user|super-admin']) disabled @endrole
                   class="block w-full p-3 text-white rounded-lg pe-9 bg-lightGray">
                   <option selected="" disabled>Pilih Divisi</option>
                   <option {{ Auth::user()->division_id === 1 ? 'selected' : '' }}>Web Development</option>
