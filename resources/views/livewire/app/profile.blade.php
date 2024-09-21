@@ -7,9 +7,18 @@
     <div class="flex gap-2">
       @role(['user|admin'])
         <div class="hidden md:block">
-          <a href="#" wire:click.prevent='downloadActivityLetter'
+          <a href="#" wire:click.prevent='downloadActivityLetter' wire:loading.remove
             class="flex items-center px-5 py-3 text-sm font-semibold text-white border rounded-md"><iconify-icon
               icon="ph:download-bold" class="text-xl"></iconify-icon> &nbsp; Seritifikat </a>
+        </div>
+
+        <div wire:loading wire:target="downloadActivityLetter"
+          class="flex items-center justify-center px-12 py-3 text-sm font-semibold border rounded-md">
+          <div
+            class="animate-spin inline-block size-4 border-[3px] border-current border-t-transparent text-white rounded-full"
+            role="status" aria-label="loading">
+            <span class="sr-only">Loading...</span>
+          </div>
         </div>
 
         <div class="block md:hidden">

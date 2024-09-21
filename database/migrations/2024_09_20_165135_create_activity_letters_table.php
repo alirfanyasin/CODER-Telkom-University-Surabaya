@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('length_of_service')->nullable();
             $table->string('leaders_name')->nullable();
             $table->string('nim')->nullable();
+            $table->string('signature')->nullable();
             $table->timestamps();
         });
     }

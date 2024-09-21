@@ -65,6 +65,19 @@
               <small class="text-red-600"> {{ $message }} </small>
             @enderror
           </div>
+          <div class="w-full mb-6 md:mb-0">
+            <label for="input-label" class="block mb-2 font-light dark:text-white">Tanda Tangan <span
+                class="text-[#9E9E9E] text-xs">(Maksimal 2 Mb)</span></label>
+            <input type="file" id="file-input" class="hidden" wire:model='signature' accept=".png">
+            <label for="file-input"
+              class="flex items-center gap-2 p-3 text-white rounded-md cursor-pointer bg-lightGray">
+              <span class="text-xs bg-[#43474C] py-1 px-1.5">Pilih File</span>
+              <span class="text-xs" id="file-name">Belum ada file yang dipilih.</span>
+            </label>
+            @error('signature')
+              <small class="text-red-600"> {{ $message }} </small>
+            @enderror
+          </div>
         </div>
       </div>
       <div class="flex justify-end mb-6">
