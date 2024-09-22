@@ -71,8 +71,10 @@ class Member extends Component
 
     public function render()
     {
-        if (Auth::user()->label !== 'Super Admin') {
+        if (Auth::user()->label === 'Alumni' || Auth::user()->label === 'User Coder') {
             $data = User::where('division_id', Auth::user()->division_id)->get();
+        } elseif (Auth::user()->label !== 'Super Admin') {
+            $data = User::all();
         } else {
             $data = User::all();
         }

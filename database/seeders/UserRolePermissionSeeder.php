@@ -54,12 +54,20 @@ class UserRolePermissionSeeder extends Seeder
         }
 
 
-        $superAdmin = User::create([
+        $guest = User::create([
             'name' => 'User',
             'email' => 'user@gmail.com',
             'password' => Hash::make('password'),
             'label' => Label::LABEL_NAME['guest'],
         ]);
-        $superAdmin->assignRole('guest');
+        $guest->assignRole('guest');
+
+        $alumni = User::create([
+            'name' => 'Alumni',
+            'email' => 'alumni@gmail.com',
+            'password' => Hash::make('password'),
+            'label' => Label::LABEL_NAME['alumni'],
+        ]);
+        $alumni->assignRole('guest');
     }
 }
