@@ -9,6 +9,7 @@ use App\Models\Quiz\Quiz;
 use App\Models\Task;
 use App\Models\User;
 use App\Models\UserPoints;
+use App\Models\UserPresence;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -142,9 +143,17 @@ class Profile extends Component
         $data = User::where('id', Auth::user()->id)->first();
         $dataPoint = UserPoints::where('user_id', Auth::user()->id)->sum('points');
 
+        $totalMeetings = UserPresence::where('user_id', Auth::user()->id)->count();
+        $dataPresence = UserPresence::where('user_id', Auth::user()->id)
+            ->where('status', 'hadir')
+            ->count();
+        $presencePercentage = $totalMeetings > 0 ? ($dataPresence / $totalMeetings) * 100 : 0;
+        $presencePercentage = floor(number_format($presencePercentage, 2));
+
         return view('livewire.app.profile', [
             'point' => $dataPoint,
-            'data' => $data
+            'data' => $data,
+            'presence' => $presencePercentage
         ]);
     }
 }
