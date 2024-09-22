@@ -76,7 +76,7 @@
             <iconify-icon icon="ph:user-check" class="text-gray-400 hover:text-red-600" height="30"></iconify-icon>
           </div>
           <h2 class="mb-6 text-xl font-semibold text-white">Presensi</h2>
-          <h1 class="text-3xl font-bold text-white">100%</h1>
+          <h1 class="text-3xl font-bold text-white">{{ $presence }}%</h1>
         </div>
         <div
           class="flex flex-col items-center w-4/12 p-6 text-center shadow-sm bg-glass md:items-start md:text-start rounded-xl">
