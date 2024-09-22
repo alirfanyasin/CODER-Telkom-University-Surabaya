@@ -13,6 +13,7 @@ class Label extends Model
         'super-admin' => 'Super Admin',
         'admin' => 'Admin ',
         'user' => 'Anggota ',
-        'guest' => 'User Coder'
+        'guest' => 'User Coder',
+        'alumni' => 'Alumni'
     ];
 }

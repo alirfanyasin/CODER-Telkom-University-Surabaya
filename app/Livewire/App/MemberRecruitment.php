@@ -20,6 +20,7 @@ class MemberRecruitment extends Component
     {
         $user = User::findOrFail($id);
         $user->removeRole('guest');
+        $user->removeRole('user');
         $user->assignRole('admin');
         $user->division_id = Auth::user()->division_id;
         $user->identity_code =  'ID-' . strtoupper(Str::random(10));

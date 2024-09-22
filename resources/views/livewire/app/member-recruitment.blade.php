@@ -60,7 +60,7 @@
                   <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
                     href="#" wire:click='makeALeader({{ $data->id }})'>
                     <iconify-icon icon="hugeicons:user-star-01"></iconify-icon>
-                    Jadikan Ketua Divisi
+                    Jadikan Admin Divisi
                   </a>
                 @endrole
                 @role('admin')
@@ -70,11 +70,11 @@
                     Jadikan Anggota
                   </a>
                 @endrole
-                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                {{-- <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
                   href="#">
                   <iconify-icon icon="mingcute:user-x-line"></iconify-icon>
                   Hapus
-                </a>
+                </a> --}}
               </div>
             </div>
             {{-- Action button end --}}

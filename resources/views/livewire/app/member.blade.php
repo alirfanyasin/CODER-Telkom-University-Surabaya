@@ -3,7 +3,7 @@
   <header class="flex items-center justify-between my-7">
     <h2 class="text-2xl font-bold text-white md:text-3xl">Daftar Anggota ({{ $datas->count() }})</h2>
 
-    @role(['admin|super-admin'])
+    @role(['admin'])
       <div class="hidden md:block">
         <a href="{{ route('app.member.recruitment') }}" wire:navigate
           class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md">Rekrut Anggota
@@ -12,7 +12,7 @@
 
       <div class="block md:hidden">
         <a href="{{ route('app.member.recruitment') }}" wire:navigate
-          class="flex items-center justify-center w-10 h-10 text-sm font-semibold text-black bg-white rounded-full"><iconify-icon
+          class="flex items-center justify-center w-10 h-10 text-sm font-semibold text-black bg-white rounded-md"><iconify-icon
             icon="majesticons:plus-line" class="text-2xl"></iconify-icon></a>
       </div>
     @endrole
@@ -86,30 +86,49 @@
                   <div
                     class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg p-2 mt-2 dark:bg-neutral-800 dark:border dark:border-neutral-700"
                     aria-labelledby="hs-dropdown-custom-icon-trigger">
-                    @role(['super-admin'])
+                    @role(['super-admin|admin'])
+                      @role(['super-admin'])
+                        @foreach ($allDivision as $division)
+                          <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                            href="#" wire:click='makeALeader({{ $data->id }}, {{ $division->id }})'>
+                            <iconify-icon icon="hugeicons:user-star-01"></iconify-icon>
+                            Jadikan Admin Divisi {{ $division->name }}
+                          </a>
+                        @endforeach
+                      @endrole
+                      @role(['admin'])
+                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                          href="#" wire:click='makeALeader({{ $data->id }})'>
+                          <iconify-icon icon="hugeicons:user-star-01"></iconify-icon>
+                          Jadikan Admin Divisi
+                        </a>
+                      @endrole
+                      @role(['super-admin'])
+                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                          href="#" wire:click='makeAlumni({{ $data->id }})'>
+                          <iconify-icon icon="hugeicons:user-star-01"></iconify-icon>
+                          Jadikan Alumni
+                        </a>
+                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                          href="#" wire:click.prevent='givePointCommitee({{ $data->id }})'>
+                          <iconify-icon icon="mingcute:star-line"></iconify-icon>
+                          Berikan Point Kepanitian
+                        </a>
+                      @endrole
                       <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
-                        href="#" wire:click='makeALeader({{ $data->id }})'>
-                        <iconify-icon icon="hugeicons:user-star-01"></iconify-icon>
-                        Jadikan Ketua Divisi
+                        href="#" wire:click='removeAsAMember({{ $data->id }})'>
+                        <iconify-icon icon="mingcute:user-x-line"></iconify-icon>
+                        Keluarkan Menjadi User
                       </a>
+                      @role(['super-admin'])
+                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                          href="#" wire:click='destroy({{ $data->id }})'>
+                          <iconify-icon icon="tabler:trash"></iconify-icon>
+                          Hapus
+                        </a>
+                      @endrole
                     @endrole
-                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
-                      href="#" wire:click='removeAsAMember({{ $data->id }})'>
-                      <iconify-icon icon="mingcute:user-x-line"></iconify-icon>
-                      Keluarkan Menjadi User
-                    </a>
-                    @role(['super-admin'])
-                      <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
-                        href="#" wire:click.prevent='givePointCommitee({{ $data->id }})'>
-                        <iconify-icon icon="mingcute:star-line"></iconify-icon>
-                        Berikan Point Kepanitian
-                      </a>
-                    @endrole
-                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
-                      href="#" wire:click='destroy({{ $data->id }})'>
-                      <iconify-icon icon="tabler:trash"></iconify-icon>
-                      Hapus
-                    </a>
+
                   </div>
                 </div>
                 {{-- Action button end --}}
