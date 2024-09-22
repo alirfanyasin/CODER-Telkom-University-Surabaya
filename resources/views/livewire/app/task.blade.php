@@ -12,7 +12,7 @@
 
       <div class="block md:hidden">
         <a href="{{ route('app.e-learning.task.create') }}" wire:navigate
-          class="flex items-center justify-center w-10 h-10 text-sm font-semibold text-black bg-white rounded-full">
+          class="flex items-center justify-center w-10 h-10 text-sm font-semibold text-black bg-white rounded-md">
           <iconify-icon icon="majesticons:plus-line" class="text-2xl"></iconify-icon>
         </a>
       </div>

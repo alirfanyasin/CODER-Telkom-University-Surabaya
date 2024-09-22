@@ -134,6 +134,17 @@ class Modul extends Component
 
     public function exportModul()
     {
+        $dataModul = ELeaningModul::where('division_id', Auth::user()->division_id)->get();
+
+        if ($dataModul->count() == 0) {
+            $this->alert('error', 'Belum ada modul', [
+                'position' => 'top-end',
+                'timer' => 3000,
+                'toast' => true,
+                'timerProgressBar' => true,
+            ]);
+            return;
+        }
         return Excel::download(new ModulExport, 'Modul - ' . Auth::user()->division->name . '.xlsx',  \Maatwebsite\Excel\Excel::XLSX);
     }
 

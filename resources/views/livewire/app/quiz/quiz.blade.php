@@ -4,14 +4,14 @@
     <h2 class="text-2xl font-bold text-white md:text-3xl">Daftar Kuis</h2>
     @role(['admin'])
       <div class="flex">
-        <div class="hidden md:block me-3">
+        <div class="hidden md:block me-2">
           <button wire:click.prevent='exportQuizResult' wire:loading.remove
             class="flex items-center px-5 py-3 text-sm font-semibold text-white border rounded-md">
             <iconify-icon icon="lets-icons:export" class="text-xl me-2"></iconify-icon>
             Export</button>
 
           <div wire:loading wire:target="exportQuizResult"
-            class="flex items-center justify-center px-12 py-3 text-sm font-semibold border rounded-md">
+            class="flex items-center justify-center px-12 py-3 text-sm font-semibold border rounded-md me-2">
             <div
               class="animate-spin inline-block size-4 border-[3px] border-current border-t-transparent text-white rounded-full"
               role="status" aria-label="loading">
@@ -21,7 +21,7 @@
         </div>
         <div class="block md:hidden">
           <button wire:click.prevent='exportQuizResult'
-            class="flex items-center justify-center w-10 h-10 text-sm font-semibold text-black bg-white rounded-md">
+            class="flex items-center justify-center w-10 h-10 text-sm font-semibold text-black bg-white rounded-md me-2">
             <iconify-icon icon="lets-icons:export" class="text-2xl"></iconify-icon></button>
         </div>
 
@@ -34,7 +34,7 @@
 
         <div class="block md:hidden">
           <a href="{{ route('app.e-learning.quiz.create') }}" wire:navigate
-            class="flex items-center justify-center w-10 h-10 text-sm font-semibold text-black bg-white rounded-full"><iconify-icon
+            class="flex items-center justify-center w-10 h-10 text-sm font-semibold text-black bg-white rounded-md"><iconify-icon
               icon="majesticons:plus-line" class="text-2xl"></iconify-icon></a>
         </div>
       </div>
