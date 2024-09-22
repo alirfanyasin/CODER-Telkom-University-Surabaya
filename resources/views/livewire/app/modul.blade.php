@@ -21,9 +21,9 @@
           </div>
         </div>
         <div class="block md:hidden">
-          <a href="{{ route('app.e-learning.modul.create') }}" wire:navigate
+          <a href="#" wire:click.prevent='exportModul'
             class="flex items-center justify-center w-10 h-10 text-sm font-semibold text-black bg-white rounded-md"><iconify-icon
-              icon="majesticons:plus-line" class="text-2xl"></iconify-icon></a>
+              icon="lets-icons:export" class="text-2xl"></iconify-icon></a>
         </div>
       @endrole
 
