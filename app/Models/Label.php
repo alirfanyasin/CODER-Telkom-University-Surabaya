@@ -14,6 +14,6 @@ class Label extends Model
         'admin' => 'Admin ',
         'user' => 'Anggota ',
         'guest' => 'User Coder',
-        'alumni' => 'Alumni '
+        'alumni' => 'Alumni'
     ];
 }

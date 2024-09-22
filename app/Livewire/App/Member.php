@@ -71,13 +71,16 @@ class Member extends Component
 
     public function render()
     {
-        if (Auth::user()->label === 'Alumni' || Auth::user()->label === 'User Coder') {
-            $data = User::where('division_id', Auth::user()->division_id)->get();
-        } elseif (Auth::user()->label !== 'Super Admin') {
-            $data = User::all();
+        if (Auth::user()->label !== 'Super Admin') {
+            if (Auth::user()->label === 'Alumni ' || Auth::user()->label === 'User Coder') {
+                $data = User::all();
+            } else {
+                $data = User::where('division_id', Auth::user()->division_id)->get();
+            }
         } else {
             $data = User::all();
         }
+
         return view('livewire.app.member', [
             'datas' => $data,
             'allDivision' => Division::withCount('user')->get()
