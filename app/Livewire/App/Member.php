@@ -22,14 +22,32 @@ class Member extends Component
 {
     use LivewireAlert;
 
-    public function makeALeader($id)
+    public function makeALeader($id, $divisionId = NULL)
     {
         $user = User::findOrFail($id);
         $user->removeRole('user');
         $user->assignRole('admin');
-        $user->division_id = Auth::user()->division_id;
+        if (Auth::user()->label !== 'Super Admin') {
+            $user->division_id = Auth::user()->division_id;
+            $user->label = Label::LABEL_NAME['admin'] . Auth::user()->division->name;
+        } else {
+            $user->division_id = $divisionId;
+            $divisionName = Division::where('id', $divisionId)->first()->name ?? '';
+            $user->label = Label::LABEL_NAME['admin'] . $divisionName;
+        }
         $user->identity_code =  'ID-' . strtoupper(Str::random(10));
-        $user->label = Label::LABEL_NAME['admin'] . Auth::user()->division->name;
+        $user->save();
+    }
+
+    public function makeAlumni($id)
+    {
+        $user = User::findOrFail($id);
+        $user->removeRole('user');
+        $user->removeRole('admin');
+        $user->assignRole('alumni');
+        $user->division_id = NULL;
+        $user->identity_code =  NULL;
+        $user->label = Label::LABEL_NAME['alumni'];
         $user->save();
     }
 
@@ -45,6 +63,8 @@ class Member extends Component
         $user->label = Label::LABEL_NAME['guest'];
         $user->save();
     }
+
+
 
     public function givePointCommitee($id)
     {
@@ -72,7 +92,7 @@ class Member extends Component
     public function render()
     {
         if (Auth::user()->label !== 'Super Admin') {
-            if (Auth::user()->label === 'Alumni ' || Auth::user()->label === 'User Coder') {
+            if (Auth::user()->label === 'Alumni' || Auth::user()->label === 'User Coder') {
                 $data = User::all();
             } else {
                 $data = User::where('division_id', Auth::user()->division_id)->get();
