@@ -3,7 +3,10 @@
 namespace App\Livewire\App;
 
 use App\Models\ActivityLetter;
+use App\Models\Meeting;
 use App\Models\Points;
+use App\Models\Quiz\Quiz;
+use App\Models\Task;
 use App\Models\User;
 use App\Models\UserPoints;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -24,8 +27,15 @@ class Profile extends Component
     {
         // Get data
         $letter = ActivityLetter::find(1);
-        $points = Points::where('name', 'Minimal Poin')->first();
+        $minPoints = Points::where('name', 'Minimal Poin')->first();
         $totalUserPoints = UserPoints::where('user_id', Auth::user()->id)->sum('points');
+        $points = Points::all();
+
+
+        $meetingCount = Meeting::where('division_id', Auth::user()->division_id)->count();
+        $taskCount = Task::where('division_id', Auth::user()->division_id)->count();
+        $quizCount = Quiz::where('division_id', Auth::user()->division_id)->count();
+        // $finalProjectCount = Task::where('division_id', Auth::user()->division_id)->get();
 
         // Update data
         $data = [
@@ -64,7 +74,7 @@ class Profile extends Component
             }
 
             // Check user points
-            if (intval($totalUserPoints) < $points->points) {
+            if (intval($totalUserPoints) < $minPoints->points) {
                 $this->alert('error', 'Poin tidak cukup', [
                     'position' => 'top-end',
                     'timer' => 3000,
@@ -76,11 +86,37 @@ class Profile extends Component
             }
         }
 
-
         // Check Admin
-        // if(Auth::user()->hasRole('admin')) {
+        if (Auth::user()->hasRole('admin')) {
+            $dataPoint = [
+                $meetingCount,
+                $taskCount,
+                $quizCount,
+            ];
 
-        // }
+            $message = [
+                'Jumlah pertemuan tidak memenuhi syarat',
+                'Jumlah tugas tidak memenuhi syarat',
+                'Jumlah kuis tidak memenuhi syarat',
+            ];
+
+            foreach ($points as $key => $point) {
+                if ($key === 2) {
+
+                    if ($dataPoint[$key] < $point->times) {
+                        $this->alert('error', $message[$key], [
+                            'position' => 'top-end',
+                            'timer' => 3000,
+                            'toast' => true,
+                            'text' => '',
+                            'timerProgressBar' => true,
+                        ]);
+                        return;
+                    }
+                }
+                break;
+            }
+        }
 
 
         // Download sertificate

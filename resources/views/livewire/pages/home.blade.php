@@ -10,8 +10,8 @@
           Room of
           Tecnology</h1>
 
-        <p class="text-sm font-light text-center text-white md:text-lg">CODER: Komunitas Kreatif dan Inovatif di Institut
-          Teknologi Telkom
+        <p class="text-sm font-light text-center text-white md:text-lg">CODER: Komunitas Kreatif dan Inovatif di Telkom
+          University
           Surabaya yang
           Fokus pada <br> Pengembangan Aplikasi dan Solusi Perangkat Lunak yang Inovatif.</p>
 
@@ -57,7 +57,6 @@
       </div>
     </div>
   </section>
-
   {{-- Event Section End --}}
 
 
@@ -114,84 +113,16 @@
         </header>
 
         <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
-          <div class="p-4 md:p-8 bg-glass rounded-xl">
-            <div class="flex items-center">
-              <div class="text-white md:basis-2/12 basis-3/12">
-                <iconify-icon icon="quill:desktop" class="text-6xl"></iconify-icon>
-              </div>
-              <div class="md:basis-10/12 basis-9/12">
-                <h4 class="text-xl font-bold text-white lg:text-2xl">Web Development</h4>
-                <p class="text-sm text-gray-400 lg:text-md">Belajar dan mengembangan aplikasi berbasis Website yang
-                  modern</p>
-              </div>
-            </div>
-          </div>
-          <div class="p-4 md:p-8 bg-glass rounded-xl">
-            <div class="flex items-center">
-              <div class="text-white md:basis-2/12 basis-3/12">
-                <iconify-icon icon="mingcute:pen-line" class="text-6xl"></iconify-icon>
-              </div>
-              <div class="md:basis-10/12 basis-9/12">
-                <h4 class="text-xl font-bold text-white lg:text-2xl">UI/UX Design</h4>
-                <p class="text-sm text-gray-400 lg:text-md">Melakukan proses Sketching, Wireframing, Mockup, hingga
-                  Prototype</p>
-              </div>
-            </div>
-          </div>
-          <div class="p-4 md:p-8 bg-glass rounded-xl">
-            <div class="flex items-center">
-              <div class="text-white md:basis-2/12 basis-3/12">
-                <iconify-icon icon="mage:robot" class="text-6xl"></iconify-icon>
-              </div>
-              <div class="md:basis-10/12 basis-9/12">
-                <h4 class="text-xl font-bold text-white lg:text-2xl">AI Software</h4>
-                <p class="text-sm text-gray-400 lg:text-md">Mengembangkan perangkat lunak berbasis kecerdasan
-                  artifisial
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="p-4 md:p-8 bg-glass rounded-xl">
-            <div class="flex items-center">
-              <div class="text-white md:basis-2/12 basis-3/12">
-                <iconify-icon icon="nimbus:mobile" class="text-6xl"></iconify-icon>
-              </div>
-              <div class="md:basis-10/12 basis-9/12">
-                <h4 class="text-xl font-bold text-white lg:text-2xl">Mobile Development</h4>
-                <p class="text-sm text-gray-400 lg:text-md">Melakukan pengembangan aplikasi berbasis Mobile Application
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="p-4 md:p-8 bg-glass rounded-xl">
-            <div class="flex items-center">
-              <div class="text-white md:basis-2/12 basis-3/12">
-                <iconify-icon icon="ph:code-bold" class="text-6xl"></iconify-icon>
-              </div>
-              <div class="md:basis-10/12 basis-9/12">
-                <h4 class="text-xl font-bold text-white lg:text-2xl">Competitive Programming</h4>
-                <p class="text-sm text-gray-400 lg:text-md">Melakukan pengembangan algoritma pemrograman untuk
-                  berkompetisi</p>
-              </div>
-            </div>
-          </div>
-          <div class="p-4 md:p-8 bg-glass rounded-xl">
-            <div class="flex items-center">
-              <div class="text-white md:basis-2/12 basis-3/12">
-                <iconify-icon icon="ant-design:pie-chart-outlined" class="text-6xl"></iconify-icon>
-              </div>
-              <div class="md:basis-10/12 basis-9/12">
-                <h4 class="text-xl font-bold text-white lg:text-2xl">Data Engineering</h4>
-                <p class="text-gray-400 text-sm lg/;text-md">Melakukan pengolahan data untuk dianalisa dan memperoleh
-                  manfaat</p>
-              </div>
-            </div>
-          </div>
+          @foreach ($allDivision as $division)
+            <livewire:components.division-card name="{{ $division->name }}" logo="{{ $division->logo }}"
+              description="{{ $division->description }}" />
+          @endforeach
         </div>
       </div>
     </div>
   </section>
   {{-- Division Section End --}}
+
 
   {{-- Developer Team Start --}}
   <section>
@@ -204,197 +135,17 @@
         </header>
 
         <div class="w-full developer-slider">
-          <div class="mx-2 rounded-xl bg-[#0F0F0F] p-5">
-            <div class="w-64 h-64 mx-auto overflow-hidden">
-              <img src="{{ asset('assets/images/team/deo.png') }}" alt="Deo Farady Santoso"
-                class="object-cover w-full h-full">
-            </div>
-            <div class="mt-5 text-center text-white">
-              <h2 class="text-lg font-semibold">Deo Farady Santoso</h2>
-              <p class="font-light text-md">UI / UX Designer</p>
-            </div>
-            <div class="flex items-center justify-center gap-2 mt-5">
-              <a href="">
-                <iconify-icon icon="ic:round-whatsapp" class="text-[#585858] hover:text-green-600"
-                  height="23"></iconify-icon>
-              </a>
-              <a href="">
-                <iconify-icon icon="mdi:github" class="text-[#585858] hover:text-white"
-                  height="23"></iconify-icon>
-              </a>
-              <a href="">
-                <iconify-icon icon="mdi:linkedin" class="text-[#585858] hover:text-blue-400"
-                  height="23"></iconify-icon>
-              </a>
-            </div>
-          </div>
+          @foreach ($dataDeveloperTeam as $data)
+            <livewire:components.developer-team-card name="{{ $data['name'] }}" image="{{ $data['image'] }}"
+              role="{{ $data['role'] }}" whatsapp="{{ $data['whatsapp'] }}" github="{{ $data['github'] }}"
+              linkedin="{{ $data['linkedin'] }}" />
+          @endforeach
 
-          <div class="mx-2 rounded-xl bg-[#0F0F0F] p-5">
-            <div class="w-64 h-64 mx-auto overflow-hidden">
-              <img src="{{ asset('assets/images/team/dandy.png') }}" alt="Deo Farady Santoso"
-                class="object-cover w-full h-full">
-            </div>
-            <div class="mt-5 text-center text-white">
-              <h2 class="text-lg font-semibold">Dandy Maulana A. Y</h2>
-              <p class="font-light text-md">Full-stack Developer</p>
-            </div>
-            <div class="flex items-center justify-center gap-2 mt-5">
-              <a href="">
-                <iconify-icon icon="ic:round-whatsapp" class="text-[#585858] hover:text-green-600"
-                  height="23"></iconify-icon>
-              </a>
-              <a href="">
-                <iconify-icon icon="mdi:github" class="text-[#585858] hover:text-white"
-                  height="23"></iconify-icon>
-              </a>
-              <a href="">
-                <iconify-icon icon="mdi:linkedin" class="text-[#585858] hover:text-blue-400"
-                  height="23"></iconify-icon>
-              </a>
-            </div>
-          </div>
-
-          <div class="mx-2 rounded-xl bg-[#0F0F0F] p-5">
-            <div class="w-64 h-64 mx-auto overflow-hidden">
-              <img src="{{ asset('assets/images/team/irfan.png') }}" alt="Deo Farady Santoso"
-                class="object-cover w-full h-full">
-            </div>
-            <div class="mt-5 text-center text-white">
-              <h2 class="text-lg font-semibold">Irfan Yasin</h2>
-              <p class="font-light text-md">Full-stack Developer</p>
-            </div>
-            <div class="flex items-center justify-center gap-2 mt-5">
-              <a href="">
-                <iconify-icon icon="ic:round-whatsapp" class="text-[#585858] hover:text-green-600"
-                  height="23"></iconify-icon>
-              </a>
-              <a href="">
-                <iconify-icon icon="mdi:github" class="text-[#585858] hover:text-white"
-                  height="23"></iconify-icon>
-              </a>
-              <a href="">
-                <iconify-icon icon="mdi:linkedin" class="text-[#585858] hover:text-blue-400"
-                  height="23"></iconify-icon>
-              </a>
-            </div>
-          </div>
-
-          <div class="mx-2 rounded-xl bg-[#0F0F0F] p-5">
-            <div class="w-64 h-64 mx-auto overflow-hidden">
-              <img src="{{ asset('assets/images/team/fakhri.png') }}" alt="Deo Farady Santoso"
-                class="object-cover w-full h-full">
-            </div>
-            <div class="mt-5 text-center text-white">
-              <h2 class="text-lg font-semibold">Fakhri Alauddin</h2>
-              <p class="font-light text-md">Front-end Developer</p>
-            </div>
-            <div class="flex items-center justify-center gap-2 mt-5">
-              <a href="">
-                <iconify-icon icon="ic:round-whatsapp" class="text-[#585858] hover:text-green-600"
-                  height="23"></iconify-icon>
-              </a>
-              <a href="">
-                <iconify-icon icon="mdi:github" class="text-[#585858] hover:text-white"
-                  height="23"></iconify-icon>
-              </a>
-              <a href="">
-                <iconify-icon icon="mdi:linkedin" class="text-[#585858] hover:text-blue-400"
-                  height="23"></iconify-icon>
-              </a>
-            </div>
-          </div>
-
-          <div class="mx-2 rounded-xl bg-[#0F0F0F] p-5">
-            <div class="w-64 h-64 mx-auto overflow-hidden">
-              <img src="{{ asset('assets/images/team/rama.png') }}" alt="Deo Farady Santoso"
-                class="object-cover w-full h-full">
-            </div>
-            <div class="mt-5 text-center text-white">
-              <h2 class="text-lg font-semibold">Moch. Rama Maulana</h2>
-              <p class="font-light text-md">Front-end Developer</p>
-            </div>
-            <div class="flex items-center justify-center gap-2 mt-5">
-              <a href="">
-                <iconify-icon icon="ic:round-whatsapp" class="text-[#585858] hover:text-green-600"
-                  height="23"></iconify-icon>
-              </a>
-              <a href="">
-                <iconify-icon icon="mdi:github" class="text-[#585858] hover:text-white"
-                  height="23"></iconify-icon>
-              </a>
-              <a href="">
-                <iconify-icon icon="mdi:linkedin" class="text-[#585858] hover:text-blue-400"
-                  height="23"></iconify-icon>
-              </a>
-            </div>
-          </div>
-
-          <div class="mx-2 rounded-xl bg-[#0F0F0F] p-5">
-            <div class="w-64 h-64 mx-auto overflow-hidden">
-              <img src="{{ asset('assets/images/team/bintang.png') }}" alt="Deo Farady Santoso"
-                class="object-cover w-full h-full">
-            </div>
-            <div class="mt-5 text-center text-white">
-              <h2 class="text-lg font-semibold">Ananda Bintang</h2>
-              <p class="font-light text-md">Back-end Developer</p>
-            </div>
-            <div class="flex items-center justify-center gap-2 mt-5">
-              <a href="">
-                <iconify-icon icon="ic:round-whatsapp" class="text-[#585858] hover:text-green-600"
-                  height="23"></iconify-icon>
-              </a>
-              <a href="">
-                <iconify-icon icon="mdi:github" class="text-[#585858] hover:text-white"
-                  height="23"></iconify-icon>
-              </a>
-              <a href="">
-                <iconify-icon icon="mdi:linkedin" class="text-[#585858] hover:text-blue-400"
-                  height="23"></iconify-icon>
-              </a>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   </section>
   {{-- Developer Team End --}}
-
-
-
-  {{-- Gallery Section Start --}}
-  {{-- <section>
-    <div class="container">
-      <div class="w-10/12 mx-auto">
-        <header class="flex items-center justify-center mb-10 text-center md:mb-20">
-          <div class="border border-gray-700 w-36"></div>
-          <h2 class="mx-5 text-3xl font-bold text-white md:text-5xl">Galeri</h2>
-          <div class="border border-gray-700 w-36"></div>
-        </header>
-
-        <div class="w-full gallery-slider">
-          <div class="mx-2 overflow-hidden rounded-xl h-72">
-            <img src="assets/images/img-2.png" alt="Image 1" class="object-cover w-full h-full">
-          </div>
-          <div class="mx-2 overflow-hidden h-72 rounded-xl">
-            <img src="assets/images/img-1.png" alt="Image 1" class="object-cover w-full h-full">
-          </div>
-          <div class="mx-2 overflow-hidden rounded-xl h-72">
-            <img src="assets/images/img-3.png" alt="Image 1" class="object-cover w-full h-full">
-          </div>
-          <div class="mx-2 overflow-hidden rounded-xl h-72">
-            <img src="assets/images/img-2.png" alt="Image 1" class="object-cover w-full h-full">
-          </div>
-          <div class="mx-2 overflow-hidden h-72 rounded-xl">
-            <img src="assets/images/img-1.png" alt="Image 1" class="object-cover w-full h-full">
-          </div>
-          <div class="mx-2 overflow-hidden rounded-xl h-72">
-            <img src="assets/images/img-3.png" alt="Image 1" class="object-cover w-full h-full">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> --}}
-  {{-- Gallery Section End --}}
 
 
   {{-- Article Section Start --}}
@@ -422,40 +173,11 @@
   </section>
   {{-- Article Section End --}}
 
-
 </div>
 
 @push('js-custom')
   <script>
     $(document).ready(function() {
-      // $('.gallery-slider').slick({
-      //   centerMode: true,
-      //   centerPadding: '300px',
-      //   slidesToShow: 1,
-      //   slidesToScroll: 1,
-      //   autoplay: true,
-      //   infinite: true,
-      //   autoplaySpeed: 2000,
-      //   responsive: [{
-      //       breakpoint: 600,
-      //       settings: {
-      //         centerMode: true,
-      //         centerPadding: '200px',
-      //         slidesToShow: 1,
-      //         slidesToScroll: 1,
-      //       }
-      //     },
-      //     {
-      //       breakpoint: 480,
-      //       settings: {
-      //         centerMode: true,
-      //         centerPadding: '200px',
-      //         slidesToShow: 1,
-      //         slidesToScroll: 1,
-      //       }
-      //     }
-      //   ]
-      // });
       $('.developer-slider').slick({
         slidesToShow: 4,
         slidesToScroll: 1,
