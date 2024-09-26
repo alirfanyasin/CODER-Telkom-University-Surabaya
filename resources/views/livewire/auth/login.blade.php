@@ -27,6 +27,7 @@
           <span>&#9135;</span><span>&#9135;</span><span>&#9135;</span><span>&#9135;</span><span>&#9135;</span><span>&#9135;</span><span>&#9135;</span><span>&#9135;</span><span>&#9135;</span><span>&#9135;</span>
         </p>
         <form wire:submit='login'>
+          @csrf
           <div class="block text-left">
             <div class="mb-4">
               <label for="email" class="text-xs font-normal text-white">Alamat Email</label>
