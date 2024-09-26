@@ -6,7 +6,9 @@ use Illuminate\Support\Facades\Auth;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
-use Livewire\Attributes\Validate;
+use DanHarrin\LivewireRateLimiting\WithRateLimiting;
+use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
+use Illuminate\Validation\ValidationException;
 use Livewire\Component;
 
 #[Title('Login')]
@@ -14,41 +16,61 @@ use Livewire\Component;
 
 class Login extends Component
 {
-    use LivewireAlert;
+    use LivewireAlert, WithRateLimiting;
 
-    #[Validate('required', message: 'Email wajib di isi', translate: true)]
     public $email;
-
-    #[Validate('required', message: 'Password wajib di isi', translate: true)]
-    #[Validate('min:6', message: 'Password minimal 6 karakter', translate: true)]
     public $password;
+
+    protected $rules = [
+        'email' => 'required|email',
+        'password' => 'required|min:6',
+    ];
+
+    public function messages()
+    {
+        return [
+            'email.required' => 'Email wajib diisi',
+            'email.email' => 'Format email tidak valid',
+            'password.required' => 'Password wajib diisi',
+            'password.min' => 'Password minimal 6 karakter',
+        ];
+    }
 
     public function login()
     {
         // $this->validate();
-        $credentials = $this->validate();
 
-        if (Auth::attempt($credentials)) {
-            session()->regenerate();
-            if (Auth::user()->hasRole('super-admin')) {
-                return redirect()->intended('app/');
+        try {
+            $this->rateLimit(3);
+
+            $credentials = $this->validate();
+
+            if (Auth::attempt($credentials)) {
+                session()->regenerate();
+                if (Auth::user()->hasRole('super-admin')) {
+                    return redirect()->intended('app/');
+                }
+                if (Auth::user()->hasRole('admin')) {
+                    return redirect()->intended('app/');
+                }
+                if (Auth::user()->hasRole('user')) {
+                    return redirect()->intended('app/');
+                }
+                if (Auth::user()->hasRole('guest')) {
+                    return redirect()->intended('app/');
+                }
+            } else {
+                $this->reset('password');
+                $this->alert('error', 'Email atau Password Salah!', [
+                    'position' => 'top-end',
+                    'timer' => 3000,
+                    'toast' => true,
+                    'timerProgressBar' => true,
+                ]);
             }
-            if (Auth::user()->hasRole('admin')) {
-                return redirect()->intended('app/');
-            }
-            if (Auth::user()->hasRole('user')) {
-                return redirect()->intended('app/');
-            }
-            if (Auth::user()->hasRole('guest')) {
-                return redirect()->intended('app/');
-            }
-        } else {
-            $this->reset('password');
-            $this->alert('error', 'Email atau Password Salah!', [
-                'position' => 'top-end',
-                'timer' => 3000,
-                'toast' => true,
-                'timerProgressBar' => true,
+        } catch (TooManyRequestsException $exception) {
+            throw ValidationException::withMessages([
+                'email' => "Silahkan tunggu {$exception->secondsUntilAvailable} detik lagi untuk login kembali",
             ]);
         }
     }
