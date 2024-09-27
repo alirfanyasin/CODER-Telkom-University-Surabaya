@@ -54,7 +54,7 @@ class PresenceDetail extends Component
                 'text' => '',
                 'timerProgressBar' => true,
             ]);
-            return Excel::download(new PresenceResultExport, 'Presence - ' . $this->form->presence->division_id . ' - ' . Str::random(5) . '.xlsx',  \Maatwebsite\Excel\Excel::XLSX);
+            return Excel::download(new PresenceResultExport($this->form->presence->id), 'Presence - ' . $this->form->presence->id . ' - ' . Str::random(5) . '.xlsx',  \Maatwebsite\Excel\Excel::XLSX);
         }
         $this->alert('error', 'Tidak Ada presence', [
             'position' => 'top-end',
