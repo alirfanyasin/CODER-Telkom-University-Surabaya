@@ -5,7 +5,7 @@
         <div class="flex justify-center mb-4">
           <img src="{{ asset('assets/images/logo/logo.png') }}" width="100" alt="">
         </div>
-        <a href="#"
+        <a href="{{ route('auth.google') }}"
           class="inline-flex items-center justify-center w-full px-4 py-3 mb-2 text-sm bg-white border border-transparent rounded-lg gap-x-2 bg-opacity-30 disabled:opacity-50 disabled:pointer-events-none">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48">
             <path fill="#ffc107"

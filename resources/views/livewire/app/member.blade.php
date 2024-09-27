@@ -45,9 +45,16 @@
           <div
             class="relative px-5 pt-5 pb-16 text-center text-white rounded-lg bg-neutral-900 group hover:border hover:border-gray-500">
             <div class="w-20 h-20 mx-auto overflow-hidden rounded-full">
-              <img
+              @if (str_starts_with($data->avatar, 'https://lh3.googleusercontent.com/'))
+                <img src="{{ $data->avatar }}" alt="Avatar" class="object-cover w-full h-full rounded-full">
+              @else
+                <img
+                  src="{{ $data->avatar === null ? asset('assets/images/avatar.png') : asset('storage/avatar/' . $data->avatar) }}"
+                  alt="Avatar" class="object-cover w-full h-full rounded-full">
+              @endif
+              {{-- <img
                 src="{{ $data->avatar === null ? asset('assets/images/avatar.png') : asset('storage/avatar/' . $data->avatar) }}"
-                alt="Avatar" class="object-cover w-full h-full">
+                alt="Avatar" class="object-cover w-full h-full"> --}}
             </div>
             <h4 class="mt-4 font-semibold break-words text-md">{{ $data->name }}</h4>
             <div class="my-1 text-center">

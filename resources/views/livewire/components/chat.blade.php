@@ -21,9 +21,13 @@
             <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm focus:outline-none text-neutral-400 hover:bg-neutral-700 hover:text-neutral-300 focus:bg-neutral-700"
               href="#" wire:click='getUser({{ $data->id }})'>
               <div class="w-8 h-8 overflow-hidden">
-                <img
-                  src="{{ $data->avatar === null ? asset('assets/images/avatar.png') : asset('storage/avatar/' . $data->avatar) }}"
-                  alt="Avatar" class="object-cover w-full h-full rounded-full">
+                @if (str_starts_with($data->avatar, 'https://lh3.googleusercontent.com/'))
+                  <img src="{{ $data->avatar }}" alt="Avatar" class="object-cover w-full h-full rounded-full">
+                @else
+                  <img
+                    src="{{ $data->avatar === null ? asset('assets/images/avatar.png') : asset('storage/avatar/' . $data->avatar) }}"
+                    alt="Avatar" class="object-cover w-full h-full rounded-full">
+                @endif
               </div>
               <div class="">
                 <p class="text-white">{{ Str::limit($data->name, 17, '...') }}</p>
@@ -47,9 +51,17 @@
                   @if ($selectedUser)
                     <div class="flex items-center gap-2 mb-3">
                       <div class="w-8 h-8 overflow-hidden">
-                        <img
+                        @if (str_starts_with($selectedUser->avatar, 'https://lh3.googleusercontent.com/'))
+                          <img src="{{ $selectedUser->avatar }}" alt="Avatar"
+                            class="object-cover w-full h-full rounded-full">
+                        @else
+                          <img
+                            src="{{ $selectedUser->avatar === null ? asset('assets/images/avatar.png') : asset('storage/avatar/' . $selectedUser->avatar) }}"
+                            alt="Avatar" class="object-cover w-full h-full rounded-full">
+                        @endif
+                        {{-- <img
                           src="{{ $selectedUser->avatar === null ? asset('assets/images/avatar.png') : asset('storage/avatar/' . $selectedUser->avatar) }}"
-                          alt="Avatar" class="object-cover w-full h-full rounded-full">
+                          alt="Avatar" class="object-cover w-full h-full rounded-full"> --}}
                       </div>
                       <div>
                         <p class="text-sm text-white">{{ $selectedUser->name }}</p>
