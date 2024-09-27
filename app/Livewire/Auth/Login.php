@@ -41,7 +41,7 @@ class Login extends Component
         // $this->validate();
 
         try {
-            $this->rateLimit(3);
+            $this->rateLimit(3, 60, $this->email);
 
             $credentials = $this->validate();
 
