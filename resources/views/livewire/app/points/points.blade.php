@@ -86,7 +86,7 @@
 
 
       <div class="relative p-6 text-center lg:col-span-3 md:col-span-2 bg-glass rounded-xl">
-        <h1 class="mb-3 font-bold text-white text-8xl">130</h1>
+        <h1 class="mb-3 font-bold text-white text-8xl">106</h1>
         <p class="text-white text-md">Poin Sempurna</p>
       </div>
     </div>
