@@ -27,9 +27,14 @@
             </span>
           @endif
           <div class="w-20 h-20 mx-auto overflow-hidden rounded-full">
-            <img
-              src="{{ $data->avatar === null ? asset('assets/images/avatar.png') : asset('storage/avatar/' . $data->avatar) }}"
-              alt="Avatar" class="object-cover w-full h-full">
+            @if (str_starts_with($data->avatar, 'https://lh3.googleusercontent.com/'))
+              <img src="{{ $data->avatar }}" alt="Avatar" class="object-cover w-full h-full rounded-full">
+            @else
+              <img
+                src="{{ $data->avatar === null ? asset('assets/images/avatar.png') : asset('storage/avatar/' . $data->avatar) }}"
+                alt="Avatar" class="object-cover w-full h-full rounded-full">
+            @endif
+
           </div>
           <h4 class="mt-4 font-semibold text-md">{{ $data['name'] }}</h4>
           <p class="text-xs font-light text-gray-400">{{ $data['email'] }}</p>

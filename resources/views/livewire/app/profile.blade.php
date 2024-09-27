@@ -47,9 +47,13 @@
   <section class="flex flex-col gap-4 mb-6 md:flex-row">
     <div class="p-6 text-center rounded-lg md:w-4/12 bg-glass h-fit">
       <div class="w-40 h-40 mx-auto mb-3 overflow-hidden rounded-full">
-        <img
-          src="{{ Auth::user()->avatar === null ? asset('assets/images/avatar.png') : asset('storage/avatar/' . Auth::user()->avatar) }}"
-          alt="Avatar" class="object-cover w-full h-full">
+        @if (Auth::check() && str_starts_with(Auth::user()->avatar, 'https://lh3.googleusercontent.com/'))
+          <img src="{{ Auth::user()->avatar }}" alt="Avatar" class="object-cover w-full h-full rounded-full">
+        @else
+          <img
+            src="{{ Auth::user()->avatar === null ? asset('assets/images/avatar.png') : asset('storage/avatar/' . Auth::user()->avatar) }}"
+            alt="Avatar" class="object-cover w-full h-full rounded-full">
+        @endif
       </div>
       <h2 class="mb-3 text-xl font-semibold text-white break-words">{{ Auth::user()->name }}</h2>
       <p class="mb-3 text-xs font-light text-white">-

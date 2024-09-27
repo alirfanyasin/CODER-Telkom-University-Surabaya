@@ -12,9 +12,13 @@
       <div class="flex flex-col gap-6 md:w-5/12">
         <div class="w-full p-6 text-center rounded-lg bg-glass h-fit">
           <div class="w-40 h-40 mx-auto mb-6 overflow-hidden rounded-full">
-            <img
-              src="{{ Auth::user()->avatar === null ? asset('assets/images/avatar.png') : asset('storage/avatar/' . Auth::user()->avatar) }}"
-              alt="Avatar" class="object-cover w-full h-full">
+            @if (Auth::check() && str_starts_with(Auth::user()->avatar, 'https://lh3.googleusercontent.com/'))
+              <img src="{{ Auth::user()->avatar }}" alt="Avatar" class="object-cover w-full h-full rounded-full">
+            @else
+              <img
+                src="{{ Auth::user()->avatar === null ? asset('assets/images/avatar.png') : asset('storage/avatar/' . Auth::user()->avatar) }}"
+                alt="Avatar" class="object-cover w-full h-full rounded-full">
+            @endif
           </div>
           <div class="w-full">
             <input type="file" id="file-input" class="hidden" wire:model='avatar'>
