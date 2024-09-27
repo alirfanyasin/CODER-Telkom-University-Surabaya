@@ -5,7 +5,8 @@
         <div class="flex justify-center mb-4">
           <img src="{{ asset('assets/images/logo/logo.png') }}" width="100" alt="">
         </div>
-        <form wire:submit='forgotPassword'>
+        <form wire:submit.prevent='forgotPassword'>
+          @csrf
           <div class="block text-left">
             <div class="mb-4">
               <label for="email" class="text-xs font-normal text-white">Alamat Email</label>
@@ -35,6 +36,4 @@
       <p class="mt-8 text-sm text-center text-gray-700">&copy; CODER Version 2.0</p>
     </div>
   </div>
-
-
 </div>
