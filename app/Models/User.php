@@ -99,4 +99,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserPoints::class, 'user_id');
     }
+
+    public function submissions(): HasMany
+    {
+        return $this->hasMany(Submission::class);
+    }
 }
