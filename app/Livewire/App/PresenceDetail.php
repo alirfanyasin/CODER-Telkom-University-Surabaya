@@ -2,10 +2,14 @@
 
 namespace App\Livewire\App;
 
+use App\Exports\PresenceResultExport;
 use App\Livewire\Forms\FormPresenceUpdate;
 use App\Models\Points;
 use App\Models\Presence;
 use App\Models\UserPoints;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -16,6 +20,7 @@ use Livewire\Component;
 
 class PresenceDetail extends Component
 {
+    use LivewireAlert;
     public FormPresenceUpdate $form;
     public $user_presence;
     public function mount($id)
@@ -40,6 +45,24 @@ class PresenceDetail extends Component
         }
     }
 
+    public function exportPresenceResult(){
+        if ($this->form->presence) {
+            $this->alert('success', 'Berhasil Export Data', [
+                'position' => 'top-end',
+                'timer' => 3000,
+                'toast' => true,
+                'text' => '',
+                'timerProgressBar' => true,
+            ]);
+            return Excel::download(new PresenceResultExport($this->form->presence->id), 'Presence - ' . $this->form->presence->id . ' - ' . Str::random(5) . '.xlsx',  \Maatwebsite\Excel\Excel::XLSX);
+        }
+        $this->alert('error', 'Tidak Ada presence', [
+            'position' => 'top-end',
+            'timer' => 3000,
+            'toast' => true,
+            'timerProgressBar' => true,
+        ]);
+    }
     public function save()
     {
         $this->form->user_presence = $this->user_presence;
