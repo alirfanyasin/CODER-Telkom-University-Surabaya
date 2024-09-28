@@ -6,6 +6,7 @@
   {{-- Header End --}}
 
   <form wire:submit='store' enctype="multipart/form-data">
+    @csrf
     {{-- Informasi Modul Start --}}
     <div class="w-full p-6 mb-6 bg-glass rounded-xl">
       <header class="flex items-center justify-between mb-8 text-white">
@@ -55,7 +56,6 @@
             Pendukung</label>
           <select class="block w-full p-3 text-white border-gray-200 rounded-lg pe-9 bg-lightGray"
             wire:model.live='type'>
-            <option selected="" disabled>Jenis File</option>
             <option value="vscode-icons:file-type-powerpoint">Power Point</option>
             <option value="bi:github">Github</option>
             <option value="vscode-icons:file-type-pdf2">PDF</option>
@@ -77,7 +77,7 @@
           <div class="w-full">
             <label for="input-label" class="block mb-2 font-light dark:text-white">Upload File <span
                 class="text-[#9E9E9E] text-xs">(Maksimal 5 Mb)</span></label>
-            <input type="file" id="file-input" class="hidden" wire:model='file'>
+            <input type="file" id="file-input" class="hidden" wire:model.live='file'>
             <label for="file-input"
               class="flex items-center gap-2 p-3 text-white rounded-md cursor-pointer bg-lightGray">
               <span class="text-xs bg-[#43474C] py-1 px-1.5">Pilih File</span>
@@ -111,9 +111,6 @@
         Modul
         <iconify-icon icon="material-symbols:save-outline" class="text-2xl ms-2"></iconify-icon>
       </button>
-      {{-- <span class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md ms-3"
-        wire:loading>Loading...
-      </span> --}}
     </div>
   </form>
 </div>

@@ -6,7 +6,7 @@
   </header>
   {{-- Header End --}}
 
-  <form wire:submit='updateProfile' enctype="multipart/form-data" method="POST">
+  <form wire:submit.prevent='updateProfile' enctype="multipart/form-data" method="POST">
     @csrf
     <section class="flex flex-col gap-6 mb-6 md:flex-row">
       <div class="flex flex-col gap-6 md:w-5/12">
@@ -21,7 +21,7 @@
             @endif
           </div>
           <div class="w-full">
-            <input type="file" id="file-input" class="hidden" wire:model='avatar'>
+            <input type="file" id="file-input" class="hidden" wire:model.live='avatar'>
             <label for="file-input"
               class="flex items-center gap-2 p-3 text-white rounded-md cursor-pointer bg-lightGray">
               <span class="text-xs bg-[#43474C] py-1 px-1.5">Pilih File</span>
@@ -182,11 +182,15 @@
       <a href="{{ route('app.change-password') }}" wire:navigate
         class="inline-block px-5 py-3 mx-3 text-sm font-semibold text-gray-400 border border-gray-400 rounded-md hover:text-black hover:bg-white">Ubah
         Password</a>
-      <button type="submit"
+      <button type="submit" wire:loading.remove
         class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md">Simpan
         Profil
         <iconify-icon icon="material-symbols:save-outline" class="text-2xl ms-2"></iconify-icon>
       </button>
+      <span wire:loading='updateProfile'
+        class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md">Loading...
+        <iconify-icon icon="material-symbols:save-outline" class="text-2xl ms-2"></iconify-icon>
+      </span>
     </div>
   </form>
 </div>

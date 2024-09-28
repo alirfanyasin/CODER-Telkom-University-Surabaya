@@ -38,6 +38,7 @@ class ProfileEdit extends Component
     #[Validate('nullable')]
     #[Validate('digits:12', message: "Masukkan 12 digit angka", translate: true)]
     public $phone_number;
+    #[Validate('mimes:png,jpg,jpeg', message: "File tidak didukung", translate: true)]
     public $avatar;
     public $github;
     public $identity_code;

@@ -1,5 +1,5 @@
 <header
-  class="fixed top-0 z-30 flex flex-wrap w-full py-4 text-sm bg-transparent sm:justify-start sm:flex-nowrap navbar-fixed">
+  class="fixed top-0 z-30 flex flex-wrap w-full py-4 text-sm bg-transparent sm:justify-start sm:flex-nowrap navbar-fixed md:navbar-solid">
   <nav class="max-w-[85rem] w-full mx-auto px-4 flex flex-wrap basis-full items-center justify-between"
     aria-label="Global">
     <a class="flex-none text-xl font-semibold sm:order-1" href="{{ route('home') }}">
@@ -50,8 +50,11 @@
       class="hidden overflow-hidden transition-all duration-300 hs-collapse basis-full grow sm:grow-0 sm:basis-auto sm:block sm:order-2">
       <div class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:mt-0 sm:ps-5">
         <a class="font-normal text-white" href="{{ route('home') }}" wire:navigate aria-current="page">Beranda</a>
-        <a class="font-normal text-white hover:text-gray-400" href="{{ Request::is('gallery') || Request::is('article') ? route('home') . '/#about-us' : '#about-us' }}">Tentang Kami</a>
-        <a class="font-normal text-white hover:text-gray-400" href="{{ Request::is('gallery') || Request::is('article') ? route('home') .'/#division' : '#division' }}">Divisi</a>
+        <a class="font-normal text-white hover:text-gray-400"
+          href="{{ Request::is('gallery') || Request::is('article') ? route('home') . '/#about-us' : '#about-us' }}">Tentang
+          Kami</a>
+        <a class="font-normal text-white hover:text-gray-400"
+          href="{{ Request::is('gallery') || Request::is('article') ? route('home') . '/#division' : '#division' }}">Divisi</a>
         <a class="font-normal text-white hover:text-gray-400" href="{{ route('gallery') }}" wire:navigate>Galeri</a>
         <a class="font-normal text-white hover:text-gray-400" href="{{ route('article') }}" wire:navigate>Artikel</a>
         @guest
