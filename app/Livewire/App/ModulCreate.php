@@ -4,6 +4,7 @@ namespace App\Livewire\App;
 
 use App\Models\ELeaning\Modul;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
@@ -27,35 +28,59 @@ class ModulCreate extends Component
     #[Validate('required', message: "Deskripsi wajib di isi", translate: true)]
     public $description;
     #[Validate('required', message: "Jenis File wajib di isi", translate: true)]
-    public $type = "vscode-icons:file-type-powerpoint";
+    public $type;
     #[Validate('nullable', message: "Link tidak wajib di isi", translate: true)]
     public $link;
     #[Validate('nullable', message: "Jenis File tidak wajib di isi", translate: true)]
     #[Validate('file', message: "Wajib file yang di upload", translate: true)]
-    #[Validate('mimes:pdf,pptx,ppt,xlsx,docx,doc,txt', message: "File yang di upload salah", translate: true)]
+    #[Validate('mimes:pptx,pdf,ppt,xlsx,docx,doc,txt', message: "File yang di upload salah", translate: true)]
     #[Validate('max:5120', message: "Maksimum 5 MB", translate: true)]
     public $file;
+
+    public function mount()
+    {
+        $this->type = 'vscode-icons:file-type-powerpoint';
+    }
 
     public function store()
     {
         $this->validate();
+
+        $fileName = null;
+
         if ($this->file) {
-            $fileName = 'modul_' . Str::random(5) . '.' . $this->file->getClientOriginalExtension();
-            $this->file->storeAs('file/modul', $fileName, 'public');
+            $extension = $this->file->getClientOriginalExtension();
+            $fileName = 'modul_' . Str::random(5) . '.' . $extension;
+
+            $path = $this->file->storeAs('file/modul', $fileName, 'public');
+
+            if (!Storage::disk('public')->exists('file/modul/' . $fileName)) {
+                $this->alert('error', 'Gagal upload file', [
+                    'position' => 'top-end',
+                    'timer' => 3000,
+                    'toast' => true,
+                    'text' => '',
+                    'timerProgressBar' => true,
+                ]);
+
+                return;
+            }
         }
+
 
         $data = [
             'name' => $this->name,
-            'slug' => Str::of($this->name)->slug('-'),
+            'slug' => Str::slug($this->name),
             'description' => $this->description,
             'section' => $this->section,
             'type' => $this->type,
-            'file' => ($this->file ? $fileName : null),
+            'file' => $fileName,
             'link' => $this->link,
             'division_id' => Auth::user()->division_id,
         ];
 
         Modul::create($data);
+
         $this->alert('success', 'Berhasil Tambah Data', [
             'position' => 'top-end',
             'timer' => 3000,
@@ -63,7 +88,8 @@ class ModulCreate extends Component
             'text' => '',
             'timerProgressBar' => true,
         ]);
-        $this->redirect('/app/e-learning/modul');
+
+        return redirect()->route('app.e-learning.modul');
     }
 
     public function render()

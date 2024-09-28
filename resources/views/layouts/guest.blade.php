@@ -20,7 +20,7 @@
 
 <body class="overflow-x-hidden bg-black">
   @livewire('components.navbar')
-  <main>
+  <main class="overflow-x-hidden">
     {{ $slot }}
   </main>
   @livewire('components.footer')

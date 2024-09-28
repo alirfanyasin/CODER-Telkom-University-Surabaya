@@ -70,7 +70,10 @@ class ModulEdit extends Component
             'section' => $this->section,
             'type' => $this->type,
             'link' => $this->type == 'bi:github' || $this->type == 'logos:blogger' ? $this->link : null,
-            'file' => $this->type != 'bi:github' && $this->type != 'logos:blogger' ? $modul->file : null,
+            // 'file' => $this->type != 'bi:github' && $this->type != 'logos:blogger' ? $modul->file : null,
+            'file' => ($this->type != 'bi:github' && $this->type != 'logos:blogger' && $this->file)
+                ? $modul->file
+                : null,
         ]);
 
         $this->alert('success', 'Data berhasil diperbarui', [
@@ -86,11 +89,10 @@ class ModulEdit extends Component
 
     private function handleFileUpload($modul)
     {
-        if ($this->file) {
+        if ($this->file instanceof \Illuminate\Http\UploadedFile) {
             if ($modul->file) {
                 Storage::disk('public')->delete('file/modul/' . $modul->file);
             }
-
             $fileName = 'modul_' . Str::random(5) . '.' . $this->file->getClientOriginalExtension();
             $this->file->storeAs('file/modul', $fileName, 'public');
             $modul->file = $fileName;
