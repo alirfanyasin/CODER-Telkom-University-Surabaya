@@ -52,7 +52,7 @@
     @endrole
 
     @role(['user'])
-        @if ($submission)
+        @if ($data['submission'])
             <section class="p-5 mb-7 rounded-lg text-white bg-glass">
                 <h3 class="text-2xl font-semibold mb-4">Anda Sudah Mengumpulkan Tugas</h3>
             </section>
