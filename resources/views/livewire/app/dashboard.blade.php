@@ -28,7 +28,7 @@
       @endrole
       @role(['admin'])
         <div class="p-6 rounded-xl bg-glass">
-          <h3 class="font-semibold text-white text-8xl">10</h3>
+          <h3 class="font-semibold text-white text-8xl">{{ $totalMeeting }}</h3>
           <p class="text-gray-400">Total Pertemuan</p>
         </div>
         <div class="p-6 rounded-xl bg-glass">
@@ -36,8 +36,8 @@
           <p class="text-gray-400">Total Tugas</p>
         </div>
         <div class="p-6 rounded-xl bg-glass">
-          <h3 class="font-semibold text-white text-8xl">18</h3>
-          <p class="text-gray-400">Total Point</p>
+          <h3 class="font-semibold text-white text-8xl">{{ $totalQuiz }}</h3>
+          <p class="text-gray-400">Total Kuis</p>
         </div>
       @endrole
       @role(['user'])
@@ -116,64 +116,71 @@
           <header class="mb-4">
             <h4 class="text-xl font-semibold text-white">Jadwal Pertemuan</h4>
           </header>
-          <a href="" wire:navigate class="block" class="w-full bg-red-300">
-            <div class="w-full p-5 mb-4 rounded-lg bg-glass hover:border hover:border-gray-500">
-              <header class="flex items-center justify-between mb-3 text-white">
-                <div class="flex items-center">
-                  <iconify-icon icon="iconoir:calendar" class="text-2xl me-3"></iconify-icon>
-                  <span class="text-sm font-light">Sabtu, 14 September 2024</span>
-                  <span class="text-sm font-light ms-2"> - 08:30
-                    WIB</span>
-                </div>
-                {{-- @if ($meet->status == 'aktif') --}}
-                <div class="px-2 py-2 text-xs bg-blue-600 rounded-full"></div>
-                {{-- @elseif ($meet->status == 'selesai')
-                  <div class="px-2 py-2 text-xs bg-green-600 rounded-full"></div>
-                @else
-                  <div class="px-2 py-2 text-xs bg-yellow-600 rounded-full"></div>
-                @endif --}}
-              </header>
-              <div>
-                <div>
-                  <h3 class="text-lg font-semibold text-white">Pertemuan 1</h3>
-                  <p class="font-light text-gray-400">Pertemuan 1</p>
-                </div>
-
-                <div class="flex items-center justify-between w-full mt-4">
-                  {{-- Icon meeting type start --}}
-                  <div class="flex items-center w-full">
-                    <a href=""
-                      class="flex items-center justify-center w-10 h-10 border border-gray-500 rounded-lg group hover:bg-white">
-                      <iconify-icon icon="carbon:location"
-                        class="text-3xl text-white group-hover:text-black"></iconify-icon>
-                    </a>
-                    <p class="text-white ms-3">Lab. 1.30</p>
-                  </div>
-
-
-                  {{-- Icon meeting type end --}}
-
-                  @role(['admin'])
-                    {{-- Icon action start --}}
-                    <div class="inline md:flex md:justify-between">
-
-                      <div class="flex gap-2 text-gray-400 md:gap-4">
-                        <button type="button" wire:click=""
-                          class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-red-600 border-[#27272A] px-2 md:px-4 py-1">
-                          <iconify-icon icon="tabler:trash"></iconify-icon><span class="hidden md:block">Hapus</span>
-                        </button>
-                        <a href=""
-                          class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-yellow-600 border-[#27272A] px-2 md:px-4 py-1">
-                          <iconify-icon icon="lucide:edit"></iconify-icon><span class="hidden md:block">Edit</span>
-                        </a>
-                      </div>
+          @foreach ($meetingData as $meeting)
+            @if ($meeting->status == 'aktif')
+              <a href="" wire:navigate class="block" class="w-full bg-red-300">
+                <div class="w-full p-5 mb-4 rounded-lg bg-glass hover:border hover:border-gray-500">
+                  <header class="flex items-center justify-between mb-3 text-white">
+                    <div class="flex items-center">
+                      <iconify-icon icon="iconoir:calendar" class="text-2xl me-3"></iconify-icon>
+                      <span
+                        class="text-sm font-light">{{ \Carbon\Carbon::parse($meeting->date_time)->translatedFormat('l, d F Y') }}</span>
+                      <span class="text-sm font-light ms-2"> -
+                        {{ \Carbon\Carbon::parse($meeting->date_time)->format('H:i') }}
+                        WIB</span>
                     </div>
-                    {{-- Icon action end --}}
-                  @endrole
+                    <div class="px-2 py-2 text-xs bg-blue-600 rounded-full"></div>
+                  </header>
+                  <div>
+                    <div>
+                      <h3 class="text-2xl font-semibold text-white">{{ $meeting->name }}</h3>
+                      <p class="font-light text-gray-400">{{ $meeting->description }}</p>
+                    </div>
+
+                    <div class="flex items-center justify-between w-full mt-4">
+                      {{-- Icon meeting type start --}}
+                      @if ($meeting->type == 'offline')
+                        <div class="flex items-center w-full">
+                          <a href=""
+                            class="flex items-center justify-center w-10 h-10 border border-gray-500 rounded-lg group hover:bg-white">
+                            <iconify-icon icon="carbon:location"
+                              class="text-3xl text-white group-hover:text-black"></iconify-icon>
+                          </a>
+                          <p class="text-white ms-3">{{ $meeting->location }}</p>
+                        </div>
+                      @elseif($meeting->type == 'online')
+                        <div class="flex items-center w-full">
+                          <a target="_blank" href="{{ $meeting->link }}"
+                            class="flex items-center justify-center w-10 h-10 border border-gray-500 rounded-lg group hover:bg-white">
+                            <iconify-icon icon="fluent:video-24-regular"
+                              class="text-3xl text-white group-hover:text-black"></iconify-icon>
+                          </a>
+                          @php
+                            $host = '';
+                            $parsedUrl = parse_url($meeting->link);
+                            if ($parsedUrl && isset($parsedUrl['host'])) {
+                                $host = $parsedUrl['host'];
+                            }
+                          @endphp
+                          @if ($host == 'meet.google.com')
+                            <p class="text-white ms-3">google meet</p>
+                          @elseif($host == 'us05web.zoom.us')
+                            <p class="text-white ms-3">Zoom</p>
+                          @else
+                            <p class="text-white ms-3">Online</p>
+                          @endif
+
+                        </div>
+                      @endif
+
+                      {{-- Icon meeting type end --}}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </a>
+              </a>
+            @endif
+          @endforeach
+
         </div>
 
       </div>
