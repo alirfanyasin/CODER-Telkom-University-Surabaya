@@ -71,95 +71,12 @@
           {!! $activityCart->container() !!}
         </div>
       </div>
-      <div class="col-span-1 p-6 rounded-xl bg-glass lg:-me-0 -me-3">
-        <header class="mb-4">
-          <h4 class="text-xl font-semibold text-white">Poin Tertinggi Member</h4>
-        </header>
-        <div>
-          {!! $presenceChart->container() !!}
-        </div>
-      </div>
-    </div>
-  </section>
-  {{-- Statistic and Meeting Schedule Section End --}}
-
-
-  {{-- Meeting Schedule Start --}}
-  <section class="mb-10">
-    <div class="grid grid-cols-1 gap-3 lg:grid-cols-3">
-      <div class="col-span-2 p-6 rounded-xl bg-glass">
-        <div class="">
-          <header class="mb-4">
-            <h4 class="text-xl font-semibold text-white">Jadwal Pertemuan</h4>
-          </header>
-          <a href="" wire:navigate class="block" class="w-full bg-red-300">
-            <div class="w-full p-5 mb-4 rounded-lg bg-glass hover:border hover:border-gray-500">
-              <header class="flex items-center justify-between mb-3 text-white">
-                <div class="flex items-center">
-                  <iconify-icon icon="iconoir:calendar" class="text-2xl me-3"></iconify-icon>
-                  <span class="text-sm font-light">Sabtu, 14 September 2024</span>
-                  <span class="text-sm font-light ms-2"> - 08:30
-                    WIB</span>
-                </div>
-                {{-- @if ($meet->status == 'aktif') --}}
-                <div class="px-2 py-2 text-xs bg-blue-600 rounded-full"></div>
-                {{-- @elseif ($meet->status == 'selesai')
-                  <div class="px-2 py-2 text-xs bg-green-600 rounded-full"></div>
-                @else
-                  <div class="px-2 py-2 text-xs bg-yellow-600 rounded-full"></div>
-                @endif --}}
-              </header>
-              <div>
-                <div>
-                  <h3 class="text-lg font-semibold text-white">Pertemuan 1</h3>
-                  <p class="font-light text-gray-400">Pertemuan 1</p>
-                </div>
-
-                <div class="flex items-center justify-between w-full mt-4">
-                  {{-- Icon meeting type start --}}
-                  <div class="flex items-center w-full">
-                    <a href=""
-                      class="flex items-center justify-center w-10 h-10 border border-gray-500 rounded-lg group hover:bg-white">
-                      <iconify-icon icon="carbon:location"
-                        class="text-3xl text-white group-hover:text-black"></iconify-icon>
-                    </a>
-                    <p class="text-white ms-3">Lab. 1.30</p>
-                  </div>
-
-
-                  {{-- Icon meeting type end --}}
-
-                  @role(['admin'])
-                    {{-- Icon action start --}}
-                    <div class="inline md:flex md:justify-between">
-
-                      <div class="flex gap-2 text-gray-400 md:gap-4">
-                        <button type="button" wire:click=""
-                          class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-red-600 border-[#27272A] px-2 md:px-4 py-1">
-                          <iconify-icon icon="tabler:trash"></iconify-icon><span class="hidden md:block">Hapus</span>
-                        </button>
-                        <a href=""
-                          class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-yellow-600 border-[#27272A] px-2 md:px-4 py-1">
-                          <iconify-icon icon="lucide:edit"></iconify-icon><span class="hidden md:block">Edit</span>
-                        </a>
-                      </div>
-                    </div>
-                    {{-- Icon action end --}}
-                  @endrole
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-
-      </div>
-
-
+      {{-- Recent users start --}}
       <div class="col-span-1 p-6 rounded-xl bg-glass lg:-me-0 -me-3">
         <header class="mb-6">
           <h4 class="text-xl font-semibold text-white">Pengguna Terkini</h4>
         </header>
-        <div class="h-[250px] overflow-auto">
+        <div class="h-[300px] overflow-auto">
           <div class="flex items-center mb-3">
             <div class="w-10 h-10 overflow-hidden rounded-full">
               <img src="{{ asset('assets/images/avatar.png') }}" alt="" class="object-cover w-full">
@@ -245,6 +162,142 @@
 
       </div>
     </div>
+    {{-- Recent users end --}}
+  </section>
+  {{-- Statistic and Meeting Schedule Section End --}}
+
+
+  <section class="mb-10">
+    <div class="grid grid-cols-1 gap-3 lg:grid-cols-2">
+      {{-- Meeting Schedule Start --}}
+      <div class="p-6 rounded-xl bg-glass">
+        <div class="">
+          <header class="mb-4">
+            <h4 class="text-xl font-semibold text-white">Jadwal Pertemuan</h4>
+          </header>
+          <a href="" wire:navigate class="block" class="w-full bg-red-300">
+            <div class="w-full p-5 mb-4 rounded-lg bg-glass hover:border hover:border-gray-500">
+              <header class="flex items-center justify-between mb-3 text-white">
+                <div class="flex items-center">
+                  <iconify-icon icon="iconoir:calendar" class="text-2xl me-3"></iconify-icon>
+                  <span class="text-sm font-light">Sabtu, 14 September 2024</span>
+                  <span class="text-sm font-light ms-2"> - 08:30
+                    WIB</span>
+                </div>
+                {{-- @if ($meet->status == 'aktif') --}}
+                <div class="px-2 py-2 text-xs bg-blue-600 rounded-full"></div>
+                {{-- @elseif ($meet->status == 'selesai')
+                  <div class="px-2 py-2 text-xs bg-green-600 rounded-full"></div>
+                @else
+                  <div class="px-2 py-2 text-xs bg-yellow-600 rounded-full"></div>
+                @endif --}}
+              </header>
+              <div>
+                <div>
+                  <h3 class="text-lg font-semibold text-white">Pertemuan 1</h3>
+                  <p class="font-light text-gray-400">Pertemuan 1</p>
+                </div>
+
+                <div class="flex items-center justify-between w-full mt-4">
+                  {{-- Icon meeting type start --}}
+                  <div class="flex items-center w-full">
+                    <a href=""
+                      class="flex items-center justify-center w-10 h-10 border border-gray-500 rounded-lg group hover:bg-white">
+                      <iconify-icon icon="carbon:location"
+                        class="text-3xl text-white group-hover:text-black"></iconify-icon>
+                    </a>
+                    <p class="text-white ms-3">Lab. 1.30</p>
+                  </div>
+
+
+                  {{-- Icon meeting type end --}}
+
+                  @role(['admin'])
+                    {{-- Icon action start --}}
+                    <div class="inline md:flex md:justify-between">
+
+                      <div class="flex gap-2 text-gray-400 md:gap-4">
+                        <button type="button" wire:click=""
+                          class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-red-600 border-[#27272A] px-2 md:px-4 py-1">
+                          <iconify-icon icon="tabler:trash"></iconify-icon><span class="hidden md:block">Hapus</span>
+                        </button>
+                        <a href=""
+                          class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-yellow-600 border-[#27272A] px-2 md:px-4 py-1">
+                          <iconify-icon icon="lucide:edit"></iconify-icon><span class="hidden md:block">Edit</span>
+                        </a>
+                      </div>
+                    </div>
+                    {{-- Icon action end --}}
+                  @endrole
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+      {{-- Meeting Schedule End --}}
+
+      {{-- Task task start --}}
+      <div class="p-6 rounded-xl bg-glass">
+        <div class="">
+          <header class="mb-4">
+            <h4 class="text-xl font-semibold text-white">Tugas</h4>
+          </header>
+          <a href="" wire:navigate class="block" class="w-full bg-red-300">
+            <div class="w-full p-5 mb-4 rounded-lg bg-glass hover:border hover:border-gray-500">
+              <header class="flex items-center justify-between mb-3 text-white">
+                <div class="flex items-center">
+                  <iconify-icon icon="iconoir:calendar" class="text-2xl me-3"></iconify-icon>
+                  <span class="text-sm font-light">Sabtu, 14 September 2024</span>
+                  <span class="text-sm font-light ms-2"> - 08:30
+                    WIB</span>
+                </div>
+                {{-- @if ($meet->status == 'aktif') --}}
+                <div class="px-2 py-2 text-xs bg-blue-600 rounded-full"></div>
+                {{-- @elseif ($meet->status == 'selesai')
+                  <div class="px-2 py-2 text-xs bg-green-600 rounded-full"></div>
+                @else
+                  <div class="px-2 py-2 text-xs bg-yellow-600 rounded-full"></div>
+                @endif --}}
+              </header>
+              <div>
+                <div>
+                  <h3 class="text-lg font-semibold text-white">Tugas 1</h3>
+                  <p class="font-light text-gray-400">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Dignissimos, placeat dolore impedit eius ullam voluptates neque nostrum possimus veniam repudiandae.
+                  </p>
+                </div>
+
+                <div class="flex items-center justify-between w-full mt-4">
+                  @role(['admin'])
+                    {{-- Icon action start --}}
+                    <div class="inline md:flex md:justify-between">
+
+                      <div class="flex gap-2 text-gray-400 md:gap-4">
+                        <button type="button" wire:click=""
+                          class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-red-600 border-[#27272A] px-2 md:px-4 py-1">
+                          <iconify-icon icon="tabler:trash"></iconify-icon><span class="hidden md:block">Hapus</span>
+                        </button>
+                        <a href=""
+                          class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-yellow-600 border-[#27272A] px-2 md:px-4 py-1">
+                          <iconify-icon icon="lucide:edit"></iconify-icon><span class="hidden md:block">Edit</span>
+                        </a>
+                      </div>
+                    </div>
+                    {{-- Icon action end --}}
+                  @endrole
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+      {{-- Task task end --}}
+
+
+
 
   </section>
   {{-- Meeting Schedule End --}}

@@ -121,7 +121,7 @@ class Profile extends Component
 
 
         // Download sertificate
-        $pdf = Pdf::loadView('pdf.activityLetter', $data);
+        $pdf = Pdf::loadView(public_path('pdf.activityLetter'), $data);
         return response()->streamDownload(function () use ($pdf) {
             echo $pdf->stream();
         }, Auth::user()->name . ' - ' . 'Surat Keaktifan CODER.pdf');

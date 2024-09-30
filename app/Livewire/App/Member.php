@@ -25,6 +25,7 @@ class Member extends Component
     public function makeALeader($id, $divisionId = NULL)
     {
         $user = User::findOrFail($id);
+        $user->removeRole('guest');
         $user->removeRole('user');
         $user->assignRole('admin');
         if (Auth::user()->label !== 'Super Admin') {
@@ -42,6 +43,7 @@ class Member extends Component
     public function makeAlumni($id)
     {
         $user = User::findOrFail($id);
+        $user->removeRole('guest');
         $user->removeRole('user');
         $user->removeRole('admin');
         $user->assignRole('alumni');
@@ -57,6 +59,7 @@ class Member extends Component
         $user = User::findOrFail($id);
         $user->removeRole('user');
         $user->removeRole('admin');
+        $user->removeRole('alumni');
         $user->assignRole('guest');
         $user->division_id = NULL;
         $user->identity_code =  NULL;

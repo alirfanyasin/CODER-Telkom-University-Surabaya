@@ -34,12 +34,12 @@
             </div>
             @if ($presence->status == 'active')
               <div
-                class="flex gap-1 rounded-md items-center text-base font-medium bg-[#3934c7] text-white px-2 md:px-4 py-1.5">
+                class="flex gap-1 rounded-md items-center font-medium bg-blue-600 text-white text-xs px-2 md:px-4 py-1.5">
                 <span>Aktif</span>
               </div>
             @else
               <div
-                class="flex gap-1 rounded-md items-center text-base font-medium bg-[#34C759] text-white px-2 md:px-4 py-1.5">
+                class="flex gap-1 rounded-md items-center text-xs font-medium bg-green-600 text-white px-2 md:px-4 py-1.5">
                 <span>Selesai</span>
               </div>
             @endif

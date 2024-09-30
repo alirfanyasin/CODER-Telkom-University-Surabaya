@@ -98,7 +98,7 @@
               height="30"></iconify-icon>
           </div>
           <h2 class="mb-6 text-xl font-semibold text-white">Project</h2>
-          <h1 class="text-3xl font-bold text-white">08</h1>
+          <h1 class="text-3xl font-bold text-white">0</h1>
         </div>
       </div>
       <div class="flex flex-col w-full p-6 bg-glass rounded-xl">

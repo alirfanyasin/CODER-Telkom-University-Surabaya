@@ -6,7 +6,7 @@
   </header>
   {{-- Header End --}}
 
-  <form wire:submit.prevent='updateProfile' enctype="multipart/form-data" method="POST">
+  <form wire:submit.prevent='updateProfile' enctype="multipart/form-data">
     @csrf
     <section class="flex flex-col gap-6 mb-6 md:flex-row">
       <div class="flex flex-col gap-6 md:w-5/12">
@@ -21,12 +21,14 @@
             @endif
           </div>
           <div class="w-full">
-            <input type="file" id="file-input" class="hidden" wire:model.live='avatar'>
-            <label for="file-input"
-              class="flex items-center gap-2 p-3 text-white rounded-md cursor-pointer bg-lightGray">
+            <input type="file" id="avatar" class="hidden" wire:model='avatar'>
+            <label for="avatar" class="flex items-center gap-2 p-3 text-white rounded-md cursor-pointer bg-lightGray">
               <span class="text-xs bg-[#43474C] py-1 px-1.5">Pilih File</span>
               <span class="text-xs" id="file-name">Belum ada file yang dipilih.</span>
             </label>
+            @error('avatar')
+              <small class="text-left text-red-600"> {{ $message }} </small>
+            @enderror
           </div>
         </div>
         <div class="w-full p-6 rounded-lg text-start bg-glass h-fit">
@@ -35,7 +37,7 @@
           <input type="url" id="github-input" class="block w-full p-3 text-white rounded-lg bg-lightGray"
             wire:model='github' value="{{ $this->github }}" placeholder="">
         </div>
-        @role('guest')
+        @role(['guest'])
           <div class="w-full p-6 rounded-lg text-start bg-glass h-fit">
             <label for="tag" class="block mb-2 font-medium text-white">Tag
               <span class="text-xs text-[#7a7a81]">(opsional)</span></label>
@@ -175,28 +177,31 @@
       </div>
 
     </section>
-
     <div class="flex justify-end mb-6">
-      <a href="{{ route('app.profile') }}" wire:navigate
-        class="inline-block px-5 py-3 text-sm font-semibold text-gray-400 border border-gray-400 rounded-md hover:bg-red-600 hover:border-red-600 hover:text-white">Batal</a>
       <a href="{{ route('app.change-password') }}" wire:navigate
         class="inline-block px-5 py-3 mx-3 text-sm font-semibold text-gray-400 border border-gray-400 rounded-md hover:text-black hover:bg-white">Ubah
         Password</a>
       <button type="submit" wire:loading.remove
         class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md">Simpan
         Profil
-        <iconify-icon icon="material-symbols:save-outline" class="text-2xl ms-2"></iconify-icon>
       </button>
-      <span wire:loading='updateProfile'
-        class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md">Loading...
-        <iconify-icon icon="material-symbols:save-outline" class="text-2xl ms-2"></iconify-icon>
-      </span>
+
+      {{-- Loaading event start --}}
+      <div wire:loading wire:target="updateProfile"
+        class="flex items-center py-3 text-sm font-semibold text-black bg-white rounded-md px-14">
+        <div
+          class="animate-spin inline-block size-4 border-[3px] border-current border-t-transparent text-black rounded-full"
+          role="status" aria-label="loading">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+      {{-- Loaading event end --}}
     </div>
   </form>
 </div>
 
 <script>
-  const fileInput = document.getElementById('file-input');
+  const fileInput = document.getElementById('avatar');
   const fileName = document.getElementById('file-name');
 
   fileInput.addEventListener('change', (event) => {

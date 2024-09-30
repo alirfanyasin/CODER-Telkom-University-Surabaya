@@ -118,9 +118,22 @@
       <div class="flex justify-end mb-6">
         <a href="{{ route('app.profile.edit') }}" wire:navigate
           class="inline-block px-5 py-3 text-sm font-semibold text-gray-400 border border-gray-400 rounded-md hover:border-red-700 hover:text-white hover:bg-red-700">Batal</a>
-        <button type="submit"
+        <button type="submit" wire:loading.remove
           class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md ms-3">Simpan Password
         </button>
+
+        {{-- Loaading event start --}}
+        <div wire:loading wire:target="savePassword"
+          class="flex items-center px-16 py-3 text-sm font-semibold text-black bg-white rounded-md ms-3">
+          <div
+            class="animate-spin inline-block size-4 border-[3px] border-current border-t-transparent text-black rounded-full"
+            role="status" aria-label="loading">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+        {{-- Loaading event end --}}
+
+
       </div>
     </form>
   </section>
