@@ -105,4 +105,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Submission::class);
     }
+
+    /**
+     * Get all of the userActive for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function userActive(): HasMany
+    {
+        return $this->hasMany(UserActive::class, 'user_id');
+    }
 }

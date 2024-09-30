@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Auth;
 
+use App\Models\UserActive;
 use Illuminate\Support\Facades\Auth;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
@@ -47,6 +48,19 @@ class Login extends Component
 
             if (Auth::attempt($credentials)) {
                 session()->regenerate();
+
+                $dataUser = UserActive::where('user_id', Auth::user()->id)->first();
+
+                if ($dataUser) {
+                    $dataUser->update(['status' => 'active']);
+                } else {
+                    UserActive::create([
+                        'user_id' => Auth::user()->id,
+                        'status' => 'active'
+                    ]);
+                }
+
+
                 if (Auth::user()->hasRole('super-admin')) {
                     return redirect()->intended('app/');
                 }

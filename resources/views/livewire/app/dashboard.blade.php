@@ -77,89 +77,30 @@
           <h4 class="text-xl font-semibold text-white">Pengguna Terkini</h4>
         </header>
         <div class="h-[300px] overflow-auto">
-          <div class="flex items-center mb-3">
-            <div class="w-10 h-10 overflow-hidden rounded-full">
-              <img src="{{ asset('assets/images/avatar.png') }}" alt="" class="object-cover w-full">
-            </div>
-            <div class="text-white ms-2">
-              <h3 class="text-sm break-words">Irfan Yasin</h3>
-              <p class="text-xs font-light text-gray-500">Web Development</p>
-            </div>
-          </div>
-          <div class="flex items-center mb-3">
-            <div class="w-10 h-10 overflow-hidden rounded-full">
-              <img src="{{ asset('assets/images/avatar.png') }}" alt="" class="object-cover w-full">
-            </div>
-            <div class="text-white ms-2">
-              <h3 class="text-sm">Dandy Maulana Ainul Yaqin</h3>
-              <p class="text-xs font-light text-gray-500">Web Development</p>
-            </div>
-          </div>
-          <div class="flex items-center mb-3">
-            <div class="w-10 h-10 overflow-hidden rounded-full">
-              <img src="{{ asset('assets/images/avatar.png') }}" alt="" class="object-cover w-full">
-            </div>
-            <div class="text-white ms-2">
-              <h3 class="text-sm">Fakhri Alauddin</h3>
-              <p class="text-xs font-light text-gray-500">Web Development</p>
-            </div>
-          </div>
-          <div class="flex items-center mb-3">
-            <div class="w-10 h-10 overflow-hidden rounded-full">
-              <img src="{{ asset('assets/images/avatar.png') }}" alt="" class="object-cover w-full">
-            </div>
-            <div class="text-white ms-2">
-              <h3 class="text-sm">Fakhri Alauddin</h3>
-              <p class="text-xs font-light text-gray-500">Web Development</p>
-            </div>
-          </div>
-          <div class="flex items-center mb-3">
-            <div class="w-10 h-10 overflow-hidden rounded-full">
-              <img src="{{ asset('assets/images/avatar.png') }}" alt="" class="object-cover w-full">
-            </div>
-            <div class="text-white ms-2">
-              <h3 class="text-sm">Fakhri Alauddin</h3>
-              <p class="text-xs font-light text-gray-500">Web Development</p>
-            </div>
-          </div>
-          <div class="flex items-center mb-3">
-            <div class="w-10 h-10 overflow-hidden rounded-full">
-              <img src="{{ asset('assets/images/avatar.png') }}" alt="" class="object-cover w-full">
-            </div>
-            <div class="text-white ms-2">
-              <h3 class="text-sm">Fakhri Alauddin</h3>
-              <p class="text-xs font-light text-gray-500">Web Development</p>
-            </div>
-          </div>
-          <div class="flex items-center mb-3">
-            <div class="w-10 h-10 overflow-hidden rounded-full">
-              <img src="{{ asset('assets/images/avatar.png') }}" alt="" class="object-cover w-full">
-            </div>
-            <div class="text-white ms-2">
-              <h3 class="text-sm">Fakhri Alauddin</h3>
-              <p class="text-xs font-light text-gray-500">Web Development</p>
-            </div>
-          </div>
-          <div class="flex items-center mb-3">
-            <div class="w-10 h-10 overflow-hidden rounded-full">
-              <img src="{{ asset('assets/images/avatar.png') }}" alt="" class="object-cover w-full">
-            </div>
-            <div class="text-white ms-2">
-              <h3 class="text-sm">Fakhri Alauddin</h3>
-              <p class="text-xs font-light text-gray-500">Web Development</p>
-            </div>
-          </div>
-          <div class="flex items-center mb-3">
-            <div class="w-10 h-10 overflow-hidden rounded-full">
-              <img src="{{ asset('assets/images/avatar.png') }}" alt="" class="object-cover w-full">
-            </div>
-            <div class="text-white ms-2">
-              <h3 class="text-sm">Fakhri Alauddin</h3>
-              <p class="text-xs font-light text-gray-500">Web Development</p>
-            </div>
-          </div>
-        </div>
+          @foreach ($userActive as $user)
+            <div class="flex items-center mb-3">
+              <div class="relative">
+                <div class="w-10 h-10 overflow-hidden rounded-full">
+                  @if (str_starts_with($user->avatar, 'https://lh3.googleusercontent.com/'))
+                    <img src="{{ $user->avatar }}" alt="Avatar" class="object-cover w-full h-full rounded-full">
+                  @else
+                    <img
+                      src="{{ $user->avatar === null ? asset('assets/images/avatar.png') : asset('storage/avatar/' . $user->avatar) }}"
+                      alt="Avatar" class="object-cover w-full h-full rounded-full">
+                  @endif
 
+                </div>
+                @if ($user->status === 'active')
+                  <div class="absolute w-2.5 h-2.5 bg-green-600 border border-white rounded-full right-0 top-1"></div>
+                @endif
+              </div>
+              <div class="text-white ms-2">
+                <h3 class="text-sm break-words">{{ Str::limit($user->user->name ?? '', 25, '...') }}</h3>
+                <p class="text-xs font-light text-gray-500">{{ $user->user->label ?? '' }}</p>
+              </div>
+            </div>
+          @endforeach
+        </div>
       </div>
     </div>
     {{-- Recent users end --}}
