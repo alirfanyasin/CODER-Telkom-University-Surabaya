@@ -88,15 +88,29 @@
                   <div class="flex justify-start w-full gap-2">
                     <div class="flex items-center w-full">
                       @if (!$isExpired)
-                        <a href="{{ route('app.e-learning.task.submission', $task->slug) }}" wire:navigate
-                          class="inline-flex items-center px-4 py-3 text-sm font-semibold text-white rounded-lg gap-x-2 bg-glass border border-[#3c3c41] hover:bg-white hover:text-black">
-                          Kumpulkan Tugas
-                        </a>
+                        @if (in_array($task->id, $checkSubmission))
+                          <a href="{{ route('app.e-learning.task.submission.edit', $task->slug) }}" wire:navigate
+                            class="inline-flex items-center px-4 py-3 text-sm font-semibold text-white rounded-lg gap-x-2 bg-glass border border-[#3c3c41] hover:bg-white hover:text-black">
+                            <iconify-icon icon="lucide:edit"></iconify-icon><span class="md:block">Edit Jawaban</span>
+                          </a>
+                        @else
+                          <a href="{{ route('app.e-learning.task.submission', $task->slug) }}" wire:navigate
+                            class="inline-flex items-center px-4 py-3 text-sm font-semibold text-white rounded-lg gap-x-2 bg-glass border border-[#3c3c41] hover:bg-white hover:text-black">
+                            Kumpulkan Tugas
+                          </a>
+                        @endif
                       @else
-                        <a href="#" wire:click.prevent='isExpired'
-                          class="inline-flex items-center px-4 py-3 text-sm font-semibold text-white rounded-lg gap-x-2 bg-glass border border-[#3c3c41] hover:bg-white hover:text-black">
-                          Kumpulkan Tugas
-                        </a>
+                        @if (in_array($task->id, $checkSubmission))
+                          <a href="{{ route('app.e-learning.task.show-score', $task->slug) }}" wire:navigate
+                            class="inline-flex items-center px-4 py-3 text-sm font-semibold me-2 text-white rounded-lg gap-x-2 bg-glass border border-[#3c3c41] hover:bg-white hover:text-black">
+                            Lihat Nilai
+                          </a>
+                        @else
+                          <a href="#" wire:click.prevent='isExpired'
+                            class="inline-flex items-center px-4 py-3 text-sm font-semibold text-white rounded-lg gap-x-2 bg-glass border border-[#3c3c41] hover:bg-white hover:text-black">
+                            Kumpulkan Tugas
+                          </a>
+                        @endif
                       @endif
                     </div>
                   </div>

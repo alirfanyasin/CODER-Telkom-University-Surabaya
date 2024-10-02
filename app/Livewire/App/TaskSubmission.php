@@ -65,8 +65,9 @@ class TaskSubmission extends Component
         $task = Task::where('slug', $this->slug)->first();
         $this->taskId = $task->id;
 
+
         return view('livewire.app.task-submission', [
-            'task' => $task
+            'task' => $task,
         ]);
     }
 }

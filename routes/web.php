@@ -102,6 +102,8 @@ Route::middleware(['auth'])->group(function () {
         });
         Route::middleware(['role:user'])->group(function () {
             Route::get('/e-learning/task/{slug}/submission', TaskSubmission::class)->name('app.e-learning.task.submission');
+            Route::get('/e-learning/task/{slug}/submission/edit', TaskSubmission::class)->name('app.e-learning.task.submission.edit');
+            Route::get('/e-learning/task/{slug}/show-score', TaskSubmission::class)->name('app.e-learning.task.show-score');
         });
 
         // Meeting
