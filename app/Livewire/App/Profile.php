@@ -34,7 +34,6 @@ class Profile extends Component
 
 
         $meetingCount = Meeting::where('division_id', Auth::user()->division_id)->count();
-        $taskCount = Task::where('division_id', Auth::user()->division_id)->count();
         $quizCount = Quiz::where('division_id', Auth::user()->division_id)->count();
         // $finalProjectCount = Task::where('division_id', Auth::user()->division_id)->get();
 
@@ -91,7 +90,6 @@ class Profile extends Component
         if (Auth::user()->hasRole('admin')) {
             $dataPoint = [
                 $meetingCount,
-                $taskCount,
                 $quizCount,
             ];
 

@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('slug')->unique();
             $table->string('name');
-            $table->date('due_date');
+            $table->dateTime('due_date');
             $table->string('section');
-            $table->text('description');
-            $table->string('file_name')->nullable();
-            $table->foreignId('division_id')->constrained();
+            $table->longText('description');
+            $table->string('file')->nullable();
+            $table->foreignId('division_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
