@@ -100,7 +100,6 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/e-learning/task/create', TaskCreate::class)->name('app.e-learning.task.create');
             Route::get('/e-learning/task/{slug}/edit', TaskEdit::class)->name('app.e-learning.task.edit');
         });
-        Route::get('/e-learning/task/{slug}/submission', TaskSubmission::class)->name('app.e-learning.task.submission');
 
         // Meeting
         Route::get('/e-learning/meeting', Meeting::class)->name('app.e-learning.meeting');

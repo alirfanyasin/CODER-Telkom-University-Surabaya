@@ -5,8 +5,9 @@
   </header>
   {{-- Header End --}}
 
-  {{-- Informasi Modul Start --}}
-  <form action="" class="mb-10" wire:submit.prevent="store" enctype="multipart/form-data">
+  <form class="mb-10" wire:submit.prevent="store" enctype="multipart/form-data">
+    @csrf
+    {{-- Informasi Modul Start --}}
     <section action="" class="p-6 mb-6 text-white rounded-lg bg-glass">
       <header class="flex items-center justify-between mb-8 text-white">
         <div class="flex items-center">
@@ -21,81 +22,90 @@
       <div class="grid gap-4 mb-4 lg:grid-cols-3">
         <div>
           <label for="task_name" class="block mb-2 text-sm font-medium leading-6">Nama Tugas</label>
-          <input type="text" id="task_name" wire:model="task_name"
+          <input type="text" id="task_name" wire:model="name"
             class="block w-full p-3 text-white rounded-lg bg-lightGray" placeholder="Nama Tugas">
-          @error('task_name')
-            <span class="text-red-500">{{ $message }}</span>
+          @error('name')
+            <small class="text-red-500">{{ $message }}</small>
           @enderror
         </div>
         <div>
           <label for="task_due_date" class="block mb-2 text-sm font-medium leading-6">Batas
             Pengumpulan</label>
-          <input type="datetime-local" name="task_due_date" id="task_due_date" wire:model="task_due_date"
+          <input type="datetime-local" name="due_date" id="task_due_date" wire:model="due_date"
             autocomplete="task_due_date" class="block w-full p-3 text-white rounded-lg bg-lightGray"
             value="2024-07-15T19:30">
-          @error('task_due_date')
-            <span class="text-red-500">{{ $message }}</span>
+          @error('due_date')
+            <small class="text-red-500">{{ $message }}</small>
           @enderror
         </div>
         <div>
           <label for="task_meeting" class="block mb-2 text-sm font-medium leading-6">Masukkan
             Pertemuan</label>
-          <input type="number" name="task_meeting" id="task_meeting" wire:model="task_meeting"
-            autocomplete="task_meeting" class="block w-full p-3 text-white rounded-lg bg-lightGray"
-            placeholder="Pertemuan ke-1">
-          @error('task_meeting')
-            <span class="text-red-500">{{ $message }}</span>
+          <input type="number" name="section" id="task_meeting" wire:model="section" autocomplete="task_meeting"
+            class="block w-full p-3 text-white rounded-lg bg-lightGray" placeholder="Pertemuan ke-1">
+          @error('section')
+            <small class="text-red-500">{{ $message }}</small>
           @enderror
         </div>
       </div>
 
       <label for="task_description" class="block mb-2 text-sm font-medium leading-6">Deskripsi Tugas</label>
-      <textarea name="task_description" id="task_description" wire:model="task_description"
+      <textarea name="description" id="task_description" wire:model="description"
         class="block w-full p-3 text-white rounded-lg bg-lightGray" rows="5" placeholder="Deskripsi Tugas"></textarea>
-      @error('task_description')
-        <span class="text-red-500">{{ $message }}</span>
+      @error('description')
+        <small class="text-red-500">{{ $message }}</small>
       @enderror
     </section>
     {{-- Informasi Modul End --}}
 
+    {{-- Upload file start --}}
     <section action="" class="p-5 mb-4 text-white rounded-lg bg-glass">
       <div class="grid gap-4 mb-4 lg:grid-cols-1">
-        {{-- <div class="lg:col-span-1">
-          <label for="task_file_type" class="block mb-2 text-sm font-medium leading-6">Jenis File Pendukung</label>
-          <select name="task_file_type" id="task_file_type" class="block w-full p-3 text-white rounded-lg bg-lightGray"
-            placeholder="File type" value="docs">
-            <option value="docs">Dokumen (PDF, DOCS, dan Lainnya)</option>
-            <option value="img">Image (JPG, PNG, dan Lainnya)</option>
-          </select>
-        </div> --}}
         <div class="">
           <div class="w-full">
             <label for="task_file" class="block mb-2 font-light dark:text-white">Upload File <span
                 class="text-[#9E9E9E] text-xs">(Opsional)</span></label>
-            <input type="file" id="task_file" wire:model="task_file" class="hidden">
+            <input type="file" id="task_file" wire:model="file" class="hidden" accept=".pdf">
             <label for="task_file"
               class="flex items-center gap-2 p-3 text-white rounded-md cursor-pointer bg-lightGray">
               <span class="text-xs bg-[#43474C] py-1 px-1.5">Pilih File</span>
               <span class="text-xs" id="file-name">Belum ada file yang dipilih.</span>
             </label>
             <small class="text-xs font-light text-[#9E9E9E]">PDF: Maksimal 5 Mb</small>
-            @error('task_file')
-              <span class="text-red-500">{{ $message }}</span>
+            @error('file')
+              <small class="block text-red-500">{{ $message }}</small>
             @enderror
           </div>
         </div>
       </div>
     </section>
+    {{-- Upload file end --}}
 
+
+    {{-- Action button start --}}
     <section class="flex items-center justify-end">
       <a href="{{ route('app.e-learning.task') }}" wire:navigate
-        class="flex items-center px-5 py-3 text-sm font-semibold text-gray-300 rounded-md me-4 bg-glass hover:text-black hover:bg-white">
+        class="flex items-center px-5 py-3 text-sm font-semibold text-gray-300 rounded-md me-2 bg-glass hover:text-white hover:bg-red-600">
         Batal
       </a>
-      <button class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md">
+      <button class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md"
+        wire:loading.remove>
         Simpan Tugas <iconify-icon icon="fa-solid:save" class="text-xl ms-2"></iconify-icon>
       </button>
+
+      {{-- Loaading event start --}}
+      <div wire:loading wire:target="store"
+        class="flex items-center py-3 text-sm font-semibold text-black bg-white rounded-md px-[76px]">
+        <div
+          class="animate-spin inline-block size-4 border-[3px] border-current border-t-transparent text-black rounded-full"
+          role="status" aria-label="loading">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+      {{-- Loaading event end --}}
     </section>
+    {{-- Action button end --}}
+
   </form>
 </div>
 

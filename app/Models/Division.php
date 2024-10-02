@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\ELeaning\Modul;
+use App\Models\Elearning\Task;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -67,5 +68,15 @@ class Division extends Model
     public function report(): HasMany
     {
         return $this->hasMany(Report::class, 'division_id');
+    }
+
+    /**
+     * Get all of the task for the Division
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function task(): HasMany
+    {
+        return $this->hasMany(Task::class, 'division_id');
     }
 }

@@ -15,6 +15,6 @@ class TaskDetail extends Component
 
     public function render()
     {
-        return view('livewire.app.task-detail', ['task' => $this->task]);
+        return view('livewire.app.task-detail');
     }
 }
