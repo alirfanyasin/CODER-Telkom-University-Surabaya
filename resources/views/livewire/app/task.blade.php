@@ -77,9 +77,9 @@
             <div class="@role(['admin']) flex items-center @endrole mt-4">
               @role(['admin'])
                 <div class="flex items-center w-full">
-                  <a href="" wire:navigate
+                  <a href="{{ route('app.e-learning.task.show-answer', $task->slug) }}" wire:navigate
                     class="inline-flex items-center px-4 py-3 text-sm font-semibold text-white rounded-lg gap-x-2 bg-glass border border-[#3c3c41] hover:bg-white hover:text-black">
-                    Lihat pengumpulan
+                    Lihat Jawaban
                   </a>
                 </div>
               @endrole
@@ -101,10 +101,10 @@
                         @endif
                       @else
                         @if (in_array($task->id, $checkSubmission))
-                          <a href="{{ route('app.e-learning.task.show-score', $task->slug) }}" wire:navigate
+                          {{-- <a href="{{ route('app.e-learning.task.show-score', $task->slug) }}" wire:navigate
                             class="inline-flex items-center px-4 py-3 text-sm font-semibold me-2 text-white rounded-lg gap-x-2 bg-glass border border-[#3c3c41] hover:bg-white hover:text-black">
                             Lihat Nilai
-                          </a>
+                          </a> --}}
                         @else
                           <a href="#" wire:click.prevent='isExpired'
                             class="inline-flex items-center px-4 py-3 text-sm font-semibold text-white rounded-lg gap-x-2 bg-glass border border-[#3c3c41] hover:bg-white hover:text-black">

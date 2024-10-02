@@ -239,7 +239,7 @@
                       <div class="flex items-center w-full">
                         <a href="" wire:navigate
                           class="inline-flex items-center px-4 py-3 text-sm font-semibold text-white border rounded-lg border-[#3c3c41] gap-x-2 bg-glass hover:bg-white hover:text-black">
-                          Lihat pengumpulan
+                          Lihat Jawaban
                         </a>
                       </div>
                     @endrole

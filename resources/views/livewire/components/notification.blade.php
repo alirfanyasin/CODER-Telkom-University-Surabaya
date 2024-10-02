@@ -153,7 +153,7 @@
 
   <div class="hs-dropdown [--placement:bottom-right] relative inline-flex items-center">
     <button id="hs-dropdown-with-header" type="button"
-      class="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none">
+      class="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none overflow-hidden">
       @if (Auth::check() && str_starts_with(Auth::user()->avatar, 'https://lh3.googleusercontent.com/'))
         <img src="{{ Auth::user()->avatar }}" alt="Avatar" class="object-cover w-full h-full rounded-full">
       @else
