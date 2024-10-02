@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Models\Elearning\TaskSubmission;
 use App\Models\Quiz\UserAnswerQuiz;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -101,10 +102,6 @@ class User extends Authenticatable
         return $this->hasMany(UserPoints::class, 'user_id');
     }
 
-    public function submissions(): HasMany
-    {
-        return $this->hasMany(Submission::class);
-    }
 
     /**
      * Get all of the userActive for the User
@@ -114,5 +111,16 @@ class User extends Authenticatable
     public function userActive(): HasMany
     {
         return $this->hasMany(UserActive::class, 'user_id');
+    }
+
+
+    /**
+     * Get all of the taskSubmission for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function taskSubmission(): HasMany
+    {
+        return $this->hasMany(TaskSubmission::class, 'user_id');
     }
 }

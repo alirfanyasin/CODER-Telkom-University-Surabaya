@@ -66,6 +66,16 @@ class Task extends Component
         return redirect()->back();
     }
 
+    public function isExpired()
+    {
+        $this->alert('error', 'Tugas Sudah Ditutup', [
+            'position' => 'top-end',
+            'timer' => 3000,
+            'toast' => true,
+            'timerProgressBar' => true,
+        ]);
+    }
+
     public function groupedDataBySection()
     {
         $allDataByDivision = ElearningTask::with('division')

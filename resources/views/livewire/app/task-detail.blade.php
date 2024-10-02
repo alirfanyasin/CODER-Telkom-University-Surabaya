@@ -5,7 +5,7 @@
   </header>
   {{-- Header End --}}
 
-  {{-- Informasi Modul Start --}}
+  {{-- Informasi Task Start --}}
   <form action="" class="mb-10">
     <section action="" class="p-6 mb-6 text-white rounded-lg bg-glass">
       <header class="flex items-center justify-between mb-8 text-white">
@@ -51,7 +51,7 @@
       <textarea name="task_description" id="task_description" class="block w-full p-3 text-white rounded-lg bg-lightGray"
         rows="5" wire:model="task_description"></textarea>
     </section>
-    {{-- Informasi Modul End --}}
+    {{-- Informasi Task End --}}
 
     {{-- @if ($task->file)
       <section action="" class="p-5 mb-4 text-white rounded-lg bg-glass">
