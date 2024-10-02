@@ -45,7 +45,6 @@
                         'syntax' => \Carbon\CarbonInterface::DIFF_RELATIVE_TO_NOW,
                     ]);
                   @endphp
-
                   @if ($isExpired)
                     <div class="w-full px-3 py-1 text-xs text-center bg-red-600 rounded-md md:text-left">
                       Tugas Ditutup
