@@ -80,11 +80,11 @@
             <div class="flex items-center mb-3">
               <div class="relative">
                 <div class="w-10 h-10 overflow-hidden rounded-full">
-                  @if (str_starts_with($user->avatar, 'https://lh3.googleusercontent.com/'))
-                    <img src="{{ $user->avatar }}" alt="Avatar" class="object-cover w-full h-full rounded-full">
+                  @if (str_starts_with($user->user->avatar, 'https://lh3.googleusercontent.com/'))
+                    <img src="{{ $user->user->avatar }}" alt="Avatar" class="object-cover w-full h-full rounded-full">
                   @else
                     <img
-                      src="{{ $user->avatar === null ? asset('assets/images/avatar.png') : asset('storage/avatar/' . $user->avatar) }}"
+                      src="{{ $user->user->avatar === null ? asset('assets/images/avatar.png') : asset('storage/avatar/' . $user->user->avatar) }}"
                       alt="Avatar" class="object-cover w-full h-full rounded-full">
                   @endif
 
@@ -110,7 +110,7 @@
   <section class="mb-10">
     <div class="grid grid-cols-1 gap-3 lg:grid-cols-2">
       {{-- Meeting Schedule Start --}}
-      <div class="p-6 rounded-xl bg-glass">
+      <div class="p-6 rounded-xl bg-glass min-h-80">
         <div class="">
           <header class="mb-4">
             <h4 class="text-xl font-semibold text-white">Jadwal Pertemuan</h4>
@@ -199,65 +199,70 @@
               ]);
             @endphp
             @if (!$isExpired)
-              <a href="#" wire:navigate class="block">
-                <div class="p-5 mb-4 rounded-lg bg-glass hover:border hover:border-gray-500">
-                  <header class="mb-3 text-white md:flex md:items-center md:justify-between">
-                    <div class="order-1 mb-3 md:order-2">
+              <div class="p-5 mb-4 rounded-lg bg-glass hover:border hover:border-gray-500">
+                <header class="mb-3 text-white md:flex md:items-center md:justify-between">
+                  <div class="order-1 mb-3 md:order-2">
 
-                      @if ($isExpired)
-                        <div class="w-full px-3 py-1 text-xs text-center bg-red-600 rounded-md md:text-left">
-                          Tugas Ditutup
-                        </div>
-                      @else
-                        <div class="w-full px-3 py-1 text-xs text-center bg-green-600 rounded-md md:text-left ">
-                          {{ $timeRemaining }}
-                        </div>
-                      @endif
-                    </div>
-
-                    <div class="flex items-center order-2 md:order-1">
-                      <iconify-icon icon="iconoir:calendar" class="text-2xl me-3"></iconify-icon>
-                      <span
-                        class="text-sm font-light">{{ \Carbon\Carbon::parse($task->due_date)->translatedFormat('l, d F Y') }}</span>
-                      <span class="text-sm font-light ms-2"> -
-                        {{ \Carbon\Carbon::parse($task->due_date)->format('H:i') }}
-                        WIB</span>
-                    </div>
-                  </header>
-
-                  <h3 class="text-lg font-semibold text-white break-words md:text-2xl">Tugas {{ $task->name }}</h3>
-                  <p class="text-sm font-light text-gray-400 break-words md:text-base">{{ $task->description }}</p>
-
-                  @if ($task->file !== null)
-                    <a href="{{ asset('storage/file/task/' . $task->file) }}" class="block mt-3" download>
-                      <iconify-icon icon="vscode-icons:file-type-pdf2" class="text-5xl"></iconify-icon>
-                    </a>
-                  @endif
-
-                  <div class="@role(['admin']) flex items-center @endrole mt-4">
-                    @role(['admin'])
-                      <div class="flex items-center w-full">
-                        <a href="" wire:navigate
-                          class="inline-flex items-center px-4 py-3 text-sm font-semibold text-white rounded-lg gap-x-2 bg-glass hover:bg-white hover:text-black">
-                          Lihat pengumpulan
-                        </a>
+                    @if ($isExpired)
+                      <div class="w-full px-3 py-1 text-xs text-center bg-red-600 rounded-md md:text-left">
+                        Tugas Ditutup
                       </div>
-                    @endrole
-                    @role(['user'])
-                      <div class="flex items-center justify-between">
-                        <div class="flex justify-start w-full gap-2">
-                          <div class="flex items-center w-full">
-                            <a href="#" wire:navigate
-                              class="inline-flex items-center px-4 py-3 text-sm font-semibold text-white rounded-lg gap-x-2 bg-glass hover:bg-white hover:text-black">
+                    @else
+                      <div class="w-full px-3 py-1 text-xs text-center bg-green-600 rounded-md md:text-left ">
+                        {{ $timeRemaining }}
+                      </div>
+                    @endif
+                  </div>
+
+                  <div class="flex items-center order-2 md:order-1">
+                    <iconify-icon icon="iconoir:calendar" class="text-2xl me-3"></iconify-icon>
+                    <span
+                      class="text-sm font-light">{{ \Carbon\Carbon::parse($task->due_date)->translatedFormat('l, d F Y') }}</span>
+                    <span class="text-sm font-light ms-2"> -
+                      {{ \Carbon\Carbon::parse($task->due_date)->format('H:i') }}
+                      WIB</span>
+                  </div>
+                </header>
+
+                <h3 class="text-lg font-semibold text-white break-words md:text-2xl">Tugas {{ $task->name }}</h3>
+                <p class="text-sm font-light text-gray-400 break-words md:text-base">{{ $task->description }}</p>
+
+                @if ($task->file !== null)
+                  <a href="{{ asset('storage/file/task/' . $task->file) }}" class="block mt-3" download>
+                    <iconify-icon icon="vscode-icons:file-type-pdf2" class="text-5xl"></iconify-icon>
+                  </a>
+                @endif
+
+                <div class="@role(['admin']) flex items-center @endrole mt-4">
+                  @role(['admin'])
+                    <div class="flex items-center w-full">
+                      <a href="" wire:navigate
+                        class="inline-flex items-center px-4 py-3 text-sm font-semibold text-white border rounded-lg border-[#3c3c41] gap-x-2 bg-glass hover:bg-white hover:text-black">
+                        Lihat pengumpulan
+                      </a>
+                    </div>
+                  @endrole
+                  @role(['user'])
+                    <div class="flex items-center justify-between">
+                      <div class="flex justify-start w-full gap-2">
+                        <div class="flex items-center w-full">
+                          @if (!$isExpired)
+                            <a href="{{ route('app.e-learning.task.submission', $task->slug) }}" wire:navigate
+                              class="inline-flex items-center px-4 py-3 text-sm font-semibold text-white rounded-lg gap-x-2 bg-glass border border-[#3c3c41] hover:bg-white hover:text-black">
                               Kumpulkan Tugas
                             </a>
-                          </div>
+                          @else
+                            <a href="#" wire:click.prevent='isExpired'
+                              class="inline-flex items-center px-4 py-3 text-sm font-semibold text-white rounded-lg gap-x-2 bg-glass border border-[#3c3c41] hover:bg-white hover:text-black">
+                              Kumpulkan Tugas
+                            </a>
+                          @endif
                         </div>
                       </div>
-                    @endrole
-                  </div>
+                    </div>
+                  @endrole
                 </div>
-              </a>
+              </div>
             @endif
           @endforeach
         </div>

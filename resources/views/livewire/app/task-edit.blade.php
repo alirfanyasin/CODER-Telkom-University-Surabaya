@@ -5,7 +5,7 @@
   </header>
   {{-- Header End --}}
 
-  {{-- Informasi Modul Start --}}
+  {{-- Informasi Task Start --}}
   <form class="mb-10" wire:submit.prevent="update" enctype="multipart/form-data">
     <section action="" class="p-6 mb-6 text-white rounded-lg bg-glass">
       <header class="flex items-center justify-between mb-8 text-white">
@@ -56,7 +56,7 @@
         <small class="text-red-500">{{ $message }}</small>
       @enderror
     </section>
-    {{-- Informasi Modul End --}}
+    {{-- Informasi Task End --}}
 
     <section action="" class="p-5 mb-4 text-white rounded-lg bg-glass">
       <div class="grid gap-4 mb-4 lg:grid-cols-1">

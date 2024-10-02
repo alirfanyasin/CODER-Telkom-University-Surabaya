@@ -52,9 +52,6 @@
                   src="{{ $data->avatar === null ? asset('assets/images/avatar.png') : asset('storage/avatar/' . $data->avatar) }}"
                   alt="Avatar" class="object-cover w-full h-full rounded-full">
               @endif
-              {{-- <img
-                src="{{ $data->avatar === null ? asset('assets/images/avatar.png') : asset('storage/avatar/' . $data->avatar) }}"
-                alt="Avatar" class="object-cover w-full h-full"> --}}
             </div>
             <h4 class="mt-4 font-semibold break-words text-md">{{ $data->name }}</h4>
             <div class="my-1 text-center">

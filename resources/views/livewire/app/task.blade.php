@@ -31,90 +31,95 @@
         </div>
 
         @foreach ($datas as $task)
-          <a href="#" wire:navigate class="block">
-            <div class="p-5 mb-4 rounded-lg bg-glass hover:border hover:border-gray-500">
-              <header class="mb-3 text-white md:flex md:items-center md:justify-between">
-                <div class="order-1 mb-3 md:order-2">
-                  @php
-                    $dueDate = \Carbon\Carbon::parse($task->due_date);
-                    $now = \Carbon\Carbon::now();
-                    $isExpired = $dueDate->isPast();
-                    $timeRemaining = $dueDate->diffForHumans($now, [
-                        'parts' => 2,
-                        'short' => true,
-                        'syntax' => \Carbon\CarbonInterface::DIFF_RELATIVE_TO_NOW,
-                    ]);
-                  @endphp
-                  @if ($isExpired)
-                    <div class="w-full px-3 py-1 text-xs text-center bg-red-600 rounded-md md:text-left">
-                      Tugas Ditutup
-                    </div>
-                  @else
-                    <div class="w-full px-3 py-1 text-xs text-center bg-green-600 rounded-md md:text-left ">
-                      {{ $timeRemaining }}
-                    </div>
-                  @endif
-                </div>
-
-                <div class="flex items-center order-2 md:order-1">
-                  <iconify-icon icon="iconoir:calendar" class="text-2xl me-3"></iconify-icon>
-                  <span
-                    class="text-sm font-light">{{ \Carbon\Carbon::parse($task->due_date)->translatedFormat('l, d F Y') }}</span>
-                  <span class="text-sm font-light ms-2"> - {{ \Carbon\Carbon::parse($task->due_date)->format('H:i') }}
-                    WIB</span>
-                </div>
-              </header>
-
-              <h3 class="text-lg font-semibold text-white break-words md:text-2xl">Tugas {{ $task->name }}</h3>
-              <p class="text-sm font-light text-gray-400 break-words md:text-base">{{ $task->description }}</p>
-
-              @if ($task->file !== null)
-                <a href="{{ asset('storage/file/task/' . $task->file) }}" class="block mt-3" download>
-                  <iconify-icon icon="vscode-icons:file-type-pdf2" class="text-5xl"></iconify-icon>
-                </a>
-              @endif
-
-
-              <div class="@role(['admin']) flex items-center @endrole mt-4">
-                @role(['admin'])
-                  <div class="flex items-center w-full">
-                    <a href="" wire:navigate
-                      class="inline-flex items-center px-4 py-3 text-sm font-semibold text-white rounded-lg gap-x-2 bg-glass hover:bg-white hover:text-black">
-                      Lihat pengumpulan
-                    </a>
+          <div class="p-5 mb-4 rounded-lg bg-glass hover:border hover:border-gray-500">
+            <header class="mb-3 text-white md:flex md:items-center md:justify-between">
+              <div class="order-1 mb-3 md:order-2">
+                @php
+                  $dueDate = \Carbon\Carbon::parse($task->due_date);
+                  $now = \Carbon\Carbon::now();
+                  $isExpired = $dueDate->isPast();
+                  $timeRemaining = $dueDate->diffForHumans($now, [
+                      'parts' => 2,
+                      'short' => true,
+                      'syntax' => \Carbon\CarbonInterface::DIFF_RELATIVE_TO_NOW,
+                  ]);
+                @endphp
+                @if ($isExpired)
+                  <div class="w-full px-3 py-1 text-xs text-center bg-red-600 rounded-md md:text-left">
+                    Tugas Ditutup
                   </div>
-                @endrole
-                @role(['user'])
-                  <div class="flex items-center justify-between">
-                    <div class="flex justify-start w-full gap-2">
-                      <div class="flex items-center w-full">
-                        <a href="#" wire:navigate
-                          class="inline-flex items-center px-4 py-3 text-sm font-semibold text-white rounded-lg gap-x-2 bg-glass hover:bg-white hover:text-black">
+                @else
+                  <div class="w-full px-3 py-1 text-xs text-center bg-green-600 rounded-md md:text-left ">
+                    {{ $timeRemaining }}
+                  </div>
+                @endif
+              </div>
+
+              <div class="flex items-center order-2 md:order-1">
+                <iconify-icon icon="iconoir:calendar" class="text-2xl me-3"></iconify-icon>
+                <span
+                  class="text-sm font-light">{{ \Carbon\Carbon::parse($task->due_date)->translatedFormat('l, d F Y') }}</span>
+                <span class="text-sm font-light ms-2"> - {{ \Carbon\Carbon::parse($task->due_date)->format('H:i') }}
+                  WIB</span>
+              </div>
+            </header>
+
+            <h3 class="text-lg font-semibold text-white break-words md:text-2xl">Tugas {{ $task->name }}</h3>
+            <p class="text-sm font-light text-gray-400 break-words md:text-base">{{ $task->description }}</p>
+
+            @if ($task->file !== null)
+              <a href="{{ asset('storage/file/task/' . $task->file) }}" class="block mt-3" download>
+                <iconify-icon icon="vscode-icons:file-type-pdf2" class="text-5xl"></iconify-icon>
+              </a>
+            @endif
+
+
+            <div class="@role(['admin']) flex items-center @endrole mt-4">
+              @role(['admin'])
+                <div class="flex items-center w-full">
+                  <a href="" wire:navigate
+                    class="inline-flex items-center px-4 py-3 text-sm font-semibold text-white rounded-lg gap-x-2 bg-glass border border-[#3c3c41] hover:bg-white hover:text-black">
+                    Lihat pengumpulan
+                  </a>
+                </div>
+              @endrole
+              @role(['user'])
+                <div class="flex items-center justify-between">
+                  <div class="flex justify-start w-full gap-2">
+                    <div class="flex items-center w-full">
+                      @if (!$isExpired)
+                        <a href="{{ route('app.e-learning.task.submission', $task->slug) }}" wire:navigate
+                          class="inline-flex items-center px-4 py-3 text-sm font-semibold text-white rounded-lg gap-x-2 bg-glass border border-[#3c3c41] hover:bg-white hover:text-black">
                           Kumpulkan Tugas
                         </a>
-                      </div>
+                      @else
+                        <a href="#" wire:click.prevent='isExpired'
+                          class="inline-flex items-center px-4 py-3 text-sm font-semibold text-white rounded-lg gap-x-2 bg-glass border border-[#3c3c41] hover:bg-white hover:text-black">
+                          Kumpulkan Tugas
+                        </a>
+                      @endif
                     </div>
                   </div>
-                @endrole
+                </div>
+              @endrole
 
-                @role(['admin'])
-                  <div class="inline md:flex md:justify-between">
-                    <div class="flex gap-2 text-gray-400 md:gap-4">
-                      <a href="#" wire:click.prevent="destroy({{ $task->id }})"
-                        class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-red-600 border-[#27272A] px-2 md:px-4 py-1">
-                        <iconify-icon icon="tabler:trash"></iconify-icon>
-                        <span class="hidden md:block">Hapus</span>
-                      </a>
-                      <a href="{{ route('app.e-learning.task.edit', $task->slug) }}"
-                        class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-yellow-600 border-[#27272A] px-2 md:px-4 py-1">
-                        <iconify-icon icon="lucide:edit"></iconify-icon><span class="hidden md:block">Edit</span>
-                      </a>
-                    </div>
+              @role(['admin'])
+                <div class="inline md:flex md:justify-between">
+                  <div class="flex gap-2 text-gray-400 md:gap-4">
+                    <a href="#" wire:click.prevent="destroy({{ $task->id }})"
+                      class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-red-600 border-[#27272A] px-2 md:px-4 py-1">
+                      <iconify-icon icon="tabler:trash"></iconify-icon>
+                      <span class="hidden md:block">Hapus</span>
+                    </a>
+                    <a href="{{ route('app.e-learning.task.edit', $task->slug) }}"
+                      class="flex gap-1 rounded-md items-center text-base font-medium border hover:text-yellow-600 border-[#27272A] px-2 md:px-4 py-1">
+                      <iconify-icon icon="lucide:edit"></iconify-icon><span class="hidden md:block">Edit</span>
+                    </a>
                   </div>
-                @endrole
-              </div>
+                </div>
+              @endrole
             </div>
-          </a>
+          </div>
         @endforeach
       </div>
     @endforeach

@@ -27,6 +27,7 @@ class Member extends Component
         $user = User::findOrFail($id);
         $user->removeRole('guest');
         $user->removeRole('user');
+        $user->removeRole('alumni');
         $user->assignRole('admin');
         if (Auth::user()->label !== 'Super Admin') {
             $user->division_id = Auth::user()->division_id;
