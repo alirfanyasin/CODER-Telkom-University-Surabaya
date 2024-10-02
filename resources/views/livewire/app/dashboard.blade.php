@@ -225,7 +225,7 @@
                     </div>
                   </header>
 
-                  <h3 class="text-lg font-semibold text-white break-words md:text-2xl">Tugas {{ $task->name }}</h3>
+                  <h3 class="text-lg font-semibold text-white break-words md:text-2xl">{{ $task->name }}</h3>
                   <p class="text-sm font-light text-gray-400 break-words md:text-base">{{ $task->description }}</p>
 
                   @if ($task->file !== null)
@@ -237,7 +237,7 @@
                   <div class="@role(['admin']) flex items-center @endrole mt-4">
                     @role(['admin'])
                       <div class="flex items-center w-full">
-                        <a href="" wire:navigate
+                        <a href="{{ route('app.e-learning.task.show-answer', $task->slug) }}" wire:navigate
                           class="inline-flex items-center px-4 py-3 text-sm font-semibold text-white border rounded-lg border-[#3c3c41] gap-x-2 bg-glass hover:bg-white hover:text-black">
                           Lihat Jawaban
                         </a>
