@@ -21,12 +21,13 @@ class Dashboard extends Component
 {
     public function render(MonthlyActivityChart $activityCart)
     {
-        $dataPoint = UserPoints::where('user_id', Auth::user()->id)->sum('points');
+        // General
         $userActive = UserActive::whereNot('user_id', Auth::id())
             ->orderByRaw("FIELD(status, 'active') DESC")
             ->orderBy('updated_at', 'DESC')
             ->get();
 
+        // Admin
         $meeting = Meeting::where('division_id', Auth::user()->division_id)->count();
         $totalMeeting = str_pad($meeting, 2, '0', STR_PAD_LEFT);
 
@@ -38,6 +39,9 @@ class Dashboard extends Component
 
         $meetingData = Meeting::orderBy('date_time', 'ASC')->where('division_id', Auth::user()->division_id)->where('status', 'aktif')->get();
         $taskData = Task::orderBy('due_date', 'ASC')->where('division_id', Auth::user()->division_id)->get();
+
+        // User
+        $dataPoint = UserPoints::where('user_id', Auth::user()->id)->sum('points');
         $checkSubmission = TaskSubmission::where('user_id', Auth::id())->pluck('task_id')->toArray();
 
 

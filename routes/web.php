@@ -53,6 +53,7 @@ use App\Livewire\App\Quiz\QuizSubmission;
 use App\Livewire\App\Report;
 use App\Livewire\App\ReportCreate;
 use App\Livewire\App\ReportEdit;
+use App\Livewire\App\TaskSubmissionEdit;
 use App\Livewire\Auth\ChangePassword;
 use App\Livewire\Auth\ForgotPassword;
 use App\Livewire\Auth\Login;
@@ -102,7 +103,7 @@ Route::middleware(['auth'])->group(function () {
         });
         Route::middleware(['role:user'])->group(function () {
             Route::get('/e-learning/task/{slug}/submission', TaskSubmission::class)->name('app.e-learning.task.submission');
-            Route::get('/e-learning/task/{slug}/submission/edit', TaskSubmission::class)->name('app.e-learning.task.submission.edit');
+            Route::get('/e-learning/task/{slug}/submission/edit', TaskSubmissionEdit::class)->name('app.e-learning.task.submission.edit');
             Route::get('/e-learning/task/{slug}/show-score', TaskSubmission::class)->name('app.e-learning.task.show-score');
         });
 
