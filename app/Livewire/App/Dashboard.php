@@ -4,6 +4,7 @@ namespace App\Livewire\App;
 
 use App\Charts\MonthlyActivityChart;
 use App\Models\Elearning\Task;
+use App\Models\Elearning\TaskSubmission;
 use App\Models\Meeting;
 use App\Models\Quiz\Quiz;
 use App\Models\UserActive;
@@ -37,6 +38,8 @@ class Dashboard extends Component
 
         $meetingData = Meeting::orderBy('date_time', 'ASC')->where('division_id', Auth::user()->division_id)->where('status', 'aktif')->get();
         $taskData = Task::orderBy('due_date', 'ASC')->where('division_id', Auth::user()->division_id)->get();
+        $checkSubmission = TaskSubmission::where('user_id', Auth::id())->pluck('task_id')->toArray();
+
 
         return view('livewire.app.dashboard', [
             'activityCart' => $activityCart->build(),
@@ -46,7 +49,8 @@ class Dashboard extends Component
             'totalTask' => $totalTask,
             'totalQuiz' => $totalQuiz,
             'meetingData' => $meetingData,
-            'taskData' => $taskData
+            'taskData' => $taskData,
+            'checkSubmission' => $checkSubmission
 
         ]);
     }

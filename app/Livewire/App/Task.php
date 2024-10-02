@@ -3,6 +3,7 @@
 namespace App\Livewire\App;
 
 use App\Models\Elearning\Task as ElearningTask;
+use App\Models\Elearning\TaskSubmission;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -88,8 +89,12 @@ class Task extends Component
 
     public function render()
     {
+        $checkSubmission = TaskSubmission::where('user_id', Auth::id())->pluck('task_id')->toArray();
+
         return view('livewire.app.task', [
             'groupedDataBySection' => $this->groupedDataBySection(),
+            'checkSubmission' => $checkSubmission
+
         ]);
     }
 }
