@@ -82,8 +82,10 @@
       </div>
       <div class="flex my-7">
         <div class="flex items-center gap-2 ml-auto">
-          <a href="/app/presence" wire:navigate
-            class="flex items-center px-5 py-3 text-sm font-semibold border border-[#4F4F55] text-white hover:bg-red-600 hover:border-red-600 rounded-md">Batal</a>
+          <a href="{{ route('app.presence') }}" wire:navigate
+            class="flex items-center px-5 py-3 text-sm font-semibold text-gray-300 rounded-md bg-glass hover:text-white hover:bg-red-600">
+            Batal
+          </a>
           <button type="submit"
             class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md"> Simpan Presensi
             <iconify-icon icon="mingcute:arrow-right-line" class="text-xl ms-2"></iconify-icon></button>
