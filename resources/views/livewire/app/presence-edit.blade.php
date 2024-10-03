@@ -1,15 +1,15 @@
 <div>
-    <style>
-        input[type="number"]::-webkit-outer-spin-button,
-        input[type="number"]::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
+  <style>
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
 
-        input[type="number"] {
-            -moz-appearance: textfield;
-        }
-    </style>
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+  </style>
   {{-- Header Start --}}
   <header class="flex items-center justify-between my-7">
     <h2 class="text-2xl font-bold text-white md:text-3xl">Edit Presensi</h2>
@@ -33,9 +33,10 @@
         <div>
           <div class="grid grid-cols-1 gap-4 mb-3 lg:grid-cols-2">
             <div class="mb-3">
-                <label for="presence" class="block mb-2 font-light text-white">Pertemuan ke-</label>
-                <input type="number" wire:model="presence_number" min="1" name="presence" id="presence" class="w-full px-3 py-3 text-white rounded-lg bg-lightGray">
-              </div>
+              <label for="presence" class="block mb-2 font-light text-white">Pertemuan ke-</label>
+              <input type="number" wire:model="presence_number" min="1" name="presence" id="presence"
+                class="w-full px-3 py-3 text-white rounded-lg bg-lightGray">
+            </div>
             <div class="mb-3">
               <label for="date-time" class="block mb-2 font-light text-white">Tanggal & Waktu</label>
               <input type="datetime-local" name="date-time" id="date-time"
@@ -63,13 +64,13 @@
                       </thead>
                       <tbody class="">
                         <tr>
-                            <td class="px-6 py-4 text-base font-medium text-white">01</td>
-                            <td class="px-6 py-4 text-base font-medium text-white">-</td>
-                            <td class="px-6 py-4 text-base font-medium text-white">-</td>
-                            <td class="flex items-center gap-4 px-6 py-4 text-base font-medium text-white">
-                              -
-                            </td>
-                          </tr>
+                          <td class="px-6 py-4 text-base font-medium text-white">01</td>
+                          <td class="px-6 py-4 text-base font-medium text-white">-</td>
+                          <td class="px-6 py-4 text-base font-medium text-white">-</td>
+                          <td class="flex items-center gap-4 px-6 py-4 text-base font-medium text-white">
+                            -
+                          </td>
+                        </tr>
                       </tbody>
                     </table>
                   </div>
@@ -80,9 +81,12 @@
         </div>
       </div>
       <div class="flex my-7">
-        <div class="ml-auto flex items-center gap-4">
-          <a href="/app/presence" wire:navigate class="flex items-center px-5 py-3 text-sm font-semibold border border-[#4F4F55] text-white hover:bg-red-600 hover:border-red-600 rounded-md">Batal</a>
-          <button type="submit" class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md"> Simpan Presensi <iconify-icon icon="mingcute:arrow-right-line" class="text-xl ms-2"></iconify-icon></button>
+        <div class="flex items-center gap-2 ml-auto">
+          <a href="/app/presence" wire:navigate
+            class="flex items-center px-5 py-3 text-sm font-semibold border border-[#4F4F55] text-white hover:bg-red-600 hover:border-red-600 rounded-md">Batal</a>
+          <button type="submit"
+            class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md"> Simpan Presensi
+            <iconify-icon icon="mingcute:arrow-right-line" class="text-xl ms-2"></iconify-icon></button>
         </div>
       </div>
     </form>

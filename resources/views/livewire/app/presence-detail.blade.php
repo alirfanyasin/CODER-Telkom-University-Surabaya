@@ -3,7 +3,7 @@
   <header class="flex items-center justify-between my-7">
     <h2 class="text-2xl font-bold text-white md:text-3xl">Detail Presensi</h2>
     @role(['admin'])
-    <div class="hidden md:block me-2">
+      <div class="hidden md:block me-2">
         <button wire:click.prevent='exportPresenceResult' wire:loading.remove
           class="flex items-center px-5 py-3 text-sm font-semibold text-white border rounded-md">
           <iconify-icon icon="lets-icons:export" class="text-xl me-2"></iconify-icon>
@@ -23,7 +23,7 @@
           class="flex items-center justify-center w-10 h-10 text-sm font-semibold text-black bg-white rounded-md me-2">
           <iconify-icon icon="lets-icons:export" class="text-2xl"></iconify-icon></button>
       </div>
-      @endrole
+    @endrole
   </header>
   {{-- Header End --}}
 
@@ -44,8 +44,9 @@
         <div>
           <div class="grid grid-cols-1 gap-4 mb-3 lg:grid-cols-2">
             <div class="mb-3">
-                <label for="presence" class="block mb-2 font-light text-white">Pertemuan ke-</label>
-                <input type="number" wire:model="form.presence_number" disabled name="presence" id="presence" class="w-full px-3 py-3 text-white rounded-lg bg-lightGray">
+              <label for="presence" class="block mb-2 font-light text-white">Pertemuan ke-</label>
+              <input type="number" wire:model="form.presence_number" disabled name="presence" id="presence"
+                class="w-full px-3 py-3 text-white rounded-lg bg-lightGray">
             </div>
             <div class="mb-3">
               <label for="date-time" class="block mb-2 font-light text-white">Tanggal & Waktu</label>
@@ -74,25 +75,31 @@
                       </thead>
                       <tbody class="">
                         @foreach ($members as $member)
-                        @php
+                          @php
                             $iteration = str_pad($loop->iteration, 2, '0', STR_PAD_LEFT);
-                        @endphp
-                            <tr>
-                            <td class="px-6 py-4 text-base font-medium text-white">{{$iteration}}</td>
-                            <td class="px-6 py-4 text-base font-medium text-white">{{$member["name"]}}</td>
-                            <td class="px-6 py-4 text-base font-medium text-white">{{$member["major"]}}</td>
-                            <td class="px-6 py-4 text-base font-medium text-white flex items-center gap-4">
-                                <button type="button" @role(['admin']) wire:click="status({{$member['id']}},'hadir')" @endrole class="flex gap-1 rounded-md items-center text-base font-medium border {{$member['status'] == 'hadir' ? 'text-white bg-[#34C759] border-[#34C759]' : 'border-[#4F4F55] hover:text-white hover:bg-[#34C759] hover:border-[#34C759]'}} px-2 md:px-4 py-1.5">
-                                    Hadir
-                                </button>
-                                <button type="button" @role(['admin']) wire:click="status({{$member['id']}},'izin')" @endrole  class="flex gap-1 rounded-md items-center text-base font-medium border {{$member['status'] == 'izin' ? 'text-white bg-[#007AFF] border-[#007AFF]' : 'border-[#4F4F55] hover:text-white hover:bg-[#007AFF] hover:border-[#007AFF]'}} px-2 md:px-4 py-1">
-                                     Izin
-                                </button>
-                                <button type="button" @role(['admin']) wire:click="status({{$member['id']}},'alpha')" @endrole class="flex gap-1 rounded-md items-center text-base font-medium border {{$member['status'] == 'alpha' ? 'text-white bg-[#FF3B30] border-[#FF3B30]' : 'border-[#4F4F55] hover:text-white hover:bg-[#FF3B30] hover:border-[#FF3B30]'}}  px-2 md:px-4 py-1.5">
-                                    Alpha
-                                </button>
+                          @endphp
+                          <tr>
+                            <td class="px-6 py-4 text-base font-medium text-white">{{ $iteration }}</td>
+                            <td class="px-6 py-4 text-base font-medium text-white">{{ $member['name'] }}</td>
+                            <td class="px-6 py-4 text-base font-medium text-white">{{ $member['major'] }}</td>
+                            <td class="flex items-center gap-4 px-6 py-4 text-base font-medium text-white">
+                              <button type="button"
+                                @role(['admin']) wire:click="status({{ $member['id'] }},'hadir')" @endrole
+                                class="flex gap-1 rounded-md items-center text-base font-medium border {{ $member['status'] == 'hadir' ? 'text-white bg-[#34C759] border-[#34C759]' : 'border-[#4F4F55] hover:text-white hover:bg-[#34C759] hover:border-[#34C759]' }} px-2 md:px-4 py-1.5">
+                                Hadir
+                              </button>
+                              <button type="button"
+                                @role(['admin']) wire:click="status({{ $member['id'] }},'izin')" @endrole
+                                class="flex gap-1 rounded-md items-center text-base font-medium border {{ $member['status'] == 'izin' ? 'text-white bg-[#007AFF] border-[#007AFF]' : 'border-[#4F4F55] hover:text-white hover:bg-[#007AFF] hover:border-[#007AFF]' }} px-2 md:px-4 py-1">
+                                Izin
+                              </button>
+                              <button type="button"
+                                @role(['admin']) wire:click="status({{ $member['id'] }},'alpha')" @endrole
+                                class="flex gap-1 rounded-md items-center text-base font-medium border {{ $member['status'] == 'alpha' ? 'text-white bg-[#FF3B30] border-[#FF3B30]' : 'border-[#4F4F55] hover:text-white hover:bg-[#FF3B30] hover:border-[#FF3B30]' }}  px-2 md:px-4 py-1.5">
+                                Alpha
+                              </button>
                             </td>
-                            </tr>
+                          </tr>
                         @endforeach
                       </tbody>
                     </table>
@@ -105,12 +112,13 @@
       </div>
       <div class="flex my-7">
         @role(['admin'])
-        <div class="ml-auto flex items-center gap-4">
-          <a href="/app/presence" wire:navigate class="flex items-center px-5 py-3 text-sm font-semibold border border-[#4F4F55] text-white hover:bg-red-600 hover:border-red-600 rounded-md">Batal</a>
-          <button type="submit"
-            class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md"> Simpan Presensi
-            <iconify-icon icon="material-symbols:save-outline" class="text-xl ms-2"></iconify-icon></button>
-        </div>
+          <div class="flex items-center gap-2 ml-auto">
+            <a href="/app/presence" wire:navigate
+              class="flex items-center px-5 py-3 text-sm font-semibold border border-[#4F4F55] text-white hover:bg-red-600 hover:border-red-600 rounded-md">Batal</a>
+            <button type="submit"
+              class="flex items-center px-5 py-3 text-sm font-semibold text-black bg-white rounded-md"> Simpan Presensi
+              <iconify-icon icon="material-symbols:save-outline" class="text-xl ms-2"></iconify-icon></button>
+          </div>
         @endrole
       </div>
     </form>

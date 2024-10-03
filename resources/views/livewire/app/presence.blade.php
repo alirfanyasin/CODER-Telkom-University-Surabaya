@@ -55,7 +55,7 @@
               {{-- Icon meeting type start --}}
               <div class="flex items-center w-full">
                 <a href="{{ route('app.presence.show', ['id' => $presence->id]) }}"
-                  class="flex gap-1 rounded-md items-center text-base font-medium bg-[#27272A] text-white hover:bg-white hover:text-[#27272A] px-2 md:px-4 py-1.5">
+                  class="flex gap-1 rounded-md items-center text-base font-medium bg-[#27272A]  border border-[#3c3c41] text-white hover:bg-white hover:text-[#27272A] px-2 md:px-4 py-1.5">
                   <span>Lihat Presensi</span>
                 </a>
               </div>

@@ -9,6 +9,7 @@ use App\Models\Meeting;
 use App\Models\Quiz\Quiz;
 use App\Models\UserActive;
 use App\Models\UserPoints;
+use App\Models\UserPresence;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -40,22 +41,32 @@ class Dashboard extends Component
         $meetingData = Meeting::orderBy('date_time', 'ASC')->where('division_id', Auth::user()->division_id)->where('status', 'aktif')->get();
         $taskData = Task::orderBy('due_date', 'ASC')->where('division_id', Auth::user()->division_id)->get();
 
+
         // User
         $dataPoint = UserPoints::where('user_id', Auth::user()->id)->sum('points');
+        $totalPointUser = str_pad($dataPoint, 2, '0', STR_PAD_LEFT);
+
         $checkSubmission = TaskSubmission::where('user_id', Auth::id())->pluck('task_id')->toArray();
+
+        $presenceUser = UserPresence::where('user_id', Auth::user()->id)->where('status', 'hadir')->count();
+        $totalPresenceUser = str_pad($presenceUser, 2, '0', STR_PAD_LEFT);
+
+        $taskUser = TaskSubmission::where('user_id', Auth::user()->id)->count();
+        $totaltaskUser = str_pad($taskUser, 2, '0', STR_PAD_LEFT);
 
 
         return view('livewire.app.dashboard', [
             'activityCart' => $activityCart->build(),
-            'point' => $dataPoint,
+            'point' => $totalPointUser,
             'userActive' => $userActive,
             'totalMeeting' => $totalMeeting,
             'totalTask' => $totalTask,
             'totalQuiz' => $totalQuiz,
             'meetingData' => $meetingData,
             'taskData' => $taskData,
-            'checkSubmission' => $checkSubmission
-
+            'checkSubmission' => $checkSubmission,
+            'totalPresenceUser' => $totalPresenceUser,
+            'totaltaskUser' => $totaltaskUser
         ]);
     }
 }

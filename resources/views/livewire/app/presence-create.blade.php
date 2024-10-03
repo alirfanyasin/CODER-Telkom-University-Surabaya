@@ -1,15 +1,15 @@
 <div>
-    <style>
-        input[type="number"]::-webkit-outer-spin-button,
-        input[type="number"]::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
+  <style>
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
 
-        input[type="number"] {
-            -moz-appearance: textfield;
-        }
-    </style>
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+  </style>
   {{-- Header Start --}}
   <header class="flex items-center justify-between my-7">
     <h2 class="text-2xl font-bold text-white md:text-3xl">Presensi Baru</h2>
@@ -34,11 +34,13 @@
           <div class="grid grid-cols-1 gap-4 mb-3 lg:grid-cols-2">
             <div class="mb-3">
               <label for="presence" class="block mb-2 font-light text-white">Pertemuan ke-</label>
-              <input type="number" wire:model="form.presence_number" maxlength="2" name="presence" id="presence" class="w-full px-3 py-3 text-white rounded-lg bg-lightGray">
+              <input type="number" wire:model="form.presence_number" maxlength="2" name="presence" id="presence"
+                class="w-full px-3 py-3 text-white rounded-lg bg-lightGray">
             </div>
             <div class="mb-3">
               <label for="date-time" class="block mb-2 font-light text-white">Tanggal & Waktu</label>
-              <input type="datetime-local" wire:model='form.presence_date' name="date-time" id="date-time" class="w-full px-3 py-3 text-white rounded-lg bg-lightGray">
+              <input type="datetime-local" wire:model='form.presence_date' name="date-time" id="date-time"
+                class="w-full px-3 py-3 text-white rounded-lg bg-lightGray">
             </div>
           </div>
           <div class="mb-3">
@@ -48,27 +50,27 @@
                 <div class="p-1.5 min-w-full inline-block align-middle">
                   <div class="overflow-hidden rounded-md">
                     <table class="min-w-full bg-lightGray">
-                    <thead class="bg-[#43474C]">
+                      <thead class="bg-[#43474C]">
                         <tr>
-                          <th scope="col" class="px-6 py-3 text-start text-sm font-medium text-white uppercase">No
+                          <th scope="col" class="px-6 py-3 text-sm font-medium text-white uppercase text-start">No
                           </th>
-                          <th scope="col" class="px-6 py-3 text-start text-sm font-medium text-white uppercase">Nama
+                          <th scope="col" class="px-6 py-3 text-sm font-medium text-white uppercase text-start">Nama
                           </th>
-                          <th scope="col" class="px-6 py-3 text-start text-sm font-medium text-white uppercase">
+                          <th scope="col" class="px-6 py-3 text-sm font-medium text-white uppercase text-start">
                             Program Studi</th>
-                          <th scope="col" class="px-6 py-3 text-start text-sm font-medium text-white uppercase">
+                          <th scope="col" class="px-6 py-3 text-sm font-medium text-white uppercase text-start">
                             Status Kehadiran</th>
                         </tr>
                       </thead>
                       <tbody class="">
                         <tr>
-                            <td class="px-6 py-4 text-base font-medium text-white">01</td>
-                            <td class="px-6 py-4 text-base font-medium text-white">-</td>
-                            <td class="px-6 py-4 text-base font-medium text-white">-</td>
-                            <td class="flex items-center gap-4 px-6 py-4 text-base font-medium text-white">
-                              -
-                            </td>
-                          </tr>
+                          <td class="px-6 py-4 text-base font-medium text-white">01</td>
+                          <td class="px-6 py-4 text-base font-medium text-white">-</td>
+                          <td class="px-6 py-4 text-base font-medium text-white">-</td>
+                          <td class="flex items-center gap-4 px-6 py-4 text-base font-medium text-white">
+                            -
+                          </td>
+                        </tr>
                       </tbody>
                     </table>
                   </div>
@@ -80,7 +82,7 @@
       </div>
       <div class="flex my-7">
 
-        <div class="ml-auto flex items-center gap-4">
+        <div class="flex items-center gap-2 ml-auto">
           <button type="button"
             class="flex items-center px-5 py-3 text-sm font-semibold border border-[#4F4F55] text-white hover:bg-red-600 hover:border-red-600 rounded-md">Batal</button>
           <button type="submit"

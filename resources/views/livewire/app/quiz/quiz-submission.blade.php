@@ -1,7 +1,7 @@
 <div>
   {{-- Header Start --}}
   <header class="flex items-center justify-between my-7">
-    <h2 class="text-2xl font-bold text-white md:text-3xl">Jawaban Kuis</h2>
+    <h2 class="text-2xl font-bold text-white md:text-3xl">Jawaban Kuis ({{ $dataSubmissions->count() }})</h2>
 
   </header>
   {{-- Header End --}}

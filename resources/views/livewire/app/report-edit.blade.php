@@ -42,7 +42,7 @@
       </div>
 
       <div class="flex my-7">
-        <div class="flex items-center gap-4 ml-auto">
+        <div class="flex items-center gap-2 ml-auto">
           <button type="button"
             class="flex items-center px-5 py-3 text-sm font-semibold border border-[#4F4F55] text-white hover:bg-red-600 hover:border-red-600 rounded-md">Batal</button>
           <button type="submit"

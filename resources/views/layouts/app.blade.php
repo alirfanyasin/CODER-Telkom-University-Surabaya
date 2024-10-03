@@ -11,6 +11,8 @@
   {{-- JQuery --}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+  {{-- Driver JS --}}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.css" />
   {{-- Vite --}}
   @vite(['resources/css/app.css', 'resources/js/app.js'])
   @livewireStyles
@@ -43,7 +45,7 @@
             </svg>
           </button>
         </div>
-        <div class="hidden sm:block">
+        <div class="hidden sm:block" id="searching">
           <label for="icon" class="sr-only">Search</label>
           <div class="relative min-w-72 md:min-w-80">
             <div class="absolute inset-y-0 z-20 flex items-center pointer-events-none start-0 ps-4">
@@ -320,6 +322,10 @@
   {{-- Iconify --}}
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2.1.0/dist/iconify-icon.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+  {{-- Driver JS  --}}
+  <script src="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.js.iife.js"></script>
+  </script>
   @livewireScripts
   {{-- Livewire Alert --}}
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
