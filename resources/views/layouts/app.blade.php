@@ -4,6 +4,31 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+    content="Komunitas Kreatif dan Inovatif di Telkom University Surabaya yang Fokus pada Pengembangan Aplikasi dan Solusi Perangkat Lunak yang Inovatif.">
+  <meta name="keywords"
+    content="komunitas kreatif, inovatif, Telkom University, pengembangan aplikasi, solusi perangkat lunak, Coder Telkom Surabaya">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://coder-telkomsby.com/">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="Creativity On Digital Environment - Coder Telkom Surabaya">
+  <meta property="og:description"
+    content="Komunitas Kreatif dan Inovatif di Telkom University Surabaya yang Fokus pada Pengembangan Aplikasi dan Solusi Perangkat Lunak yang Inovatif.">
+  <meta property="og:image" content="{{ asset('assets/images/logo/main-logo.png') }}">
+  <meta property="og:url" content="https://coder-telkomsby.com/">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image"> <!-- or 'summary' -->
+  <meta name="twitter:title" content="Creativity On Digital Environment - Coder Telkom Surabaya">
+  <meta name="twitter:description"
+    content="Komunitas Kreatif dan Inovatif di Telkom University Surabaya yang Fokus pada Pengembangan Aplikasi dan Solusi Perangkat Lunak yang Inovatif.">
+  <meta name="twitter:image" content="{{ asset('assets/images/logo/main-logo.png') }}">
+  {{-- <meta name="twitter:image" content="https://coder-telkomsby.com/assets/images/logo/main-logo.png"> --}}
+
   <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/logo/logo.png') }}">
 
   <title>{{ $title . ' | CODER' ?? 'CODER' }}</title>
@@ -14,7 +39,8 @@
   {{-- Driver JS --}}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.css" />
   {{-- Vite --}}
-  @vite(['resources/css/app.css', 'resources/js/app.js'])
+  <link rel="stylesheet" href="/build/assets/app-BQOnPWkx.css">
+  <script src="build/assets/app-DCgrAlrx.js"></script>
   @livewireStyles
   @stack('css-custom')
 </head>
@@ -131,7 +157,8 @@
                 </a>
               </li>
             @endrole
-            <li class="mb-4 hs-accordion {{ Request::is('app/e-learning/*') ? 'active' : '' }}" id="e-learning-accordion">
+            <li class="mb-4 hs-accordion {{ Request::is('app/e-learning/*') ? 'active' : '' }}"
+              id="e-learning-accordion">
               <button type="button"
                 class="hs-accordion-toggle hs-accordion-active:text-gray-400 hs-accordion-active:hover:text-black  w-full text-start flex items-center gap-x-3.5 py-3 hover:text-black hover:bg-white mb-1.5 px-3 text-md font-medium text-gray-400 bg-transparent rounded-lg">
                 <iconify-icon icon="game-icons:spell-book" class="text-2xl"></iconify-icon>

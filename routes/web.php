@@ -213,3 +213,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/change-password', ChangePassword::class)->name('app.change-password');
     });
 });
+
+Route::get('symlink', function () {
+    $targetFolder = base_path() . '/storage/app/public';
+    $linkFolder = $_SERVER['DOCUMENT_ROOT'] . '/storage';
+    symlink($targetFolder, $linkFolder);
+});
