@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Label;
 use App\Models\User;
+use App\Models\UserActive;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -25,6 +26,17 @@ class GoogleController extends Controller
 
         if ($findUser) {
             Auth::login($findUser);
+            // Record user active
+            $dataUser = UserActive::where('user_id', $findUser->id)->first();
+
+            if ($dataUser) {
+                $dataUser->update(['status' => 'active']);
+            } else {
+                UserActive::create([
+                    'user_id' => Auth::user()->id,
+                    'status' => 'active'
+                ]);
+            }
             return redirect()->intended('/app');
         } else {
             $user = User::updateOrCreate(
@@ -39,6 +51,18 @@ class GoogleController extends Controller
             );
             $user->assignRole('guest');
             Auth::login($user);
+
+            // Record user active
+            $dataUser = UserActive::where('user_id', $user->id)->first();
+
+            if ($dataUser) {
+                $dataUser->update(['status' => 'active']);
+            } else {
+                UserActive::create([
+                    'user_id' => Auth::user()->id,
+                    'status' => 'active'
+                ]);
+            }
             return redirect()->intended('/app');
         }
     }

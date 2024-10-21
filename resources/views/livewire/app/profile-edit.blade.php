@@ -124,11 +124,11 @@
                   class="block w-full p-3 text-white rounded-lg pe-9 bg-lightGray">
                   <option selected="" disabled>Pilih Divisi</option>
                   <option {{ Auth::user()->division_id === 1 ? 'selected' : '' }}>Web Development</option>
-                  <option {{ Auth::user()->division_id === 2 ? 'selected' : '' }}>Mobile Development</option>
-                  <option {{ Auth::user()->division_id === 3 ? 'selected' : '' }}>UI/UX</option>
-                  <option {{ Auth::user()->division_id === 4 ? 'selected' : '' }}>Data Engineering</option>
-                  <option {{ Auth::user()->division_id === 5 ? 'selected' : '' }}>Artificial Intelligence</option>
-                  <option {{ Auth::user()->division_id === 6 ? 'selected' : '' }}>Competitive Programming</option>
+                  <option {{ Auth::user()->division_id === 2 ? 'selected' : '' }}>UI/UX</option>
+                  <option {{ Auth::user()->division_id === 3 ? 'selected' : '' }}>AI Software</option>
+                  <option {{ Auth::user()->division_id === 4 ? 'selected' : '' }}>Mobile Development</option>
+                  <option {{ Auth::user()->division_id === 5 ? 'selected' : '' }}>Competitive Programming</option>
+                  <option {{ Auth::user()->division_id === 6 ? 'selected' : '' }}>Data Engineering</option>
                 </select>
               </div>
             </div>

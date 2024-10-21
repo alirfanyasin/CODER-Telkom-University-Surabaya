@@ -26,6 +26,7 @@ class PresenceDetail extends Component
     public function mount($id)
     {
         $presence = Presence::where('id', $id)->with("userPresences", "userPresences.user")->first();
+
         $this->form->setData($presence);
         $this->user_presence = $this->form->user_presence;
     }
@@ -45,7 +46,8 @@ class PresenceDetail extends Component
         }
     }
 
-    public function exportPresenceResult(){
+    public function exportPresenceResult()
+    {
         if ($this->form->presence) {
             $this->alert('success', 'Berhasil Export Data', [
                 'position' => 'top-end',
