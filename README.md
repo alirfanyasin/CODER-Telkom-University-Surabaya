@@ -54,7 +54,8 @@ Silahkan gunakan breakpoint disini untuk membuat respoinsive design
 
 ![image](https://github.com/alirfanyasin/Crypshion-Ecommerce/assets/77270380/6e2e10b2-5b14-482f-a140-47871e513ffe)
 
-
+## Sebelum Instalasi
+Project ini menggunakan mysql sebagai databasenya. Untuk menghindari perbedaan function pada database yang digunakan, diharapkan menggunakan database yang sesuai, yaitu [MYSQL](https://www.mysql.com/)
 
 ## Instalation
 Clone Repository
