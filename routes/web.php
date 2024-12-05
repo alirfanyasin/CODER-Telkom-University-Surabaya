@@ -90,126 +90,158 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    // Authenticated - User
-    Route::prefix('app')->group(function () {
 
-        Route::get('/', Dashboard::class)->name('app.dashboard');
+    Route::group(['prefix' => '/app', 'as' => 'app.'], function () {
+        Route::get('/', Dashboard::class)->name('dashboard');
 
-        // Tugas
-        Route::get('/e-learning/task', Task::class)->name('app.e-learning.task');
-        Route::get('/e-learning/task/{slug}/detail', TaskDetail::class)->name('app.e-learning.task.detail');
-        Route::middleware(['role:admin'])->group(function () {
-            Route::get('/e-learning/task/create', TaskCreate::class)->name('app.e-learning.task.create');
-            Route::get('/e-learning/task/{slug}/edit', TaskEdit::class)->name('app.e-learning.task.edit');
-            Route::get('/e-learning/task/{slug}/show-answer', TaskSubmissionShowAnswer::class)->name('app.e-learning.task.show-answer');
-        });
-        Route::middleware(['role:user'])->group(function () {
-            Route::get('/e-learning/task/{slug}/submission', TaskSubmission::class)->name('app.e-learning.task.submission');
-            Route::get('/e-learning/task/{slug}/submission/edit', TaskSubmissionEdit::class)->name('app.e-learning.task.submission.edit');
-            Route::get('/e-learning/task/{slug}/show-score', TaskSubmission::class)->name('app.e-learning.task.show-score');
-        });
+        // E-Learning
+        Route::group(['prefix' => '/e-learning', 'as' => 'e-learning.'], function () {
 
-        // Meeting
-        Route::get('/e-learning/meeting', Meeting::class)->name('app.e-learning.meeting');
-        Route::get('/e-learning/meeting/{id}/show', MeetingDetail::class)->name('app.e-learning.meeting.show');
-        Route::middleware(['role:admin'])->group(function () {
-            Route::get('/e-learning/meeting/create', MeetingCreate::class)->name('app.e-learning.meeting.create');
-            Route::get('/e-learning/meeting/{id}/edit', MeetingEdit::class)->name('app.e-learning.meeting.edit');
-        });
+            // Tugas
+            Route::group(['prefix' => '/task'], function () {
+                Route::get('/', Task::class)->name('task'); // Dipisah karna Task tidak punya route index
 
-        // Modul
-        Route::get('/e-learning/modul', Modul::class)->name('app.e-learning.modul');
-        Route::middleware(['role:admin'])->group(function () {
-            Route::get('/e-learning/modul/create', ModulCreate::class)->name('app.e-learning.modul.create');
-            Route::get('/e-learning/modul/{id}/edit', ModulEdit::class)->name('app.e-learning.modul.edit');
-            // Route::get('/e-learning/modul/{id}/destroy', ModulEdit::class)->name('app.e-learning.modul.destroy');
-        });
+                Route::group(['as' => 'task.'], function () {
+                    Route::get('/{slug}/detail', TaskDetail::class)->name('detail');
 
-        // Kuis
-        Route::middleware(['role:admin|user'])->group(function () {
-            Route::get('/e-learning/quiz', Quiz::class)->name('app.e-learning.quiz');
-            Route::middleware(['role:admin'])->group(function () {
-                Route::get('/e-learning/quiz/{code}/{id}/show', QuizShow::class)->name('app.e-learning.quiz.show');
-                Route::get('/e-learning/quiz/{code}/{id}/submission', QuizSubmission::class)->name('app.e-learning.quiz.submission');
-                Route::get('/e-learning/quiz/create', QuizCreate::class)->name('app.e-learning.quiz.create');
-                Route::get('/e-learning/quiz/question/create', QuizQuestionCreate::class)->name('app.e-learning.quiz.question-create');
-                Route::get('/e-learning/quiz/answer-key/create', QuizAnswerKey::class)->name('app.e-learning.quiz.answere-key-create');
-                Route::get('/e-learning/quiz/{code}/{id}/edit', QuizEdit::class)->name('app.e-learning.quiz.edit');
+                    Route::middleware(['role:admin'])->group(function () {
+                        Route::get('/create', TaskCreate::class)->name('create');
+                        Route::get('/{slug}/edit', TaskEdit::class)->name('edit');
+                        Route::get('/{slug}/show-answer', TaskSubmissionShowAnswer::class)->name('show-answer');
+                    });
+                    Route::middleware(['role:user'])->group(function () {
+                        Route::get('/{slug}/submission', TaskSubmission::class)->name('submission');
+                        Route::get('/{slug}/submission/edit', TaskSubmissionEdit::class)->name('submission.edit');
+                        Route::get('/{slug}/show-score', TaskSubmission::class)->name('show-score');
+                    });
+                });
             });
-            Route::middleware(['role:user'])->group(function () {
-                Route::get('/e-learning/quiz/{code}/{slug}/confirmation', QuizConfirmation::class)->name('app.e-learning.quiz-confirmation');
-                Route::get('/e-learning/quiz/{slug}/{id}/live', QuizLive::class)->name('app.e-learning.quiz-live');
-                Route::get('/e-learning/quiz/{id}/result', QuizResult::class)->name('app.e-learning.quiz-result');
+
+            // Meeting
+            Route::group(['prefix' => '/meeting'], function () {
+                Route::get('/', Meeting::class)->name('meeting'); // Dipisah karna Meeting tidak punya route index
+
+                Route::group(['as' => 'meeting.'], function () {
+
+                    Route::get('/{id}/show', MeetingDetail::class)->name('show');
+                    Route::middleware(['role:admin'])->group(function () {
+                        Route::get('/create', MeetingCreate::class)->name('create');
+                        Route::get('/{id}/edit', MeetingEdit::class)->name('edit');
+                    });
+                });
+            });
+
+            // Modul
+            Route::group(['prefix' => '/modul'], function () {
+                Route::get('/', Modul::class)->name('modul'); // Dipisah karna Modul tidak punya route index
+
+                Route::group(['as' => 'modul.', 'middleware' => ['role:admin']], function () {
+                    Route::get('/create', ModulCreate::class)->name('create');
+                    Route::get('/{id}/edit', ModulEdit::class)->name('edit');
+                    // Route::get('/{id}/destroy', ModulEdit::class)->name('destroy');
+                });
+            });
+
+            // Kuis
+            Route::group(['prefix' => '/quiz', 'middleware' => ['role:admin|user']], function () {
+                Route::get('/', Quiz::class)->name('quiz'); // Dipisah karna Quiz tidak punya route index
+
+                // Dikeluarkan karena nama route tidak konsisten
+                Route::middleware(['role:user'])->group(function () {
+                    Route::get('/{code}/{slug}/confirmation', QuizConfirmation::class)->name('quiz-confirmation');
+                    Route::get('/{slug}/{id}/live', QuizLive::class)->name('quiz-live');
+                    Route::get('/{id}/result', QuizResult::class)->name('quiz-result');
+                });
+
+                Route::group(['as' => 'quiz.', 'middleware' => ['role:admin']], function () {
+                    Route::get('/{code}/{id}/show', QuizShow::class)->name('show');
+                    Route::get('/{code}/{id}/submission', QuizSubmission::class)->name('submission');
+                    Route::get('/create', QuizCreate::class)->name('create');
+                    Route::get('/question/create', QuizQuestionCreate::class)->name('question-create');
+                    Route::get('/answer-key/create', QuizAnswerKey::class)->name('answere-key-create');
+                    Route::get('/{code}/{id}/edit', QuizEdit::class)->name('edit');
+                });
             });
         });
 
-        // App Gallery
-        Route::middleware(['role:super-admin'])->group(function () {
-            Route::get('/content/gallery', AppGallery::class)->name('app.content.gallery');
-            Route::get("/content/gallery/{id}/edit", AppGalleryEdit::class)->name('app.content.gallery.edit');
-            Route::get("/content/gallery/create", AppGalleryCreate::class)->name('app.content.gallery.create');
-        });
+        // Content Gallegry & Article
+        Route::group(['prefix' => '/content', 'as' => 'content.'], function () {
 
-        // App Article
-        Route::get('/content/article', AppArticle::class)->name('app.content.article');
-        Route::get('/content/article/create', ArticleCreate::class)->name('app.content.article.create');
-        Route::get('/content/article/edit', ArticleEdit::class)->name('app.content.article.edit');
-        Route::get('/content/article/{slug}', AppArticle::class)->name('app.content.article.detail');
+            // Gallery
+            Route::middleware(['role:super-admin'])->group(function () {
+                Route::get('/gallery', AppGallery::class)->name('gallery');
+                Route::get("/gallery/{id}/edit", AppGalleryEdit::class)->name('gallery.edit');
+                Route::get("/gallery/create", AppGalleryCreate::class)->name('gallery.create');
+            });
+
+            // Article
+            Route::get('/article', AppArticle::class)->name('article');
+            Route::get('/article/create', ArticleCreate::class)->name('article.create');
+            Route::get('/article/edit', ArticleEdit::class)->name('article.edit');
+            Route::get('/article/{slug}', AppArticle::class)->name('article.detail');
+        });
 
         // Event
-        Route::get('/event/management-event', ManagementEvent::class)->name('app.event.management-event');
-        Route::get('/event/management-event/show', ManagementEventDetail::class)->name('app.event.management-event.show');
-        Route::get('/event/reqrutment', Reqrutment::class)->name('app.event.reqrutment');
+        Route::group(['prefix' => '/event', 'as' => 'event.'], function () {
+            Route::get('/management-event', ManagementEvent::class)->name('management-event');
+            Route::get('/management-event/show', ManagementEventDetail::class)->name('management-event.show');
+            Route::get('/reqrutment', Reqrutment::class)->name('reqrutment');
+        });
 
         // Presence
-        Route::get('/presence', Presence::class)->name('app.presence');
-        Route::get('/presence/{id}/show', PresenceDetail::class)->name('app.presence.show');
-        Route::middleware(['role:admin'])->group(function () {
-            Route::get('/presence/create', PresenceCreate::class)->name('app.presence.create');
-            Route::get('/presence/{id}/edit', PresenceEdit::class)->name('app.presence.edit');
+        Route::group(['prefix' => '/presence'], function () {
+            Route::get('/', Presence::class)->name('presence'); // Dipisah karna Presence tidak punya route index
+
+            Route::group(['as' => 'presence.'], function () {
+                Route::get('/{id}/show', PresenceDetail::class)->name('show');
+                Route::middleware(['role:admin'])->group(function () {
+                    Route::get('/create', PresenceCreate::class)->name('create');
+                    Route::get('/{id}/edit', PresenceEdit::class)->name('edit');
+                });
+            });
         });
 
         // Member
-        Route::get('/member', Member::class)->name('app.member');
-        Route::get('/member/{name}/{id}/show', MemberDetail::class)->name('app.member.show');
-        Route::middleware(['role:admin|super-admin'])->group(function () {
-            Route::get('/member/recruitment', MemberRecruitment::class)->name('app.member.recruitment');
-        });
+        Route::group(['prefix' => '/member'], function () {
+            Route::get('/', Member::class)->name('member'); // Dipisah karna Member tidak punya route index
 
-        // Division
-        Route::middleware(['role:super-admin'])->group(function () {
-            Route::get('/division', Division::class)->name('app.division');
-            Route::middleware(['role:super-admin'])->group(function () {
-                Route::get('/division/create', DivisionCreate::class)->name('app.division.create');
-                Route::get('/division/{slug}/edit', DivisionEdit::class)->name('app.division.edit');
-                Route::get('/division/{slug}/detail', DivisionDetail::class)->name('app.division.detail');
+            Route::get('/{name}/{id}/show', MemberDetail::class)->name('member.show');
+            Route::middleware(['role:admin|super-admin'])->group(function () {
+                Route::get('/recruitment', MemberRecruitment::class)->name('member.recruitment');
             });
         });
 
-        // Report
-        Route::middleware(['role:admin|super-admin'])->group(function () {
-            Route::get('/report', Report::class)->name('app.report');
-        });
-        Route::middleware(['role:admin'])->group(function () {
-            Route::get('/report/create', ReportCreate::class)->name('app.report.create');
-            Route::get('/report/{date}/{id}/edit', ReportEdit::class)->name('app.report.edit');
+        // Division
+        Route::group(['prefix' => '/division', 'middleware' => ['role:super-admin']], function () {
+            Route::get('/', Division::class)->name('division');
+            Route::get('/create', DivisionCreate::class)->name('division.create');
+            Route::get('/{slug}/edit', DivisionEdit::class)->name('division.edit');
+            Route::get('/{slug}/detail', DivisionDetail::class)->name('division.detail');
         });
 
+        // Report
+        Route::group(['prefix' => '/report', 'middleware' => ['role:admin|super-admin']], function () {
+            Route::get('/', Report::class)->name('report');
+            Route::middleware(['role:admin'])->group(function () {
+                Route::get('/create', ReportCreate::class)->name('report.create');
+                Route::get('/{date}/{id}/edit', ReportEdit::class)->name('report.edit');
+            });
+        });
 
         // Profile
-        Route::get('/profile', Profile::class)->name('app.profile');
-        Route::get('/profile/edit', ProfileEdit::class)->name('app.profile.edit');
+        Route::get('/profile', Profile::class)->name('profile');
+        Route::get('/profile/edit', ProfileEdit::class)->name('profile.edit');
 
 
         Route::middleware(['role:super-admin'])->group(function () {
-            Route::get('/system-points', Points::class)->name('app.system-points');
-            Route::get('/system-points/letter-of-active', LetterOfActive::class)->name('app.system-points.letter-of.active');
+            Route::get('/system-points', Points::class)->name('system-points');
+            Route::get('/system-points/letter-of-active', LetterOfActive::class)->name('system-points.letter-of.active');
         });
 
-        // Logout Route
-        Route::get('/logout', [Logout::class, 'logout'])->name('logout');
-
         // Change Password Route
-        Route::get('/change-password', ChangePassword::class)->name('app.change-password');
+        Route::get('/change-password', ChangePassword::class)->name('change-password');
     });
+
+    // Logout Route
+    Route::get('app/logout', [Logout::class, 'logout'])->name('logout');
 });
