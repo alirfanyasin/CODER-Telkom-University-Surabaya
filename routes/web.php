@@ -78,8 +78,8 @@ Route::get('/article/{slug}', Article::class)->name('article.detail');
 
 Route::get("/presence/verify/{slug}/{presence}/user-presence", PresenceShare::class)->name("app.presence.share");
 
+// Auth Route
 Route::middleware(['guest'])->group(function () {
-    // Auth Route
     Route::get('/login', Login::class)->name('login');
     Route::get('/register', Register::class)->name('register');
     Route::get('/forgot-password', ForgotPassword::class)->name('forgot-password');
@@ -92,7 +92,6 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     // Authenticated - User
     Route::prefix('app')->group(function () {
-
         Route::get('/', Dashboard::class)->name('app.dashboard');
 
         // Tugas

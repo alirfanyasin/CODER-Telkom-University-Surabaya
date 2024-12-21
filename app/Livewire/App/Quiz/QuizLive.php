@@ -32,7 +32,6 @@ class QuizLive extends Component
         $this->quizId = $id;
     }
 
-
     // #[On('timeUp')]
     // public function timeUp()
     // {
