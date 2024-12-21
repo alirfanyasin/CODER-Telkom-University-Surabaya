@@ -2,6 +2,7 @@
 
 namespace App\Livewire\App;
 
+use App\Models\Division;
 use App\Models\Presence as ModelsPresence;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
@@ -14,22 +15,47 @@ use Livewire\Component;
 class Presence extends Component
 {
     public $presences;
-    public function mount(){
-        $this->callAgain();
+    public $divisionId = 1;
+    public function mount()
+    {
+        $this->getPresence($this->divisionId);
     }
-    private function callAgain(){
-        $this->presences = ModelsPresence::where("division_id", Auth::user()->division_id)->get();
+
+    private function getPresence($divisionId)
+    {
+        if (Auth::user()->label !== 'Super Admin') {
+            $this->presences = ModelsPresence::with('division')->where('division_id', Auth::user()->division_id)
+                ->orderBy('section', 'ASC')
+                ->get();
+        } else {
+            $this->presences = ModelsPresence::with('division')->where('division_id', session('active-presence') ?? $divisionId)
+                ->orderBy('section', 'ASC')
+                ->get();
+        }
     }
-    public function delete($id){
+
+    public function delete($id)
+    {
         $presence = ModelsPresence::where("id", $id)->first()->delete();
         if ($presence) {
             $this->callAgain();
         }
     }
+
+    public function selectDivision($id)
+    {
+        $this->divisionId = $id;
+        session()->put('active-presence', $this->divisionId);
+        $this->getPresence($this->divisionId);
+    }
+
     public function render()
     {
-        return view('livewire.app.presence',[
-            "presences" => $this->presences
+
+        return view('livewire.app.presence', [
+            "presences" => $this->presences,
+            'allDivision' => Division::all()
+
         ]);
     }
 }

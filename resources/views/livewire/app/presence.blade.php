@@ -19,6 +19,18 @@
   </header>
   {{-- Header End --}}
 
+
+  {{-- Division Start --}}
+  @role('super-admin')
+    <div class="flex w-full gap-3 p-3 mb-10 overflow-auto flex-nowrap scroll-div">
+      @foreach ($allDivision as $division)
+        <a href="#" wire:click.prevent='selectDivision({{ $division->id }})'
+          class="inline-block px-5 py-2  border border-white rounded-lg text-nowrap hover:bg-white hover:text-black {{ session('active-presence') === $division->id ? 'bg-white text-black' : 'text-white' }}">{{ $division->name }}</a>
+      @endforeach
+    </div>
+  @endrole
+  {{-- Division End --}}
+
   {{-- View All Presence Section Start --}}
   <section class="mb-10">
     @foreach ($presences as $presence)
