@@ -101,6 +101,8 @@ Route::middleware(['auth'])->group(function () {
         Route::middleware(['role:admin'])->group(function () {
             Route::get('/e-learning/task/create', TaskCreate::class)->name('app.e-learning.task.create');
             Route::get('/e-learning/task/{slug}/edit', TaskEdit::class)->name('app.e-learning.task.edit');
+        });
+        Route::middleware(['role:admin|super-admin'])->group(function () {
             Route::get('/e-learning/task/{slug}/show-answer', TaskSubmissionShowAnswer::class)->name('app.e-learning.task.show-answer');
         });
         Route::middleware(['role:user'])->group(function () {

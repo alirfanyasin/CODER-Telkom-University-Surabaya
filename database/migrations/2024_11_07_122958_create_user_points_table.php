@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_presence_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('user_answer_quizzes_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('task_submission_id')->nullable()->constrained()->onDelete('cascade');
             $table->unsignedInteger('final_project')->nullable();
             $table->unsignedInteger('commitee')->nullable();
             $table->unsignedInteger('points')->nullable();

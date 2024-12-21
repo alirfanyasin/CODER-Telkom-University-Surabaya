@@ -4,6 +4,8 @@ namespace App\Livewire\App;
 
 use App\Models\Elearning\Task;
 use App\Models\Elearning\TaskSubmission as ElearningTaskSubmission;
+use App\Models\Points;
+use App\Models\UserPoints;
 use Illuminate\Support\Facades\Auth;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
@@ -47,7 +49,13 @@ class TaskSubmission extends Component
             'task_id' => $this->taskId
         ];
 
-        ElearningTaskSubmission::create($data);
+        $userTaskSubmission = ElearningTaskSubmission::create($data);
+        $point = Points::where('name', 'Tugas')->first();
+        UserPoints::create([
+            'user_id' => Auth::user()->id,
+            'task_submission_id' => $userTaskSubmission->id,
+            'points' => $point->points
+        ]);
 
         $this->alert('success', 'Tugas Berhasil Dikumpulkan', [
             'position' => 'top-end',

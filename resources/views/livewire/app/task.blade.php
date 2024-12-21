@@ -20,6 +20,18 @@
   </header>
   {{-- Header End --}}
 
+
+  {{-- Division Start --}}
+  @role('super-admin')
+    <div class="flex w-full gap-3 p-3 mb-10 overflow-auto flex-nowrap scroll-div">
+      @foreach ($allDivision as $division)
+        <a href="#" wire:click.prevent='selectDivision({{ $division->id }})'
+          class="inline-block px-5 py-2  border border-white rounded-lg text-nowrap hover:bg-white hover:text-black {{ session('active-task') === $division->id ? 'bg-white text-black' : 'text-white' }}">{{ $division->name }}</a>
+      @endforeach
+    </div>
+  @endrole
+  {{-- Division End --}}
+
   {{-- View All Task Section Start --}}
   <section class="mb-10">
     @foreach ($groupedDataBySection as $meetingNumber => $datas)
@@ -75,7 +87,7 @@
 
 
             <div class="@role(['admin']) flex items-center @endrole mt-4">
-              @role(['admin'])
+              @role(['admin', 'super-admin'])
                 <div class="flex items-center w-full">
                   <a href="{{ route('app.e-learning.task.show-answer', $task->slug) }}" wire:navigate
                     class="inline-flex items-center px-4 py-3 text-sm font-semibold text-white rounded-lg gap-x-2 bg-glass border border-[#3c3c41] hover:bg-white hover:text-black">

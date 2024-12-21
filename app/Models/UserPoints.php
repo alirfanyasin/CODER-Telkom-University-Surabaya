@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Elearning\TaskSubmission;
 use App\Models\Quiz\UserAnswerQuiz;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -42,6 +43,15 @@ class UserPoints extends Model
         return $this->belongsTo(UserAnswerQuiz::class, 'user_answere_quiz_id');
     }
 
+    /**
+     * Get the taskSubmission that owns the UserPoints
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function taskSubmission(): BelongsTo
+    {
+        return $this->belongsTo(TaskSubmission::class, 'taks_submission_id');
+    }
     /**
      * Get the points that owns the UserPoints
      *
