@@ -120,5 +120,4 @@
     @endforeach
   </section>
   {{-- View All Modul End --}}
-
 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\App;
 
+use App\Models\Division;
 use App\Models\Elearning\Task as ElearningTask;
 use App\Models\Elearning\TaskSubmission;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -19,6 +20,7 @@ class Task extends Component
     use LivewireAlert;
 
     public $itemToDelete;
+    public $divisionId = 1;
 
     protected $listeners = [
         'confirmedDeletion',
@@ -77,23 +79,43 @@ class Task extends Component
         ]);
     }
 
-    public function groupedDataBySection()
-    {
-        $allDataByDivision = ElearningTask::with('division')
-            ->where('division_id', Auth::user()->division_id)
-            ->orderBy('section', 'ASC')
-            ->get();
+    // public function groupedDataBySection()
+    // {
+    //     $allDataByDivision = ElearningTask::with('division')
+    //         ->where('division_id', Auth::user()->division_id)
+    //         ->orderBy('section', 'ASC')
+    //         ->get();
 
-        return $allDataByDivision->groupBy('section');
+    //     return $allDataByDivision->groupBy('section');
+    // }
+    public function selectDivision($id)
+    {
+        $this->divisionId = $id;
+        session()->put('active-task', $this->divisionId);
     }
 
     public function render()
     {
         $checkSubmission = TaskSubmission::where('user_id', Auth::id())->pluck('task_id')->toArray();
 
+        if (Auth::user()->label !== 'Super Admin') {
+            $allDataByDivision = ElearningTask::with('division')
+                ->where('division_id', Auth::user()->division_id)
+                ->orderBy('section', 'ASC')
+                ->get();
+        } else {
+            $allDataByDivision = ElearningTask::with('division')
+                ->where('division_id', session('active-task') ?? $this->divisionId)
+                ->orderBy('section', 'ASC')
+                ->get();
+        }
+
+        $groupedDataBySection = $allDataByDivision->groupBy('section');
+
         return view('livewire.app.task', [
-            'groupedDataBySection' => $this->groupedDataBySection(),
-            'checkSubmission' => $checkSubmission
+            'groupedDataBySection' =>  $groupedDataBySection,
+            'checkSubmission' => $checkSubmission,
+            'allDivision' => Division::all()
 
         ]);
     }
