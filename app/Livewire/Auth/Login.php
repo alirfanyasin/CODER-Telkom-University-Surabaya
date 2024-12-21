@@ -62,15 +62,39 @@ class Login extends Component
 
 
                 if (Auth::user()->hasRole('super-admin')) {
+                    $this->alert('success', 'Berhasil Login', [
+                        'position' => 'top-end',
+                        'timer' => 3000,
+                        'toast' => true,
+                        'timerProgressBar' => true,
+                    ]);
                     return redirect()->intended('app/');
                 }
                 if (Auth::user()->hasRole('admin')) {
+                    $this->alert('success', 'Berhasil Login', [
+                        'position' => 'top-end',
+                        'timer' => 3000,
+                        'toast' => true,
+                        'timerProgressBar' => true,
+                    ]);
                     return redirect()->intended('app/');
                 }
                 if (Auth::user()->hasRole('user')) {
+                    $this->alert('success', 'Berhasil Login', [
+                        'position' => 'top-end',
+                        'timer' => 3000,
+                        'toast' => true,
+                        'timerProgressBar' => true,
+                    ]);
                     return redirect()->intended('app/');
                 }
                 if (Auth::user()->hasRole('guest')) {
+                    $this->alert('success', 'Berhasil Login', [
+                        'position' => 'top-end',
+                        'timer' => 3000,
+                        'toast' => true,
+                        'timerProgressBar' => true,
+                    ]);
                     return redirect()->intended('app/');
                 }
             } else {

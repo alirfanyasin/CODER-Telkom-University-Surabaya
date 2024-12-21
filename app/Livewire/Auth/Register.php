@@ -5,6 +5,7 @@ namespace App\Livewire\Auth;
 use App\Models\Label;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
@@ -15,6 +16,8 @@ use Livewire\Component;
 
 class Register extends Component
 {
+    use LivewireAlert;
+
     #[Validate('required', message: 'Nama Lengkap wajib di isi', translate: true)]
     #[Validate('min:3', message: 'Nama Lengkap minimal 3 karakter', translate: true)]
     #[Validate('max:50', message: 'Nama Lengkap maksimal 50 karakter', translate: true)]
@@ -31,6 +34,7 @@ class Register extends Component
 
     public function register()
     {
+
         $this->validate();
         $user = User::create([
             'name' => $this->name,
@@ -39,6 +43,12 @@ class Register extends Component
             'label' => Label::LABEL_NAME['guest']
         ]);
         $user->assignRole('guest');
+        $this->alert('success', 'Berhasil Registrasi', [
+            'position' => 'top-end',
+            'timer' => 3000,
+            'toast' => true,
+            'timerProgressBar' => true,
+        ]);
         $this->redirect('/login');
     }
 

@@ -125,7 +125,7 @@
 
 
   {{-- Developer Team Start --}}
-  <section>
+  {{-- <section>
     <div class="container">
       <div class="w-10/12 mx-auto">
         <header class="flex items-center justify-center mb-10 text-center md:mb-20">
@@ -144,7 +144,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> --}}
   {{-- Developer Team End --}}
 
 
