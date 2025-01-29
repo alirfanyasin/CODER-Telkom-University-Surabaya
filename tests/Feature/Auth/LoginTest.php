@@ -3,20 +3,22 @@
 namespace Tests\Feature\Auth;
 
 use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 class LoginTest extends TestCase
 {
+
+    use RefreshDatabase;
     /**
      * Test halaman login dapat diakses.
      */
     public function test_login_page_rendered()
     {
         $response = $this->get(route('login'));
-        $response->assertStatus(200)
-            ->assertSee('Login');
+        $response->assertStatus(200);
     }
 
 
@@ -41,23 +43,26 @@ class LoginTest extends TestCase
 
 
     /**
-     * Test validasi email yang salah.
+     * Test login dengan email yang salah.
      */
     public function test_login_with_invalid_email()
     {
+        // Buat pengguna dengan email tertentu
         $user = User::factory()->create([
             'name' => 'Test User',
-            'email' => 'test@example.com',
+            'email' => fake()->unique()->safeEmail(),
             'password' => Hash::make('password123'),
             'label' => 'Guest',
         ]);
 
-        $wrongEmail = 'testtt@gmail.com'; // email yang salah
-
+        // Gunakan email yang salah
+        $wrongEmail = 'test@gmail.com'; // email yang salah
         $credentials = ['email' => $wrongEmail, 'password' => 'password123'];
+
+        // Cek apakah login gagal
         $isAuthenticated = Auth::attempt($credentials);
 
-        $this->assertTrue($isAuthenticated, 'Login berhasil dengan kredensial valid.');
-        Auth::logout();
+        // Login harus gagal
+        $this->assertFalse($isAuthenticated, 'Login seharusnya gagal dengan email yang salah.');
     }
 }

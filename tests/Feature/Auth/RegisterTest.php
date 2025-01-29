@@ -10,6 +10,7 @@ use Tests\TestCase;
 
 class RegisterTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * Test halaman login dapat diakses.
      */
@@ -29,7 +30,7 @@ class RegisterTest extends TestCase
         // Data untuk registrasi
         $data = [
             'name' => 'Test User',
-            'email' => 'testuser@example.com',
+            'email' => 'testuser1234@example.com', // Email yang digunakan
             'password' => 'password123',
             'label' => 'Guest',
         ];
@@ -44,11 +45,12 @@ class RegisterTest extends TestCase
 
         // Assert bahwa user berhasil dibuat
         $this->assertInstanceOf(User::class, $user);
+
+        // Pastikan email sesuai dengan yang dibuat
         $this->assertDatabaseHas('users', [
-            'email' => 'test@example.com',
+            'email' => 'testuser1234@example.com', // Ubah email agar sesuai dengan data
         ]);
     }
-
 
 
     /**
