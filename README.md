@@ -16,7 +16,7 @@ Silahkan anda membuat branch anda sendiri sebelum mengerjakan feature
 - `nama/feature` contoh `irfan/create-presence`
 
 ## Penjelasan Environment Branch
-Jangan langsung mengedit code di dalam 4 branch ini, jika ingin mengedit code harus berdasarkan aturan yang berlaku yaitu membuat branch baru.
+Jangan langsung mengedit code di dalam 5 branch ini, jika ingin mengedit code harus berdasarkan aturan yang berlaku yaitu membuat branch baru.
 - `main` adalah branch untuk menyimpan perubahan terakhir dengan fitur-fitur yang telah di merge.
 - `develop` merupakan branch yang berfungsi untuk menyimpan perubahan fitur-fitur yang sudah di merger untuk sementara.
 - `testing` berfungsi untuk menyimpan perubahan setelah fitur-fitur tersebut di develop, lalu jika tidak ada error atau bug maka bisa langsung di merge ke brnach `main`.
