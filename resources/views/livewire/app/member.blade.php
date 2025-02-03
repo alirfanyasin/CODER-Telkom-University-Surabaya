@@ -20,7 +20,7 @@
   {{-- Header End --}}
 
 
-  {{-- Count Member Start --}}
+  {{-- Division Start --}}
   @role('super-admin')
     <div class="grid grid-cols-1 gap-2 mb-5 lg:grid-cols-6 md:grid-cols-2">
       @foreach ($allDivision as $division)
@@ -33,7 +33,7 @@
       @endforeach
     </div>
   @endrole
-  {{-- Count Member End --}}
+  {{-- Division End --}}
 
 
 

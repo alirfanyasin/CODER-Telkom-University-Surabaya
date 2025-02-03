@@ -1,10 +1,25 @@
+@php
+  // Deklarasikan fungsi di luar loop
+  function generateColorFromTag($tag)
+  {
+      $hash = crc32($tag);
+      $r = ($hash >> 16) & 0xff;
+      $g = ($hash >> 8) & 0xff;
+      $b = $hash & 0xff;
+      $minBrightness = 50;
+      $r = max($r, $minBrightness);
+      $g = max($g, $minBrightness);
+      $b = max($b, $minBrightness);
+      return "rgb($r, $g, $b)";
+  }
+@endphp
+
 <div>
   {{-- Header Start --}}
   <header class="flex items-center justify-between my-7">
     <h2 class="text-2xl font-bold text-white md:text-3xl">Daftar Pengguna</h2>
   </header>
   {{-- Header End --}}
-
 
 
   {{-- Member Section Start --}}
@@ -14,7 +29,7 @@
         <div
           class="relative px-5 pt-5 pb-16 text-center text-white rounded-lg bg-neutral-900 group hover:border hover:border-gray-500">
           @if ($data->tag !== null)
-            <span
+            {{-- <span
               class="absolute left-0 px-3 py-1 text-xs text-center rounded-r-full
               {{ $data->tag == '#web' ? 'bg-green-800' : '' }} 
                {{ $data->tag == '#ui/ux' ? 'bg-red-800' : '' }} 
@@ -23,6 +38,14 @@
                {{ $data->tag == '#compe' ? 'bg-blue-800' : '' }} 
                {{ $data->tag == '#data' ? 'bg-sky-800' : '' }} 
                 top-5">
+              {{ $data->tag }}
+            </span> --}}
+
+            @php
+              $color = generateColorFromTag($data->tag);
+            @endphp
+            <span class="absolute left-0 px-3 py-1 text-xs text-center rounded-r-full"
+              style="background-color: {{ $color }}; top: 5px;">
               {{ $data->tag }}
             </span>
           @endif

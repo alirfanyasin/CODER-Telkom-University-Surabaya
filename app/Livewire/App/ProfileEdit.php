@@ -2,6 +2,7 @@
 
 namespace App\Livewire\App;
 
+use App\Models\Division;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -118,6 +119,8 @@ class ProfileEdit extends Component
 
     public function render()
     {
-        return view('livewire.app.profile-edit');
+        return view('livewire.app.profile-edit', [
+            'divisions' => Division::all(),
+        ]);
     }
 }

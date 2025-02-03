@@ -21,6 +21,10 @@ use Livewire\Component;
 class Member extends Component
 {
     use LivewireAlert;
+    public $itemToDelete;
+    protected $listeners = [
+        'confirmedDeletion',
+    ];
 
     public function makeALeader($id, $divisionId = NULL)
     {
@@ -89,8 +93,35 @@ class Member extends Component
 
     public function destroy($id)
     {
+        $this->itemToDelete = $id;
+
+        $this->alert('warning', 'Yakin ingin menghapus User?', [
+            'position' => 'top-end',
+            'timer' => null,
+            'toast' => true,
+            'showConfirmButton' => true,
+            'onConfirmed' => 'confirmedDeletion',
+            'showDenyButton' => true,
+            'onDenied' => '',
+            'denyButtonText' => 'Tidak',
+            'width' => '400',
+            'confirmButtonText' => 'Iya',
+        ]);
+    }
+
+    public function confirmedDeletion()
+    {
+        $id = $this->itemToDelete;
         UserAnswerQuiz::where('user_id', $id)->delete();
         User::find($id)->delete();
+        $this->alert('success', 'User berhasil dihapus', [
+            'position' => 'top-end',
+            'timer' => 3000,
+            'toast' => true,
+            'text' => '',
+            'timerProgressBar' => true,
+        ]);
+        return redirect()->back();
     }
 
     public function render()
