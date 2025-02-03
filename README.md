@@ -15,7 +15,13 @@
 Silahkan anda membuat branch anda sendiri sebelum mengerjakan feature
 - `nama/feature` contoh `irfan/create-presence`
 
-
+## Penjelasan Environment Branch
+Jangan langsung mengedit code di dalam 4 branch ini, jika ingin mengedit code harus berdasarkan aturan yang berlaku yaitu membuat branch baru.
+- `main` adalah branch untuk menyimpan perubahan terakhir dengan fitur-fitur yang telah di merge.
+- `develop` merupakan branch yang berfungsi untuk menyimpan perubahan fitur-fitur yang sudah di merger untuk sementara.
+- `testing` berfungsi untuk menyimpan perubahan setelah fitur-fitur tersebut di develop, lalu jika tidak ada error atau bug maka bisa langsung di merge ke brnach `main`.
+- `staging` adalah hasil dari merging dari branch main, namun dibagian staging ini harus mengubah configurasi menjadi configurasi production, untuk mengetes apakah ada bug atau error ketika sudah di deploy untuk sementara.
+- `production` adalah hasil akhir jika keseluruhan aplikasi tidak mengalami kendala lagi seperti adanya bug dan error. Hal ini juga sudah bisa di akses oleh users. 
 
 ## Warning
 - Jangan pernah menghapus folder atau file apapun yg sudah ada atau bawaan dari laravel
