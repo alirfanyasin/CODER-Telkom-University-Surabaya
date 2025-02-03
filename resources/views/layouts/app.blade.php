@@ -14,7 +14,9 @@
   {{-- Driver JS --}}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.css" />
   {{-- Vite --}}
-  @vite(['resources/css/app.css', 'resources/js/app.js'])
+  {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+  <link rel="stylesheet" href="/build/assets/app-BQOnPWkx.css">
+  <script src="/build/assets/app-DCgrAlrx.js"></script>
   @livewireStyles
   @stack('css-custom')
 </head>

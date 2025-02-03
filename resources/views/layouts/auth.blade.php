@@ -12,7 +12,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
   {{-- Vite --}}
-  @vite(['resources/css/app.css', 'resources/js/app.js'])
+  {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+  <link rel="stylesheet" href="/build/assets/app-BQOnPWkx.css">
+  <script src="/build/assets/app-DCgrAlrx.js"></script>
   @livewireStyles
 </head>
 

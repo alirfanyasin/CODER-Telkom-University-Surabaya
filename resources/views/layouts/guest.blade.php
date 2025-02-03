@@ -14,7 +14,9 @@
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 
   {{-- Vite --}}
-  @vite(['resources/css/app.css', 'resources/js/app.js'])
+  {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+  <link rel="stylesheet" href="/build/assets/app-BQOnPWkx.css">
+  <script src="/build/assets/app-DCgrAlrx.js"></script>
   @livewireStyles
 </head>
 
