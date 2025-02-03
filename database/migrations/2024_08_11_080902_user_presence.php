@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('user_presences', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("user_id");
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
             $table->unsignedBigInteger("presences_id");
             $table->foreign('presences_id')->references('id')->on('presences')->onDelete("cascade");
             $table->enum("status", ["hadir", "izin", "alpha"]);

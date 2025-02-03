@@ -44,7 +44,7 @@ class GoogleController extends Controller
                 [
                     'name' => $googleUser->name,
                     'email' => $googleUser->email,
-                    'password' => Hash::make('password'),
+                    'password' => Hash::make('passwordPASWORD'),
                     'avatar' => $googleUser->avatar,
                     'label' => Label::LABEL_NAME['guest'],
                 ]

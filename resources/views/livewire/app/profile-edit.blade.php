@@ -44,12 +44,20 @@
             <select name="tag" id="tag" class="block w-full p-3 text-white rounded-lg bg-lightGray"
               wire:model='tag'>
               <option value="Empty">Konsongkan Tag</option>
-              <option value="#web">#web</option>
+              @foreach ($divisions as $div)
+                @php
+                  $words = explode(' ', $div->name);
+                  $firstWord = !empty($words[0]) ? strtolower($words[0]) : '';
+                @endphp
+                <option value="#{{ $firstWord }}">#{{ $div->name }}</option>
+              @endforeach
+              {{-- 
+              option value="#ui/ux">#web</option>
               <option value="#ui/ux">#ui/ux</option>
               <option value="#ai">#ai</option>
               <option value="#mobile">#mobile</option>
               <option value="#compe">#compe</option>
-              <option value="#data">#data</option>
+              <option value="#data">#data</option> --}}
             </select>
 
           </div>
@@ -123,12 +131,16 @@
                 <select id="divisi-input" @role(['guest|admin|user|super-admin']) disabled @endrole
                   class="block w-full p-3 text-white rounded-lg pe-9 bg-lightGray">
                   <option selected="" disabled>Pilih Divisi</option>
-                  <option {{ Auth::user()->division_id === 1 ? 'selected' : '' }}>Web Development</option>
+                  @foreach ($divisions as $div)
+                    <option {{ Auth::user()->division_id === $div->id ? 'selected' : '' }}>{{ $div->name }}
+                    </option>
+                  @endforeach
+                  {{-- <option {{ Auth::user()->division_id === 1 ? 'selected' : '' }}>Web Development</option>
                   <option {{ Auth::user()->division_id === 2 ? 'selected' : '' }}>UI/UX</option>
                   <option {{ Auth::user()->division_id === 3 ? 'selected' : '' }}>AI Software</option>
                   <option {{ Auth::user()->division_id === 4 ? 'selected' : '' }}>Mobile Development</option>
                   <option {{ Auth::user()->division_id === 5 ? 'selected' : '' }}>Competitive Programming</option>
-                  <option {{ Auth::user()->division_id === 6 ? 'selected' : '' }}>Data Engineering</option>
+                  <option {{ Auth::user()->division_id === 6 ? 'selected' : '' }}>Data Engineering</option> --}}
                 </select>
               </div>
             </div>
